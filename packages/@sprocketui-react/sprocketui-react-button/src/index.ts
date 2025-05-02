@@ -8,22 +8,14 @@
 
 'use strict';
 
-export {
-  useButton,
-  useButton as useSprocketButton
-} from './hooks/useButton';
-export type {
-  ButtonHookProps,
-  ButtonHookResult
-} from './hooks/useButton';
 
-export {
-  Button,
-  ButtonContext,
-  Button as SprocketButton,
-  ButtonContext as SprocketButtonContext
-} from './components/Button';
-export type {
-  ButtonProps,
-  ButtonProps as SprocketButtonProps
-} from './components/Button';
+export * from './hooks/useButton';
+export * from './hooks/useButtonContext';
+export * from './components/Button';
+
+// Alias hook and component exports
+export { Button as SprocketButton } from './components/Button';
+export { useButton as useSprocketButton } from './hooks/useButton';
+
+// Alias type exports
+export type { ButtonProps as SprocketButtonProps } from './components/Button';

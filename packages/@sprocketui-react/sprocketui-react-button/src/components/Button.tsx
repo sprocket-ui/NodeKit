@@ -112,6 +112,5 @@ Button.displayName = BUTTON_NAME;
 
 export {
   Button,
-  ButtonContext,
   type ButtonProps
 }

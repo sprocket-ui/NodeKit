@@ -21,17 +21,40 @@ import type { ButtonOptions } from '@sprocketui-types/button';
 const DEFAULT_BUTTON_TAG = HTMLElements.Button;
 
 interface ButtonHookProps<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG> extends ButtonOptions<TTag> {
+  // Element to render the button as.
   elementType?: string;
+
+  // Prevents focus of element on press events.
   preventFocusOnPress?: boolean;
+
+  // Location to route the button to.
   href?: string;
+
+  // The target that will be used for the href routing.
   target?: string;
+
+  // Relationship HTML linker option.
   rel?: string;
+
+  // User click callback handler.
   onClick?: (e: any) => void;
+
+  // User press callback handler.
   onPress?: (e: any) => void;
+
+  // User press start callback handler.
   onPressStart?: (e: any) => void;
+
+  // User press end callback handler.
   onPressEnd?: (e: any) => void;
+
+  // User press up callback handler.
   onPressUp?: (e: any) => void;
+
+  // User press change callback handler.
   onPressChange?: (isPressed: boolean) => void;
+
+  // Other normalized props and specified keys.
   [key: string]: any;
 }
 
