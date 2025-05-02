@@ -1,0 +1,7 @@
+packages:
+  - 'website'
+  - 'packages/*'
+  - 'packages/@sprocketui-types/*'
+  - 'packages/@sprocketui-vue/packages/*'
+  - 'packages/@sprocketui-react/*'
+  - '../../necto/node-kit/packages/*'

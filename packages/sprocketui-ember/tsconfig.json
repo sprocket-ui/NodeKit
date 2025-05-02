@@ -1,0 +1,28 @@
+{
+  "extends": "@tsconfig/ember/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "allowJs": true,
+    "inlineSources": false,
+    "declaration": true,
+    "noEmitOnError": false,
+    "declarationDir": "declarations",
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "skipLibCheck": true,
+    "rootDir": "./src",
+    "paths": {
+      "@ember/component/template-only": [
+        "../../node_modules/ember-source/types/stable/@ember/component/template-only.d.ts"
+      ],
+    }
+  },
+  "include": ["src/**/*"],
+  "glint": {
+    "environment": ["ember-loose"]
+  }
+}

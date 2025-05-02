@@ -1,2 +1,2 @@
-# NodeKit
-Sprocket UI components for JavaScript based frameworks.
+# sprocketui
+Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS.

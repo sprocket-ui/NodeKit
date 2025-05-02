@@ -1,0 +1,48 @@
+{{!
+  Copyright (c) Corinvo, LLC. and affiliates.
+  This source code is licensed under the MIT license found in the
+  LICENSE file in the root directory of this source tree.
+}}
+
+{{#if @route}}
+  <LinkTo
+    id={{this._id}}
+    @tagName="button"
+    @route={{@route}}
+    disabled={{@disabled}}
+    data-disabled={{@disabled}}
+    data-sprocket-state={{this.sprocketState}}
+    ...attributes
+    {{on "focus" this.onFocus}}
+    {{on "blur" this.onBlur}}
+    {{on "mouseup" this.onMouseUp}}
+    {{on "mousedown" this.onMouseDown}}
+    {{on "mouseenter" this.onMouseEnter}}
+    {{on "mouseleave" this.onMouseLeave}}
+  >
+    {{yield}}
+  </LinkTo>
+{{else}}
+  {{#let (if this.as (element this.as) (element "button")) as |Tag|}}
+    <Tag
+      href={{@href}}
+      id={{this._id}}
+      disabled={{@disabled}}
+      type={{unless this.as "button"}}
+      data-disabled={{if @disabled "true"}}
+      data-sprocket-state={{this.sprocketState}}
+      tabindex={{if (not-eq (or this.as "button") "button") "0" undefined}}
+      role={{if (not-eq (or this.as "button") "button") "button" undefined}}
+      ...attributes
+      {{on "focusin" this.onFocusIn}}
+      {{on "focusout" this.onFocusOut}}
+      {{on "mouseup" this.onMouseUp}}
+      {{on "mousedown" this.onMouseDown}}
+      {{on "mouseenter" this.onMouseEnter}}
+      {{on "mouseleave" this.onMouseLeave}}
+    >
+      {{yield}}
+    </Tag>
+  {{/let}}
+{{/if}}
+

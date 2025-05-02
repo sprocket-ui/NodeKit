@@ -1,0 +1,27 @@
+{
+  "name": "@sprocketui/react",
+  "version": "0.1.2",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.js"
+    },
+    "./*": {
+      "import": "./dist/*.es.js",
+      "require": "./dist/*.js"
+    }
+  },
+  "files": [
+    "README.md",
+    "dist"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=10"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.2.0"
+  }
+}

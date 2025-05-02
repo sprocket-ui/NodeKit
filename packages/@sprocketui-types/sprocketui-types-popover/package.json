@@ -1,0 +1,15 @@
+{
+  "name": "@sprocketui-types/popover",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Corinvo OSS Team",
+  "license": "MIT",
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "types": "src/index.d.ts",
+  "dependencies": {
+    "@floating-ui/utils": "^0.2.9"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@sprocketui/types",
+  "version": "1.0.0",
+  "description": "Universal type definitions for Sprocket components",
+  "scripts": {
+    "build": "tsup --minify"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "author": "Corinvo OSS Team",
+  "license": "MIT",
+  "dependencies": {
+    "@sprocketui-types/menu": "workspace:*",
+    "@sprocketui-types/button": "workspace:*"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0"
+  }
+}

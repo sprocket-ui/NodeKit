@@ -1,0 +1,117 @@
+/**
+ * Copyright (c) Corinvo, LLC. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+'use client';
+
+import { kebabCase } from "@necto/strings";
+import { useButton } from '../hooks/useButton';
+import { mergeReactProps } from "@necto/mergers";
+import { createContext, forwardRef, useMemo } from 'react';
+import { useContextProps, useRenderProps, useId } from '@necto-react/hooks';
+
+import type { ButtonHookProps } from '../hooks/useButton';
+import type { ButtonOptions } from '@sprocketui-types/button';
+import type { RenderPropsHookProps } from '@necto-react/hooks';
+import type { ElementType, ForwardedRef, ReactElement } from 'react';
+
+const BUTTON_NAME = 'Button' as const;
+
+interface ButtonProps<TTag extends ElementType> extends ButtonOptions<TTag>, RenderPropsHookProps<any>, ButtonHookProps<TTag>
+{
+  // Wether the button is disabled. This is also set by disabled
+  // prop set by ButtonOptions.
+  isDisabled: boolean;
+
+  // Slot values for React rendering.
+  slot?: string | null;
+};
+
+const ButtonContext = createContext<any>(null);
+
+function ButtonFn<TTag extends ElementType>(
+  props: ButtonProps<TTag>,
+  ref: ForwardedRef<HTMLButtonElement>
+): ReactElement | null {
+  [props, ref] = useContextProps(props, ref, ButtonContext);
+
+  const {
+    Tag,
+    buttonProps,
+    isDisabled,
+    isHovered,
+    isPressed,
+    isFocused,
+    isFocusVisible
+  } = useButton(props, ref);
+
+  const sprocketButtonID = useId(buttonProps.id);
+  const renderProps = useRenderProps({
+    ...props,
+    values: {
+      isHovered,
+      isPressed,
+      isFocused,
+      isFocusVisible,
+      isDisabled,
+      // isPending
+    },
+    defaultClassName: ':necto:=sprocket-button'
+  });
+
+  const dataAttributes = useMemo(() => {
+    const stateAttributes: Record<string, boolean | undefined> = {
+      hover: isHovered,
+      focus: isFocused,
+      focusVisible: isFocusVisible,
+      disabled: isDisabled,
+      pressed: isPressed,
+    };
+
+    const attributes: Record<string, string | undefined> = {};
+    const sprocketState: string[] = [];
+
+    for (const [key, value] of Object.entries(stateAttributes)) {
+      if (typeof value === 'boolean') {
+        attributes[`data-${kebabCase(key)}`] = value ? 'true' : undefined;
+        if (value) {
+          sprocketState.push(kebabCase(key));
+        }
+      }
+    }
+
+    return {
+      ...attributes,
+      'data-sprocket-state': sprocketState.join(' '),
+    };
+  }, [isHovered, isFocused, isFocusVisible, isDisabled, isPressed]);
+
+  return (
+    <Tag
+      {...renderProps}
+      {...mergeReactProps(buttonProps, dataAttributes)}
+      ref={ref}
+      id={sprocketButtonID}
+      slot={props.slot || undefined}
+    >
+      {renderProps.children}
+    </Tag>
+  )
+}
+
+const Button = Object.assign(
+  forwardRef<HTMLButtonElement, Omit<ButtonProps<ElementType>, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps<ElementType>, ref)),
+  { Root: forwardRef<HTMLButtonElement, Omit<ButtonProps<ElementType>, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps<ElementType>, ref)) }
+);
+
+Button.displayName = BUTTON_NAME;
+
+export {
+  Button,
+  ButtonContext,
+  type ButtonProps
+}
