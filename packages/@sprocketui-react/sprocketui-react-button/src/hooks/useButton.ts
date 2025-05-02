@@ -15,8 +15,8 @@ import { filterDOMProps } from "@necto-react/helpers";
 import { ANCHOR_ELEMENT_PROPS } from "@necto/constants";
 import { useHover, useFocusRing, usePress } from "@necto-react/hooks";
 
-import type { ElementType, HTMLAttributes, RefObject } from 'react';
 import type { ButtonOptions } from '@sprocketui-types/button';
+import type { ElementType, HTMLAttributes, RefObject } from 'react';
 
 const DEFAULT_BUTTON_TAG = HTMLElements.Button;
 
@@ -55,7 +55,7 @@ interface ButtonHookProps<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG> 
   onPressChange?: (isPressed: boolean) => void;
 
   // Other normalized props and specified keys.
-  [key: string]: any;
+  [key: string]: any; // This might need to be removed to add some slight operation to the framework.
 }
 
 interface ButtonHookResult<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG> extends HTMLAttributes<any> {
