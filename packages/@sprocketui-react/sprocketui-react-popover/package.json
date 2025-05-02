@@ -16,8 +16,8 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "tsup ./src/index.ts --minify --format esm,cjs,iife --dts",
-    "dev": "tsup ./src/index.ts --watch --minify --format esm,cjs,iife --dts"
+    "build": "tsup",
+    "dev": "tsup --watch"
   },
   "dependencies": {
     "@floating-ui/utils": "^0.2.9",
