@@ -1,4 +1,4 @@
- /**
+/**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
@@ -20,7 +20,7 @@ import type { ElementType, HTMLAttributes, RefObject } from 'react';
 
 const DEFAULT_BUTTON_TAG = HTMLElements.Button;
 
-interface ButtonHookProps<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG> extends ButtonOptions<TTag> {
+interface ButtonHookProps<E extends ElementType> extends ButtonOptions<E> {
   // Element to render the button as.
   elementType?: string;
 
@@ -58,8 +58,8 @@ interface ButtonHookProps<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG> 
   [key: string]: any; // This might need to be removed to add some slight operation to the framework.
 }
 
-interface ButtonHookResult<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG> extends HTMLAttributes<any> {
-  Tag: TTag;
+interface ButtonHookResult<T extends ElementType = ElementType> {
+  Tag: T;
   buttonProps: HTMLAttributes<any>;
   isPressed: boolean;
   isHovered: boolean;
@@ -68,10 +68,10 @@ interface ButtonHookResult<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG>
   isDisabled: boolean;
 }
 
-function useButton<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG>(
-  props: ButtonHookProps<TTag>,
+function useButton<T extends ElementType = ElementType>(
+  props: ButtonHookProps<T>,
   ref: RefObject<any>
-): ButtonHookResult<TTag> {
+): ButtonHookResult<T> {
   const {
     preventFocusOnPress,
     focusDisabled,
@@ -142,7 +142,7 @@ function useButton<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG>(
   }));
 
   return {
-    Tag: Tag as TTag,
+    Tag: Tag as T,
     isPressed,
     isHovered,
     isDisabled,

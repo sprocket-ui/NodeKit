@@ -10,11 +10,7 @@
 
 import { createContext, useContext } from 'react';
 
-interface ButtonContextProps {
-
-};
-
-const ButtonContext = createContext<ButtonContextProps>({}); // Cast to empty obj for now.
+const ButtonContext = createContext<any>(null);
 
 function useButtonContext() {
   return useContext(ButtonContext);
@@ -22,6 +18,5 @@ function useButtonContext() {
 
 export {
   ButtonContext,
-  useButtonContext,
-  type ButtonContextProps
+  useButtonContext
 }

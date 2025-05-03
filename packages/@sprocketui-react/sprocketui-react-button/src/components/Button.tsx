@@ -8,10 +8,11 @@
 
 'use client';
 
-import { kebabCase } from "@necto/strings";
+import { kebabCase } from '@necto/strings';
+import { forwardRef, useMemo } from 'react';
 import { useButton } from '../hooks/useButton';
 import { mergeReactProps } from "@necto/mergers";
-import { createContext, forwardRef, useMemo } from 'react';
+import { ButtonContext } from '../hooks/useButtonContext';
 import { useContextProps, useRenderProps, useId } from '@necto-react/hooks';
 
 import type { ButtonHookProps } from '../hooks/useButton';
@@ -21,7 +22,7 @@ import type { ElementType, ForwardedRef, ReactElement } from 'react';
 
 const BUTTON_NAME = 'Button' as const;
 
-interface ButtonProps<TTag extends ElementType> extends ButtonOptions<TTag>, RenderPropsHookProps<any>, ButtonHookProps<TTag>
+interface ButtonProps extends ButtonOptions<ElementType>, RenderPropsHookProps<any>, ButtonHookProps<ElementType>
 {
   // Wether the button is disabled. This is also set by disabled
   // prop set by ButtonOptions.
@@ -31,10 +32,8 @@ interface ButtonProps<TTag extends ElementType> extends ButtonOptions<TTag>, Ren
   slot?: string | null;
 };
 
-const ButtonContext = createContext<any>(null);
-
-function ButtonFn<TTag extends ElementType>(
-  props: ButtonProps<TTag>,
+function ButtonFn(
+  props: ButtonProps,
   ref: ForwardedRef<HTMLButtonElement>
 ): ReactElement | null {
   [props, ref] = useContextProps(props, ref, ButtonContext);
@@ -104,8 +103,8 @@ function ButtonFn<TTag extends ElementType>(
 }
 
 const Button = Object.assign(
-  forwardRef<HTMLButtonElement, Omit<ButtonProps<ElementType>, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps<ElementType>, ref)),
-  { Root: forwardRef<HTMLButtonElement, Omit<ButtonProps<ElementType>, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps<ElementType>, ref)) }
+  forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps, ref)),
+  { Root: forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps, ref)) }
 );
 
 Button.displayName = BUTTON_NAME;
