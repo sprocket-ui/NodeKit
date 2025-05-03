@@ -24,130 +24,17 @@ importers:
         specifier: ^3.1.1
         version: 3.1.1(@types/debug@4.1.12)(@types/node@22.14.1)(jiti@2.4.2)(jsdom@25.0.1)(sass@1.86.3)(sugarss@2.0.0)(terser@5.39.0)(yaml@2.7.1)
 
-  ../../necto/node-kit/packages/necto-color:
-    dependencies:
-      color-convert:
-        specifier: ^3.0.1
-        version: 3.0.1
-      color-name:
-        specifier: ^2.0.0
-        version: 2.0.0
-      color-string:
-        specifier: ^2.0.1
-        version: 2.0.1
-    devDependencies:
-      '@babel/preset-env':
-        specifier: ^7.26.9
-        version: 7.26.9(@babel/core@7.26.10)
-      '@babel/preset-typescript':
-        specifier: ^7.26.0
-        version: 7.27.0(@babel/core@7.26.10)
-      '@rollup/plugin-babel':
-        specifier: ^6.0.4
-        version: 6.0.4(@babel/core@7.26.10)(@types/babel__core@7.20.5)(rollup@4.39.0)
-      '@rollup/plugin-json':
-        specifier: ^6.1.0
-        version: 6.1.0(rollup@4.39.0)
-      '@rollup/plugin-node-resolve':
-        specifier: ^16.0.1
-        version: 16.0.1(rollup@4.39.0)
-      '@rollup/plugin-replace':
-        specifier: ^6.0.2
-        version: 6.0.2(rollup@4.39.0)
-      '@rollup/plugin-typescript':
-        specifier: ^12.1.2
-        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.8.3)
-      '@types/color-name':
-        specifier: ^2.0.0
-        version: 2.0.0
-      babel:
-        specifier: ^6.23.0
-        version: 6.23.0
-      rollup:
-        specifier: ^4.36.0
-        version: 4.39.0
-      rollup-plugin-copy:
-        specifier: ^3.5.0
-        version: 3.5.0
-      rollup-plugin-terser:
-        specifier: ^7.0.2
-        version: 7.0.2(rollup@4.39.0)
-
-  ../../necto/node-kit/packages/necto-constants:
-    devDependencies:
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
-
-  ../../necto/node-kit/packages/necto-dom:
-    dependencies:
-      '@necto/types':
-        specifier: workspace:*
-        version: link:../necto-types
-      html-tags:
-        specifier: ^4.0.0
-        version: 4.0.0
-    devDependencies:
-      '@types/node':
-        specifier: ^22.14.1
-        version: 22.14.1
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
-
-  ../../necto/node-kit/packages/necto-id:
-    dependencies:
-      '@necto/constants':
-        specifier: workspace:*
-        version: link:../necto-constants
-      randombytes:
-        specifier: ^2.1.0
-        version: 2.1.0
-    devDependencies:
-      '@types/node':
-        specifier: ^22.14.1
-        version: 22.14.1
-      '@types/randombytes':
-        specifier: ^2.0.3
-        version: 2.0.3
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
-
-  ../../necto/node-kit/packages/necto-mergers:
-    devDependencies:
-      '@types/node':
-        specifier: ^22.14.1
-        version: 22.14.1
-      '@types/react':
-        specifier: ^19.1.2
-        version: 19.1.2
-      react:
-        specifier: ^19.1.0
-        version: 19.1.0
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
-
-  ../../necto/node-kit/packages/necto-nuxt: {}
-
-  ../../necto/node-kit/packages/necto-platform:
-    devDependencies:
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
-
-  ../../necto/node-kit/packages/necto-react-helpers:
+  ../../nectoutil/NodeKit/packages/@necto-react/necto-react-helpers:
     dependencies:
       '@necto-react/types':
         specifier: workspace:*
         version: link:../necto-react-types
       '@necto/dom':
         specifier: workspace:*
-        version: link:../necto-dom
+        version: link:../../necto-dom
       '@necto/platform':
         specifier: workspace:*
-        version: link:../necto-platform
+        version: link:../../necto-platform
       react:
         specifier: ^19.1.0
         version: 19.1.0
@@ -159,7 +46,7 @@ importers:
         specifier: ^8.4.0
         version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
 
-  ../../necto/node-kit/packages/necto-react-hooks:
+  ../../nectoutil/NodeKit/packages/@necto-react/necto-react-hooks:
     dependencies:
       '@necto-react/helpers':
         specifier: workspace:*
@@ -169,16 +56,16 @@ importers:
         version: link:../necto-react-types
       '@necto/dom':
         specifier: workspace:*
-        version: link:../necto-dom
+        version: link:../../necto-dom
       '@necto/id':
         specifier: workspace:*
-        version: link:../necto-id
+        version: link:../../necto-id
       '@necto/mergers':
         specifier: workspace:*
-        version: link:../necto-mergers
+        version: link:../../necto-mergers
       '@necto/platform':
         specifier: workspace:*
-        version: link:../necto-platform
+        version: link:../../necto-platform
       react:
         specifier: ^19.1.0
         version: 19.1.0
@@ -235,9 +122,9 @@ importers:
         specifier: ^8.4.0
         version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
 
-  ../../necto/node-kit/packages/necto-react-router: {}
+  ../../nectoutil/NodeKit/packages/@necto-react/necto-react-router: {}
 
-  ../../necto/node-kit/packages/necto-react-types:
+  ../../nectoutil/NodeKit/packages/@necto-react/necto-react-types:
     dependencies:
       react:
         specifier: ^19.1.0
@@ -259,13 +146,126 @@ importers:
         specifier: ^8.4.0
         version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
 
-  ../../necto/node-kit/packages/necto-strings:
+  ../../nectoutil/NodeKit/packages/necto-color:
+    dependencies:
+      color-convert:
+        specifier: ^3.0.1
+        version: 3.0.1
+      color-name:
+        specifier: ^2.0.0
+        version: 2.0.0
+      color-string:
+        specifier: ^2.0.1
+        version: 2.0.1
+    devDependencies:
+      '@babel/preset-env':
+        specifier: ^7.26.9
+        version: 7.26.9(@babel/core@7.26.10)
+      '@babel/preset-typescript':
+        specifier: ^7.26.0
+        version: 7.27.0(@babel/core@7.26.10)
+      '@rollup/plugin-babel':
+        specifier: ^6.0.4
+        version: 6.0.4(@babel/core@7.26.10)(@types/babel__core@7.20.5)(rollup@4.39.0)
+      '@rollup/plugin-json':
+        specifier: ^6.1.0
+        version: 6.1.0(rollup@4.39.0)
+      '@rollup/plugin-node-resolve':
+        specifier: ^16.0.1
+        version: 16.0.1(rollup@4.39.0)
+      '@rollup/plugin-replace':
+        specifier: ^6.0.2
+        version: 6.0.2(rollup@4.39.0)
+      '@rollup/plugin-typescript':
+        specifier: ^12.1.2
+        version: 12.1.2(rollup@4.39.0)(tslib@2.8.1)(typescript@5.8.3)
+      '@types/color-name':
+        specifier: ^2.0.0
+        version: 2.0.0
+      babel:
+        specifier: ^6.23.0
+        version: 6.23.0
+      rollup:
+        specifier: ^4.36.0
+        version: 4.39.0
+      rollup-plugin-copy:
+        specifier: ^3.5.0
+        version: 3.5.0
+      rollup-plugin-terser:
+        specifier: ^7.0.2
+        version: 7.0.2(rollup@4.39.0)
+
+  ../../nectoutil/NodeKit/packages/necto-constants:
     devDependencies:
       tsup:
         specifier: ^8.4.0
         version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
 
-  ../../necto/node-kit/packages/necto-style-dictionary:
+  ../../nectoutil/NodeKit/packages/necto-dom:
+    dependencies:
+      '@necto/types':
+        specifier: workspace:*
+        version: link:../necto-types
+      html-tags:
+        specifier: ^4.0.0
+        version: 4.0.0
+    devDependencies:
+      '@types/node':
+        specifier: ^22.14.1
+        version: 22.14.1
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
+
+  ../../nectoutil/NodeKit/packages/necto-id:
+    dependencies:
+      '@necto/constants':
+        specifier: workspace:*
+        version: link:../necto-constants
+      randombytes:
+        specifier: ^2.1.0
+        version: 2.1.0
+    devDependencies:
+      '@types/node':
+        specifier: ^22.14.1
+        version: 22.14.1
+      '@types/randombytes':
+        specifier: ^2.0.3
+        version: 2.0.3
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
+
+  ../../nectoutil/NodeKit/packages/necto-mergers:
+    devDependencies:
+      '@types/node':
+        specifier: ^22.14.1
+        version: 22.14.1
+      '@types/react':
+        specifier: ^19.1.2
+        version: 19.1.2
+      react:
+        specifier: ^19.1.0
+        version: 19.1.0
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
+
+  ../../nectoutil/NodeKit/packages/necto-nuxt: {}
+
+  ../../nectoutil/NodeKit/packages/necto-platform:
+    devDependencies:
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
+
+  ../../nectoutil/NodeKit/packages/necto-strings:
+    devDependencies:
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
+
+  ../../nectoutil/NodeKit/packages/necto-style-dictionary:
     dependencies:
       '@necto/color':
         specifier: 1.0.1
@@ -314,36 +314,32 @@ importers:
         specifier: ^5.8.2
         version: 5.8.3
 
-  ../../necto/node-kit/packages/necto-types:
+  ../../nectoutil/NodeKit/packages/necto-types:
     devDependencies:
       tsup:
         specifier: ^8.4.0
         version: 8.4.0(@microsoft/api-extractor@7.52.4(@types/node@22.14.1))(@swc/core@1.11.21(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.3)(yaml@2.7.1)
 
-  ../../necto/node-kit/packages/necto-vue-components: {}
-
-  ../../necto/node-kit/packages/necto-vue-hooks: {}
-
   packages/@sprocketui-react/sprocketui-react-button:
     dependencies:
       '@necto-react/helpers':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-react-helpers
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-helpers
       '@necto-react/hooks':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-react-hooks
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-hooks
       '@necto-react/types':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-react-types
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-types
       '@necto/constants':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-constants
+        version: link:../../../../../nectoutil/NodeKit/packages/necto-constants
       '@necto/dom':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-dom
+        version: link:../../../../../nectoutil/NodeKit/packages/necto-dom
       '@necto/mergers':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-mergers
+        version: link:../../../../../nectoutil/NodeKit/packages/necto-mergers
       '@necto/strings':
         specifier: ^1.1.0
         version: 1.1.0
@@ -389,22 +385,22 @@ importers:
     dependencies:
       '@necto-react/helpers':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-react-helpers
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-helpers
       '@necto-react/hooks':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-react-hooks
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-hooks
       '@necto-react/types':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-react-types
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-types
       '@necto/constants':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-constants
+        version: link:../../../../../nectoutil/NodeKit/packages/necto-constants
       '@necto/mergers':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-mergers
+        version: link:../../../../../nectoutil/NodeKit/packages/necto-mergers
       '@necto/types':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-types
+        version: link:../../../../../nectoutil/NodeKit/packages/necto-types
       '@react-aria/selection':
         specifier: ^3.24.0
         version: 3.24.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -441,7 +437,7 @@ importers:
         version: 0.2.9
       '@necto-react/types':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-react-types
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-types
       react:
         specifier: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
         version: 19.1.0
@@ -466,13 +462,13 @@ importers:
     dependencies:
       '@necto/types':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-types
+        version: link:../../../../../nectoutil/NodeKit/packages/necto-types
 
   packages/@sprocketui-types/sprocketui-types-menu:
     dependencies:
       '@necto/types':
         specifier: workspace:*
-        version: link:../../../../../necto/node-kit/packages/necto-types
+        version: link:../../../../../nectoutil/NodeKit/packages/necto-types
 
   packages/@sprocketui-types/sprocketui-types-popover:
     dependencies:
