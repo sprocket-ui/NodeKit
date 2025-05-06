@@ -15,18 +15,18 @@ import { mergeReactProps } from "@necto/mergers";
 import { ButtonContext } from '../hooks/useButtonContext';
 import { useContextProps, useRenderProps, useId } from '@necto-react/hooks';
 
+import type { RenderProps } from "@necto-react/types";
 import type { ButtonHookProps } from '../hooks/useButton';
 import type { ButtonOptions } from '@sprocketui-types/button';
-import type { RenderPropsHookProps } from '@necto-react/hooks';
 import type { ElementType, ForwardedRef, ReactElement } from 'react';
 
 const BUTTON_NAME = 'Button' as const;
 
-interface ButtonProps extends ButtonOptions<ElementType>, RenderPropsHookProps<any>, ButtonHookProps<ElementType>
+interface ButtonProps extends ButtonOptions<ElementType>, RenderProps<any>, ButtonHookProps<ElementType>
 {
   // Wether the button is disabled. This is also set by disabled
   // prop set by ButtonOptions.
-  isDisabled: boolean;
+  isDisabled?: boolean;
 
   // Slot values for React rendering.
   slot?: string | null;
@@ -59,7 +59,10 @@ function ButtonFn(
       isDisabled,
       // isPending
     },
-    defaultClassName: ':necto:=sprocket-button'
+    defaultClassName: ':necto:=sprocket-button',
+    style: (values) => ({
+      ...(props.style instanceof Function ? props.style(values) : props.style),
+    }),
   });
 
   const dataAttributes = useMemo(() => {
