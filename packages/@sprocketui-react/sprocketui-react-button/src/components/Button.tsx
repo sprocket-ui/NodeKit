@@ -39,13 +39,13 @@ function ButtonFn(
   [props, ref] = useContextProps(props, ref, ButtonContext);
 
   const {
-    Tag,
     buttonProps,
     isDisabled,
     isHovered,
     isPressed,
     isFocused,
-    isFocusVisible
+    isFocusVisible,
+    elementType: Tag,
   } = useButton(props, ref);
 
   const sprocketButtonID = useId(buttonProps.id);

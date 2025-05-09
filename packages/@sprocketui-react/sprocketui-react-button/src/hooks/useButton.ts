@@ -59,7 +59,7 @@ interface ButtonHookProps<E extends ElementType> extends ButtonOptions<E> {
 }
 
 interface ButtonHookResult<T extends ElementType = ElementType> {
-  Tag: T;
+  elementType: T;
   buttonProps: HTMLAttributes<any>;
   isPressed: boolean;
   isHovered: boolean;
@@ -142,12 +142,12 @@ function useButton<T extends ElementType = ElementType>(
   }));
 
   return {
-    Tag: Tag as T,
     isPressed,
     isHovered,
     isDisabled,
     isFocused,
     isFocusVisible,
+    elementType: elementType as T,
     buttonProps: mergeReactProps(buttonProps, additionalProps),
   }
 }
