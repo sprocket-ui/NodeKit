@@ -1,4 +1,4 @@
- /**
+/**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
@@ -15,28 +15,51 @@ import { filterDOMProps } from "@necto-react/helpers";
 import { ANCHOR_ELEMENT_PROPS } from "@necto/constants";
 import { useHover, useFocusRing, usePress } from "@necto-react/hooks";
 
-import type { ElementType, HTMLAttributes, RefObject } from 'react';
 import type { ButtonOptions } from '@sprocketui-types/button';
+import type { ElementType, HTMLAttributes, RefObject } from 'react';
 
 const DEFAULT_BUTTON_TAG = HTMLElements.Button;
 
-interface ButtonHookProps<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG> extends ButtonOptions<TTag> {
+interface ButtonHookProps<E extends ElementType> extends ButtonOptions<E> {
+  // Element to render the button as.
   elementType?: string;
+
+  // Prevents focus of element on press events.
   preventFocusOnPress?: boolean;
+
+  // Location to route the button to.
   href?: string;
+
+  // The target that will be used for the href routing.
   target?: string;
+
+  // Relationship HTML linker option.
   rel?: string;
+
+  // User click callback handler.
   onClick?: (e: any) => void;
+
+  // User press callback handler.
   onPress?: (e: any) => void;
+
+  // User press start callback handler.
   onPressStart?: (e: any) => void;
+
+  // User press end callback handler.
   onPressEnd?: (e: any) => void;
+
+  // User press up callback handler.
   onPressUp?: (e: any) => void;
+
+  // User press change callback handler.
   onPressChange?: (isPressed: boolean) => void;
-  [key: string]: any;
+
+  // Other normalized props and specified keys.
+  [key: string]: any; // This might need to be removed to add some slight operation to the framework.
 }
 
-interface ButtonHookResult<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG> extends HTMLAttributes<any> {
-  Tag: TTag;
+interface ButtonHookResult<T extends ElementType = ElementType> {
+  Tag: T;
   buttonProps: HTMLAttributes<any>;
   isPressed: boolean;
   isHovered: boolean;
@@ -45,10 +68,10 @@ interface ButtonHookResult<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG>
   isDisabled: boolean;
 }
 
-function useButton<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG>(
-  props: ButtonHookProps<TTag>,
+function useButton<T extends ElementType = ElementType>(
+  props: ButtonHookProps<T>,
   ref: RefObject<any>
-): ButtonHookResult<TTag> {
+): ButtonHookResult<T> {
   const {
     preventFocusOnPress,
     focusDisabled,
@@ -119,7 +142,7 @@ function useButton<TTag extends ElementType = typeof DEFAULT_BUTTON_TAG>(
   }));
 
   return {
-    Tag: Tag as TTag,
+    Tag: Tag as T,
     isPressed,
     isHovered,
     isDisabled,

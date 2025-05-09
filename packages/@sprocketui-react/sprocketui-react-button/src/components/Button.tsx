@@ -8,33 +8,32 @@
 
 'use client';
 
-import { kebabCase } from "@necto/strings";
+import { kebabCase } from '@necto/strings';
+import { forwardRef, useMemo } from 'react';
 import { useButton } from '../hooks/useButton';
 import { mergeReactProps } from "@necto/mergers";
-import { createContext, forwardRef, useMemo } from 'react';
+import { ButtonContext } from '../hooks/useButtonContext';
 import { useContextProps, useRenderProps, useId } from '@necto-react/hooks';
 
+import type { RenderProps } from "@necto-react/types";
 import type { ButtonHookProps } from '../hooks/useButton';
 import type { ButtonOptions } from '@sprocketui-types/button';
-import type { RenderPropsHookProps } from '@necto-react/hooks';
 import type { ElementType, ForwardedRef, ReactElement } from 'react';
 
 const BUTTON_NAME = 'Button' as const;
 
-interface ButtonProps<TTag extends ElementType> extends ButtonOptions<TTag>, RenderPropsHookProps<any>, ButtonHookProps<TTag>
+interface ButtonProps extends ButtonOptions<ElementType>, RenderProps<any>, ButtonHookProps<ElementType>
 {
   // Wether the button is disabled. This is also set by disabled
   // prop set by ButtonOptions.
-  isDisabled: boolean;
+  isDisabled?: boolean;
 
   // Slot values for React rendering.
   slot?: string | null;
 };
 
-const ButtonContext = createContext<any>(null);
-
-function ButtonFn<TTag extends ElementType>(
-  props: ButtonProps<TTag>,
+function ButtonFn(
+  props: ButtonProps,
   ref: ForwardedRef<HTMLButtonElement>
 ): ReactElement | null {
   [props, ref] = useContextProps(props, ref, ButtonContext);
@@ -60,7 +59,10 @@ function ButtonFn<TTag extends ElementType>(
       isDisabled,
       // isPending
     },
-    defaultClassName: ':necto:=sprocket-button'
+    defaultClassName: ':necto:=sprocket-button',
+    style: (values) => ({
+      ...(props.style instanceof Function ? props.style(values) : props.style),
+    }),
   });
 
   const dataAttributes = useMemo(() => {
@@ -104,14 +106,13 @@ function ButtonFn<TTag extends ElementType>(
 }
 
 const Button = Object.assign(
-  forwardRef<HTMLButtonElement, Omit<ButtonProps<ElementType>, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps<ElementType>, ref)),
-  { Root: forwardRef<HTMLButtonElement, Omit<ButtonProps<ElementType>, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps<ElementType>, ref)) }
+  forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps, ref)),
+  { Root: forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps, ref)) }
 );
 
 Button.displayName = BUTTON_NAME;
 
 export {
   Button,
-  ButtonContext,
   type ButtonProps
 }
