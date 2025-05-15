@@ -9,7 +9,8 @@
     "dev:react": "turbo watch dev --filter=@sprocketui-react/*",
     "build": "turbo run build",
     "build:types": "turbo run build --filter=@sprocketui/types",
-    "build:react": "turbo run build --filter='@sprocketui-react/*' --no-cache --parallel"
+    "build:react": "turbo run build --filter='@sprocketui-react/*' --no-cache --parallel",
+    "clean": "find packages -type d \\( -name 'node_modules' -o -name '.turbo' -o -name 'dist' -o -name '.dist' \\) -prune -exec rm -rf '{}' + && rm -rf node_modules .turbo dist .dist"
   },
   "packageManager": "pnpm@9.15.3",
   "devDependencies": {

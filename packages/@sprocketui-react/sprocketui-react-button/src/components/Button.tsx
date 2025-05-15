@@ -9,9 +9,9 @@
 'use client';
 
 import { kebabCase } from '@necto/strings';
+import { mergeProps } from '@necto/mergers';
 import { forwardRef, useMemo } from 'react';
 import { useButton } from '../hooks/useButton';
-import { mergeReactProps } from "@necto/mergers";
 import { ButtonContext } from '../hooks/useButtonContext';
 import { useContextProps, useRenderProps, useId } from '@necto-react/hooks';
 
@@ -95,7 +95,7 @@ function ButtonFn(
   return (
     <Tag
       {...renderProps}
-      {...mergeReactProps(buttonProps, dataAttributes)}
+      {...mergeProps(buttonProps, dataAttributes)}
       ref={ref}
       id={sprocketButtonID}
       slot={props.slot || undefined}
