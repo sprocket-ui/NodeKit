@@ -12,7 +12,7 @@
 
 'use client';
 
-import { mergeReactProps } from "@necto/mergers";
+import { mergeProps } from "@necto/mergers";
 import { filterDOMProps } from "@necto-react/helpers";
 import { ANCHOR_ELEMENT_PROPS } from "@necto/constants";
 import { useSelectableList } from '@react-aria/selection'; // This will change and break apps!!
@@ -85,7 +85,7 @@ export function useMenu<T>(props: MenuHookProps<T>, state: any, ref: RefObject<H
   });
 
   return {
-    menuProps: mergeReactProps(domProps, { onKeyDown, onKeyUp }, {
+    menuProps: mergeProps(domProps, { onKeyDown, onKeyUp }, {
       role: 'menu',
       ...listProps,
       onKeyDown: (event: KeyboardEvent) => {

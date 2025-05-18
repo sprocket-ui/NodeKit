@@ -10,7 +10,7 @@
 
 import { HTMLElements } from "@necto/dom";
 import { useFocusable } from "react-aria"; // Temp use, will be removed in later version
-import { mergeReactProps } from "@necto/mergers";
+import { mergeProps } from "@necto/mergers";
 import { filterDOMProps } from "@necto-react/helpers";
 import { ANCHOR_ELEMENT_PROPS } from "@necto/constants";
 import { useHover, useFocusRing, usePress } from "@necto-react/hooks";
@@ -36,6 +36,9 @@ interface ButtonHookProps<E extends ElementType> extends ButtonOptions<E> {
   // Relationship HTML linker option.
   rel?: string;
 
+  // Wether the button is disabled or not
+  isDisabled: boolean;
+
   // User click callback handler.
   onClick?: (e: any) => void;
 
@@ -53,19 +56,29 @@ interface ButtonHookProps<E extends ElementType> extends ButtonOptions<E> {
 
   // User press change callback handler.
   onPressChange?: (isPressed: boolean) => void;
-
-  // Other normalized props and specified keys.
-  [key: string]: any; // This might need to be removed to add some slight operation to the framework.
 }
 
 interface ButtonHookResult<T extends ElementType = ElementType> {
+  // The HTML render tag of the button (defaults to button).
   elementType: T;
+
+  // Returns other button related props.
   buttonProps: HTMLAttributes<any>;
+
+  // Wether the button is pressed.
   isPressed: boolean;
+
+  // Wether the button is hovered.
   isHovered: boolean;
+
+  // Wether the button is focused.
   isFocused: boolean;
-  isFocusVisible: boolean;
+
+  // Wether the button is disabled.
   isDisabled: boolean;
+
+  // Wether the focus on the button is visible (isFocused will also be true if this is true).
+  isFocusVisible: boolean;
 }
 
 function useButton<T extends ElementType = ElementType>(
@@ -134,7 +147,7 @@ function useButton<T extends ElementType = ElementType>(
     focusableProps.tabIndex = isDisabled ? -1 : focusableProps.tabIndex;
   }
 
-  const buttonProps = mergeReactProps(focusableProps, pressProps, hoverProps, focusProps, filterDOMProps(props, {
+  const buttonProps = mergeProps(focusableProps, pressProps, hoverProps, focusProps, filterDOMProps(props, {
     includeLabelableProps: true,
     labelablePropsSet: new Set(new Array()),
     linkPropsSet: new Set(ANCHOR_ELEMENT_PROPS),
@@ -148,7 +161,7 @@ function useButton<T extends ElementType = ElementType>(
     isFocused,
     isFocusVisible,
     elementType: elementType as T,
-    buttonProps: mergeReactProps(buttonProps, additionalProps),
+    buttonProps: mergeProps(buttonProps, additionalProps),
   }
 }
 
