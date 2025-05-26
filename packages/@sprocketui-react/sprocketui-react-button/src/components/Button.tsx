@@ -22,12 +22,7 @@ import type { ElementType, ForwardedRef, ReactElement } from 'react';
 
 const BUTTON_NAME = 'Button' as const;
 
-interface ButtonProps extends ButtonOptions<ElementType>, RenderProps<any>, ButtonHookProps<ElementType>
-{
-  // Wether the button is disabled. This is also set by disabled
-  // prop set by ButtonOptions.
-  isDisabled?: boolean;
-
+interface ButtonProps extends ButtonOptions<ElementType>, RenderProps<any>, ButtonHookProps<ElementType> {
   // Slot values for React rendering.
   slot?: string | null;
 };
