@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "shared",
+  "version": "1.0.0",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "description": "Shared internal functions used by only Sprocket UI",
+  "scripts": {
+    "build": "tsup ./src/index.ts --dts"
+  },
+  "dependencies": {
+    "@necto/strings": "workspace:*"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0"
+  }
+}

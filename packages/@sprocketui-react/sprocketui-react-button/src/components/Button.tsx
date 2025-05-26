@@ -12,6 +12,7 @@ import { kebabCase } from '@necto/strings';
 import { mergeProps } from '@necto/mergers';
 import { forwardRef, useMemo } from 'react';
 import { useButton } from '../hooks/useButton';
+import { buildInternalIdentifier } from 'shared';
 import { ButtonContext } from '../hooks/useButtonContext';
 import { useContextProps, useRenderProps, useId } from '@necto-react/hooks';
 
@@ -54,7 +55,9 @@ function ButtonFn(
       isDisabled,
       // isPending
     },
-    defaultClassName: ':necto:=sprocket-button',
+    defaultClassName: buildInternalIdentifier({
+      component: BUTTON_NAME
+    }),
     style: (values) => ({
       ...(props.style instanceof Function ? props.style(values) : props.style),
     }),

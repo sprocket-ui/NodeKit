@@ -20,7 +20,7 @@ import type { ElementType, HTMLAttributes, RefObject } from 'react';
 
 const DEFAULT_BUTTON_TAG = HTMLElements.Button;
 
-interface ButtonHookProps<E extends ElementType> extends ButtonOptions<E> {
+interface ButtonHookProps<T extends ElementType = typeof DEFAULT_BUTTON_TAG> extends ButtonOptions<T> {
   // Element to render the button as.
   elementType?: string;
 
@@ -58,7 +58,7 @@ interface ButtonHookProps<E extends ElementType> extends ButtonOptions<E> {
   onPressChange?: (isPressed: boolean) => void;
 }
 
-interface ButtonHookResult<T extends ElementType = ElementType> {
+interface ButtonHookResult<T extends ElementType = typeof DEFAULT_BUTTON_TAG> {
   // The HTML render tag of the button (defaults to button).
   elementType: T;
 
@@ -81,24 +81,23 @@ interface ButtonHookResult<T extends ElementType = ElementType> {
   isFocusVisible: boolean;
 }
 
-function useButton<T extends ElementType = ElementType>(
+function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
   props: ButtonHookProps<T>,
   ref: RefObject<any>
 ): ButtonHookResult<T> {
   const {
-    preventFocusOnPress,
-    focusDisabled,
+    rel,
     href,
     target,
     autoFocus,
-    rel,
+    isDisabled,
+    focusDisabled,
+    preventFocusOnPress,
     type = DEFAULT_BUTTON_TAG,
 
     // Duplicate props for convenance.
     as: Tag = DEFAULT_BUTTON_TAG,
     elementType = Tag || DEFAULT_BUTTON_TAG,
-    disabled,
-    isDisabled = disabled,
 
     // Callbacks handlers.
     onClick,
@@ -132,15 +131,15 @@ function useButton<T extends ElementType = ElementType>(
   const { focusableProps } = useFocusable(props, ref);
 
   const { pressProps, isPressed } = usePress({
+    ref,
+    isDisabled,
+    preventFocusOnPress,
     onPressStart,
     onPressEnd,
     onPressChange,
     onPress,
     onPressUp,
     onClick,
-    isDisabled,
-    preventFocusOnPress,
-    ref
   });
 
   if (focusDisabled) {
@@ -155,10 +154,10 @@ function useButton<T extends ElementType = ElementType>(
   }));
 
   return {
+    isFocused,
     isPressed,
     isHovered,
     isDisabled,
-    isFocused,
     isFocusVisible,
     elementType: elementType as T,
     buttonProps: mergeProps(buttonProps, additionalProps),
