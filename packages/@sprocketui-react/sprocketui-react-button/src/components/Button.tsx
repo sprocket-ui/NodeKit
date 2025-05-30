@@ -44,7 +44,7 @@ function ButtonFn(
     elementType: Tag,
   } = useButton(props, ref);
 
-  const sprocketButtonID = useId(buttonProps.id);
+  const sprocketButtonID = useId({ defaultId: buttonProps.id });
   const renderProps = useRenderProps({
     ...props,
     values: {

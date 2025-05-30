@@ -147,10 +147,10 @@ function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
   }
 
   const buttonProps = mergeProps(focusableProps, pressProps, hoverProps, focusProps, filterDOMProps(props, {
-    includeLabelableProps: true,
-    labelablePropsSet: new Set(new Array()),
-    linkPropsSet: new Set(ANCHOR_ELEMENT_PROPS),
-    additionalAllowedProps: new Set(['id', 'form', 'formAction', 'formEncType', 'formMethod', 'formNoValidate', 'formTarget', 'name', 'value'])
+    allowLabelableProps: true,
+    allowedLabelableProps: new Set(new Array()),
+    allowedLinkProps: new Set(ANCHOR_ELEMENT_PROPS),
+    extraAllowedProps: new Set(['id', 'form', 'formAction', 'formEncType', 'formMethod', 'formNoValidate', 'formTarget', 'name', 'value'])
   }));
 
   return {

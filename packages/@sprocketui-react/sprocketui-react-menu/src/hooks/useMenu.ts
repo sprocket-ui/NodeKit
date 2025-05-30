@@ -62,10 +62,10 @@ export function useMenu<T>(props: MenuHookProps<T>, state: any, ref: RefObject<H
   // Insert ARIA labels here ofr accessability!!
 
   let domProps = filterDOMProps(props as any, {
-    includeLabelableProps: true,
-    labelablePropsSet: new Set([ ]), // Keep this empty for now,
-    linkPropsSet: new Set(ANCHOR_ELEMENT_PROPS),
-    additionalAllowedProps: new Set(['id', 'className', 'style', 'data-*', 'aria-*'])
+    allowLabelableProps: true,
+    allowedLabelableProps: new Set([ ]), // Keep this empty for now,
+    allowedLinkProps: new Set(ANCHOR_ELEMENT_PROPS),
+    extraAllowedProps: new Set(['id', 'className', 'style', 'data-*', 'aria-*'])
   });
 
   let { listProps } = useSelectableList({
