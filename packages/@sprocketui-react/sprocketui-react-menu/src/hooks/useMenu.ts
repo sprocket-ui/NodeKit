@@ -14,7 +14,7 @@
 
 import { mergeProps } from "@necto/mergers";
 import { filterDOMProps } from "@necto-react/helpers";
-import { ANCHOR_ELEMENT_PROPS } from "@necto/constants";
+import { DOM } from "@necto/constants";
 import { useSelectableList } from '@react-aria/selection'; // This will change and break apps!!
 
 import type { KeyboardEvent, RefObject } from 'react';
@@ -64,7 +64,7 @@ export function useMenu<T>(props: MenuHookProps<T>, state: any, ref: RefObject<H
   let domProps = filterDOMProps(props as any, {
     allowLabelableProps: true,
     allowedLabelableProps: new Set([ ]), // Keep this empty for now,
-    allowedLinkProps: new Set(ANCHOR_ELEMENT_PROPS),
+    allowedLinkProps: new Set(DOM.ANCHOR_ELEMENT_PROPS),
     extraAllowedProps: new Set(['id', 'className', 'style', 'data-*', 'aria-*'])
   });
 

@@ -32,7 +32,7 @@ function ButtonFn(
   props: ButtonProps,
   ref: ForwardedRef<HTMLButtonElement>
 ): ReactElement | null {
-  [props, ref] = useContextProps(props, ref, ButtonContext);
+  [props, ref] = useContextProps({ props, ref, context: ButtonContext });
 
   const {
     buttonProps,

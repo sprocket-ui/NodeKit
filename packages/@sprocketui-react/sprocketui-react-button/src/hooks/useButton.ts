@@ -8,12 +8,12 @@
 
 'use client';
 
+import { DOM } from "@necto/constants";
 import { HTMLElements } from "@necto/dom";
 import { useFocusable } from "react-aria"; // Temp use, will be removed in later version
 import { mergeProps } from "@necto/mergers";
 import { filterDOMProps } from "@necto-react/helpers";
-import { ANCHOR_ELEMENT_PROPS } from "@necto/constants";
-import { useHover, useFocusRing, usePress } from "@necto-react/hooks";
+import { useHover, usePress, useFocusRing } from "@necto-react/hooks";
 
 import type { ButtonOptions } from '@sprocketui-types/button';
 import type { ElementType, HTMLAttributes, RefObject } from 'react';
@@ -149,7 +149,7 @@ function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
   const buttonProps = mergeProps(focusableProps, pressProps, hoverProps, focusProps, filterDOMProps(props, {
     allowLabelableProps: true,
     allowedLabelableProps: new Set(new Array()),
-    allowedLinkProps: new Set(ANCHOR_ELEMENT_PROPS),
+    allowedLinkProps: new Set(DOM.ANCHOR_ELEMENT_PROPS),
     extraAllowedProps: new Set(['id', 'form', 'formAction', 'formEncType', 'formMethod', 'formNoValidate', 'formTarget', 'name', 'value'])
   }));
 

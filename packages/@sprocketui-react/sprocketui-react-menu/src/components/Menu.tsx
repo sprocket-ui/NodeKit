@@ -34,7 +34,7 @@ function MenuFn<TTag extends ElementType = typeof DEFAULT_MENU_TAG>(
   props: MenuProps<TTag>,
   ref: ForwardedRef<HTMLDivElement>
 ): ReactElement | null {
-  [props, ref] = useContextProps(props, ref as ForwardedRef<HTMLDivElement>, MenuContext);
+  [props, ref] = useContextProps({ props, ref, context: MenuContext as any });
 
   const { children, renderEmptyState, ...otherProps } = props;
 
