@@ -14,7 +14,7 @@ import { forwardRef, useMemo } from 'react';
 import { useButton } from '../hooks/useButton';
 import { buildInternalIdentifier } from 'shared';
 import { ButtonContext } from '../hooks/useButtonContext';
-import { useContextProps, useRenderProps, useId } from '@necto-react/hooks';
+import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
 import type { RenderProps } from "@necto-react/types";
 import type { ButtonHookProps } from '../hooks/useButton';
@@ -36,16 +36,16 @@ function ButtonFn(
 
   const {
     buttonProps,
-    isDisabled,
     isHovered,
     isPressed,
     isFocused,
+    isDisabled = false,
     isFocusVisible,
     elementType: Tag,
-  } = useButton(props, ref);
+  } = useButton(props, ref as any);
 
   const sprocketButtonID = useId({ defaultId: buttonProps.id });
-  const renderProps = useRenderProps({
+  const renderProps = useRenderer({
     ...props,
     values: {
       isHovered,
