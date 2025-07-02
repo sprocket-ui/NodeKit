@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
@@ -5,3 +6,6 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+=======
+
+>>>>>>> refs/remotes/origin/main
