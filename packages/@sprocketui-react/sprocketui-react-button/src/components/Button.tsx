@@ -16,17 +16,10 @@ import { buildInternalIdentifier } from 'shared';
 import { ButtonContext } from '../hooks/useButtonContext';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
-import type { RenderProps } from "@necto-react/types";
-import type { ButtonHookProps } from '../hooks/useButton';
-import type { ButtonOptions } from '@sprocketui-types/button';
-import type { ElementType, ForwardedRef, ReactElement } from 'react';
+import type { ButtonProps } from './Button.types';
+import type { ForwardedRef, ReactElement } from 'react';
 
 const BUTTON_NAME = 'Button' as const;
-
-interface ButtonProps extends ButtonOptions<ElementType>, RenderProps<any>, ButtonHookProps<ElementType> {
-  // Slot values for React rendering.
-  slot?: string | null;
-};
 
 function ButtonFn(
   props: ButtonProps,
@@ -39,8 +32,8 @@ function ButtonFn(
     isHovered,
     isPressed,
     isFocused,
-    isDisabled = false,
     isFocusVisible,
+    isDisabled = false,
     elementType: Tag,
   } = useButton(props, ref as any);
 
