@@ -6,17 +6,9 @@
  *
  */
 
-'use client';
+import { useContext } from 'react';
+import { ButtonContext } from '@sprocketui-react/button';
 
-import { createContext, useContext } from 'react';
-
-const ButtonContext = createContext<any>(null);
-
-function useButtonContext() {
+export function useButtonContext() {
   return useContext(ButtonContext);
-}
-
-export {
-  ButtonContext,
-  useButtonContext
 }

@@ -18,8 +18,16 @@ import { useHover, usePress, useFocusRing } from "@necto-react/hooks";
 import type { ElementType, RefObject } from 'react';
 import type { UseButtonProps, ButtonHookReturn } from './useButton.types';
 
-export const DEFAULT_BUTTON_TAG = HTMLElements.Button;
+const DEFAULT_BUTTON_TAG: keyof HTMLElementTagNameMap = HTMLElements.Button;
 
+/**
+ * React hook that provides all necessary props and state for a headless button component.
+ *
+ * @template T The element type to render as (e.g., 'button', 'a', 'input').
+ * @param {UseButtonProps<T>} props - The props for configuring the button's behavior and accessibility.
+ * @param {RefObject<any>} ref - The ref to the button element.
+ * @returns {ButtonHookReturn<T>} An object containing readonly state and props for the button element.
+ */
 export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
   props: UseButtonProps<T>,
   ref: RefObject<any>
@@ -85,7 +93,7 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     focusableProps.tabIndex = isDisabled ? -1 : focusableProps.tabIndex;
   }
 
-  const buttonProps = mergeProps(focusableProps, pressProps, hoverProps, focusProps, filterDOMProps(props, {
+  const buttonProps: Record<string, any> = mergeProps(focusableProps, pressProps, hoverProps, focusProps, filterDOMProps(props, {
     allowLabelableProps: true,
     allowedLabelableProps: new Set(new Array()),
     allowedLinkProps: new Set(DOM.ANCHOR_ELEMENT_PROPS),

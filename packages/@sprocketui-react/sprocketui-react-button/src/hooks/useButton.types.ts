@@ -6,12 +6,10 @@
  *
  */
 
-
-import type { DEFAULT_BUTTON_TAG } from './useButton';
 import type { ElementType, HTMLAttributes } from 'react';
 import type { ButtonOptions } from '@sprocketui-types/button';
 
-export interface UseButtonProps<T extends ElementType = typeof DEFAULT_BUTTON_TAG> extends ButtonOptions<T> {
+export interface UseButtonProps<T extends ElementType> extends ButtonOptions<T> {
   // Element to render the button as.
   elementType?: string;
 
@@ -49,7 +47,7 @@ export interface UseButtonProps<T extends ElementType = typeof DEFAULT_BUTTON_TA
   onPressChange?: (isPressed: boolean) => void;
 }
 
-export type ButtonHookReturn<T extends ElementType = typeof DEFAULT_BUTTON_TAG> = Readonly<{
+export type ButtonHookReturn<T extends ElementType> = Readonly<{
   // The HTML render tag of the button (defaults to button).
   elementType: T;
 
