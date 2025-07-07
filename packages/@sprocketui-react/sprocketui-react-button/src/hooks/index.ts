@@ -6,12 +6,12 @@
  *
  */
 
-import Component from '@glimmer/component';
+export {
+  useButton,
+  useButton as useSprocketButton
+} from './useButton';
 
-export interface AccordionSignature {
-
-}
-
-export default class Accordion extends Component<AccordionSignature> {
-
-};
+export type {
+  UseButtonProps,
+  UseButtonProps as UseSprocketButtonProps
+} from './useButton.types';

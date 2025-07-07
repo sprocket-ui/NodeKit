@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@sprocketui-react/button": ["./src/index.ts"]
+    },
     "target": "ESNext",
     "module": "ESNext",
     "jsx": "react-jsx",
