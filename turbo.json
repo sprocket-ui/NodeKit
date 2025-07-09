@@ -19,6 +19,5 @@
       "cache": false,
       "persistent": true
     }
-  },
-  "globalDependencies": ["!apps/**"]
+  }
 }

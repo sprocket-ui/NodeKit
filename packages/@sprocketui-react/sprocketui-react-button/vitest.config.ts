@@ -1,6 +1,6 @@
+import path from 'node:path';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vitest/config';
-import '@testing-library/jest-dom'; // Import the setup script directly
 
 export default defineConfig({
   plugins: [
@@ -12,5 +12,17 @@ export default defineConfig({
     testTransformMode: {
       web: ['\\.jsx?$', '\\.tsx?$'],
     },
+  },
+  resolve: {
+    alias: [
+      {
+        find: /^@sprocketui-react\/button\/(.*)$/,
+        replacement: path.resolve(__dirname, 'src/$1')
+      },
+      {
+        find: '@sprocketui-react/button',
+        replacement: path.resolve(__dirname, 'src/index.ts')
+      }
+    ]
   },
 });

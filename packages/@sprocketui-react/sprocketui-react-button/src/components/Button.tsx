@@ -40,8 +40,8 @@ function ButtonFn(
     isHovered,
     isPressed,
     isFocused,
+    isDisabled,
     isFocusVisible,
-    isDisabled = false,
     elementType: Tag,
   } = useButton(props, ref as any);
 

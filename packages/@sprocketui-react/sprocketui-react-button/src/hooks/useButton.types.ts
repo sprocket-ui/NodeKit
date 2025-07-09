@@ -26,7 +26,7 @@ export interface UseButtonProps<T extends ElementType> extends ButtonOptions<T> 
   rel?: string;
 
   // Wether the button is disabled or not
-  isDisabled: boolean;
+  isDisabled?: boolean;
 
   // User click callback handler.
   onClick?: (e: any) => void;
