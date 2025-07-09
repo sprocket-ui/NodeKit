@@ -3,17 +3,17 @@
   "daemon": false,
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "cache": false
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "build:*": {
+      "cache": false,
+      "outputs": ["dist/**"],
+      "dependsOn": ["^build:*"]
     },
     "dev": {
       "cache": false,
       "persistent": true
-    },
-    "build:*": {
-      "cache": false,
-      "dependsOn": ["^build:*"],
-      "outputs": ["dist/**"]
     },
     "dev:*": {
       "cache": false,
