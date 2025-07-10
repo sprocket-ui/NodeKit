@@ -17,6 +17,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.8.0
         version: 19.8.1
+      '@commitlint/types':
+        specifier: ^19.8.1
+        version: 19.8.1
       '@corinvo/commitlint':
         specifier: ^1.0.0
         version: 1.0.0(@types/node@22.15.17)(typescript@5.8.3)
