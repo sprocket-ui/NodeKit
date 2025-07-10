@@ -18,7 +18,7 @@
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.0",
     "@commitlint/types": "^19.8.1",
-    "@corinvo/commitlint": "^1.0.0",
+    "@corinvo/commitlint": "^1.2.0",
     "lefthook": "^1.12.1",
     "turbo": "^2.5.0",
     "vitest": "^3.1.1"
