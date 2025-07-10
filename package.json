@@ -15,9 +15,10 @@
   "packageManager": "pnpm@9.15.3",
   "devDependencies": {
     "@changesets/cli": "^2.29.2",
-    "@commitlint/cli": "^19.8.0",
+    "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.0",
     "@corinvo/commitlint": "^1.0.0",
+    "lefthook": "^1.12.1",
     "turbo": "^2.5.0",
     "vitest": "^3.1.1"
   }
