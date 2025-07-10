@@ -5,7 +5,7 @@
 
   <h2>Sprocket UI React - Button</h2>
 
-  <p>Sprocket's standalone `<Button />` component for React based projects.</p>
+  <p>Sprocket's standalone button component for React based projects.</p>
 
   <a aria-label="Corinvo" href="https://corinvo.github.io">
     <img src="https://img.shields.io/badge/Made%20by-Corinvo-black.svg?style=for-the-badge&color=black">
