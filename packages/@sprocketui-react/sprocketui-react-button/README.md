@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://necto.dev">
+  <a href="https://sprocketui.com">
     <img alt="Necto Logo" src="https://avatars.githubusercontent.com/u/206497492?s=100&v=4">
   <a>
 
