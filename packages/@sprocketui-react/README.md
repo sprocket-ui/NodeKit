@@ -9,8 +9,12 @@
 </div>
 
 <br>
+<br>
+<br>
+<br>
+<br>
 
-### Included Package Version Details
+## Included Package Version Details
 
 <div>
   <table>
