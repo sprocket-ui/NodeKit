@@ -17,6 +17,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.8.0
         version: 19.8.1
+      '@corinvo/commitlint':
+        specifier: ^1.0.0
+        version: 1.0.0(@types/node@22.15.17)(typescript@5.8.3)
       turbo:
         specifier: ^2.5.0
         version: 2.5.3
@@ -383,6 +386,8 @@ importers:
         version: 3.1.3(@types/node@22.15.17)(jiti@2.4.2)(jsdom@26.1.0)(sass@1.88.0)(sugarss@2.0.0)(terser@5.39.0)
 
   packages/@sprocketui-react/sprocketui-react-knob: {}
+
+  packages/@sprocketui-react/sprocketui-react-primitive: {}
 
   packages/@sprocketui-types/sprocketui-types-button:
     dependencies:
@@ -1125,6 +1130,9 @@ packages:
   '@commitlint/types@19.8.1':
     resolution: {integrity: sha512-/yCrWGCoA1SVKOks25EGadP9Pnj0oAIHGpl2wH2M2Y46dPM2ueb8wyCVOD7O3WCTkaJ0IkKvzhl1JY7+uCT2Dw==}
     engines: {node: '>=v18'}
+
+  '@corinvo/commitlint@1.0.0':
+    resolution: {integrity: sha512-2OuzDY1p6dOg3qlTNNOKoqUeunILkVFk2ue8lH5EeeZdENtJCsxiOiVAH9D4Oo/vxSoEF21E32i7Pt80I/9ABQ==}
 
   '@csstools/color-helpers@5.0.2':
     resolution: {integrity: sha512-JqWH1vsgdGcw2RR6VliXXdA0/59LttzlU8UlRT/iUUsEeWfYq8I+K0yhihEUTTHLRm1EXvpsCx3083EU15ecsA==}
@@ -5392,6 +5400,14 @@ snapshots:
     dependencies:
       '@types/conventional-commits-parser': 5.0.1
       chalk: 5.4.1
+
+  '@corinvo/commitlint@1.0.0(@types/node@22.15.17)(typescript@5.8.3)':
+    dependencies:
+      '@commitlint/cli': 19.8.1(@types/node@22.15.17)(typescript@5.8.3)
+      '@commitlint/config-conventional': 19.8.1
+    transitivePeerDependencies:
+      - '@types/node'
+      - typescript
 
   '@csstools/color-helpers@5.0.2': {}
 
