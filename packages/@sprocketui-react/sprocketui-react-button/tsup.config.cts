@@ -6,5 +6,4 @@
  *
  */
 
-export * from './tsup-configs';
-export * from './buildInternalIdentifier';
+module.exports = require('shared').reactTsupConfig;

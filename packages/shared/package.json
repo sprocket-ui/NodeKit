@@ -2,17 +2,19 @@
   "private": true,
   "name": "shared",
   "version": "1.0.0",
+  "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "description": "Shared internal functions used by only Sprocket UI",
   "scripts": {
-    "build": "tsup ./src/index.ts --dts"
+    "build": "tsup ./src/index.ts --dts --format=esm,cjs,iife --minify"
   },
   "dependencies": {
     "@necto/strings": "workspace:*"
   },
   "devDependencies": {
+    "esbuild-plugin-license": "^1.2.3",
     "tsup": "^8.4.0"
   }
 }

@@ -12,7 +12,10 @@
     },
     "build:*": {
       "cache": false,
-      "dependsOn": ["^build:*"],
+      "dependsOn": [
+        "^build:*",
+        "shared#build"
+      ],
       "outputs": ["dist/**"]
     },
     "dev:*": {

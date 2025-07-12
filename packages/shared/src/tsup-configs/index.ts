@@ -6,5 +6,4 @@
  *
  */
 
-export * from './tsup-configs';
-export * from './buildInternalIdentifier';
+export { reactTsupConfig } from './react';
