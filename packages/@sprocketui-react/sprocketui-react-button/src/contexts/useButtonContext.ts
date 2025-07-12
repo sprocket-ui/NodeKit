@@ -6,12 +6,9 @@
  *
  */
 
-import Component from '@glimmer/component';
+import { useContext } from 'react';
+import { ButtonContext } from '@sprocketui-react/button';
 
-export interface AccordionSignature {
-
+export function useButtonContext() {
+  return useContext(ButtonContext);
 }
-
-export default class Accordion extends Component<AccordionSignature> {
-
-};

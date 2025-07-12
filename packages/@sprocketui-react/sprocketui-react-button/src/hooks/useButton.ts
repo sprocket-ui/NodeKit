@@ -15,84 +15,31 @@ import { mergeProps } from "@necto/mergers";
 import { filterDOMProps } from "@necto-react/helpers";
 import { useHover, usePress, useFocusRing } from "@necto-react/hooks";
 
-import type { ButtonOptions } from '@sprocketui-types/button';
-import type { ElementType, HTMLAttributes, RefObject } from 'react';
+import type { ElementType, RefObject } from 'react';
+import type { UseButtonProps, ButtonHookReturn } from './useButton.types';
 
-const DEFAULT_BUTTON_TAG = HTMLElements.Button;
+const DEFAULT_BUTTON_TAG: keyof HTMLElementTagNameMap = HTMLElements.Button;
 
-interface ButtonHookProps<T extends ElementType = typeof DEFAULT_BUTTON_TAG> extends ButtonOptions<T> {
-  // Element to render the button as.
-  elementType?: string;
-
-  // Prevents focus of element on press events.
-  preventFocusOnPress?: boolean;
-
-  // Location to route the button to.
-  href?: string;
-
-  // The target that will be used for the href routing.
-  target?: string;
-
-  // Relationship HTML linker option.
-  rel?: string;
-
-  // Wether the button is disabled or not
-  isDisabled: boolean;
-
-  // User click callback handler.
-  onClick?: (e: any) => void;
-
-  // User press callback handler.
-  onPress?: (e: any) => void;
-
-  // User press start callback handler.
-  onPressStart?: (e: any) => void;
-
-  // User press end callback handler.
-  onPressEnd?: (e: any) => void;
-
-  // User press up callback handler.
-  onPressUp?: (e: any) => void;
-
-  // User press change callback handler.
-  onPressChange?: (isPressed: boolean) => void;
-}
-
-interface ButtonHookResult<T extends ElementType = typeof DEFAULT_BUTTON_TAG> {
-  // The HTML render tag of the button (defaults to button).
-  elementType: T;
-
-  // Returns other button related props.
-  buttonProps: HTMLAttributes<any>;
-
-  // Wether the button is pressed.
-  isPressed: boolean;
-
-  // Wether the button is hovered.
-  isHovered: boolean;
-
-  // Wether the button is focused.
-  isFocused: boolean;
-
-  // Wether the button is disabled.
-  isDisabled: boolean;
-
-  // Wether the focus on the button is visible (isFocused will also be true if this is true).
-  isFocusVisible: boolean;
-}
-
-function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
-  props: ButtonHookProps<T>,
+/**
+ * React hook that provides all necessary props and state for a headless button component.
+ *
+ * @template T The element type to render as (e.g., 'button', 'a', 'input').
+ * @param {UseButtonProps<T>} props - The props for configuring the button's behavior and accessibility.
+ * @param {RefObject<any>} ref - The ref to the button element.
+ * @returns {ButtonHookReturn<T>} An object containing readonly state and props for the button element.
+ */
+export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
+  props: UseButtonProps<T>,
   ref: RefObject<any>
-): ButtonHookResult<T> {
+): ButtonHookReturn<T> {
   const {
     rel,
     href,
     target,
     autoFocus,
-    isDisabled,
     focusDisabled,
     preventFocusOnPress,
+    isDisabled = false,
     type = DEFAULT_BUTTON_TAG,
 
     // Duplicate props for convenance.
@@ -146,7 +93,7 @@ function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     focusableProps.tabIndex = isDisabled ? -1 : focusableProps.tabIndex;
   }
 
-  const buttonProps = mergeProps(focusableProps, pressProps, hoverProps, focusProps, filterDOMProps(props, {
+  const buttonProps: Record<string, any> = mergeProps(focusableProps, pressProps, hoverProps, focusProps, filterDOMProps(props, {
     allowLabelableProps: true,
     allowedLabelableProps: new Set(new Array()),
     allowedLinkProps: new Set(DOM.ANCHOR_ELEMENT_PROPS),
@@ -162,10 +109,4 @@ function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     elementType: elementType as T,
     buttonProps: mergeProps(buttonProps, additionalProps),
   }
-}
-
-export {
-  useButton,
-  type ButtonHookProps,
-  type ButtonHookResult
 }

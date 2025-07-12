@@ -8,15 +8,18 @@
     "dev": "turbo run dev",
     "dev:react": "turbo watch dev --filter=@sprocketui-react/*",
     "build": "turbo run build",
-    "build:types": "turbo run build --filter=@sprocketui/types",
-    "build:react": "turbo run build --filter='@sprocketui-react/*' --no-cache --parallel",
+    "build:types": "turbo run build --filter=\"@sprocketui/types\"",
+    "build:react": "turbo run build --filter=\"@sprocketui-react/*\" --no-cache --parallel",
     "clean": "find packages -type d \\( -name 'node_modules' -o -name '.turbo' -o -name 'dist' -o -name '.dist' \\) -prune -exec rm -rf '{}' + && rm -rf node_modules .turbo dist .dist"
   },
   "packageManager": "pnpm@9.15.3",
   "devDependencies": {
     "@changesets/cli": "^2.29.2",
-    "@commitlint/cli": "^19.8.0",
+    "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.0",
+    "@commitlint/types": "^19.8.1",
+    "@corinvo/commitlint": "^1.2.0",
+    "lefthook": "^1.12.1",
     "turbo": "^2.5.0",
     "vitest": "^3.1.1"
   }

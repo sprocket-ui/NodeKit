@@ -11,9 +11,8 @@
 import { kebabCase } from '@necto/strings';
 import { mergeProps } from '@necto/mergers';
 import { forwardRef, useMemo } from 'react';
-import { useButton } from '../hooks/useButton';
 import { buildInternalIdentifier } from 'shared';
-import { ButtonContext } from '../hooks/useButtonContext';
+import { useButton, ButtonContext } from '@sprocketui-react/button';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
 import type { ButtonProps } from './Button.types';
@@ -21,6 +20,15 @@ import type { ForwardedRef, ReactElement } from 'react';
 
 const BUTTON_NAME = 'Button' as const;
 
+/**
+ * @internal
+ * Internal render function for the Button component. Handles context, state, and prop merging for the button element.
+ * Not intended for public use; use the exported Button component instead.
+ *
+ * @param {ButtonProps} props - The props for the Button component.
+ * @param {ForwardedRef<HTMLButtonElement>} ref - The forwarded ref for the button element.
+ * @returns {ReactElement | null} The rendered button element or null.
+ */
 function ButtonFn(
   props: ButtonProps,
   ref: ForwardedRef<HTMLButtonElement>
@@ -32,8 +40,8 @@ function ButtonFn(
     isHovered,
     isPressed,
     isFocused,
+    isDisabled,
     isFocusVisible,
-    isDisabled = false,
     elementType: Tag,
   } = useButton(props, ref as any);
 
@@ -96,14 +104,16 @@ function ButtonFn(
   )
 }
 
-const Button = Object.assign(
+/**
+ * The public Button component for Sprocket UI.
+ *
+ * @param {ButtonProps} props - The props for the Button component.
+ * @param {ForwardedRef<HTMLButtonElement>} ref - The forwarded ref for the button element.
+ * @returns {ReactElement | null} The rendered button element or null.
+ */
+export const Button = Object.assign(
   forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps, ref)),
   { Root: forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps, ref)) }
 );
 
 Button.displayName = BUTTON_NAME;
-
-export {
-  Button,
-  type ButtonProps
-}

@@ -6,17 +6,11 @@
  *
  */
 
-'use client';
-
-import { createContext, useContext } from 'react';
-
-const ButtonContext = createContext<any>(null);
-
-function useButtonContext() {
-  return useContext(ButtonContext);
-}
-
 export {
   ButtonContext,
-  useButtonContext
-}
+  ButtonContext as SprocketButtonContext
+} from './ButtonContext';
+export {
+  useButtonContext,
+  useButtonContext as useSprocketButtonContext
+} from './useButtonContext';

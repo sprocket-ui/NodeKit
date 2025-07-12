@@ -3,13 +3,19 @@
   "daemon": false,
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "cache": false
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "build:*": {
+      "cache": false,
+      "outputs": ["dist/**"],
+      "dependsOn": ["^build:*"]
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
+<<<<<<< HEAD
     "build:*": {
       "cache": false,
       "dependsOn": [
@@ -18,10 +24,11 @@
       ],
       "outputs": ["dist/**"]
     },
+=======
+>>>>>>> refs/remotes/origin/main
     "dev:*": {
       "cache": false,
       "persistent": true
     }
-  },
-  "globalDependencies": ["!apps/**"]
+  }
 }

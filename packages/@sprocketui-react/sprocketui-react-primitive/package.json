@@ -1,0 +1,11 @@
+{
+  "name": "@sprocketui-react/primitive",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Corinvo OSS Team",
+  "license": "MIT"
+}

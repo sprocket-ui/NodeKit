@@ -1,12 +1,16 @@
-prepare-commit-msg:
-  commands:
-    commitzen:
-      interactive: true
-      run: pnpm run cz --hook # Or npx cz --hook
-      env:
-        LEFTHOOK: 0
+colors: true
+skip_lfs: true
+
+# pre-commit:
+#   commands:
+#     lint:
+#       run: pnpm lint
+#       stage_fixed: true
+#     format:
+#       run: pnpm format
+#       stage_fixed: true
 
 commit-msg:
   commands:
     "lint commit message":
-      run: pnpm run commitlint --edit {1}
+      run: pnpm exec commitlint --edit {1}

@@ -6,6 +6,12 @@
  *
  */
 
-export * from './hooks';
-export * from './contexts';
-export * from './components';
+export {
+  useButton,
+  useButton as useSprocketButton
+} from './useButton';
+
+export type {
+  UseButtonProps,
+  UseButtonProps as UseSprocketButtonProps
+} from './useButton.types';

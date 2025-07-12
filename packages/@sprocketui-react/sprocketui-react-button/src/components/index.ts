@@ -6,6 +6,14 @@
  *
  */
 
-export * from './hooks';
-export * from './contexts';
-export * from './components';
+export {
+  Button,
+  Button as SprocketButton
+} from './Button';
+
+export type {
+  ButtonProps,
+  ButtonProps as SprocketButtonProps
+} from './Button.types';
+
+

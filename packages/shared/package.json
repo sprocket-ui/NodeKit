@@ -8,7 +8,11 @@
   "types": "./dist/index.d.ts",
   "description": "Shared internal functions used by only Sprocket UI",
   "scripts": {
+<<<<<<< HEAD
     "build": "tsup ./src/index.ts --dts --format=esm,cjs,iife --minify"
+=======
+    "build": "tsup ./src/index.ts --dts --format esm,cjs,iife"
+>>>>>>> refs/remotes/origin/main
   },
   "dependencies": {
     "@necto/strings": "workspace:*"
