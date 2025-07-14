@@ -12,6 +12,7 @@ import { kebabCase } from '@necto/strings';
 import { mergeProps } from '@necto/mergers';
 import { forwardRef, useMemo } from 'react';
 import { buildInternalIdentifier } from 'shared';
+import { Primitive } from '@sprocketui-react/primitive';
 import { useButton, ButtonContext } from '@sprocketui-react/button';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
@@ -41,8 +42,8 @@ function ButtonFn(
     isPressed,
     isFocused,
     isDisabled,
+    elementType,
     isFocusVisible,
-    elementType: Tag,
   } = useButton(props, ref as any);
 
   const sprocketButtonID = useId({ defaultId: buttonProps.id });
@@ -92,7 +93,8 @@ function ButtonFn(
   }, [isHovered, isFocused, isFocusVisible, isDisabled, isPressed]);
 
   return (
-    <Tag
+    <Primitive.Root
+      as={elementType}
       {...renderProps}
       {...mergeProps(buttonProps, dataAttributes)}
       ref={ref}
@@ -100,7 +102,7 @@ function ButtonFn(
       slot={props.slot || undefined}
     >
       {renderProps.children}
-    </Tag>
+    </Primitive.Root>
   )
 }
 

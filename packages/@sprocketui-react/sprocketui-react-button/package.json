@@ -16,9 +16,6 @@
     "node": ">=10"
   },
   "scripts": {
-    "cypress": "npm-run-all cypress:*",
-    "cypress:run": "cypress run --component",
-    "cypress:open": "cypress open --component",
     "build": "tsup",
     "test": "vitest",
     "dev": "tsup --watch"
@@ -33,6 +30,7 @@
     "@necto/strings": "^1.1.0",
     "@react-aria/focus": "^3.20.2",
     "@sprocketui-types/button": "workspace:*",
+    "@sprocketui-react/primitive": "workspace:*",
     "react-aria": "^3.39.0",
     "shared": "workspace:*"
   },

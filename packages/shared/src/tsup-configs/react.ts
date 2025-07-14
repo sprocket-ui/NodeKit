@@ -14,6 +14,7 @@ import esbuildPluginLicense from 'esbuild-plugin-license';
 
 export const reactTsupConfig = defineConfig({
   entry: ['./src/index.ts'],
+  external: ['esbuild'],
   format: ['esm', 'cjs', 'iife'],
   dts: true,
   clean: true,

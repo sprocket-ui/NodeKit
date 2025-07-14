@@ -8,24 +8,16 @@
     },
     "build:*": {
       "cache": false,
-      "outputs": ["dist/**"],
-      "dependsOn": ["^build:*"]
-    },
-    "dev": {
-      "cache": false,
-      "persistent": true
-    },
-<<<<<<< HEAD
-    "build:*": {
-      "cache": false,
       "dependsOn": [
         "^build:*",
         "shared#build"
       ],
       "outputs": ["dist/**"]
     },
-=======
->>>>>>> refs/remotes/origin/main
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
     "dev:*": {
       "cache": false,
       "persistent": true
