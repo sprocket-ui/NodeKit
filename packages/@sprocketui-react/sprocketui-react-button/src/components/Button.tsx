@@ -16,8 +16,13 @@ import { Primitive } from '@sprocketui-react/primitive';
 import { useButton, ButtonContext } from '@sprocketui-react/button';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
+import type {
+  ForwardedRef,
+  ReactElement,
+  RefAttributes,
+  ForwardRefExoticComponent
+} from 'react';
 import type { ButtonProps } from './Button.types';
-import type { ForwardedRef, ReactElement } from 'react';
 
 const BUTTON_NAME = 'Button' as const;
 
@@ -103,8 +108,8 @@ function ButtonFn(
     >
       {renderProps.children}
     </Primitive.Root>
-  )
-}
+  );
+};
 
 /**
  * The public Button component for Sprocket UI.
@@ -113,7 +118,9 @@ function ButtonFn(
  * @param {ForwardedRef<HTMLButtonElement>} ref - The forwarded ref for the button element.
  * @returns {ReactElement | null} The rendered button element or null.
  */
-export const Button = Object.assign(
+export const Button: ForwardRefExoticComponent<Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>> & {
+  Root: ForwardRefExoticComponent<Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>>;
+} = Object.assign(
   forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps, ref)),
   { Root: forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps, ref)) }
 );

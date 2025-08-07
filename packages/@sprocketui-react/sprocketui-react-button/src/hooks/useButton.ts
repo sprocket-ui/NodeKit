@@ -8,12 +8,11 @@
 
 'use client';
 
-import { DOM } from "@necto/constants";
-import { HTMLElements } from "@necto/dom";
-import { useFocusable } from "react-aria"; // Temp use, will be removed in later version
+import { DOM } from '@necto/constants';
+import { HTMLElements } from '@necto/dom';
 import { mergeProps } from "@necto/mergers";
-import { filterDOMProps } from "@necto-react/helpers";
-import { useHover, usePress, useFocusRing } from "@necto-react/hooks";
+import { filterDOMProps } from '@necto-react/helpers';
+import { useHover, usePress, useFocusRing, useFocusable } from '@necto-react/hooks';
 
 import type { ElementType, RefObject } from 'react';
 import type { UseButtonProps, ButtonHookReturn } from './useButton.types';
@@ -55,7 +54,7 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     onPressChange,
   } = props;
 
-  let additionalProps;
+  let additionalProps: Record<string, unknown>;
   if (elementType === HTMLElements.Button) {
     additionalProps = {
       type,
@@ -108,5 +107,5 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     isFocusVisible,
     elementType: elementType as T,
     buttonProps: mergeProps(buttonProps, additionalProps),
-  }
-}
+  } satisfies ButtonHookReturn<T>;
+};
