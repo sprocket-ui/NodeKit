@@ -8,10 +8,10 @@
 
 'use client';
 
-import { DOM } from '@necto/constants';
 import { HTMLElements } from '@necto/dom';
 import { mergeProps } from "@necto/mergers";
 import { filterDOMProps } from '@necto-react/helpers';
+import { ANCHOR_ELEMENT_PROPS, ALLOWED_EXTERNAL_PROPS } from 'shared';
 import { useHover, usePress, useFocusRing, useFocusable } from '@necto-react/hooks';
 
 import type { ElementType, RefObject } from 'react';
@@ -95,8 +95,8 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
   const buttonProps: Record<string, any> = mergeProps(focusableProps, pressProps, hoverProps, focusProps, filterDOMProps(props, {
     allowLabelableProps: true,
     allowedLabelableProps: new Set(new Array()),
-    allowedLinkProps: new Set(DOM.ANCHOR_ELEMENT_PROPS),
-    extraAllowedProps: new Set(['id', 'form', 'formAction', 'formEncType', 'formMethod', 'formNoValidate', 'formTarget', 'name', 'value'])
+    allowedLinkProps: new Set(ANCHOR_ELEMENT_PROPS),
+    extraAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
   }));
 
   return {

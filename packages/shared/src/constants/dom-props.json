@@ -1,0 +1,22 @@
+{
+  "ANCHOR_ELEMENT_PROPS": [
+    "rel",
+    "href",
+    "ping",
+    "target",
+    "download",
+    "hrefLang",
+    "referrerPolicy"
+  ],
+  "ALLOWED_EXTERNAL_PROPS": [
+    "id",
+    "form",
+    "name",
+    "value",
+    "formAction",
+    "formEncType",
+    "formMethod",
+    "formTarget",
+    "formNoValidate"
+  ]
+}

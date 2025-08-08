@@ -7,16 +7,16 @@
  */
 
 import { forwardRef } from 'react';
-import { HTMLElements } from '@necto/dom';
+import { DOM } from '@necto/constants';
 
 import type { ReactElement } from 'react';
 
 function PrimitiveFn(
 
 ): ReactElement | null {
-  return
+  return;
 };
 
 export const Primitive = forwardRef(
-  
+
 );

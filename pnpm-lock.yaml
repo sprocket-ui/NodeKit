@@ -235,6 +235,9 @@ importers:
 
   ../../nectoutil/NodeKit/packages/@necto/necto-dom:
     dependencies:
+      '@necto/constants':
+        specifier: workspace:*
+        version: link:../necto-constants
       '@necto/platform':
         specifier: workspace:*
         version: link:../necto-platform
@@ -398,9 +401,9 @@ importers:
 
   packages/@sprocketui-react/sprocketui-react-primitive:
     dependencies:
-      '@necto/dom':
+      '@necto/constants':
         specifier: workspace:*
-        version: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-dom
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-constants
       shared:
         specifier: workspace:*
         version: link:../../shared

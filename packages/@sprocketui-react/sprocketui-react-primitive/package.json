@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "shared": "workspace:*",
-    "@necto/dom": "workspace:*"
+    "@necto/constants": "workspace:*"
   },
   "devDependencies": {
     "react": "^19.1.0",
