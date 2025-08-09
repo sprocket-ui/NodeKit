@@ -6,7 +6,7 @@
  *
  */
 
-import type { FocusStrategy } from "@necto/types";
+import type { FocusStrategy } from '@necto/types';
 
 export interface MenuOptions<T> {
   // Alternative button renderer.
@@ -17,7 +17,7 @@ export interface MenuOptions<T> {
 
   // Whether keyboard navigation is circular.
   shouldFocusWrap?: boolean;
-};
+}
 
 export interface AriaMenuOptions<T> extends MenuOptions<T> {
   // Option to enable escape key closing.

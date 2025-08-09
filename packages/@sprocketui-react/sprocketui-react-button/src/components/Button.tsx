@@ -48,7 +48,7 @@ function ButtonFn(
     isFocused,
     isDisabled,
     elementType,
-    isFocusVisible,
+    isFocusVisible
   } = useButton(props, ref as any);
 
   const sprocketButtonID = useId({ defaultId: buttonProps.id });
@@ -59,15 +59,15 @@ function ButtonFn(
       isPressed,
       isFocused,
       isFocusVisible,
-      isDisabled,
+      isDisabled
       // isPending
     },
     defaultClassName: buildInternalIdentifier({
       component: BUTTON_NAME
     }),
     style: (values) => ({
-      ...(props.style instanceof Function ? props.style(values) : props.style),
-    }),
+      ...(props.style instanceof Function ? props.style(values) : props.style)
+    })
   });
 
   const dataAttributes = useMemo(() => {
@@ -76,7 +76,7 @@ function ButtonFn(
       focus: isFocused,
       focusVisible: isFocusVisible,
       disabled: isDisabled,
-      pressed: isPressed,
+      pressed: isPressed
     };
 
     const attributes: Record<string, string | undefined> = {};
@@ -93,7 +93,7 @@ function ButtonFn(
 
     return {
       ...attributes,
-      'data-sprocket-state': sprocketState.join(' '),
+      'data-sprocket-state': sprocketState.join(' ')
     };
   }, [isHovered, isFocused, isFocusVisible, isDisabled, isPressed]);
 
@@ -109,7 +109,7 @@ function ButtonFn(
       {renderProps.children}
     </Primitive.Root>
   );
-};
+}
 
 /**
  * The public Button component for Sprocket UI.
@@ -118,11 +118,21 @@ function ButtonFn(
  * @param {ForwardedRef<HTMLButtonElement>} ref - The forwarded ref for the button element.
  * @returns {ReactElement | null} The rendered button element or null.
  */
-export const Button: ForwardRefExoticComponent<Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>> & {
-  Root: ForwardRefExoticComponent<Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>>;
+export const Button: ForwardRefExoticComponent<
+  Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>
+> & {
+  Root: ForwardRefExoticComponent<
+    Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>
+  >;
 } = Object.assign(
-  forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps, ref)),
-  { Root: forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props, ref) => ButtonFn(props as ButtonProps, ref)) }
+  forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props, ref) =>
+    ButtonFn(props as ButtonProps, ref)
+  ),
+  {
+    Root: forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>(
+      (props, ref) => ButtonFn(props as ButtonProps, ref)
+    )
+  }
 );
 
 Button.displayName = BUTTON_NAME;

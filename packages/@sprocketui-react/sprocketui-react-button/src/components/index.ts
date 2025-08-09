@@ -15,5 +15,3 @@ export type {
   ButtonProps,
   ButtonProps as SprocketButtonProps
 } from './Button.types';
-
-

@@ -9,10 +9,15 @@
 'use client';
 
 import { HTMLElements } from '@necto/dom';
-import { mergeProps } from "@necto/mergers";
+import { mergeProps } from '@necto/mergers';
 import { filterDOMProps } from '@necto-react/helpers';
 import { ANCHOR_ELEMENT_PROPS, ALLOWED_EXTERNAL_PROPS } from 'shared';
-import { useHover, usePress, useFocusRing, useFocusable } from '@necto-react/hooks';
+import {
+  useHover,
+  usePress,
+  useFocusRing,
+  useFocusable
+} from '@necto-react/hooks';
 
 import type { ElementType, RefObject } from 'react';
 import type { UseButtonProps, ButtonHookReturn } from './useButton.types';
@@ -51,7 +56,7 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     onPressStart,
     onPressEnd,
     onPressUp,
-    onPressChange,
+    onPressChange
   } = props;
 
   let additionalProps: Record<string, unknown>;
@@ -67,12 +72,16 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
       target: elementType === 'a' ? target : undefined,
       type: elementType === 'input' ? type : undefined,
       disabled: elementType === 'input' ? isDisabled : undefined,
-      'aria-disabled': !isDisabled || elementType === 'input' ? undefined : isDisabled,
+      'aria-disabled':
+        !isDisabled || elementType === 'input' ? undefined : isDisabled,
       rel: elementType === 'a' ? rel : undefined
     };
   }
 
-  const { hoverProps, isHovered } = useHover({ ...props, isDisabled: isDisabled});
+  const { hoverProps, isHovered } = useHover({
+    ...props,
+    isDisabled: isDisabled
+  });
   const { focusProps, isFocused, isFocusVisible } = useFocusRing({ autoFocus });
   const { focusableProps } = useFocusable(props, ref);
 
@@ -85,19 +94,25 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     onPressChange,
     onPress,
     onPressUp,
-    onClick,
+    onClick
   });
 
   if (focusDisabled) {
     focusableProps.tabIndex = isDisabled ? -1 : focusableProps.tabIndex;
   }
 
-  const buttonProps: Record<string, any> = mergeProps(focusableProps, pressProps, hoverProps, focusProps, filterDOMProps(props, {
-    allowLabelableProps: true,
-    allowedLabelableProps: new Set(new Array()),
-    allowedLinkProps: new Set(ANCHOR_ELEMENT_PROPS),
-    extraAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
-  }));
+  const buttonProps: Record<string, any> = mergeProps(
+    focusableProps,
+    pressProps,
+    hoverProps,
+    focusProps,
+    filterDOMProps(props, {
+      allowLabelableProps: true,
+      allowedLabelableProps: new Set([]),
+      allowedLinkProps: new Set(ANCHOR_ELEMENT_PROPS),
+      extraAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
+    })
+  );
 
   return {
     isFocused,
@@ -106,6 +121,6 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     isDisabled,
     isFocusVisible,
     elementType: elementType as T,
-    buttonProps: mergeProps(buttonProps, additionalProps),
+    buttonProps: mergeProps(buttonProps, additionalProps)
   } satisfies ButtonHookReturn<T>;
-};
+}

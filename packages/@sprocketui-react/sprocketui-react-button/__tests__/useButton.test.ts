@@ -6,9 +6,7 @@ import { useButton } from '@sprocketui-react/button';
 describe('Sprocket UI - useButton', () => {
   test('returns correct default props and state for a button', () => {
     const ref = { current: null };
-    const { result } = renderHook(() =>
-      useButton({ children: 'Test' }, ref)
-    );
+    const { result } = renderHook(() => useButton({ children: 'Test' }, ref));
 
     expect(result.current.isDisabled).toBe(false);
     expect(result.current.isPressed).toBe(false);
@@ -22,9 +20,7 @@ describe('Sprocket UI - useButton', () => {
 
   test('returns correct props when isDisabled is true', () => {
     const ref = { current: null };
-    const { result } = renderHook(() =>
-      useButton({ isDisabled: true }, ref)
-    );
+    const { result } = renderHook(() => useButton({ isDisabled: true }, ref));
 
     expect(result.current.isDisabled).toBe(true);
     expect(result.current.buttonProps.disabled).toBe(true);

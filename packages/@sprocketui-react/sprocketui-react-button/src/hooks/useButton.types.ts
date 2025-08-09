@@ -9,7 +9,8 @@
 import type { ElementType, HTMLAttributes } from 'react';
 import type { ButtonOptions } from '@sprocketui-types/button';
 
-export interface UseButtonProps<T extends ElementType> extends ButtonOptions<T> {
+export interface UseButtonProps<T extends ElementType>
+  extends ButtonOptions<T> {
   // Element to render the button as.
   elementType?: string;
 

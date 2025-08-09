@@ -14,7 +14,10 @@ import type { UseButtonProps } from '@sprocketui-react/button';
 /**
  * Props for the Button component.
  */
-export interface ButtonProps extends ButtonOptions<ElementType>, RenderProps<any>, UseButtonProps<ElementType> {
+export interface ButtonProps
+  extends ButtonOptions<ElementType>,
+    RenderProps<any>,
+    UseButtonProps<ElementType> {
   // Slot values for React rendering.
   slot?: string | null;
-};
+}

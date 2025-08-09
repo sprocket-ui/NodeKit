@@ -6,7 +6,7 @@
  *
  */
 
-import type { Placement, Padding, Strategy } from "@floating-ui/utils";
+import type { Placement, Padding, Strategy } from '@floating-ui/utils';
 
 export interface PopoverOptions {
   // The placement of the element with respect to anchor.
@@ -16,7 +16,9 @@ export interface PopoverOptions {
   containerPadding?: Padding;
 
   // Offset applied along the main axis between element and anchor.
-  offset?: number | { mainAxis?: number; crossAxis?: number; alignmentAxis?: number | null };
+  offset?:
+    | number
+    | { mainAxis?: number; crossAxis?: number; alignmentAxis?: number | null };
 
   // Whether the element should flip its orientation when there is no room.
   flip?: boolean;

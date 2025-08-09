@@ -5,7 +5,7 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 
 describe('Sprocket UI - Button', () => {
   test('render button with default states', () => {
-    render(<Button>Default Button</Button>)
+    render(<Button>Default Button</Button>);
 
     const button: HTMLElement = screen.getByText('Default Button');
     expect(button).toHaveRole('button');
@@ -56,7 +56,11 @@ describe('Sprocket UI - Button', () => {
 
   test('does not call onClick when disabled', () => {
     const handleClick = vi.fn();
-    render(<Button isDisabled onClick={handleClick}>Disabled</Button>);
+    render(
+      <Button isDisabled onClick={handleClick}>
+        Disabled
+      </Button>
+    );
     fireEvent.click(screen.getByText('Disabled'));
     expect(handleClick).not.toHaveBeenCalled();
   });
@@ -67,7 +71,9 @@ describe('Sprocket UI - Button', () => {
     fireEvent.mouseDown(button);
     expect(button.getAttribute('data-sprocket-state')).toMatch(/\bpressed\b/);
     fireEvent.mouseUp(button);
-    expect(button.getAttribute('data-sprocket-state')).not.toMatch(/\bpressed\b/);
+    expect(button.getAttribute('data-sprocket-state')).not.toMatch(
+      /\bpressed\b/
+    );
   });
 
   test('sets data-sprocket-state to hover when mouse is over', () => {
@@ -89,6 +95,6 @@ describe('Sprocket UI - Button', () => {
 
     expect(button).toHaveFocus();
     const state = button.getAttribute('data-sprocket-state') ?? '';
-    expect(state).toMatch("focus focus-visible");
+    expect(state).toMatch('focus focus-visible');
   });
 });

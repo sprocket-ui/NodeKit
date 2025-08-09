@@ -22,13 +22,15 @@ export const reactTsupConfig = defineConfig({
   splitting: false,
   esbuildPlugins: [
     esbuildPluginLicense({
-      banner: '// Test Banner',
+      banner: '// Test Banner'
     })
   ],
   esbuildOptions(options, context) {
     options.legalComments = 'none';
   },
   async onSuccess(): Promise<void> {
-    process.stdout.write('Successfully build using Sprocket\'s React preset! \n');
+    process.stdout.write(
+      "Successfully build using Sprocket's React preset! \n"
+    );
   }
 });

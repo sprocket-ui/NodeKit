@@ -6,7 +6,7 @@
  *
  */
 
-import { kebabCase } from "@necto/strings";
+import { kebabCase } from '@necto/strings';
 
 interface BuildInternalIdentifierOptions {
   // Prefix to use for ID.
@@ -34,21 +34,19 @@ function buildInternalIdentifier({
   variant,
   state,
   unique,
-  obscure,
+  obscure
 }: BuildInternalIdentifierOptions) {
   if (!component) throw new Error('Component context is required!');
 
   const parts: string[] = [prefix + kebabCase(component, false)];
 
   if (variant) parts.push(kebabCase(variant, false));
-  if (Array.isArray(state) && state.length) parts.push(...state.map(s => kebabCase(s, false)));
+  if (Array.isArray(state) && state.length)
+    parts.push(...state.map((s) => kebabCase(s, false)));
   if (unique) parts.push(Math.random().toString(36).slice(2, 8));
   if (obscure) parts.push(Math.random().toString(36).slice(2, 16));
 
   return parts.join('--');
-};
+}
 
-export {
-  buildInternalIdentifier,
-  type BuildInternalIdentifierOptions
-};
+export { buildInternalIdentifier, type BuildInternalIdentifierOptions };

@@ -11,12 +11,8 @@ import { DOM } from '@necto/constants';
 
 import type { ReactElement } from 'react';
 
-function PrimitiveFn(
-
-): ReactElement | null {
+function PrimitiveFn(): ReactElement | null {
   return;
-};
+}
 
-export const Primitive = forwardRef(
-
-);
+export const Primitive = forwardRef();
