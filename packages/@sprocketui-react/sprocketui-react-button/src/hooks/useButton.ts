@@ -8,16 +8,16 @@
 
 'use client';
 
-import { HTMLElements } from '@necto/dom';
-import { mergeProps } from '@necto/mergers';
-import { filterDOMProps } from '@necto-react/helpers';
-import { ANCHOR_ELEMENT_PROPS, ALLOWED_EXTERNAL_PROPS } from 'shared';
 import {
   useHover,
   usePress,
   useFocusRing,
   useFocusable
 } from '@necto-react/hooks';
+import { HTMLElements } from '@necto/dom';
+import { mergeProps } from '@necto/mergers';
+import { filterDOMProps } from '@necto-react/helpers';
+import { ANCHOR_ELEMENT_PROPS, ALLOWED_EXTERNAL_PROPS } from 'shared';
 
 import type { ElementType, RefObject } from 'react';
 import type { UseButtonProps, ButtonHookReturn } from './useButton.types';
