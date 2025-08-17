@@ -39,6 +39,8 @@ importers:
         specifier: ^3.1.1
         version: 3.1.3(@types/node@24.0.13)(jiti@2.4.2)(jsdom@26.1.0)(sass@1.88.0)(sugarss@2.0.0)(terser@5.39.0)
 
+  ../../nectoutil/NodeKit/packages/@necto-react/necto-react-components: {}
+
   ../../nectoutil/NodeKit/packages/@necto-react/necto-react-contexts:
     dependencies:
       '@necto-react/types':
