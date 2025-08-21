@@ -98,16 +98,16 @@ function ButtonFn(
   }, [isHovered, isFocused, isFocusVisible, isDisabled, isPressed]);
 
   return (
-    <Primitive.Root
+    <Primitive
+      ref={ref}
       as={elementType}
       {...renderProps}
       {...mergeProps(buttonProps, dataAttributes)}
-      ref={ref}
       id={sprocketButtonID}
       slot={props.slot || undefined}
     >
       {renderProps.children}
-    </Primitive.Root>
+    </Primitive>
   );
 }
 

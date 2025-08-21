@@ -39,7 +39,39 @@ importers:
         specifier: ^3.1.1
         version: 3.1.3(@types/node@24.0.13)(jiti@2.4.2)(jsdom@26.1.0)(sass@1.88.0)(sugarss@2.0.0)(terser@5.39.0)
 
-  ../../nectoutil/NodeKit/packages/@necto-react/necto-react-components: {}
+  ../../nectoutil/NodeKit/packages/@necto-react/necto-react-components:
+    dependencies:
+      '@necto/constants':
+        specifier: workspace:*
+        version: link:../../@necto/necto-constants
+      react:
+        specifier: ^19.1.0
+        version: 19.1.0
+    devDependencies:
+      '@testing-library/react':
+        specifier: ^16.3.0
+        version: 16.3.0(@testing-library/dom@9.3.4)(@types/react-dom@19.1.4(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@types/node':
+        specifier: ^22.14.1
+        version: 22.15.17
+      '@types/react':
+        specifier: ^19.1.2
+        version: 19.1.4
+      '@types/react-dom':
+        specifier: ^19.1.2
+        version: 19.1.4(@types/react@19.1.4)
+      jsdom:
+        specifier: ^26.1.0
+        version: 26.1.0
+      npm-run-all:
+        specifier: ^4.1.5
+        version: 4.1.5
+      shared:
+        specifier: workspace:*
+        version: link:../../../../../sprocketui/NodeKit/packages/shared
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(@swc/core@1.11.24(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.6)(typescript@5.8.3)
 
   ../../nectoutil/NodeKit/packages/@necto-react/necto-react-contexts:
     dependencies:
@@ -340,6 +372,9 @@ importers:
 
   packages/@sprocketui-react/sprocketui-react-button:
     dependencies:
+      '@necto-react/components':
+        specifier: workspace:*
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-components
       '@necto-react/helpers':
         specifier: workspace:*
         version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-helpers
@@ -364,9 +399,6 @@ importers:
       '@react-aria/focus':
         specifier: ^3.20.2
         version: 3.20.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      '@sprocketui-react/primitive':
-        specifier: workspace:*
-        version: link:../sprocketui-react-primitive
       '@sprocketui-types/button':
         specifier: workspace:*
         version: link:../../@sprocketui-types/sprocketui-types-button
@@ -406,25 +438,6 @@ importers:
         version: 3.1.3(@types/node@24.0.13)(jiti@2.4.2)(jsdom@26.1.0)(sass@1.88.0)(sugarss@2.0.0)(terser@5.39.0)
 
   packages/@sprocketui-react/sprocketui-react-knob: {}
-
-  packages/@sprocketui-react/sprocketui-react-primitive:
-    dependencies:
-      '@necto/constants':
-        specifier: workspace:*
-        version: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-constants
-      shared:
-        specifier: workspace:*
-        version: link:../../shared
-    devDependencies:
-      react:
-        specifier: ^19.1.0
-        version: 19.1.0
-      react-dom:
-        specifier: ^19.1.0
-        version: 19.1.0(react@19.1.0)
-      tsup:
-        specifier: ^8.4.0
-        version: 8.4.0(@swc/core@1.11.24(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.6)(typescript@5.8.3)
 
   packages/@sprocketui-types/sprocketui-types-button:
     dependencies:
