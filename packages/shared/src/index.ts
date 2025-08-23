@@ -1,3 +1,5 @@
+// biome-ignore-all assist/source/organizeImports: No need to sort imports.
+
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
@@ -7,5 +9,4 @@
  */
 
 export * from './constants';
-export * from './tsup-configs';
 export * from './buildInternalIdentifier';

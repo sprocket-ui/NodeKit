@@ -6,4 +6,4 @@
  *
  */
 
-module.exports = require('shared').reactTsupConfig;
+module.exports = require('shared/configs').tsup.react;

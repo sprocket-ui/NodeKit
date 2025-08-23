@@ -6,4 +6,4 @@
  *
  */
 
-export { reactTsupConfig } from './react';
+export * from './tsup';

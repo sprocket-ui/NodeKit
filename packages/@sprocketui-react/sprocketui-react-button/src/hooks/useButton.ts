@@ -76,7 +76,9 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
       type: elementType === HTMLElements.Input ? type : undefined,
       disabled: elementType === HTMLElements.Input ? isDisabled : undefined,
       'aria-disabled':
-        !isDisabled || elementType === HTMLElements.Input ? undefined : isDisabled,
+        !isDisabled || elementType === HTMLElements.Input
+          ? undefined
+          : isDisabled,
       rel: elementType === HTMLElements.A ? rel : undefined
     };
   }

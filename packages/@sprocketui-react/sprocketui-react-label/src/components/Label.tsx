@@ -10,6 +10,4 @@
 
 import type { ReactElement } from 'react';
 
-function LabelFn(): ReactElement | null {
-
-}
+function LabelFn(): ReactElement | null {}
