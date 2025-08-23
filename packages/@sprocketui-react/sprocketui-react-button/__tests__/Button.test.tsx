@@ -9,9 +9,17 @@ describe('Sprocket UI - Button', () => {
 
     const button: HTMLElement = screen.getByText('Default Button');
     expect(button).toHaveRole('button');
+    expect(button).toBeInstanceOf(HTMLButtonElement);
     expect(button).toHaveAttribute('data-sprocket-state');
     expect(button).toHaveClass(':sprocket:=button');
     expect(button).toHaveAttribute('id', 'necto-«r0»');
+  });
+
+  test('render with custom primitive: as="div"', () => {
+    render(<Button as="div">Div Button</Button>);
+
+    const button: HTMLElement = screen.getByText('Div Button');
+    expect(button).toBeInstanceOf(HTMLDivElement);
   });
 
   test('render children', () => {
