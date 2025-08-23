@@ -21,6 +21,7 @@
     "dev": "tsup --watch"
   },
   "dependencies": {
+    "@necto-react/components": "workspace:*",
     "@necto-react/helpers": "workspace:*",
     "@necto-react/hooks": "workspace:*",
     "@necto-react/types": "workspace:*",
@@ -30,7 +31,6 @@
     "@necto/strings": "^1.1.0",
     "@react-aria/focus": "^3.20.2",
     "@sprocketui-types/button": "workspace:*",
-    "@necto-react/components": "workspace:*",
     "react-aria": "^3.39.0",
     "shared": "workspace:*"
   },
@@ -47,6 +47,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tsup": "^8.4.0",
-    "vitest": "^3.1.1"
+    "vitest": "^3.2.4",
+    "vitest-tsconfig-paths": "^3.4.1"
   }
 }

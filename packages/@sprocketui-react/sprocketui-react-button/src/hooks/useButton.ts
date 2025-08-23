@@ -1,3 +1,6 @@
+// biome-ignore-all assist/source/organizeImports: No need to sort imports.
+// biome-ignore-all lint/suspicious/noExplicitAny: Explicit any is okay here.
+
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
@@ -68,13 +71,13 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
   } else {
     additionalProps = {
       role: 'button',
-      href: elementType === 'a' && !isDisabled ? href : undefined,
-      target: elementType === 'a' ? target : undefined,
-      type: elementType === 'input' ? type : undefined,
-      disabled: elementType === 'input' ? isDisabled : undefined,
+      href: elementType === HTMLElements.A && !isDisabled ? href : undefined,
+      target: elementType === HTMLElements.A ? target : undefined,
+      type: elementType === HTMLElements.Input ? type : undefined,
+      disabled: elementType === HTMLElements.Input ? isDisabled : undefined,
       'aria-disabled':
-        !isDisabled || elementType === 'input' ? undefined : isDisabled,
-      rel: elementType === 'a' ? rel : undefined
+        !isDisabled || elementType === HTMLElements.Input ? undefined : isDisabled,
+      rel: elementType === HTMLElements.A ? rel : undefined
     };
   }
 

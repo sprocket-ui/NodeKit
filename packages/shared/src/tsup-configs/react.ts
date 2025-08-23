@@ -9,9 +9,6 @@
 import process from 'node:process';
 import { defineConfig } from 'tsup';
 
-// @ts-ignore
-import esbuildPluginLicense from 'esbuild-plugin-license';
-
 export const reactTsupConfig = defineConfig({
   entry: ['./src/index.ts'],
   external: ['esbuild'],
@@ -21,9 +18,7 @@ export const reactTsupConfig = defineConfig({
   minify: true,
   splitting: false,
   esbuildPlugins: [
-    esbuildPluginLicense({
-      banner: '// Test Banner'
-    })
+
   ],
   esbuildOptions(options, context) {
     options.legalComments = 'none';

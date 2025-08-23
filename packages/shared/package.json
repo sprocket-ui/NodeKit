@@ -15,7 +15,6 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.13",
-    "esbuild-plugin-license": "^1.2.3",
     "tsup": "^8.4.0"
   }
 }
