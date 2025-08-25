@@ -15,7 +15,7 @@ import { mergeProps } from '@necto/mergers';
 import { forwardRef, useMemo } from 'react';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
-import { useButton, ButtonContext } from '@sprocketui-react/button';
+import { ButtonContext, useButton } from '@sprocketui-react/button';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
 import type {
