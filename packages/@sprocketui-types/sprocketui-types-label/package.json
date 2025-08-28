@@ -1,0 +1,16 @@
+{
+  "name": "@sprocketui-types/label",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Corinvo OSS Team",
+  "license": "MIT",
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "types": "./src/index.d.ts",
+  "main": "./src/index.d.ts",
+  "dependencies": {
+    "@necto/types": "workspace:*"
+  }
+}

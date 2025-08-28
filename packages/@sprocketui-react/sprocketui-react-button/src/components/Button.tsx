@@ -107,7 +107,7 @@ function ButtonFn(
       {...mergeProps(buttonProps, dataAttributes)}
       id={sprocketButtonID}
       slot={props.slot || undefined}
-    >
+    >''
       {renderProps.children}
     </Primitive>
   );
