@@ -48,8 +48,8 @@ importers:
         specifier: ^2.4.5
         version: 2.4.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@necto-react/hooks':
-        specifier: ^2.12.5
-        version: 2.12.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^2.12.6
+        version: 2.12.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@necto-react/types':
         specifier: ^2.3.0
         version: 2.3.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -984,8 +984,8 @@ packages:
       react: ^19.1.0
       react-dom: ^19.1.0
 
-  '@necto-react/hooks@2.12.5':
-    resolution: {integrity: sha512-AjuFdcP3livsbsKfZ8F0VIU9OesPS7rFP20Xw5fnzajrS1wkHT3cWvQUPm6Bb3YHMA2HTgrBVLv0POK4RtXL7w==}
+  '@necto-react/hooks@2.12.6':
+    resolution: {integrity: sha512-diTANLs8Ufjtqb4sXA3UOoy/T0+A1lfZR8I1jwO9YFDKKLITpjxhxE2zmrzQMtZ6JmgIbFqjgrN+5P7rlSiurg==}
     peerDependencies:
       react: ^19.1.0
 
@@ -4756,7 +4756,7 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
       std-env: 3.9.0
 
-  '@necto-react/hooks@2.12.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@necto-react/hooks@2.12.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@necto-react/contexts': 1.3.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@necto-react/helpers': 2.4.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
