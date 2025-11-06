@@ -1,6 +1,6 @@
 {
   "name": "@sprocketui-react/label",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sprocket's standalone React label component.",
   "type": "module",
   "license": "MIT",
