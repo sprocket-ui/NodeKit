@@ -15,7 +15,7 @@ import type { Options } from 'tsup';
 const base = (overrides: Partial<Options> = {}) =>
   defineConfig({
     entry: ['src/index.ts'],
-    outDir: 'dist/vue',
+    outDir: 'dist',
     dts: true,
     clean: true,
     minify: true,

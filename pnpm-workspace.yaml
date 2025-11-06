@@ -1,5 +1,4 @@
 packages:
   - 'website'
+  - 'packages/*'
   - 'packages/**/*'
-  - '../../nectoutil/NodeKit/packages/@necto-react/*'
-  - '../../nectoutil/NodeKit/packages/@necto/*'

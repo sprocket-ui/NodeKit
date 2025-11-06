@@ -1,7 +1,7 @@
 {
-  "name": "@sprocketui-react/button",
-  "version": "1.0.1",
-  "description": "Sprocket's standalone React button component.",
+  "name": "@sprocketui-react/label",
+  "version": "1.0.0",
+  "description": "Sprocket's standalone React label component.",
   "type": "module",
   "license": "MIT",
   "author": "Corinvo OSS Team",
@@ -21,16 +21,7 @@
     "dev": "tsup --watch"
   },
   "dependencies": {
-    "@necto-react/components": "^1.2.14",
-    "@necto-react/helpers": "^2.4.5",
-    "@necto-react/hooks": "^2.12.5",
-    "@necto-react/types": "^2.3.0",
-    "@necto/dom": "^1.4.5",
-    "@necto/mergers": "^1.4.0",
-    "@necto/strings": "^1.4.0",
-    "@react-aria/focus": "^3.20.2",
-    "@sprocketui-types/button": "workspace:*",
-    "react-aria": "^3.39.0",
+    "@sprocketui-types/label": "workspace:*",
     "shared": "workspace:*"
   },
   "peerDependencies": {

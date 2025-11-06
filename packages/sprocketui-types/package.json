@@ -14,7 +14,6 @@
   "author": "Corinvo OSS Team",
   "license": "MIT",
   "dependencies": {
-    "@sprocketui-types/menu": "workspace:*",
     "@sprocketui-types/button": "workspace:*"
   },
   "devDependencies": {

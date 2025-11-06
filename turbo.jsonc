@@ -11,6 +11,10 @@
       "dependsOn": ["^build:*", "shared#build"],
       "outputs": ["dist/**"]
     },
+    // @sprocketui workspace specified build dependencies.
+    "@sprocketui/react#build": {
+      "dependsOn": ["@sprocketui-react/button#build"]
+    },
     "dev": {
       "cache": false,
       "persistent": true

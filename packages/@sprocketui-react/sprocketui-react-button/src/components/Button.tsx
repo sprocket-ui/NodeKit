@@ -25,6 +25,7 @@ import type {
   ForwardRefExoticComponent
 } from 'react';
 import type { ButtonProps } from './Button.types';
+import type { UseRendererReturn } from '@necto-react/hooks';
 
 const BUTTON_NAME = 'Button' as const;
 
@@ -54,7 +55,7 @@ function ButtonFn(
   } = useButton(props, ref as any);
 
   const sprocketButtonID = useId({ defaultId: buttonProps.id });
-  const renderProps = useRenderer({
+  const renderProps: UseRendererReturn = useRenderer({
     ...props,
     values: {
       isHovered,
@@ -86,7 +87,7 @@ function ButtonFn(
 
     for (const [key, value] of Object.entries(stateAttributes)) {
       if (typeof value === 'boolean') {
-        attributes[`data-${kebabCase(key)}`] = value ? 'true' : undefined;
+        attributes[`data-${kebabCase(key)}`] = value ? String(true) : undefined;
         if (value) {
           sprocketState.push(kebabCase(key));
         }
@@ -107,7 +108,7 @@ function ButtonFn(
       {...mergeProps(buttonProps, dataAttributes)}
       id={sprocketButtonID}
       slot={props.slot || undefined}
-    >
+    >''
       {renderProps.children}
     </Primitive>
   );
@@ -127,12 +128,12 @@ export const Button: ForwardRefExoticComponent<
     Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>
   >;
 } = Object.assign(
-  forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props, ref) =>
+  forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props: Omit<ButtonProps, 'ref'>, ref: ForwardedRef<HTMLButtonElement>) =>
     ButtonFn(props as ButtonProps, ref)
   ),
   {
     Root: forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>(
-      (props, ref) => ButtonFn(props as ButtonProps, ref)
+      (props: Omit<ButtonProps, 'ref'>, ref: ForwardedRef<HTMLButtonElement>) => ButtonFn(props as ButtonProps, ref)
     )
   }
 );

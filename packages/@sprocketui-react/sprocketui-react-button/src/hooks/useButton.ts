@@ -47,7 +47,7 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     focusDisabled,
     preventFocusOnPress,
     isDisabled = false,
-    type = DEFAULT_BUTTON_TAG,
+    type = 'button',
 
     // Duplicate props for convenance.
     as: Tag = DEFAULT_BUTTON_TAG,

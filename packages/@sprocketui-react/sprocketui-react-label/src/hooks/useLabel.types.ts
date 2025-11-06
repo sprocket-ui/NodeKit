@@ -5,3 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
+
+import type { HTMLAttributes } from 'react';
+
+export interface UseLabelReturn {
+  labelProps: HTMLAttributes<any>;
+}
