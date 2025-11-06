@@ -28,7 +28,18 @@ const base = (overrides: Partial<Options> = {}) =>
 
 export const tsup = {
   react: base({
-    external: ['esbuild'],
+    external: [
+      'esbuild',
+      'react',
+      'react-dom',
+      'react/jsx-runtime',
+      // All other dependencies will be bundled (including 'shared')
+      /^@necto/,
+      /^@necto-react/,
+      /^@sprocketui-types/,
+      /^@react-aria/,
+      /^react-aria/
+    ],
     esbuildPlugins: [],
     format: ['esm', 'cjs', 'iife'],
   }),
