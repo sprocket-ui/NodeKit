@@ -21,8 +21,6 @@
     "dev": "tsup --watch"
   },
   "dependencies": {
-    "@necto/dom": "workspace:*",
-    "@necto-react/components": "workspace:*",
     "@sprocketui-types/label": "workspace:*",
     "shared": "workspace:*"
   },

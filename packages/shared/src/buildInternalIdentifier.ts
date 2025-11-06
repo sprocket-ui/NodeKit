@@ -6,7 +6,13 @@
  *
  */
 
-import { kebabCase } from '@necto/strings';
+// Simple kebabCase implementation
+function kebabCase(str: string, _preserveConsecutiveUppercase?: boolean): string {
+  return str
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/[\s_]+/g, '-')
+    .toLowerCase();
+}
 
 interface BuildInternalIdentifierOptions {
   // Prefix to use for ID.

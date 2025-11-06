@@ -6,9 +6,24 @@
  *
  */
 
+import { HTMLElements } from '@necto/dom';
+
+import type { RefObject } from 'react';
+import type { UseLabelReturn } from './useLabel.types';
+
+const DEFAULT_LABEL_TAG: keyof HTMLElementTagNameMap = HTMLElements.Label;
+
 export function useLabel(
   props: UseLabelProps,
-  ref: 
-): LabelReturn {
+  ref: RefObject<any>
+): UseLabelReturn {
+  const {
+    label,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledby,
 
+    // Duplicate props for convenance.
+    as: Tag = DEFAULT_LABEL_TAG,
+    elementType = Tag || DEFAULT_LABEL_TAG,
+  } = props;
 }

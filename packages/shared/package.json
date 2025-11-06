@@ -27,9 +27,7 @@
   "scripts": {
     "build": "tsup"
   },
-  "dependencies": {
-    "@necto/strings": "workspace:*"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^24.0.13",
     "tsup": "^8.4.0"

@@ -9,7 +9,5 @@
     "README.md"
   ],
   "types": "src/index.d.ts",
-  "dependencies": {
-    "@necto/types": "workspace:*"
-  }
+  "dependencies": {}
 }
