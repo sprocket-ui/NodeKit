@@ -1,5 +1,12 @@
 # @sprocketui/react
 
+## 0.1.4
+
+### Patch Changes
+
+- Updated dependencies [bcc82f4]
+  - @sprocketui-react/button@1.0.4
+
 ## 0.1.3
 
 ### Patch Changes
