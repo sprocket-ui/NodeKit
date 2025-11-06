@@ -43,10 +43,11 @@ jobs:
       - name: Build Packages
         run: pnpm build
 
-      - name: Create Release Pull Request
+      - name: Create Release PR
+        id: create_release_pr
         uses: changesets/action@v1
         with:
-          title: 'Release Packages'
+          title: 'Automated Package Release'
           createGithubReleases: true
           commit: 'Package Versioning'
           publish: pnpm exec changeset publish
@@ -55,8 +56,9 @@ jobs:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
 
       - name: Add automerge label to release PR
+        if: steps.create_release_pr.outputs.pull_request_number != ''
         uses: actions-ecosystem/action-add-labels@v1
         with:
           labels: automerge
-          issue_number: ${{ steps.create_release_pr.outputs.pull_request_number }}
+          number: ${{ steps.create_release_pr.outputs.pull_request_number }}
           github_token: ${{ steps.generate_token.outputs.token }}
