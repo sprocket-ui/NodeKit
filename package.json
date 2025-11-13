@@ -15,6 +15,12 @@
     "clean": "find packages -type d \\( -name 'node_modules' -o -name '.turbo' -o -name 'dist' -o -name '.dist' \\) -prune -exec rm -rf '{}' + && rm -rf node_modules .turbo dist .dist"
   },
   "packageManager": "pnpm@9.15.3",
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.1.2",
+      "@types/react-dom": "19.1.2"
+    }
+  },
   "devDependencies": {
     "@biomejs/biome": "^2.1.4",
     "@changesets/cli": "^2.29.2",

@@ -6,32 +6,10 @@
  *
  */
 
-import type { ElementType, HTMLAttributes } from 'react';
 import type { ButtonOptions } from '@sprocketui-types/button';
+import type { ElementType, HTMLAttributes, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 
-export interface UseButtonProps<T extends ElementType>
-  extends ButtonOptions<T> {
-  // Element to render the button as.
-  elementType?: string;
-
-  // Prevents focus of element on press events.
-  preventFocusOnPress?: boolean;
-
-  // Location to route the button to.
-  href?: string;
-
-  // The target that will be used for the href routing.
-  target?: string;
-
-  // Relationship HTML linker option.
-  rel?: string;
-
-  // Wether the button is disabled or not
-  isDisabled?: boolean;
-
-  // User click callback handler.
-  onClick?: (e: any) => void;
-
+interface UseButtonCallbackProps {
   // User press callback handler.
   onPress?: (e: any) => void;
 
@@ -48,7 +26,23 @@ export interface UseButtonProps<T extends ElementType>
   onPressChange?: (isPressed: boolean) => void;
 }
 
-export type ButtonHookReturn<T extends ElementType> = Readonly<{
+export interface UseButtonProps<T extends ElementType>
+  extends Omit<HTMLAttributes<HTMLElement>, keyof ButtonOptions<any> | 'children' | 'className' | 'style' | 'slot'>,
+    Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'target' | 'rel'>,
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof HTMLAttributes<any> | keyof ButtonOptions<any>>,
+    ButtonOptions<T>,
+    UseButtonCallbackProps {
+  // Element to render the button as.
+  elementType?: T;
+
+  // Prevents focus of element on press events.
+  preventFocusOnPress?: boolean;
+
+  // Wether the button is disabled or not
+  isDisabled?: boolean;
+}
+
+export type UseButtonReturn<T extends ElementType> = Readonly<{
   // The HTML render tag of the button (defaults to button).
   elementType: T;
 

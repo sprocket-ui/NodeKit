@@ -27,8 +27,8 @@
   "scripts": {
     "build": "tsup"
   },
-  "dependencies": {},
   "devDependencies": {
+    "@necto/strings": "link:../../../../nectoutil/NodeKit/packages/@necto/necto-strings",
     "@types/node": "^24.0.13",
     "tsup": "^8.4.0"
   }

@@ -15,8 +15,10 @@ import { mergeProps } from '@necto/mergers';
 import { forwardRef, useMemo } from 'react';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
-import { ButtonContext, useButton } from '@sprocketui-react/button';
+import { InputContext } from '../contexts';
+import { useInput } from '../hooks/useInput';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
+import { INPUT_NAME } from '../constants';
 
 import type {
   ForwardedRef,
@@ -24,49 +26,50 @@ import type {
   RefAttributes,
   ForwardRefExoticComponent
 } from 'react';
-import type { ButtonProps } from './Button.types';
+import type { InputProps } from './Input.types';
 import type { UseRendererReturn } from '@necto-react/hooks';
-
-const BUTTON_NAME = 'Button' as const;
 
 /**
  * @internal
- * Internal render function for the Button component. Handles context, state, and prop merging for the button element.
- * Not intended for public use; use the exported Button component instead.
+ * Internal render function for the Input component. Handles context, state, and prop merging for the input element.
+ * Not intended for public use; use the exported Input component instead.
  *
- * @param {ButtonProps} props - The props for the Button component.
- * @param {ForwardedRef<HTMLButtonElement>} ref - The forwarded ref for the button element.
- * @returns {ReactElement | null} The rendered button element or null.
+ * @param {InputProps} props - The props for the Input component.
+ * @param {ForwardedRef<HTMLInputElement>} ref - The forwarded ref for the input element.
+ * @returns {ReactElement | null} The rendered input element or null.
  */
-function ButtonFn(
-  props: ButtonProps,
-  ref: ForwardedRef<HTMLButtonElement>
+function InputFn(
+  props: InputProps,
+  ref: ForwardedRef<HTMLInputElement>
 ): ReactElement | null {
-  [props, ref] = useContextProps({ props, ref, context: ButtonContext });
+  [props, ref] = useContextProps({ props, ref, context: InputContext });
 
   const {
-    buttonProps,
+    inputProps,
     isHovered,
-    isPressed,
     isFocused,
     isDisabled,
+    isReadOnly,
+    isRequired,
     elementType,
-    isFocusVisible
-  } = useButton(props, ref as any);
+    isFocusVisible,
+    isInvalid
+  } = useInput(props, ref as any);
 
-  const sprocketButtonID = useId({ defaultId: buttonProps.id });
+  const sprocketInputID = useId({ defaultId: inputProps.id });
   const renderProps: UseRendererReturn = useRenderer({
     ...props,
     values: {
       isHovered,
-      isPressed,
       isFocused,
       isFocusVisible,
-      isDisabled
-      // isPending
+      isDisabled,
+      isReadOnly,
+      isRequired,
+      isInvalid
     },
     defaultClassName: buildInternalIdentifier({
-      component: BUTTON_NAME
+      component: INPUT_NAME
     }),
     style: (values) => ({
       ...(props.style instanceof Function ? props.style(values) : props.style)
@@ -79,7 +82,9 @@ function ButtonFn(
       focus: isFocused,
       focusVisible: isFocusVisible,
       disabled: isDisabled,
-      pressed: isPressed
+      readonly: isReadOnly,
+      required: isRequired,
+      invalid: isInvalid
     };
 
     const attributes: Record<string, string | undefined> = {};
@@ -98,15 +103,15 @@ function ButtonFn(
       ...attributes,
       'data-sprocket-state': sprocketState.join(' ')
     };
-  }, [isHovered, isFocused, isFocusVisible, isDisabled, isPressed]);
+  }, [isHovered, isFocused, isFocusVisible, isDisabled, isReadOnly, isRequired, isInvalid]);
 
   return (
     <Primitive
       ref={ref}
       as={elementType}
       {...renderProps}
-      {...mergeProps(buttonProps, dataAttributes)}
-      id={sprocketButtonID}
+      {...mergeProps(inputProps, dataAttributes)}
+      id={sprocketInputID}
       slot={props.slot || undefined}
     >
       {renderProps.children}
@@ -115,27 +120,27 @@ function ButtonFn(
 }
 
 /**
- * The public Button component for Sprocket UI.
+ * The public Input component for Sprocket UI.
  *
- * @param {ButtonProps} props - The props for the Button component.
- * @param {ForwardedRef<HTMLButtonElement>} ref - The forwarded ref for the button element.
- * @returns {ReactElement | null} The rendered button element or null.
+ * @param {InputProps} props - The props for the Input component.
+ * @param {ForwardedRef<HTMLInputElement>} ref - The forwarded ref for the input element.
+ * @returns {ReactElement | null} The rendered input element or null.
  */
-export const Button: ForwardRefExoticComponent<
-  Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>
+export const Input: ForwardRefExoticComponent<
+  Omit<InputProps, 'ref'> & RefAttributes<HTMLInputElement>
 > & {
   Root: ForwardRefExoticComponent<
-    Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>
+    Omit<InputProps, 'ref'> & RefAttributes<HTMLInputElement>
   >;
 } = Object.assign(
-  forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props: Omit<ButtonProps, 'ref'>, ref: ForwardedRef<HTMLButtonElement>) =>
-    ButtonFn(props as ButtonProps, ref)
+  forwardRef<HTMLInputElement, Omit<InputProps, 'ref'>>((props: Omit<InputProps, 'ref'>, ref: ForwardedRef<HTMLInputElement>) =>
+    InputFn(props as InputProps, ref)
   ),
   {
-    Root: forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>(
-      (props: Omit<ButtonProps, 'ref'>, ref: ForwardedRef<HTMLButtonElement>) => ButtonFn(props as ButtonProps, ref)
+    Root: forwardRef<HTMLInputElement, Omit<InputProps, 'ref'>>(
+      (props: Omit<InputProps, 'ref'>, ref: ForwardedRef<HTMLInputElement>) => InputFn(props as InputProps, ref)
     )
   }
 );
 
-Button.displayName = BUTTON_NAME;
+Input.displayName = INPUT_NAME;

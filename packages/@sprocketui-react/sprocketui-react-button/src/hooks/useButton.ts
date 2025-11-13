@@ -17,13 +17,14 @@ import {
   useFocusRing,
   useFocusable
 } from '@necto-react/hooks';
+import { defu } from 'defu';
 import { HTMLElements } from '@necto/dom';
 import { mergeProps } from '@necto/mergers';
 import { filterDOMProps } from '@necto-react/helpers';
 import { ANCHOR_ELEMENT_PROPS, ALLOWED_EXTERNAL_PROPS } from 'shared';
 
 import type { ElementType, RefObject } from 'react';
-import type { UseButtonProps, ButtonHookReturn } from './useButton.types';
+import type { UseButtonProps, UseButtonReturn } from './useButton.types';
 
 const DEFAULT_BUTTON_TAG: keyof HTMLElementTagNameMap = HTMLElements.Button;
 
@@ -38,7 +39,7 @@ const DEFAULT_BUTTON_TAG: keyof HTMLElementTagNameMap = HTMLElements.Button;
 export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
   props: UseButtonProps<T>,
   ref: RefObject<any>
-): ButtonHookReturn<T> {
+): UseButtonReturn<T> {
   const {
     rel,
     href,
@@ -46,21 +47,23 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     autoFocus,
     focusDisabled,
     preventFocusOnPress,
-    isDisabled = false,
-    type = 'button',
+    isDisabled,
+    type,
+    elementType,
 
-    // Duplicate props for convenance.
-    as: Tag = DEFAULT_BUTTON_TAG,
-    elementType = Tag || DEFAULT_BUTTON_TAG,
-
-    // Callbacks handlers.
+    // Callbacks
     onClick,
     onPress,
     onPressStart,
     onPressEnd,
     onPressUp,
     onPressChange
-  } = props;
+  } = defu(props, {
+    isDisabled: false,
+    type: 'button' as const,
+    as: DEFAULT_BUTTON_TAG,
+    elementType: props.elementType || props.as || DEFAULT_BUTTON_TAG
+  });
 
   let additionalProps: Record<string, unknown>;
   if (elementType === HTMLElements.Button) {
@@ -84,11 +87,11 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
   }
 
   const { hoverProps, isHovered } = useHover({
-    ...props,
+    ...(props as any),
     isDisabled: isDisabled
   });
   const { focusProps, isFocused, isFocusVisible } = useFocusRing({ autoFocus });
-  const { focusableProps } = useFocusable(props, ref);
+  const { focusableProps } = useFocusable(props as any, ref);
 
   const { pressProps, isPressed } = usePress({
     ref,
@@ -99,7 +102,7 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     onPressChange,
     onPress,
     onPressUp,
-    onClick
+    onClick: onClick as any
   });
 
   if (focusDisabled) {
@@ -127,5 +130,5 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     isFocusVisible,
     elementType: elementType as T,
     buttonProps: mergeProps(buttonProps, additionalProps)
-  } satisfies ButtonHookReturn<T>;
+  } satisfies UseButtonReturn<T>;
 }

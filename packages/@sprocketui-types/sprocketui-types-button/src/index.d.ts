@@ -6,26 +6,16 @@
  *
  */
 
-/**
- * The possible values for the HTML button type attribute.
- */
-export enum ButtonTypeValues {
-  Reset = 'reset',
-  Button = 'button',
-  Submit = 'submit'
-}
+import { ButtonTypeValues } from './types.d';
 
-/**
- * String literal type for allowed button types.
- */
-export type ButtonTypes = `${ButtonTypeValues}`;
+import type { ButtonTypes } from './type.d';
 
 /**
  * Options for configuring a Sprocket UI Button component.
  *
  * @template T The element type to render as (e.g., 'button', 'a', 'input').
  */
-export interface ButtonOptions<T> {
+interface ButtonOptions<T> {
   /** Alternative button renderer. */
   as?: T;
 
@@ -44,3 +34,7 @@ export interface ButtonOptions<T> {
   /** The id attribute for the button element. */
   id?: string;
 }
+
+export { ButtonTypeValues };
+
+export type { ButtonOptions, ButtonTypes };

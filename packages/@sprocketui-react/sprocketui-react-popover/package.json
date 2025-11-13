@@ -1,7 +1,7 @@
 {
-  "name": "@sprocketui-react/button",
-  "version": "1.1.0",
-  "description": "Sprocket's standalone React button component.",
+  "name": "@sprocketui-react/popover",
+  "version": "1.0.0",
+  "description": "Sprocket's standalone React popover component.",
   "type": "module",
   "license": "MIT",
   "author": "Corinvo OSS Team",
@@ -16,23 +16,18 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "tsup",
+    "build-disabled": "tsup",
     "test": "vitest",
     "dev": "tsup --watch"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.26.28",
+    "@necto/mergers": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-mergers",
+    "@necto/strings": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-strings",
     "@necto-react/components": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-components",
     "@necto-react/helpers": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-helpers",
     "@necto-react/hooks": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-hooks",
-    "@necto-react/types": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-types",
-    "@necto/dom": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-dom",
-    "@necto/mergers": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-mergers",
-    "@necto/strings": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-strings",
-    "@react-aria/focus": "^3.20.2",
-    "@sprocketui-react/input": "workspace:^",
-    "@sprocketui-types/button": "workspace:*",
-    "defu": "^6.1.4",
-    "react-aria": "^3.39.0"
+    "@sprocketui-types/popover": "workspace:*"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1",

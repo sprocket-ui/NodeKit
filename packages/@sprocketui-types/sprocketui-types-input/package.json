@@ -1,6 +1,6 @@
 {
-  "name": "@sprocketui-types/menu",
-  "version": "1.0.1",
+  "name": "@sprocketui-types/input",
+  "version": "1.0.0",
   "description": "",
   "author": "Corinvo OSS Team",
   "license": "MIT",
@@ -8,6 +8,7 @@
     "src",
     "README.md"
   ],
-  "types": "src/index.d.ts",
+  "types": "./src/index.d.ts",
+  "main": "./src/index.d.ts",
   "dependencies": {}
 }

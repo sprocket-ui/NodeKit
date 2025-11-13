@@ -6,12 +6,15 @@
  *
  */
 
-// Simple kebabCase implementation
-function kebabCase(str: string, _preserveConsecutiveUppercase?: boolean): string {
-  return str
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
-    .replace(/[\s_]+/g, '-')
-    .toLowerCase();
+import { kebabCase } from '@necto/strings';
+
+// Constants for random ID generation
+const UNIQUE_ID_LENGTH = 6; // 8 - 2 (slice offset)
+const OBSCURE_ID_LENGTH = 14; // 16 - 2 (slice offset)
+
+// Generate random ID for unique/obscure identifiers
+function generateRandomId(length: number): string {
+  return Math.random().toString(36).slice(2, 2 + length);
 }
 
 interface BuildInternalIdentifierOptions {
@@ -35,22 +38,29 @@ interface BuildInternalIdentifierOptions {
 }
 
 function buildInternalIdentifier({
-  prefix = ':sprocket:=',
+  prefix = '__sprocket:=[',
   component,
   variant,
   state,
   unique,
   obscure
 }: BuildInternalIdentifierOptions) {
-  if (!component) throw new Error('Component context is required!');
+  const trimmedComponent = component?.trim();
+  if (!trimmedComponent) throw new Error('Component context is required!');
 
-  const parts: string[] = [prefix + kebabCase(component, false)];
+  // Pre-allocate array with estimated capacity for better performance
+  const capacity = 1 + (variant ? 1 : 0) + (state?.length ?? 0) + (unique ? 1 : 0) + (obscure ? 1 : 0);
+  const parts: string[] = new Array(capacity);
+  let index = 0;
 
-  if (variant) parts.push(kebabCase(variant, false));
-  if (Array.isArray(state) && state.length)
-    parts.push(...state.map((s) => kebabCase(s, false)));
-  if (unique) parts.push(Math.random().toString(36).slice(2, 8));
-  if (obscure) parts.push(Math.random().toString(36).slice(2, 16));
+  parts[index++] = prefix + kebabCase(trimmedComponent, false) + ']';
+
+  if (variant) parts[index++] = kebabCase(variant, false);
+  if (state?.length) {
+    for (const s of state) parts[index++] = kebabCase(s, false);
+  }
+  if (unique) parts[index++] = generateRandomId(UNIQUE_ID_LENGTH);
+  if (obscure) parts[index++] = generateRandomId(OBSCURE_ID_LENGTH);
 
   return parts.join('--');
 }

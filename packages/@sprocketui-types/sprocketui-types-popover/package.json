@@ -10,6 +10,7 @@
   ],
   "types": "src/index.d.ts",
   "dependencies": {
+    "@floating-ui/react": "^0.26.28",
     "@floating-ui/utils": "^0.2.9"
   }
 }
