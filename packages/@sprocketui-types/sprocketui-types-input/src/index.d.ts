@@ -39,8 +39,8 @@ interface InputOptions<T> {
   /** Minimum length of the input value. */
   minLength?: number;
 
-  /** Pattern for input validation. */
-  pattern?: RegExp;
+  /** Pattern for input validation (string for HTML pattern attribute). */
+  pattern?: string;
 
   /** Whether the input is disabled (HTML/Vue-style). */
   disabled?: boolean;
@@ -60,8 +60,8 @@ interface InputOptions<T> {
   /** Autocorrect behavior for the input. */
   autoCorrect?: string;
 
-  /** Spell check behavior for the input. */
-  spellCheck?: string;
+  /** Spell check behavior for the input (boolean or "true"/"false" string). */
+  spellCheck?: boolean | 'true' | 'false';
 
   /** Validation behavior (native browser or Sprocket custom). */
   validationBehavior?: 'native' | 'sprocket';

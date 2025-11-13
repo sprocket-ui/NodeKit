@@ -1,24 +1,12 @@
 {
+  "extends": "shared/configs/tsconfig.react.json",
   "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
     "baseUrl": "./",
     "paths": {
       "@sprocketui-react/popover": ["./src/index.ts"]
-    },
-    "target": "ESNext",
-    "module": "ESNext",
-    "jsx": "react-jsx",
-    "declaration": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "strict": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "noEmit": false,
-    "skipLibCheck": true,
-    "types": ["react", "react-dom"]
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*"]
 }

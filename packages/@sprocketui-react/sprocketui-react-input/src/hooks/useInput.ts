@@ -20,9 +20,9 @@ import {
 import { defu } from 'defu';
 import { HTMLElements } from '@necto/dom';
 import { mergeProps } from '@necto/mergers';
-import { filterDOMProps } from '@necto-react/helpers';
 import { ALLOWED_EXTERNAL_PROPS } from 'shared';
 import { DEFAULT_INPUT_TAG } from '../constants';
+import { filterDOMProps } from '@necto-react/helpers';
 
 import type { ElementType, RefObject } from 'react';
 import type { UseInputProps, UseInputReturn } from './useInput.types';
@@ -112,12 +112,12 @@ export function useInput<T extends ElementType = typeof DEFAULT_INPUT_TAG>(
     },
     filterDOMProps(props, {
       allowLabelableProps: true,
-      allowedLabelableProps: new Set([]),
+      allowedLabelableProps: new Set(['placeholder', 'type', 'pattern', 'inputMode', 'autoComplete', 'maxLength', 'minLength', 'autoCorrect', 'spellCheck']),
       extraAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
     })
   );
 
-  const result: UseInputReturn<T> = {
+  return {
     isFocused,
     isHovered,
     isDisabled,
@@ -126,12 +126,7 @@ export function useInput<T extends ElementType = typeof DEFAULT_INPUT_TAG>(
     isFocusVisible,
     isInvalid,
     elementType: elementType as T,
-    inputProps: mergeProps(inputProps, additionalProps)
-  };
-
-  if (clearable) {
-    (result as any).clearInput = handleClear;
-  }
-
-  return result;
+    inputProps: mergeProps(inputProps, additionalProps),
+    ...(clearable && { clearInput: handleClear })
+  } satisfies UseInputReturn<T>;
 }

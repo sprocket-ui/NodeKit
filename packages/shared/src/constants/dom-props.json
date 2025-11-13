@@ -18,5 +18,24 @@
     "formMethod",
     "formTarget",
     "formNoValidate"
+  ],
+  "ALLOWED_INPUT_LABELABLE_PROPS": [
+    "placeholder",
+    "type",
+    "pattern",
+    "inputMode",
+    "autoComplete",
+    "maxLength",
+    "minLength",
+    "autoCorrect",
+    "spellCheck"
+  ],
+  "ALLOWED_BUTTON_LABELABLE_PROPS": [
+    "type",
+    "formAction",
+    "formEncType",
+    "formMethod",
+    "formTarget",
+    "formNoValidate"
   ]
 }

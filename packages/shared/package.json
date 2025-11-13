@@ -17,6 +17,8 @@
       "require": "./dist/configs/index.cjs",
       "types": "./dist/configs/index.d.ts"
     },
+    "./configs/tsconfig.react.json": "./configs/tsconfig.react.json",
+    "./configs/tsconfig.vue.json": "./configs/tsconfig.vue.json",
     "./constants": {
       "import": "./dist/configs/index.js",
       "require": "./dist/configs/index.cjs",
