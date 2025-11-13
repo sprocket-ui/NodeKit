@@ -6,4 +6,5 @@
  *
  */
 
+export * from '@sprocketui-react/input';
 export * from '@sprocketui-react/button';
