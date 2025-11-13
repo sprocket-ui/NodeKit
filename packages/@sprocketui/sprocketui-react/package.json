@@ -20,6 +20,7 @@
     "dev": "tsup --watch"
   },
   "dependencies": {
+    "@sprocketui-react/input": "workspace:*",
     "@sprocketui-react/button": "workspace:*"
   },
   "peerDependencies": {
