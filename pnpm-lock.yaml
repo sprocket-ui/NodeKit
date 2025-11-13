@@ -283,6 +283,9 @@ importers:
       '@sprocketui-react/button':
         specifier: workspace:*
         version: link:../../@sprocketui-react/sprocketui-react-button
+      '@sprocketui-react/input':
+        specifier: workspace:*
+        version: link:../../@sprocketui-react/sprocketui-react-input
     devDependencies:
       '@types/node':
         specifier: ^24.3.0
