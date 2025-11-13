@@ -112,7 +112,7 @@ export function useInput<T extends ElementType = typeof DEFAULT_INPUT_TAG>(
     },
     filterDOMProps(props, {
       allowLabelableProps: true,
-      allowedLabelableProps: new Set(['placeholder', 'type', 'pattern', 'inputMode', 'autoComplete', 'maxLength', 'minLength', 'autoCorrect', 'spellCheck']),
+      allowedLabelableProps: new Set([]),
       extraAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
     })
   );
@@ -126,7 +126,7 @@ export function useInput<T extends ElementType = typeof DEFAULT_INPUT_TAG>(
     isFocusVisible,
     isInvalid,
     elementType: elementType as T,
-    inputProps: mergeProps(inputProps, additionalProps),
-    ...(clearable && { clearInput: handleClear })
+    ...(clearable && { clearInput: handleClear }),
+    inputProps: mergeProps(inputProps, additionalProps)
   } satisfies UseInputReturn<T>;
 }
