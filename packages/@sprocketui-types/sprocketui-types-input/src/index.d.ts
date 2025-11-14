@@ -71,6 +71,12 @@ interface InputOptions<T> {
 
   /** Form id to associate this input with. */
   form?: string;
+
+  /** The current value (controlled). */
+  value?: string | number | readonly string[];
+
+  /** The default value (uncontrolled). */
+  defaultValue?: string | number | readonly string[];
 }
 
 export { InputTypeValues, InputModeValues };

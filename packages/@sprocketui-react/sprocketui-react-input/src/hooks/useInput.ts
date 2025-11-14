@@ -17,10 +17,11 @@ import {
   useFocusable,
   useEffectEvent
 } from '@necto-react/hooks';
+import { useState } from 'react';
 import { defu } from 'defu';
 import { HTMLElements } from '@necto/dom';
 import { mergeProps } from '@necto/mergers';
-import { ALLOWED_EXTERNAL_PROPS } from 'shared';
+import { ALLOWED_EXTERNAL_PROPS, ALLOWED_INPUT_LABELABLE_PROPS } from 'shared';
 import { DEFAULT_INPUT_TAG } from '../constants';
 import { filterDOMProps } from '@necto-react/helpers';
 
@@ -46,6 +47,8 @@ export function useInput<T extends ElementType = typeof DEFAULT_INPUT_TAG>(
     isRequired,
     clearable,
     elementType,
+    value: controlledValue,
+    defaultValue,
 
     // Callbacks
     onValueChange,
@@ -62,15 +65,26 @@ export function useInput<T extends ElementType = typeof DEFAULT_INPUT_TAG>(
     elementType: props.elementType || props.as || DEFAULT_INPUT_TAG
   });
 
+  const [internalValue, setInternalValue] = useState(defaultValue ?? '');
+  const isControlled = controlledValue !== undefined;
+  const value = isControlled ? controlledValue : internalValue;
+
   const isInvalid: boolean = !!props['aria-invalid'] && props['aria-invalid'] !== 'false';
 
   const handleChange = useEffectEvent((e: any): void => {
+    const newValue = e.target.value;
+    if (!isControlled) {
+      setInternalValue(newValue);
+    }
     onChange?.(e);
-    onValueChange?.(e.target.value);
+    onValueChange?.(newValue);
   });
 
   const handleClear = useEffectEvent((): void => {
     if (!ref.current) return;
+    if (!isControlled) {
+      setInternalValue('');
+    }
     ref.current.value = '';
     const event = new Event('input', { bubbles: true });
     ref.current.dispatchEvent(event);
@@ -105,16 +119,17 @@ export function useInput<T extends ElementType = typeof DEFAULT_INPUT_TAG>(
     focusableProps,
     hoverProps,
     focusProps,
+    filterDOMProps(props, {
+      allowLabelableProps: true,
+      allowedLabelableProps: new Set(ALLOWED_INPUT_LABELABLE_PROPS),
+      extraAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
+    }),
     {
       onChange: handleChange as any,
       onFocus: onFocus as any,
-      onBlur: onBlur as any
-    },
-    filterDOMProps(props, {
-      allowLabelableProps: true,
-      allowedLabelableProps: new Set([]),
-      extraAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
-    })
+      onBlur: onBlur as any,
+      value: value
+    }
   );
 
   return {
