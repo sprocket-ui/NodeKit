@@ -15,10 +15,11 @@ import {
   useHover,
   useFocusRing,
   useFocusable,
+  useAriaProps,
   useEffectEvent
 } from '@necto-react/hooks';
-import { useState } from 'react';
 import { defu } from 'defu';
+import { useState } from 'react';
 import { HTMLElements } from '@necto/dom';
 import { mergeProps } from '@necto/mergers';
 import { ALLOWED_EXTERNAL_PROPS, ALLOWED_INPUT_LABELABLE_PROPS } from 'shared';
@@ -92,14 +93,18 @@ export function useInput<T extends ElementType = typeof DEFAULT_INPUT_TAG>(
     onValueChange?.('');
   });
 
+  const ariaProps = useAriaProps({
+    isInvalid,
+    isDisabled,
+    isReadOnly,
+    isRequired
+  });
+
   const additionalProps: Record<string, unknown> = {
     disabled: isDisabled,
     readOnly: isReadOnly,
     required: isRequired,
-    'aria-invalid': isInvalid || undefined,
-    'aria-required': isRequired || undefined,
-    'aria-disabled': isDisabled || undefined,
-    'aria-readonly': isReadOnly || undefined,
+    ...ariaProps,
     ...(elementType !== HTMLElements.Input && elementType !== HTMLElements.Textarea && {
       role: 'textbox'
     })
