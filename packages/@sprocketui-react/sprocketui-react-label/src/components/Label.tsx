@@ -1,4 +1,4 @@
-// biome-ignore-all assist/source/organizeImports: No need to sort import here.
+// biome-ignore-all assist/source/organizeImports: No need to sort imports.
 
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
@@ -10,58 +10,89 @@
 
 'use client';
 
+import { LABEL_NAME } from '../constants';
 import { forwardRef } from 'react';
-import { HTMLElements } from '@necto/dom';
+import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
+import { LabelContext } from '../contexts/LabelContext';
+import { useLabel } from '@sprocketui-react/label';
+import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
 import type {
-  MouseEvent,
   ForwardedRef,
   ReactElement,
   RefAttributes,
-  ForwardRefExoticComponent,
+  ForwardRefExoticComponent
 } from 'react';
 import type { LabelProps } from './Label.types';
+import type { UseRendererReturn } from '@necto-react/hooks';
 
-const LABEL_NAME = 'Label' as const;
-
+/**
+ * @internal
+ * Internal render function for the Label component. Handles context, state, and prop merging for the label element.
+ * Not intended for public use; use the exported Label component instead.
+ *
+ * @param {LabelProps} props - The props for the Label component.
+ * @param {ForwardedRef<HTMLLabelElement>} ref - The forwarded ref for the label element.
+ * @returns {ReactElement | null} The rendered label element or null.
+ */
 function LabelFn(
   props: LabelProps,
   ref: ForwardedRef<HTMLLabelElement>
 ): ReactElement | null {
+  [props, ref] = useContextProps({ props, ref, context: LabelContext });
+
+  const {
+    labelProps,
+    elementType
+  } = useLabel(props, ref as any);
+
+  const sprocketLabelID: string = useId({ defaultId: labelProps.id });
+  const renderProps: UseRendererReturn = useRenderer({
+    ...props,
+    values: {},
+    defaultClassName: buildInternalIdentifier({
+      component: LABEL_NAME
+    }),
+    style: (values) => ({
+      ...(props.style instanceof Function ? props.style(values) : props.style)
+    })
+  });
+
   return (
-    <Primitive.Label
-      {...props}
+    <Primitive
       ref={ref}
-      onMouseDown={(event: MouseEvent): void => {
-        const target = event.target as HTMLElement;
-        if (target.closest([...new Set([
-          HTMLElements.Input,
-          HTMLElements.Button,
-          HTMLElements.Select,
-          HTMLElements.Textarea
-        ].filter(Boolean))].join(', '))) return;
+      as={elementType}
+      {...renderProps}
+      {...labelProps}
+      id={sprocketLabelID}
+      slot={props.slot || undefined}
+    >
+      {renderProps.children}
+    </Primitive>
+  );
+}
 
-        props.onMouseDown?.(event as MouseEvent<HTMLLabelElement>);
-        if (!event.defaultPrevented && event.detail > 1) event.preventDefault();
-      }}
-    />
-   )
-};
-
+/**
+ * The public Label component for Sprocket UI.
+ *
+ * @param {LabelProps} props - The props for the Label component.
+ * @param {ForwardedRef<HTMLLabelElement>} ref - The forwarded ref for the label element.
+ * @returns {ReactElement | null} The rendered label element or null.
+ */
 export const Label: ForwardRefExoticComponent<
-  Omit<LabelProps, 'ref'> & RefAttributes<HTMLButtonElement>
+  Omit<LabelProps, 'ref'> & RefAttributes<HTMLLabelElement>
 > & {
   Root: ForwardRefExoticComponent<
-    Omit<LabelProps, 'ref'> & RefAttributes<HTMLButtonElement>
+    Omit<LabelProps, 'ref'> & RefAttributes<HTMLLabelElement>
   >;
 } = Object.assign(
-  forwardRef<HTMLButtonElement, Omit<LabelProps, 'ref'>>((props, ref) =>
-    LabelFn(props as LabelProps, ref as any)
+  forwardRef<HTMLLabelElement, Omit<LabelProps, 'ref'>>((props: Omit<LabelProps, 'ref'>, ref: ForwardedRef<HTMLLabelElement>) =>
+    LabelFn(props as LabelProps, ref)
   ),
   {
-    Root: forwardRef<HTMLButtonElement, Omit<LabelProps, 'ref'>>(
-      (props, ref) => LabelFn(props as LabelProps, ref as any)
+    Root: forwardRef<HTMLLabelElement, Omit<LabelProps, 'ref'>>(
+      (props: Omit<LabelProps, 'ref'>, ref: ForwardedRef<HTMLLabelElement>) => LabelFn(props as LabelProps, ref)
     )
   }
 );

@@ -6,11 +6,18 @@
  *
  */
 
-import type { MouseEvent } from 'react';
+import type { ElementType } from 'react';
+import type { RenderProps } from '@necto-react/types';
 import type { LabelOptions } from '@sprocketui-types/label';
+import type { UseLabelProps } from '@sprocketui-react/label';
 
-export interface LabelProps extends LabelOptions {
-  asChild?: boolean;
-
-  onMouseDown?: (event: MouseEvent<HTMLLabelElement>) => void;
+/**
+ * Props for the Label component.
+ */
+export interface LabelProps
+  extends LabelOptions<ElementType>,
+    RenderProps<any>,
+    UseLabelProps<ElementType> {
+  // Slot values for React rendering.
+  slot?: string | null;
 }

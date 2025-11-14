@@ -173,9 +173,30 @@ importers:
 
   packages/@sprocketui-react/sprocketui-react-label:
     dependencies:
+      '@necto-react/components':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-components
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-components
+      '@necto-react/helpers':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-helpers
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-helpers
+      '@necto-react/hooks':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-hooks
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-hooks
+      '@necto-react/types':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-types
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-types
+      '@necto/dom':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-dom
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-dom
+      '@necto/mergers':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-mergers
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-mergers
       '@sprocketui-types/label':
         specifier: workspace:*
         version: link:../../@sprocketui-types/sprocketui-types-label
+      shared:
+        specifier: workspace:*
+        version: link:../../shared
     devDependencies:
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -198,9 +219,6 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.2.0(react@19.2.0)
-      shared:
-        specifier: workspace:*
-        version: link:../../shared
       tsup:
         specifier: ^8.4.0
         version: 8.5.0(jiti@2.6.1)(postcss@8.5.6)(typescript@5.9.3)
@@ -286,6 +304,9 @@ importers:
       '@sprocketui-react/input':
         specifier: workspace:*
         version: link:../../@sprocketui-react/sprocketui-react-input
+      '@sprocketui-react/label':
+        specifier: workspace:*
+        version: link:../../@sprocketui-react/sprocketui-react-label
     devDependencies:
       '@types/node':
         specifier: ^24.3.0

@@ -1,3 +1,6 @@
+// biome-ignore-all assist/source/organizeImports: No need to sort imports.
+// biome-ignore-all lint/suspicious/noExplicitAny: Explicit any is okay here.
+
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
@@ -6,24 +9,67 @@
  *
  */
 
-import { HTMLElements } from '@necto/dom';
+'use client';
 
-import type { RefObject } from 'react';
-import type { UseLabelReturn } from './useLabel.types';
+import { useId } from '@necto-react/hooks';
+import { filterDOMProps } from '@necto-react/helpers';
+import { mergeProps } from '@necto/mergers';
+import { ALLOWED_EXTERNAL_PROPS } from 'shared';
+import { DEFAULT_LABEL_TAG } from '../constants';
 
-const DEFAULT_LABEL_TAG: keyof HTMLElementTagNameMap = HTMLElements.Label;
+import type { ElementType, RefObject, MouseEvent } from 'react';
+import type { UseLabelProps, UseLabelReturn } from './useLabel.types';
 
-export function useLabel(
-  props: UseLabelProps,
+/**
+ * React hook that provides all necessary props and state for a headless label component.
+ *
+ * @template T The element type to render as (e.g., 'label', 'span').
+ * @param {UseLabelProps<T>} props - The props for configuring the label's behavior and accessibility.
+ * @param {RefObject<any>} ref - The ref to the label element.
+ * @returns {UseLabelReturn<T>} An object containing props for the label element and field props.
+ */
+export function useLabel<T extends ElementType = typeof DEFAULT_LABEL_TAG>(
+  props: UseLabelProps<T>,
   ref: RefObject<any>
-): UseLabelReturn {
+): UseLabelReturn<T> {
   const {
-    label,
-    'aria-label': ariaLabel,
-    'aria-labelledby': ariaLabelledby,
-
-    // Duplicate props for convenance.
-    as: Tag = DEFAULT_LABEL_TAG,
-    elementType = Tag || DEFAULT_LABEL_TAG,
+    id,
+    htmlFor,
+    elementType = props.as || DEFAULT_LABEL_TAG,
+    onMouseDown
   } = props;
+
+  const labelId = useId({ defaultId: id });
+
+  const handleMouseDown = (event: MouseEvent<HTMLLabelElement>): void => {
+    // Only prevent text selection if clicking inside the label itself
+    const target = event.target as HTMLElement;
+    if (target.closest('button, input, select, textarea')) return;
+
+    onMouseDown?.(event as any);
+
+    // Prevent text selection when double clicking label
+    if (!event.defaultPrevented && event.detail > 1) {
+      event.preventDefault();
+    }
+  };
+
+  const labelProps = mergeProps(
+    {
+      id: labelId,
+      htmlFor: elementType === 'label' ? htmlFor : undefined,
+      onMouseDown: handleMouseDown
+    },
+    filterDOMProps(props, {
+      extraAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
+    })
+  );
+
+  const fieldProps = htmlFor ? { 'aria-labelledby': labelId } : {};
+
+  return {
+    labelProps,
+    fieldProps,
+    elementType: elementType as T
+  };
 }

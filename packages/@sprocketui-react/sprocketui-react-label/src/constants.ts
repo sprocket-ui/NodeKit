@@ -1,5 +1,3 @@
-// biome-ignore-all assist/source/organizeImports: No need to sort exports and imports.
-
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
@@ -8,6 +6,7 @@
  *
  */
 
-export * from './hooks';
-export * from './contexts';
-export * from './components';
+import { HTMLElements } from '@necto/dom';
+
+export const LABEL_NAME: string = 'Label' as const;
+export const DEFAULT_LABEL_TAG: keyof HTMLElementTagNameMap = HTMLElements.Label;

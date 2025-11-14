@@ -6,3 +6,12 @@
  *
  */
 
+export {
+  Label,
+  Label as SprocketLabel
+} from './Label';
+
+export type {
+  LabelProps,
+  LabelProps as SprocketLabelProps
+} from './Label.types';

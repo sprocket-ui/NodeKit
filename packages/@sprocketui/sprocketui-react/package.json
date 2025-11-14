@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@sprocketui-react/input": "workspace:*",
+    "@sprocketui-react/label": "workspace:*",
     "@sprocketui-react/button": "workspace:*"
   },
   "peerDependencies": {

@@ -10,8 +10,6 @@ import type { InputOptions } from '@sprocketui-types/input';
 import type { ElementType, HTMLAttributes, InputHTMLAttributes } from 'react';
 
 interface UseInputCallbackProps {
-  // Custom Sprocket UI callbacks (not in React Aria)
-
   // User value change callback handler (simpler than onChange - provides just the string value).
   onValueChange?: (value: string) => void;
 
@@ -27,13 +25,13 @@ export interface UseInputProps<T extends ElementType>
   // Element to render the input as (backwards compatibility with elementType).
   elementType?: T;
 
-  // Whether the input is disabled or not (React Aria style naming).
+  // Whether the input is disabled or not.
   isDisabled?: boolean;
 
-  // Whether the input is read-only or not (React Aria style naming).
+  // Whether the input is read-only or not.
   isReadOnly?: boolean;
 
-  // Whether the input is required or not (React Aria style naming).
+  // Whether the input is required or not.
   isRequired?: boolean;
 
   // Whether to show a clear button.

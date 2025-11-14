@@ -6,3 +6,14 @@
  *
  */
 
+export {
+  useLabel,
+  useLabel as useSprocketLabel
+} from './useLabel';
+
+export type {
+  UseLabelProps,
+  UseLabelProps as UseSprocketLabelProps,
+  UseLabelReturn,
+  UseLabelReturn as UseSprocketLabelReturn
+} from './useLabel.types';

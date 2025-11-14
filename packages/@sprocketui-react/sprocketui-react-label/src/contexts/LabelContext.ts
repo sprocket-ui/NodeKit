@@ -1,5 +1,3 @@
-// biome-ignore-all assist/source/organizeImports: No need to sort exports and imports.
-
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
@@ -8,6 +6,8 @@
  *
  */
 
-export * from './hooks';
-export * from './contexts';
-export * from './components';
+import { createContext } from 'react';
+
+import type { Context } from 'react';
+
+export const LabelContext: Context<any> = createContext<any>(null);
