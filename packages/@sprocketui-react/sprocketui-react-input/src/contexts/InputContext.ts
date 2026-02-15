@@ -8,6 +8,6 @@
 
 import { createContext } from 'react';
 
-import type { Context } from 'react';
+import type { UseInputProps } from '../hooks/useInput.types';
 
-export const InputContext: Context<any> = createContext<any>(null);
+export const InputContext = createContext<Partial<UseInputProps<"input">> | null>(null);

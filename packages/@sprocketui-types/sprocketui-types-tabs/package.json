@@ -1,0 +1,20 @@
+{
+  "name": "@sprocketui-types/tabs",
+  "version": "1.0.0",
+  "description": "Framework-agnostic types for Sprocket UI Tabs component.",
+  "author": "Corinvo OSS Team",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

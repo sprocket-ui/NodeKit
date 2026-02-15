@@ -8,6 +8,6 @@
 
 import { createContext } from 'react';
 
-import type { Context } from 'react';
+import type { UseButtonOptions } from '../hooks/useButton/useButton.types';
 
-export const ButtonContext: Context<any> = createContext<any>(null);
+export const ButtonContext = createContext<Partial<UseButtonOptions<"button">> | null>(null);

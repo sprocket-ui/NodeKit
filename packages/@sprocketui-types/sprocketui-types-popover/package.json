@@ -5,12 +5,20 @@
   "author": "Corinvo OSS Team",
   "license": "MIT",
   "files": [
-    "src",
+    "dist",
     "README.md"
   ],
-  "types": "src/index.d.ts",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
   "dependencies": {
     "@floating-ui/react": "^0.26.28",
     "@floating-ui/utils": "^0.2.9"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
   }
 }

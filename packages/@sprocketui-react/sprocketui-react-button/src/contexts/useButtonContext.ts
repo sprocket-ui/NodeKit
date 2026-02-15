@@ -7,7 +7,7 @@
  */
 
 import { useContext } from 'react';
-import { ButtonContext } from '@sprocketui-react/button';
+import { ButtonContext } from './ButtonContext';
 
 export function useButtonContext() {
   return useContext(ButtonContext);

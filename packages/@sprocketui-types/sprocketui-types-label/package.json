@@ -5,10 +5,19 @@
   "author": "Corinvo OSS Team",
   "license": "MIT",
   "files": [
-    "src",
+    "dist",
     "README.md"
   ],
-  "types": "./src/index.d.ts",
-  "main": "./src/index.d.ts",
-  "dependencies": {}
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "@types/react": "*"
+  }
 }

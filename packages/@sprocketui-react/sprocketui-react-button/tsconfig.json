@@ -3,11 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
-    "baseUrl": "./",
-    "paths": {
-      "@sprocketui-react/button": ["./src/index.ts"],
-      "@sprocketui-types/button": ["../../@sprocketui-types/sprocketui-types-button/src"]
-    }
+    "baseUrl": "./"
   },
   "include": ["src/**/*"]
 }

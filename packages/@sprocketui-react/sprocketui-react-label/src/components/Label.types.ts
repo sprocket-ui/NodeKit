@@ -9,7 +9,7 @@
 import type { ElementType } from 'react';
 import type { RenderProps } from '@necto-react/types';
 import type { LabelOptions } from '@sprocketui-types/label';
-import type { UseLabelProps } from '@sprocketui-react/label';
+import type { UseLabelProps } from '../hooks/useLabel.types';
 
 /**
  * Props for the Label component.

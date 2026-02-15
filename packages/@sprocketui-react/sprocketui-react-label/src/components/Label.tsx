@@ -15,7 +15,7 @@ import { forwardRef } from 'react';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { LabelContext } from '../contexts/LabelContext';
-import { useLabel } from '@sprocketui-react/label';
+import { useLabel } from '../hooks/useLabel';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
 import type {
@@ -40,7 +40,7 @@ function LabelFn(
   props: LabelProps,
   ref: ForwardedRef<HTMLLabelElement>
 ): ReactElement | null {
-  [props, ref] = useContextProps({ props, ref, context: LabelContext });
+  [props, ref] = useContextProps({ props, ref, context: LabelContext as any });
 
   const {
     labelProps,

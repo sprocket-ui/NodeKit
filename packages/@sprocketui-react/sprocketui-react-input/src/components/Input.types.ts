@@ -9,7 +9,7 @@
 import type { ElementType } from 'react';
 import type { RenderProps } from '@necto-react/types';
 import type { InputOptions } from '@sprocketui-types/input';
-import type { UseInputProps } from '@sprocketui-react/input';
+import type { UseInputProps } from '../hooks/useInput.types';
 
 /**
  * Props for the Button component.

@@ -16,7 +16,8 @@ import { mergeProps } from '@necto/mergers';
 import { forwardRef, useMemo } from 'react';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
-import { InputContext, useInput } from '@sprocketui-react/input';
+import { InputContext } from '../contexts';
+import { useInput } from '../hooks/useInput';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
 import type {
@@ -41,7 +42,7 @@ function InputFn(
   props: InputProps,
   ref: ForwardedRef<HTMLInputElement>
 ): ReactElement | null {
-  [props, ref] = useContextProps({ props, ref, context: InputContext });
+  [props, ref] = useContextProps({ props, ref, context: InputContext as any });
 
   const {
     inputProps,

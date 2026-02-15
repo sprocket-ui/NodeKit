@@ -3,11 +3,7 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
-    "baseUrl": "./",
-    "paths": {
-      "@sprocketui-react/input": ["./src/index.ts"],
-      "@sprocketui-types/input": ["../../@sprocketui-types/sprocketui-types-input/src"]
-    }
+    "baseUrl": "./"
   },
   "include": ["src/**/*"]
 }
