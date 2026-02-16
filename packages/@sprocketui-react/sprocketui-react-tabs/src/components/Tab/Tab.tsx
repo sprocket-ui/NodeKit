@@ -27,8 +27,8 @@ import type {
   ForwardRefExoticComponent
 } from 'react';
 import type { TabProps } from './Tab.types';
-import type { UseRendererReturn } from '@necto-react/hooks';
 import type { TabsState } from '../../types';
+import type { UseRendererReturn } from '@necto-react/hooks';
 
 /**
  * @internal
