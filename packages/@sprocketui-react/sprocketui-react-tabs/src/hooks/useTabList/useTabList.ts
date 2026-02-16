@@ -16,9 +16,9 @@ import { useId, useAriaProps } from '@necto-react/hooks';
 import { tabsIds } from '../../utils';
 import { DEFAULT_TAB_TAG } from '../../constants';
 
-import type { AriaAttributes, Key, KeyboardEvent, RefObject, ElementType } from 'react';
-import type { UseTabListOptions, UseTabListReturn } from './useTabList.types';
 import type { TabsState } from '../../types';
+import type { UseTabListOptions, UseTabListReturn } from './useTabList.types';
+import type { AriaAttributes, Key, KeyboardEvent, RefObject, ElementType } from 'react';
 
 /**
  * Provides behavior and accessibility for a tab list.

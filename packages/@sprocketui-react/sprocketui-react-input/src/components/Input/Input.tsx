@@ -10,15 +10,16 @@
 
 'use client';
 
-import { INPUT_NAME } from '../constants';
 import { kebabCase } from '@necto/strings';
 import { mergeProps } from '@necto/mergers';
 import { forwardRef, useMemo } from 'react';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
-import { InputContext } from '../contexts';
-import { useInput } from '../hooks/useInput';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
+
+import { INPUT_NAME } from '../../constants';
+import { InputContext } from '../../contexts';
+import { useInput } from '../../hooks/useInput';
 
 import type {
   ForwardedRef,
@@ -45,15 +46,15 @@ function InputFn(
   [props, ref] = useContextProps({ props, ref, context: InputContext as any });
 
   const {
-    inputProps,
     isHovered,
     isFocused,
     isDisabled,
     isReadOnly,
     isRequired,
-    elementType,
+    isInvalid,
+    inputProps,
     isFocusVisible,
-    isInvalid
+    elementType,
   } = useInput(props, ref as any);
 
   const sprocketInputID: string = useId({ defaultId: inputProps.id });

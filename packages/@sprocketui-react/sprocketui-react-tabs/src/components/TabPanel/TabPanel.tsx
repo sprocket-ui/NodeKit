@@ -49,7 +49,6 @@ function TabPanelFn(
   invariant(state, 'TabPanel must be used within a Tabs component');
 
   const { forceMount = false } = props;
-
   const { tabPanelProps, elementType, isSelected } = useTabPanel(props, state);
 
   // Exclude value from props spread since useRenderer expects string id, but TabPanel uses Key value

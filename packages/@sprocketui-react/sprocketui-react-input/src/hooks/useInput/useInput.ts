@@ -22,9 +22,10 @@ import { defu } from 'defu';
 import { useState } from 'react';
 import { HTMLElements } from '@necto/dom';
 import { mergeProps } from '@necto/mergers';
-import { ALLOWED_EXTERNAL_PROPS, ALLOWED_INPUT_LABELABLE_PROPS } from 'shared';
-import { DEFAULT_INPUT_TAG } from '../constants';
 import { filterDOMProps } from '@necto-react/helpers';
+import { ALLOWED_EXTERNAL_PROPS, ALLOWED_INPUT_LABELABLE_PROPS } from 'shared';
+
+import { DEFAULT_INPUT_TAG } from '../../constants';
 
 import type { ElementType, RefObject } from 'react';
 import type { UseInputProps, UseInputReturn } from './useInput.types';

@@ -15,11 +15,11 @@ import { mergeProps } from '@necto/mergers';
 import { forwardRef, useMemo } from 'react';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
-import { ButtonContext } from '../../contexts';
-import { useButton } from '../../hooks/useButton';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
+import { ButtonContext } from '../../contexts';
 import { BUTTON_NAME } from '../../constants';
+import { useButton } from '../../hooks/useButton';
 
 import type {
   ForwardedRef,

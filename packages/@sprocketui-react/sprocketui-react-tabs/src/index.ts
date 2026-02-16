@@ -15,10 +15,10 @@ export { TabPanels } from './components/TabPanels';
 export { SelectionIndicator } from './components/SelectionIndicator';
 
 export type { TabProps } from './components/Tab';
+export type { TabsProps } from './components/Tabs';
 export type { TabListProps } from './components/TabList';
 export type { TabPanelProps } from './components/TabPanel';
 export type { TabPanelsProps } from './components/TabPanels';
-export type { TabsProps } from './components/Tabs';
 export type { SelectionIndicatorProps } from './components/SelectionIndicator';
 
 // Hooks

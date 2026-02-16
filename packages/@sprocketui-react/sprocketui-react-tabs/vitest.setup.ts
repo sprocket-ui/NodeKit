@@ -6,7 +6,4 @@
  *
  */
 
-export * from './useTabs';
-export * from './useTab';
-export * from './useTabList';
-export * from './useTabPanel';
+import '@testing-library/jest-dom/vitest';

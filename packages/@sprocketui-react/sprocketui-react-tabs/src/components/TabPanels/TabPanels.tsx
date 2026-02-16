@@ -40,7 +40,7 @@ function TabPanelsFn(
   });
 
   const { elementType = props.as ?? DEFAULT_TAB_TAG, slot } = props;
-
+  
   const renderProps: UseRendererReturn = useRenderer({
     ...props,
     values: {},
