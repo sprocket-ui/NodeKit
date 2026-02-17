@@ -7,28 +7,17 @@
  */
 
 // Components
-export { Tab } from './components/Tab';
-export { Tabs, SprocketTabs } from './components/Tabs';
-export { TabList } from './components/TabList';
-export { TabPanel } from './components/TabPanel';
-export { TabPanels } from './components/TabPanels';
-export { SelectionIndicator } from './components/SelectionIndicator';
-
-export type { TabProps } from './components/Tab';
-export type { TabsProps, SprocketTabsProps } from './components/Tabs';
-export type { TabListProps } from './components/TabList';
-export type { TabPanelProps } from './components/TabPanel';
-export type { TabPanelsProps } from './components/TabPanels';
-export type { SelectionIndicatorProps } from './components/SelectionIndicator';
+export * from './components/Tab';
+export * from './components/Tabs';
+export * from './components/TabList';
+export * from './components/TabPanel';
+export * from './components/TabPanels';
+export * from './components/SelectionIndicator';
 
 // Hooks
-export { useTab } from './hooks/useTab';
-export { useTabList } from './hooks/useTabList';
-export { useTabPanel } from './hooks/useTabPanel';
-
-export type { UseTabOptions, UseTabReturn } from './hooks/useTab';
-export type { UseTabListOptions, UseTabListReturn } from './hooks/useTabList';
-export type { UseTabPanelOptions, UseTabPanelReturn } from './hooks/useTabPanel';
+export * from './hooks/useTab';
+export * from './hooks/useTabList';
+export * from './hooks/useTabPanel';
 
 // Contexts
 export {
