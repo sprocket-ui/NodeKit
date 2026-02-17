@@ -6,6 +6,6 @@
  *
  */
 
-export { TabPanels } from './TabPanels';
+export { TabPanels, TabPanels as SprocketTabPanels } from './TabPanels';
 
-export type { TabPanelsProps } from './TabPanels.types';
+export type { TabPanelsProps, TabPanelsProps as SprocketTabPanelsProps } from './TabPanels.types';

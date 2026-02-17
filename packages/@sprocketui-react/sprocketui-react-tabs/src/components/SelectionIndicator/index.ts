@@ -6,6 +6,6 @@
  *
  */
 
-export { SelectionIndicator } from './SelectionIndicator';
+export { SelectionIndicator, SelectionIndicator as SprocketSelectionIndicator } from './SelectionIndicator';
 
-export type { SelectionIndicatorProps } from './SelectionIndicator.types';
+export type { SelectionIndicatorProps, SelectionIndicatorProps as SprocketSelectionIndicatorProps } from './SelectionIndicator.types';

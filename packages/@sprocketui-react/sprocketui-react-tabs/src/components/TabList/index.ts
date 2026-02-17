@@ -6,6 +6,6 @@
  *
  */
 
-export { TabList } from './TabList';
+export { TabList, TabList as SprocketTabList } from './TabList';
 
-export type { TabListProps } from './TabList.types';
+export type { TabListProps, TabListProps as SprocketTabListProps } from './TabList.types';

@@ -6,5 +6,6 @@
  *
  */
 
-export { Tabs } from './Tabs';
-export type { TabsProps } from './Tabs.types';
+export { Tabs, Tabs as SprocketTabs } from './Tabs';
+
+export type { TabsProps, TabsProps as SprocketTabsProps } from './Tabs.types';
