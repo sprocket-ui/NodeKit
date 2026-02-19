@@ -10,8 +10,8 @@ import type { Key } from 'react';
 import type { TabsOrientation, TabsActivationMode } from '@sprocketui-types/tabs';
 
 // Re-export framework-agnostic types
-export type { TabsOptions, TabsOrientation, TabsActivationMode } from '@sprocketui-types/tabs';
 export { TabsOrientationValues, TabsActivationModeValues } from '@sprocketui-types/tabs';
+export type { TabsOptions, TabsOrientation, TabsActivationMode } from '@sprocketui-types/tabs';
 
 /** State for tabs, shared via context. */
 export interface TabsState {
@@ -23,6 +23,12 @@ export interface TabsState {
 
   /** Set the selected value. */
   setSelectedValue(value: Key): void;
+
+  /** The currently focused tab key (for roving tabindex). */
+  readonly focusedKey: Key | null;
+
+  /** Set the focused key. */
+  setFocusedKey(key: Key | null): void;
 
   /** Orientation of the tabs. */
   readonly orientation: TabsOrientation;

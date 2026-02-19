@@ -17,6 +17,7 @@ import {
 } from '@necto-react/hooks';
 import { defu } from 'defu';
 import { mergeProps } from '@necto/mergers';
+import { useCallback } from 'react';
 
 import { generateId } from '../../utils';
 import { DEFAULT_TAB_TAG } from '../../constants';
@@ -33,21 +34,21 @@ export function useTab<T extends ElementType = typeof DEFAULT_TAB_TAG>(
   const {
     value,
     autoFocus,
-    preventFocusOnPress,
-    isDisabled: isDisabledProp,
     elementType,
     onPress,
     onPressStart,
     onPressEnd,
     onPressUp,
-    onPressChange
+    onPressChange,
+    preventFocusOnPress,
+    isDisabled: isDisabledProp,
   } = defu(options, {
     isDisabled: false,
     elementType: options.elementType || options.as || DEFAULT_TAB_TAG
   });
 
-  const isDisabled: boolean = isDisabledProp || state.isValueDisabled(value);
   const isSelected: boolean = value === state.selectedValue;
+  const isDisabled: boolean = isDisabledProp || state.isValueDisabled(value);
 
   const tabId: string = generateId(state, value, 'tab');
   const tabPanelId: string = generateId(state, value, 'tabpanel');
@@ -56,6 +57,10 @@ export function useTab<T extends ElementType = typeof DEFAULT_TAB_TAG>(
   const { focusableProps } = useFocusable({ isDisabled } as any, ref);
   const { focusProps, isFocused, isFocusVisible } = useFocusRing({ autoFocus });
   const ariaProps: AriaAttributes = useAriaProps({ isSelected, isDisabled });
+
+  const onTabFocus = useCallback((): void => {
+    if (!isDisabled) state.setFocusedKey(value);
+  }, [state, value, isDisabled]);
 
   const { pressProps, isPressed } = usePress({
     ref,
@@ -69,6 +74,7 @@ export function useTab<T extends ElementType = typeof DEFAULT_TAB_TAG>(
       if (!isDisabled) {
         state.setSelectedValue(value);
       }
+
       onPress?.(e);
     }
   });
@@ -83,21 +89,27 @@ export function useTab<T extends ElementType = typeof DEFAULT_TAB_TAG>(
       id: tabId,
       role: 'tab',
       'data-value': String(value),
+      'data-key': String(value),
       'aria-controls': isSelected ? tabPanelId : undefined,
-      tabIndex: isDisabled ? undefined : isSelected ? 0 : -1
+      tabIndex: isDisabled
+        ? undefined
+        : (value == state.focusedKey || (state.focusedKey == null && isSelected))
+          ? 0
+          : -1,
+      onFocus: onTabFocus,
     }
   );
 
   return {
-    tabProps,
     tabId,
+    tabProps,
     tabPanelId,
-    elementType: elementType as T,
     isSelected,
     isDisabled,
     isPressed,
     isHovered,
     isFocused,
-    isFocusVisible
+    isFocusVisible,
+    elementType: elementType as T,
   };
 }
