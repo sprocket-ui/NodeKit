@@ -6,3 +6,11 @@
  *
  */
 
+// Components
+export * from './components/ProgressBar';
+
+// Hooks
+export * from './hooks/useProgressBar';
+
+// Contexts
+export { ProgressBarContext } from './contexts';

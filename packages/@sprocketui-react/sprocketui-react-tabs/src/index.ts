@@ -18,6 +18,7 @@ export * from './components/SelectionIndicator';
 export * from './hooks/useTab';
 export * from './hooks/useTabList';
 export * from './hooks/useTabPanel';
+export * from './hooks/useSelectionIndicator';
 
 // Contexts
 export {
@@ -27,5 +28,6 @@ export {
   TabPanelContext,
   TabPanelsContext,
   TabListStateContext,
+  TabListRefContext,
   SelectionIndicatorContext
 } from './contexts';

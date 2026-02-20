@@ -1,7 +1,7 @@
 {
-  "name": "@sprocketui-react/checkbox",
+  "name": "@sprocketui-react/progress",
   "version": "1.0.0",
-  "description": "Sprocket's standalone React checkbox component.",
+  "description": "Sprocket's standalone React progress bar component.",
   "type": "module",
   "license": "MIT",
   "author": "Corinvo OSS Team",
@@ -22,14 +22,16 @@
     "url": "https://github.com/sprocket-ui/NodeKit.git"
   },
   "dependencies": {
-    "@sprocketui-types/checkbox": "workspace:*",
-    "@necto/strings": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-strings",
-    "@necto/mergers": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-mergers",
-    "@necto-react/types": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-types",
-    "@necto-react/hooks": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-hooks",
-    "@necto-react/helpers": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-helpers",
     "@necto-react/components": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-components",
-    "tiny-invariant": "^1.3.3",
+    "@necto-react/helpers": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-helpers",
+    "@necto-react/hooks": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-hooks",
+    "@necto-react/types": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-types",
+    "@necto/dom": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-dom",
+    "@necto/math": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-math",
+    "@necto/mergers": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-mergers",
+    "@necto/strings": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-strings",
+    "@sprocketui-types/progress": "workspace:*",
+    "@sprocketui-react/label": "workspace:*",
     "defu": "^6.1.4"
   },
   "peerDependencies": {

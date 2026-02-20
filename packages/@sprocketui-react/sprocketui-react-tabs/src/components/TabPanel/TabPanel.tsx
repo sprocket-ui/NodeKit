@@ -9,11 +9,10 @@
 'use client';
 
 import invariant from 'tiny-invariant';
-import { kebabCase } from '@necto/strings';
 import { mergeProps } from '@necto/mergers';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
-import { useContext, useMemo, forwardRef } from 'react';
+import { useContext, forwardRef } from 'react';
 import { useContextProps, useRenderer } from '@necto-react/hooks';
 
 import { TAB_PANEL_NAME } from '../../constants';
@@ -67,29 +66,6 @@ function TabPanelFn(
     })
   });
 
-  const dataAttributes = useMemo(() => {
-    const stateAttributes: Record<string, boolean | undefined> = {
-      selected: isSelected
-    };
-
-    const attributes: Record<string, string | undefined> = {};
-    const sprocketState: string[] = [];
-
-    for (const [key, value] of Object.entries(stateAttributes)) {
-      if (typeof value === 'boolean') {
-        attributes[`data-${kebabCase(key)}`] = value ? String(true) : undefined;
-        if (value) {
-          sprocketState.push(kebabCase(key));
-        }
-      }
-    }
-
-    return {
-      ...attributes,
-      'data-sprocket-state': sprocketState.join(' ')
-    };
-  }, [isSelected]);
-
   if (!isSelected && !forceMount) {
     return null;
   }
@@ -99,7 +75,7 @@ function TabPanelFn(
       ref={ref}
       as={elementType}
       {...renderProps}
-      {...mergeProps(tabPanelProps, dataAttributes)}
+      {...mergeProps(tabPanelProps)}
       slot={props.slot || undefined}
     >
       {renderProps.children}

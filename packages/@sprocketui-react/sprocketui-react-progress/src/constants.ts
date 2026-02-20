@@ -6,3 +6,6 @@
  *
  */
 
+export const DEFAULT_PROGRESS_BAR_TAG = 'div' as const;
+
+export const PROGRESS_BAR_NAME = 'ProgressBar' as const;

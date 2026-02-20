@@ -6,3 +6,4 @@
  *
  */
 
+export { ProgressBarContext } from './ProgressBarContext';

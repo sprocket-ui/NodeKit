@@ -9,14 +9,14 @@
 'use client';
 
 import invariant from 'tiny-invariant';
-import { kebabCase } from '@necto/strings';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
-import { useContext, useMemo, forwardRef } from 'react';
+import { useContext, forwardRef } from 'react';
 import { useContextProps, useRenderer } from '@necto-react/hooks';
 
 import { SELECTION_INDICATOR_NAME, DEFAULT_TAB_TAG } from '../../constants';
-import { SelectionIndicatorContext, TabListStateContext } from '../../contexts';
+import { SelectionIndicatorContext, TabListStateContext, TabListRefContext } from '../../contexts';
+import { useSelectionIndicator } from '../../hooks/useSelectionIndicator';
 
 import type {
   ForwardedRef,
@@ -44,52 +44,37 @@ function SelectionIndicatorFn(
   const state = useContext(TabListStateContext);
   invariant(state, 'SelectionIndicator must be used within a TabList');
 
+  const tabListRef = useContext(TabListRefContext);
+  invariant(tabListRef, 'SelectionIndicator must be used within a TabList');
+
   const { elementType = props.as ?? DEFAULT_TAB_TAG, slot } = props;
 
-  const isSelected = state.selectedValue !== null;
+  const { isSelected, metrics, indicatorStyle, selectionIndicatorProps } = useSelectionIndicator({
+    state,
+    tabListRef
+  });
 
   const renderProps: UseRendererReturn = useRenderer({
     ...props,
     values: {
-      isSelected
+      isSelected,
+      selectedRect: metrics
     },
     defaultClassName: buildInternalIdentifier({
       component: SELECTION_INDICATOR_NAME
     }),
     style: (values) => ({
-      ...(props.style instanceof Function ? props.style(values) : props.style)
+      ...(props.style instanceof Function ? props.style(values) : props.style),
+      ...indicatorStyle
     })
   });
-
-  const dataAttributes = useMemo(() => {
-    const stateAttributes: Record<string, boolean | undefined> = {
-      selected: isSelected
-    };
-
-    const attributes: Record<string, string | undefined> = {};
-    const sprocketState: string[] = [];
-
-    for (const [key, value] of Object.entries(stateAttributes)) {
-      if (typeof value === 'boolean') {
-        attributes[`data-${kebabCase(key)}`] = value ? String(true) : undefined;
-        if (value) {
-          sprocketState.push(kebabCase(key));
-        }
-      }
-    }
-
-    return {
-      ...attributes,
-      'data-sprocket-state': sprocketState.join(' ')
-    };
-  }, [isSelected]);
 
   return (
     <Primitive
       ref={ref}
       as={elementType}
       {...renderProps}
-      {...dataAttributes}
+      {...selectionIndicatorProps}
       aria-hidden="true"
       slot={slot || undefined}
     >

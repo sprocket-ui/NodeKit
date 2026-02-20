@@ -13,3 +13,4 @@ export { TabContext } from './TabContext';
 export { TabPanelContext } from './TabPanelContext';
 export { TabPanelsContext } from './TabPanelsContext';
 export { SelectionIndicatorContext } from './SelectionIndicatorContext';
+export { TabListRefContext } from './TabListRefContext';

@@ -7,8 +7,8 @@
  */
 
 import { useContext, forwardRef } from 'react';
-import { useContextProps } from '@necto-react/hooks';
 import { VisuallyHidden} from "@necto-react/components";
+import { useContextProps, useRenderer } from '@necto-react/hooks';
 
 import { CheckboxContext } from '../../contexts';
 
@@ -20,6 +20,23 @@ function CHeckboxFn(
   ref: ForwardedRef<HTMLLabelElement>
 ): ReactElement {
   [props, ref] = useContextProps({ props, ref, context: CheckboxContext as any });
+
+  const {
+    isDisabled,
+    isReadOnly,
+    isRequired,
+    isInvalid
+  } = useCheckbox(props, ref as any);
+
+  const renderProps = useRenderer({
+    ...props,
+    values: {
+      isDisabled,
+      isReadOnly,
+      isRequired,
+      isInvalid
+    }
+  })
 
   return (
     <label ref={ref}>

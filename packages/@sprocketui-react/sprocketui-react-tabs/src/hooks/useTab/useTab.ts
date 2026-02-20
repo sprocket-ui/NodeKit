@@ -79,6 +79,14 @@ export function useTab<T extends ElementType = typeof DEFAULT_TAB_TAG>(
     }
   });
 
+  const sprocketState: string[] = [];
+  if (isHovered) sprocketState.push('hover');
+  if (isFocused) sprocketState.push('focus');
+  if (isFocusVisible) sprocketState.push('focus-visible');
+  if (isDisabled) sprocketState.push('disabled');
+  if (isPressed) sprocketState.push('pressed');
+  if (isSelected) sprocketState.push('selected');
+
   const tabProps: Record<string, any> = mergeProps(
     focusableProps,
     pressProps,
@@ -97,6 +105,13 @@ export function useTab<T extends ElementType = typeof DEFAULT_TAB_TAG>(
           ? 0
           : -1,
       onFocus: onTabFocus,
+      'data-hover': isHovered ? 'true' : undefined,
+      'data-focus': isFocused ? 'true' : undefined,
+      'data-focus-visible': isFocusVisible ? 'true' : undefined,
+      'data-disabled': isDisabled ? 'true' : undefined,
+      'data-pressed': isPressed ? 'true' : undefined,
+      'data-selected': isSelected ? 'true' : undefined,
+      'data-sprocket-state': sprocketState.length > 0 ? sprocketState.join(' ') : undefined
     }
   );
 

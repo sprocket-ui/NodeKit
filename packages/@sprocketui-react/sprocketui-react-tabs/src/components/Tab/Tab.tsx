@@ -9,11 +9,10 @@
 'use client';
 
 import invariant from 'tiny-invariant';
-import { kebabCase } from '@necto/strings';
 import { mergeProps } from '@necto/mergers';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
-import { useContext, useMemo, forwardRef } from 'react';
+import { useContext, forwardRef } from 'react';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
 import { TAB_NAME } from '../../constants';
@@ -75,40 +74,12 @@ function TabFn(
     })
   });
 
-  const dataAttributes = useMemo(() => {
-    const stateAttributes: Record<string, boolean | undefined> = {
-      hover: isHovered,
-      focus: isFocused,
-      focusVisible: isFocusVisible,
-      disabled: isDisabled,
-      pressed: isPressed,
-      selected: isSelected
-    };
-
-    const attributes: Record<string, string | undefined> = {};
-    const sprocketState: string[] = [];
-
-    for (const [key, value] of Object.entries(stateAttributes)) {
-      if (typeof value === 'boolean') {
-        attributes[`data-${kebabCase(key)}`] = value ? String(true) : undefined;
-        if (value) {
-          sprocketState.push(kebabCase(key));
-        }
-      }
-    }
-
-    return {
-      ...attributes,
-      'data-sprocket-state': sprocketState.join(' ')
-    };
-  }, [isHovered, isFocused, isFocusVisible, isDisabled, isPressed, isSelected]);
-
   return (
     <Primitive
       ref={ref}
       as={elementType}
       {...renderProps}
-      {...mergeProps(tabProps, dataAttributes)}
+      {...mergeProps(tabProps)}
       id={sprocketTabID}
       slot={props.slot || undefined}
     >

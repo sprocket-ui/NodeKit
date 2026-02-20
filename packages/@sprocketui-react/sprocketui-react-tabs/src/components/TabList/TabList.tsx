@@ -16,7 +16,7 @@ import { useContextProps, useRenderer } from '@necto-react/hooks';
 
 import { TAB_LIST_NAME } from '../../constants';
 import { useTabList } from '../../hooks/useTabList';
-import { TabListStateContext, TabListContext, TabsContext } from '../../contexts';
+import { TabListStateContext, TabListContext, TabListRefContext, TabsContext } from '../../contexts';
 
 import type {
   RefObject,
@@ -68,15 +68,17 @@ function TabListFn(
 
   return (
     <TabListStateContext.Provider value={state}>
-      <Primitive
-        ref={mergeRefs(forwardedRef, internalRef)}
-        as={elementType}
-        {...renderProps}
-        {...mergeProps(tabListProps)}
-        slot={props.slot || undefined}
-      >
-        {renderProps.children}
-      </Primitive>
+      <TabListRefContext.Provider value={internalRef}>
+        <Primitive
+          ref={mergeRefs(forwardedRef, internalRef)}
+          as={elementType}
+          {...renderProps}
+          {...mergeProps(tabListProps)}
+          slot={props.slot || undefined}
+        >
+          {renderProps.children}
+        </Primitive>
+      </TabListRefContext.Provider>
     </TabListStateContext.Provider>
   );
 }

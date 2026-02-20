@@ -4,7 +4,10 @@
       "Bash(find:*)",
       "Bash(grep:*)",
       "Bash(pnpm build:*)",
-      "Bash(xargs cat:*)"
+      "Bash(xargs cat:*)",
+      "WebFetch(domain:react-aria.adobe.com)",
+      "WebFetch(domain:react-spectrum.adobe.com)",
+      "Bash(pnpm install:*)"
     ]
   }
 }

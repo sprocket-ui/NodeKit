@@ -33,12 +33,12 @@ import type { UseButtonOptions, UseButtonReturn } from './useButton.types';
  *
  * @template T The element type to render as (e.g., 'button', 'a', 'input').
  * @param {UseButtonProps<T>} props - The props for configuring the button's behavior and accessibility.
- * @param {RefObject<any>} ref - The ref to the button element.
+ * @param {RefObject<HTMLButtonElement>} ref - The ref to the button element.
  * @returns {ButtonHookReturn<T>} An object containing readonly state and props for the button element.
  */
 export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
   props: UseButtonOptions<T>,
-  ref: RefObject<any>
+  ref: RefObject<HTMLButtonElement>
 ): UseButtonReturn<T> {
   const {
     rel,
@@ -122,6 +122,22 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     })
   );
 
+  const sprocketState: string[] = [];
+  if (isHovered) sprocketState.push('hover');
+  if (isFocused) sprocketState.push('focus');
+  if (isFocusVisible) sprocketState.push('focus-visible');
+  if (isDisabled) sprocketState.push('disabled');
+  if (isPressed) sprocketState.push('pressed');
+
+  const dataAttributes: Record<string, string | undefined> = {
+    'data-hover': isHovered ? 'true' : undefined,
+    'data-focus': isFocused ? 'true' : undefined,
+    'data-focus-visible': isFocusVisible ? 'true' : undefined,
+    'data-disabled': isDisabled ? 'true' : undefined,
+    'data-pressed': isPressed ? 'true' : undefined,
+    'data-sprocket-state': sprocketState.length > 0 ? sprocketState.join(' ') : undefined
+  };
+
   return {
     isFocused,
     isPressed,
@@ -129,6 +145,6 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     isDisabled,
     isFocusVisible,
     elementType: elementType as T,
-    buttonProps: mergeProps(buttonProps, additionalProps)
+    buttonProps: mergeProps(buttonProps, additionalProps, dataAttributes)
   } satisfies UseButtonReturn<T>;
 }

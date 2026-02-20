@@ -30,7 +30,9 @@ export function useTabPanel<T extends ElementType = typeof DEFAULT_TAB_TAG>(
     role: 'tabpanel',
     'aria-labelledby': tabId,
     tabIndex: 0,
-    hidden: !isSelected
+    hidden: !isSelected,
+    'data-selected': isSelected ? 'true' : undefined,
+    'data-sprocket-state': isSelected ? 'selected' : undefined
   };
 
   return {

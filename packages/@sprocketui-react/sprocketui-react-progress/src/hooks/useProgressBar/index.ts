@@ -6,3 +6,6 @@
  *
  */
 
+export { useProgressBar } from './useProgressBar';
+
+export type { UseProgressBarOptions, UseProgressBarReturn } from './useProgressBar.types';

@@ -8,14 +8,16 @@
 
 import type { ElementType } from 'react';
 import type { RenderProps } from '@necto-react/types';
-import type { SelectionIndicatorMetrics } from '../../hooks/useSelectionIndicator';
+import type { UseProgressBarOptions } from '../../hooks/useProgressBar';
 
-/** Props for the SelectionIndicator component. */
-export interface SelectionIndicatorProps<T extends ElementType = 'div'>
+/** Props for the ProgressBar component. */
+export interface ProgressBarProps<T extends ElementType = 'div'>
   extends RenderProps<{
-    isSelected: boolean;
-    selectedRect: SelectionIndicatorMetrics | null;
-  }> {
+    percentage: number;
+    isIndeterminate: boolean;
+    isHung: boolean;
+  }>,
+    UseProgressBarOptions {
   /** The element type to render as. @default 'div' */
   elementType?: T;
 
