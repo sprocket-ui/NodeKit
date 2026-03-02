@@ -19,6 +19,7 @@ import { useTabList } from '../../hooks/useTabList';
 import { TabListStateContext, TabListContext, TabListRefContext, TabsContext } from '../../contexts';
 
 import type {
+  ElementType,
   RefObject,
   ForwardedRef,
   ReactElement,
@@ -88,19 +89,19 @@ function TabListFn(
  * Contains Tab components and manages keyboard navigation.
  */
 export const TabList: ForwardRefExoticComponent<
-  Omit<TabListProps, 'ref'> & RefAttributes<HTMLElement>
+  Omit<TabListProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>
 > & {
   Root: ForwardRefExoticComponent<
-    Omit<TabListProps, 'ref'> & RefAttributes<HTMLElement>
+    Omit<TabListProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>
   >;
 } = Object.assign(
-  forwardRef<HTMLElement, Omit<TabListProps, 'ref'>>(
-    (props: Omit<TabListProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+  forwardRef<HTMLElement, Omit<TabListProps<ElementType>, 'ref'>>(
+    (props: Omit<TabListProps<ElementType>, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
       TabListFn(props as TabListProps, ref)
   ),
   {
-    Root: forwardRef<HTMLElement, Omit<TabListProps, 'ref'>>(
-      (props: Omit<TabListProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+    Root: forwardRef<HTMLElement, Omit<TabListProps<ElementType>, 'ref'>>(
+      (props: Omit<TabListProps<ElementType>, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
         TabListFn(props as TabListProps, ref)
     )
   }

@@ -16,9 +16,9 @@
     "node": ">=10"
   },
   "scripts": {
-    "build-disabled": "tsup",
+    "build-disabled": "tsup --config ../../../tsup.config.ts",
     "test": "vitest",
-    "dev": "tsup --watch"
+    "dev": "tsup --config ../../../tsup.config.ts --watch"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.28",

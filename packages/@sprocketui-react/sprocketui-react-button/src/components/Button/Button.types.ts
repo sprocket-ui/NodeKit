@@ -8,8 +8,8 @@
 
 import type { ElementType } from 'react';
 import type { RenderProps } from '@necto-react/types';
-import type { ButtonOptions } from '@sprocketui-types/button';
-import type { UseButtonOptions } from '../../hooks/useButton/useButton.types';
+import type { UseButtonOptions } from '../../hooks/useButton';
+import type { ButtonOptions } from '@sprocketui-types/buttons';
 
 /**
  * Props for the Button component.

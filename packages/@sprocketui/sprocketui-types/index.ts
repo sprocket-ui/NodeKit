@@ -6,4 +6,4 @@
  *
  */
 
-export * from '@sprocketui-types/button';
+export * from '@sprocketui-types/buttons';

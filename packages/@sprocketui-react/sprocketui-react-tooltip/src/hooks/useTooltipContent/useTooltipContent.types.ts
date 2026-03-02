@@ -1,0 +1,55 @@
+/**
+ * Copyright (c) Corinvo, LLC. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+import type { CSSProperties, ElementType } from 'react';
+
+export interface UseTooltipContentOptions<T extends ElementType = 'div'> {
+  // The element type to render as. @default 'div'
+  elementType?: T;
+
+  // Shorthand for elementType.
+  as?: T;
+
+  // Placement of the tooltip relative to the trigger. @default 'top'
+  placement?: 'top' | 'bottom' | 'left' | 'right';
+
+  // Offset distance from the trigger in pixels. @default 6
+  offset?: number;
+
+  // Duration of the enter/exit transition in ms. @default 150
+  transitionDuration?: number;
+}
+
+export type UseTooltipContentReturn<T extends ElementType = 'div'> = Readonly<{
+  // Props to spread on the tooltip content element.
+  contentProps: Record<string, any>;
+
+  // The resolved element type.
+  elementType: T;
+
+  // Whether the tooltip content is hovered.
+  isHovered: boolean;
+
+  // Popper refs (setFloating).
+  refs: { setFloating: (node: HTMLElement | null) => void };
+
+  // Computed floating styles from popper.
+  floatingStyles: CSSProperties;
+
+  // The resolved placement after flip/shift.
+  finalPlacement: string;
+
+  // Returns props to spread on the floating element.
+  getFloatingProps: () => Record<string, any>;
+
+  // Whether the tooltip is mounted (for transition).
+  isMounted: boolean;
+
+  // Transition styles for enter/exit animation.
+  transitionStyles: CSSProperties;
+}>;

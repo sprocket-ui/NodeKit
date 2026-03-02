@@ -6,7 +6,7 @@
  *
  */
 
-import type { ButtonOptions } from '@sprocketui-types/button';
+import type { ButtonOptions } from '@sprocketui-types/buttons';
 import type { ElementType, HTMLAttributes, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
 
 interface UseButtonCallbackProps {
@@ -40,6 +40,9 @@ export interface UseButtonOptions<T extends ElementType>
 
   // Wether the button is disabled or not
   isDisabled?: boolean;
+
+  // Wether the button is in a pending state (e.g. async action in progress).
+  isPending?: boolean;
 }
 
 export type UseButtonReturn<T extends ElementType> = Readonly<{
@@ -63,4 +66,7 @@ export type UseButtonReturn<T extends ElementType> = Readonly<{
 
   // Wether the focus on the button is visible (isFocused will also be true if this is true).
   isFocusVisible: boolean;
+
+  // Wether the button is in a pending state.
+  isPending: boolean;
 }>;

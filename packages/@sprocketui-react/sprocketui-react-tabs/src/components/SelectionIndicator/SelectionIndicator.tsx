@@ -19,6 +19,7 @@ import { SelectionIndicatorContext, TabListStateContext, TabListRefContext } fro
 import { useSelectionIndicator } from '../../hooks/useSelectionIndicator';
 
 import type {
+  ElementType,
   ForwardedRef,
   ReactElement,
   RefAttributes,
@@ -89,19 +90,19 @@ function SelectionIndicatorFn(
  * Must be used within a TabList component.
  */
 export const SelectionIndicator: ForwardRefExoticComponent<
-  Omit<SelectionIndicatorProps, 'ref'> & RefAttributes<HTMLElement>
+  Omit<SelectionIndicatorProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>
 > & {
   Root: ForwardRefExoticComponent<
-    Omit<SelectionIndicatorProps, 'ref'> & RefAttributes<HTMLElement>
+    Omit<SelectionIndicatorProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>
   >;
 } = Object.assign(
-  forwardRef<HTMLElement, Omit<SelectionIndicatorProps, 'ref'>>(
-    (props: Omit<SelectionIndicatorProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+  forwardRef<HTMLElement, Omit<SelectionIndicatorProps<ElementType>, 'ref'>>(
+    (props: Omit<SelectionIndicatorProps<ElementType>, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
       SelectionIndicatorFn(props as SelectionIndicatorProps, ref)
   ),
   {
-    Root: forwardRef<HTMLElement, Omit<SelectionIndicatorProps, 'ref'>>(
-      (props: Omit<SelectionIndicatorProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+    Root: forwardRef<HTMLElement, Omit<SelectionIndicatorProps<ElementType>, 'ref'>>(
+      (props: Omit<SelectionIndicatorProps<ElementType>, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
         SelectionIndicatorFn(props as SelectionIndicatorProps, ref)
     )
   }

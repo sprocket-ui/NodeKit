@@ -15,7 +15,8 @@ import {
   useHover,
   usePress,
   useFocusRing,
-  useFocusable
+  useFocusable,
+  useAriaProps
 } from '@necto-react/hooks';
 import { defu } from 'defu';
 import { HTMLElements } from '@necto/dom';
@@ -48,6 +49,7 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     focusDisabled,
     preventFocusOnPress,
     isDisabled,
+    isPending,
     type,
     elementType,
 
@@ -60,6 +62,7 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     onPressChange
   } = defu(props, {
     isDisabled: false,
+    isPending: false,
     type: 'button' as const,
     as: DEFAULT_BUTTON_TAG,
     elementType: props.elementType || props.as || DEFAULT_BUTTON_TAG
@@ -95,7 +98,7 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
 
   const { pressProps, isPressed } = usePress({
     ref,
-    isDisabled,
+    isDisabled: isDisabled || isPending,
     preventFocusOnPress,
     onPressStart,
     onPressEnd,
@@ -103,6 +106,10 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     onPress,
     onPressUp,
     onClick: onClick as any
+  });
+
+  const ariaProps = useAriaProps({
+    isBusy: isPending || undefined
   });
 
   if (focusDisabled) {
@@ -128,6 +135,7 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
   if (isFocusVisible) sprocketState.push('focus-visible');
   if (isDisabled) sprocketState.push('disabled');
   if (isPressed) sprocketState.push('pressed');
+  if (isPending) sprocketState.push('pending');
 
   const dataAttributes: Record<string, string | undefined> = {
     'data-hover': isHovered ? 'true' : undefined,
@@ -135,6 +143,7 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     'data-focus-visible': isFocusVisible ? 'true' : undefined,
     'data-disabled': isDisabled ? 'true' : undefined,
     'data-pressed': isPressed ? 'true' : undefined,
+    'data-pending': isPending ? 'true' : undefined,
     'data-sprocket-state': sprocketState.length > 0 ? sprocketState.join(' ') : undefined
   };
 
@@ -143,8 +152,9 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
     isPressed,
     isHovered,
     isDisabled,
+    isPending,
     isFocusVisible,
     elementType: elementType as T,
-    buttonProps: mergeProps(buttonProps, additionalProps, dataAttributes)
+    buttonProps: mergeProps(buttonProps, additionalProps, ariaProps, dataAttributes)
   } satisfies UseButtonReturn<T>;
 }

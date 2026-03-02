@@ -11,6 +11,6 @@ export {
   ButtonContext as SprocketButtonContext
 } from './ButtonContext';
 export {
-  useButtonContext,
-  useButtonContext as useSprocketButtonContext
-} from './useButtonContext';
+  ToggleButtonContext,
+  ToggleButtonContext as SprocketToggleButtonContext
+} from './ToggleButtonContext';

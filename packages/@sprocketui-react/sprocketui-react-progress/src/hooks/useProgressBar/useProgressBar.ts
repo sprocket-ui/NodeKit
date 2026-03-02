@@ -9,12 +9,11 @@
 import { defu } from 'defu';
 import { HTMLElements } from '@necto/dom';
 import { mergeProps } from '@necto/mergers';
+import { useState, useEffect } from 'react';
 import { clamp, percentage } from '@necto/math';
 import { useLabel } from '@sprocketui-react/label';
 import { filterDOMProps } from '@necto-react/helpers';
 import { ANCHOR_ELEMENT_PROPS, ALLOWED_EXTERNAL_PROPS } from 'shared';
-
-import { useState, useEffect } from 'react';
 
 import type { RefObject } from 'react';
 import type { Percentage } from '@necto/math';

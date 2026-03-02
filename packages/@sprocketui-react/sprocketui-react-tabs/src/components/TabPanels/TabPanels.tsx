@@ -17,6 +17,7 @@ import { TabPanelsContext } from '../../contexts';
 import { TAB_PANELS_NAME, DEFAULT_TAB_TAG } from '../../constants';
 
 import type {
+  ElementType,
   ForwardedRef,
   ReactElement,
   RefAttributes,
@@ -40,7 +41,7 @@ function TabPanelsFn(
   });
 
   const { elementType = props.as ?? DEFAULT_TAB_TAG, slot } = props;
-  
+
   const renderProps: UseRendererReturn = useRenderer({
     ...props,
     values: {},
@@ -69,19 +70,19 @@ function TabPanelsFn(
  * Container for TabPanel components.
  */
 export const TabPanels: ForwardRefExoticComponent<
-  Omit<TabPanelsProps, 'ref'> & RefAttributes<HTMLElement>
+  Omit<TabPanelsProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>
 > & {
   Root: ForwardRefExoticComponent<
-    Omit<TabPanelsProps, 'ref'> & RefAttributes<HTMLElement>
+    Omit<TabPanelsProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>
   >;
 } = Object.assign(
-  forwardRef<HTMLElement, Omit<TabPanelsProps, 'ref'>>(
-    (props: Omit<TabPanelsProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+  forwardRef<HTMLElement, Omit<TabPanelsProps<ElementType>, 'ref'>>(
+    (props: Omit<TabPanelsProps<ElementType>, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
       TabPanelsFn(props as TabPanelsProps, ref)
   ),
   {
-    Root: forwardRef<HTMLElement, Omit<TabPanelsProps, 'ref'>>(
-      (props: Omit<TabPanelsProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+    Root: forwardRef<HTMLElement, Omit<TabPanelsProps<ElementType>, 'ref'>>(
+      (props: Omit<TabPanelsProps<ElementType>, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
         TabPanelsFn(props as TabPanelsProps, ref)
     )
   }

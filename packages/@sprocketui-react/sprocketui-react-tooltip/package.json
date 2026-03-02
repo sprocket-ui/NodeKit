@@ -1,0 +1,49 @@
+{
+  "name": "@sprocketui-react/tooltip",
+  "version": "1.0.0",
+  "description": "Sprocket's standalone React tooltip component.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Corinvo OSS Team",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup --config ../../../tsup.config.ts",
+    "test": "vitest",
+    "dev": "tsup --config ../../../tsup.config.ts --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sprocket-ui/NodeKit.git"
+  },
+  "dependencies": {
+    "@necto-react/components": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-components",
+    "@necto-react/hooks": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-hooks",
+    "@necto-react/popper": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-popper",
+    "@necto-react/types": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-types",
+    "@necto/mergers": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-mergers",
+    "@necto/popper": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-popper",
+    "@necto/strings": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-strings",
+    "@sprocketui-types/tooltip": "workspace:*",
+    "defu": "^6.1.4"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1",
+    "react-dom": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "shared": "workspace:*",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

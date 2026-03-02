@@ -11,8 +11,8 @@
 import invariant from 'tiny-invariant';
 import { mergeProps } from '@necto/mergers';
 import { buildInternalIdentifier } from 'shared';
-import { Primitive } from '@necto-react/components';
 import { useContext, forwardRef } from 'react';
+import { Primitive } from '@necto-react/components';
 import { useContextProps, useRenderer } from '@necto-react/hooks';
 
 import { TAB_PANEL_NAME } from '../../constants';
@@ -20,6 +20,7 @@ import { useTabPanel } from '../../hooks/useTabPanel';
 import { TabPanelContext, TabListStateContext } from '../../contexts';
 
 import type {
+  ElementType,
   ForwardedRef,
   ReactElement,
   RefAttributes,
@@ -88,19 +89,19 @@ function TabPanelFn(
  * Must be used within a Tabs component.
  */
 export const TabPanel: ForwardRefExoticComponent<
-  Omit<TabPanelProps, 'ref'> & RefAttributes<HTMLElement>
+  Omit<TabPanelProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>
 > & {
   Root: ForwardRefExoticComponent<
-    Omit<TabPanelProps, 'ref'> & RefAttributes<HTMLElement>
+    Omit<TabPanelProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>
   >;
 } = Object.assign(
-  forwardRef<HTMLElement, Omit<TabPanelProps, 'ref'>>(
-    (props: Omit<TabPanelProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+  forwardRef<HTMLElement, Omit<TabPanelProps<ElementType>, 'ref'>>(
+    (props: Omit<TabPanelProps<ElementType>, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
       TabPanelFn(props as TabPanelProps, ref)
   ),
   {
-    Root: forwardRef<HTMLElement, Omit<TabPanelProps, 'ref'>>(
-      (props: Omit<TabPanelProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+    Root: forwardRef<HTMLElement, Omit<TabPanelProps<ElementType>, 'ref'>>(
+      (props: Omit<TabPanelProps<ElementType>, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
         TabPanelFn(props as TabPanelProps, ref)
     )
   }

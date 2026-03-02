@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "Universal type definitions for Sprocket components",
   "scripts": {
-    "build": "tsup --minify"
+    "build": "tsup --config ../../../tsup.config.ts --minify"
   },
   "files": [
     "dist",
@@ -14,7 +14,7 @@
   "author": "Corinvo OSS Team",
   "license": "MIT",
   "dependencies": {
-    "@sprocketui-types/button": "workspace:*"
+    "@sprocketui-types/buttons": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^8.4.0"

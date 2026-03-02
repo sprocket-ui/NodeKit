@@ -19,6 +19,7 @@ import { useProgressBar } from '../../hooks/useProgressBar';
 import { PROGRESS_BAR_NAME, DEFAULT_PROGRESS_BAR_TAG } from '../../constants';
 
 import type {
+  ElementType,
   RefObject,
   ForwardedRef,
   ReactElement,
@@ -83,19 +84,19 @@ function ProgressBarFn(
  * Displays a visual indicator of progress toward completion.
  */
 export const ProgressBar: ForwardRefExoticComponent<
-  Omit<ProgressBarProps, 'ref'> & RefAttributes<HTMLElement>
+  Omit<ProgressBarProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>
 > & {
   Root: ForwardRefExoticComponent<
-    Omit<ProgressBarProps, 'ref'> & RefAttributes<HTMLElement>
+    Omit<ProgressBarProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>
   >;
 } = Object.assign(
-  forwardRef<HTMLElement, Omit<ProgressBarProps, 'ref'>>(
-    (props: Omit<ProgressBarProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+  forwardRef<HTMLElement, Omit<ProgressBarProps<ElementType>, 'ref'>>(
+    (props: Omit<ProgressBarProps<ElementType>, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
       ProgressBarFn(props as ProgressBarProps, ref)
   ),
   {
-    Root: forwardRef<HTMLElement, Omit<ProgressBarProps, 'ref'>>(
-      (props: Omit<ProgressBarProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+    Root: forwardRef<HTMLElement, Omit<ProgressBarProps<ElementType>, 'ref'>>(
+      (props: Omit<ProgressBarProps<ElementType>, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
         ProgressBarFn(props as ProgressBarProps, ref)
     )
   }

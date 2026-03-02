@@ -66,9 +66,9 @@ importers:
       '@necto/strings':
         specifier: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-strings
         version: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-strings
-      '@sprocketui-types/button':
+      '@sprocketui-types/buttons':
         specifier: workspace:*
-        version: link:../../@sprocketui-types/sprocketui-types-button
+        version: link:../../@sprocketui-types/sprocketui-types-buttons
       defu:
         specifier: ^6.1.4
         version: 6.1.4
@@ -440,7 +440,62 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(@types/node@24.10.0)(jiti@2.6.1)
 
-  packages/@sprocketui-types/sprocketui-types-button:
+  packages/@sprocketui-react/sprocketui-react-tooltip:
+    dependencies:
+      '@necto-react/components':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-components
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-components
+      '@necto-react/hooks':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-hooks
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-hooks
+      '@necto-react/popper':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-popper
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-popper
+      '@necto-react/types':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-types
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-types
+      '@necto/mergers':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-mergers
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-mergers
+      '@necto/popper':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-popper
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-popper
+      '@necto/strings':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-strings
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-strings
+      '@sprocketui-types/tooltip':
+        specifier: workspace:*
+        version: link:../../@sprocketui-types/sprocketui-types-tooltip
+      defu:
+        specifier: ^6.1.4
+        version: 6.1.4
+    devDependencies:
+      '@types/react':
+        specifier: 19.1.2
+        version: 19.1.2
+      '@types/react-dom':
+        specifier: 19.1.2
+        version: 19.1.2(@types/react@19.1.2)
+      react:
+        specifier: ^19.1.0
+        version: 19.2.0
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.2.0(react@19.2.0)
+      shared:
+        specifier: workspace:*
+        version: link:../../shared
+      tsup:
+        specifier: ^8.4.0
+        version: 8.5.0(jiti@2.6.1)(postcss@8.5.6)(typescript@5.9.3)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.9.3
+      vitest:
+        specifier: ^3.2.4
+        version: 3.2.4(@types/node@24.10.0)(jiti@2.6.1)
+
+  packages/@sprocketui-types/sprocketui-types-buttons:
     devDependencies:
       typescript:
         specifier: ^5.0.0
@@ -497,6 +552,12 @@ importers:
         specifier: ^5.0.0
         version: 5.9.3
 
+  packages/@sprocketui-types/sprocketui-types-tooltip:
+    dependencies:
+      '@necto/popper':
+        specifier: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-popper
+        version: link:../../../../../nectoutil/NodeKit/packages/@necto/necto-popper
+
   packages/@sprocketui/sprocketui-react:
     dependencies:
       '@sprocketui-react/button':
@@ -533,9 +594,9 @@ importers:
 
   packages/@sprocketui/sprocketui-types:
     dependencies:
-      '@sprocketui-types/button':
+      '@sprocketui-types/buttons':
         specifier: workspace:*
-        version: link:../../@sprocketui-types/sprocketui-types-button
+        version: link:../../@sprocketui-types/sprocketui-types-buttons
     devDependencies:
       tsup:
         specifier: ^8.4.0

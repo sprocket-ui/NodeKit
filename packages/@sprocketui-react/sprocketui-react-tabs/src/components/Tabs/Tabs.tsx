@@ -24,6 +24,7 @@ import { useTabs } from '../../hooks/useTabs';
 import { SelectionIndicator } from '../SelectionIndicator';
 
 import type {
+  ElementType,
   ForwardedRef,
   ReactElement,
   RefAttributes,
@@ -81,10 +82,10 @@ function TabsFn(
  * Wrapper component that provides context for TabList and TabPanel.
  */
 export const Tabs: ForwardRefExoticComponent<
-  Omit<TabsProps, 'ref'> & RefAttributes<HTMLElement>
+  Omit<TabsProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>
 > & {
   Root: ForwardRefExoticComponent<
-    Omit<TabsProps, 'ref'> & RefAttributes<HTMLElement>
+    Omit<TabsProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>
   >;
   List: typeof TabList;
   Tab: typeof Tab;
@@ -92,13 +93,13 @@ export const Tabs: ForwardRefExoticComponent<
   Panels: typeof TabPanels;
   Indicator: typeof SelectionIndicator;
 } = Object.assign(
-  forwardRef<HTMLElement, Omit<TabsProps, 'ref'>>(
-    (props: Omit<TabsProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+  forwardRef<HTMLElement, Omit<TabsProps<ElementType>, 'ref'>>(
+    (props: Omit<TabsProps<ElementType>, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
       TabsFn(props as TabsProps, ref)
   ),
   {
-    Root: forwardRef<HTMLElement, Omit<TabsProps, 'ref'>>(
-      (props: Omit<TabsProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+    Root: forwardRef<HTMLElement, Omit<TabsProps<ElementType>, 'ref'>>(
+      (props: Omit<TabsProps<ElementType>, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
         TabsFn(props as TabsProps, ref)
     ),
     List: TabList,

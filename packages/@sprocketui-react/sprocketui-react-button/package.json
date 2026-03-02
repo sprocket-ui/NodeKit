@@ -16,9 +16,9 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "tsup",
+    "build": "tsup --config ../../../tsup.config.ts",
     "test": "vitest",
-    "dev": "tsup --watch"
+    "dev": "tsup --config ../../../tsup.config.ts --watch"
   },
   "dependencies": {
     "@necto-react/components": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-components",
@@ -28,7 +28,7 @@
     "@necto/dom": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-dom",
     "@necto/mergers": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-mergers",
     "@necto/strings": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-strings",
-    "@sprocketui-types/button": "workspace:*",
+    "@sprocketui-types/buttons": "workspace:*",
     "defu": "^6.1.4"
   },
   "peerDependencies": {

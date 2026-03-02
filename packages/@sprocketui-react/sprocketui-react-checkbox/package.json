@@ -13,9 +13,9 @@
     "README.md"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup --config ../../../tsup.config.ts",
     "test": "vitest",
-    "dev": "tsup --watch"
+    "dev": "tsup --config ../../../tsup.config.ts --watch"
   },
   "repository": {
     "type": "git",

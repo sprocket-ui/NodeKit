@@ -10,15 +10,14 @@
 
 'use client';
 
-import { kebabCase } from '@necto/strings';
+import { forwardRef } from 'react';
 import { mergeProps } from '@necto/mergers';
-import { forwardRef, useMemo } from 'react';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
-import { ButtonContext } from '../../contexts';
 import { BUTTON_NAME } from '../../constants';
+import { ButtonContext } from '../../contexts';
 import { useButton } from '../../hooks/useButton';
 
 import type {
@@ -51,6 +50,7 @@ function ButtonFn(
     isPressed,
     isFocused,
     isDisabled,
+    isPending,
     elementType,
     isFocusVisible
   } = useButton(props, ref as any);
@@ -63,8 +63,8 @@ function ButtonFn(
       isPressed,
       isFocused,
       isFocusVisible,
-      isDisabled
-      // isPending
+      isDisabled,
+      isPending
     },
     defaultClassName: buildInternalIdentifier({
       component: BUTTON_NAME
@@ -74,39 +74,12 @@ function ButtonFn(
     })
   });
 
-  const dataAttributes = useMemo(() => {
-    const stateAttributes: Record<string, boolean | undefined> = {
-      hover: isHovered,
-      focus: isFocused,
-      focusVisible: isFocusVisible,
-      disabled: isDisabled,
-      pressed: isPressed
-    };
-
-    const attributes: Record<string, string | undefined> = {};
-    const sprocketState: string[] = [];
-
-    for (const [key, value] of Object.entries(stateAttributes)) {
-      if (typeof value === 'boolean') {
-        attributes[`data-${kebabCase(key)}`] = value ? String(true) : undefined;
-        if (value) {
-          sprocketState.push(kebabCase(key));
-        }
-      }
-    }
-
-    return {
-      ...attributes,
-      'data-sprocket-state': sprocketState.join(' ')
-    };
-  }, [isHovered, isFocused, isFocusVisible, isDisabled, isPressed]);
-
   return (
     <Primitive
       ref={ref}
       as={elementType}
       {...renderProps}
-      {...mergeProps(buttonProps, dataAttributes)}
+      {...mergeProps(buttonProps)}
       id={sprocketButtonID}
       slot={props.slot || undefined}
     >
