@@ -45,11 +45,14 @@ jobs:
       - name: Build Storybook
         run: pnpm --filter @sprocketui/react run build-storybook
 
+      - name: Install Wrangler
+        if: github.ref == 'refs/heads/main'
+        run: pnpm add -wD wrangler
+
       - name: Deploy to Cloudflare Pages
         if: github.ref == 'refs/heads/main'
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          packageManager: npx
           command: pages deploy packages/@sprocketui/sprocketui-react/storybook-static --project-name=sprocket-react-storybook
