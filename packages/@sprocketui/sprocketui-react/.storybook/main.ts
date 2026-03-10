@@ -79,25 +79,19 @@ const config: StorybookConfig = {
     ];
 
     // In CI (no nectoutil source), necto packages resolve from npm dist files.
-    // Their dist has external cross-imports that Rollup can chunk incorrectly,
-    // causing circular dependency initialization issues at runtime.
-    // Force Rollup to put these modules in the same chunk.
+    // Their dist files have cross-package imports that can cause circular chunk
+    // initialization issues. Dedupe ensures consistent resolution and prevents
+    // Rollup from creating problematic circular chunks.
     if (!hasNectoutil) {
-      config.build = config.build ?? {};
-      config.build.rollupOptions = config.build.rollupOptions ?? {};
-      const existingManualChunks = (config.build.rollupOptions.output as any)?.manualChunks;
-      config.build.rollupOptions.output = {
-        ...(config.build.rollupOptions.output as object ?? {}),
-        manualChunks(id: string, ...args: any[]) {
-          if (id.includes('@necto/') || id.includes('@necto-react/')) {
-            return 'necto-vendor';
-          }
-          if (typeof existingManualChunks === 'function') {
-            return existingManualChunks(id, ...args);
-          }
-          return undefined;
-        },
-      };
+      config.resolve.dedupe = [
+        ...(config.resolve.dedupe ?? []),
+        '@necto/constants',
+        '@necto/dom',
+        '@necto/platform',
+        '@necto-react/components',
+        '@necto-react/hooks',
+        '@necto-react/helpers',
+      ];
     }
 
     // Add Tailwind CSS
