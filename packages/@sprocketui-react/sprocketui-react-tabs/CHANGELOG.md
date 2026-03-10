@@ -1,4 +1,4 @@
-# @sprocketui-types/button
+# @sprocketui-react/tabs
 
 ## 1.1.0
 
@@ -6,8 +6,7 @@
 
 - 7939a4e: Added minor bump to all pakcages
 
-## 1.0.1
-
 ### Patch Changes
 
-- 831bdcf: Added initial component versions
+- Updated dependencies [7939a4e]
+  - @sprocketui-types/tabs@1.1.0
