@@ -51,4 +51,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          packageManager: npx
           command: pages deploy packages/@sprocketui/sprocketui-react/storybook-static --project-name=sprocket-react-storybook
