@@ -15,7 +15,7 @@
   },
   "description": "Shared internal functions used by only Sprocket UI",
   "scripts": {
-    "build": "tsup --config ../../tsup.config.ts"
+    "build": "tsup"
   },
   "devDependencies": {
     "@necto/strings": "link:../../../../nectoutil/NodeKit/packages/@necto/necto-strings",

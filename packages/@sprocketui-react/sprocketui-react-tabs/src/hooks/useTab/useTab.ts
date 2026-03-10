@@ -16,8 +16,8 @@ import {
   useAriaProps
 } from '@necto-react/hooks';
 import { defu } from 'defu';
-import { mergeProps } from '@necto/mergers';
 import { useCallback } from 'react';
+import { mergeProps } from '@necto/mergers';
 
 import { generateId } from '../../utils';
 import { DEFAULT_TAB_TAG } from '../../constants';

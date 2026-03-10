@@ -1,0 +1,53 @@
+name: Storybook
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/@sprocketui-react/**/stories/**'
+      - 'packages/@sprocketui/sprocketui-react/.storybook/**'
+  pull_request:
+    paths:
+      - 'packages/@sprocketui-react/**/stories/**'
+      - 'packages/@sprocketui/sprocketui-react/.storybook/**'
+
+env:
+  CI: true
+  LEFTHOOK: 0
+
+concurrency:
+  group: storybook-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-storybook:
+    name: Build & Deploy Storybook
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Storybook
+        run: pnpm --filter @sprocketui/react run build-storybook
+
+      - name: Deploy to Cloudflare Pages
+        if: github.ref == 'refs/heads/main'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy packages/@sprocketui/sprocketui-react/storybook-static --project-name=sprocketui-storybook

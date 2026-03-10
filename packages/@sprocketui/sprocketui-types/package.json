@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "Universal type definitions for Sprocket components",
   "scripts": {
-    "build": "tsup --config ../../../tsup.config.ts --minify"
+    "build": "tsup"
   },
   "files": [
     "dist",

@@ -16,9 +16,9 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "tsup --config ../../../tsup.config.ts",
+    "build": "tsup",
     "test": "vitest",
-    "dev": "tsup --config ../../../tsup.config.ts --watch"
+    "dev": "tsup --watch"
   },
   "dependencies": {
     "@sprocketui-types/label": "workspace:*",
