@@ -78,6 +78,28 @@ const config: StorybookConfig = {
       ...(hasNectoutil ? [nectoutilRoot] : []),
     ];
 
+    // In CI (no nectoutil source), necto packages resolve from npm dist files.
+    // Their dist has external cross-imports that Rollup can chunk incorrectly,
+    // causing circular dependency initialization issues at runtime.
+    // Force Rollup to put these modules in the same chunk.
+    if (!hasNectoutil) {
+      config.build = config.build ?? {};
+      config.build.rollupOptions = config.build.rollupOptions ?? {};
+      const existingManualChunks = (config.build.rollupOptions.output as any)?.manualChunks;
+      config.build.rollupOptions.output = {
+        ...(config.build.rollupOptions.output as object ?? {}),
+        manualChunks(id: string, ...args: any[]) {
+          if (id.includes('@necto/') || id.includes('@necto-react/')) {
+            return 'necto-vendor';
+          }
+          if (typeof existingManualChunks === 'function') {
+            return existingManualChunks(id, ...args);
+          }
+          return undefined;
+        },
+      };
+    }
+
     // Add Tailwind CSS
     config.plugins = config.plugins ?? [];
     config.plugins.push(tailwindcss());
