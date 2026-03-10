@@ -49,12 +49,13 @@ function TooltipContentFn(
     contentProps,
     elementType,
     isHovered,
+    isMounted,
     refs,
     floatingStyles,
     finalPlacement,
     getFloatingProps,
     transitionStyles
-  } = useTooltipContent(restProps, context);
+  } = useTooltipContent({ ...restProps, triggerRef: context.triggerRef }, context);
 
   const placementSide = (finalPlacement?.split('-')[0] as 'top' | 'bottom' | 'left' | 'right') ?? null;
   const arrowContextValue = useMemo(() => ({ placement: placementSide }), [placementSide]);
@@ -74,17 +75,25 @@ function TooltipContentFn(
     })
   });
 
+  // Use isMounted for transition support, fall back to isOpen for immediate show.
+  const shouldRender = isMounted || context.isOpen;
+
+  if (!shouldRender) return null;
+
+  const floatingProps = getFloatingProps({
+    ref: (node: HTMLElement | null): void => {
+      refs.setFloating(node);
+      if (typeof ref === 'function') ref(node);
+      else if (ref) ref.current = node;
+    }
+  });
+
   return (
     <PopperPortal>
       <Primitive
-        ref={(node: HTMLElement | null): void => {
-          refs.setFloating(node);
-          if (typeof ref === 'function') ref(node);
-          else if (ref) ref.current = node;
-        }}
         as={elementType}
         {...renderProps}
-        {...getFloatingProps()}
+        {...floatingProps}
         {...mergeProps(contentProps)}
         id={context.tooltipId}
         style={{

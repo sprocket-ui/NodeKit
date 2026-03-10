@@ -17,24 +17,31 @@
   "scripts": {
     "build": "tsup --config ../../../tsup.config.ts",
     "test": "vitest",
-    "dev": "tsup --config ../../../tsup.config.ts --watch"
+    "dev": "tsup --config ../../../tsup.config.ts --watch",
+    "storybook": "storybook dev -p 6006 --no-open",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@sprocketui-react/button": "workspace:*",
     "@sprocketui-react/input": "workspace:*",
-    "@sprocketui-react/label": "workspace:*",
-    "@sprocketui-react/button": "workspace:*"
+    "@sprocketui-react/label": "workspace:*"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1",
     "react-dom": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1"
   },
   "devDependencies": {
+    "@storybook/react-vite": "^10.2.16",
+    "@tailwindcss/vite": "^4.2.1",
     "@types/node": "^24.3.0",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "sass-embedded": "^1.97.3",
     "shared": "workspace:*",
+    "storybook": "^10.2.16",
+    "tailwindcss": "^4.2.1",
     "tsup": "^8.4.0"
   }
 }

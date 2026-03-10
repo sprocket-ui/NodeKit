@@ -8,6 +8,7 @@
 
 'use client';
 
+import { useMemo } from 'react';
 import { defu } from 'defu';
 import {
   flip,
@@ -44,6 +45,10 @@ export function useTooltipContent<T extends ElementType = typeof DEFAULT_TOOLTIP
     elementType: options.elementType || options.as || DEFAULT_TOOLTIP_TAG
   });
 
+  // Extract triggerRef directly from options to avoid defu potentially
+  // deep-merging the RefObject.
+  const triggerRef = options.triggerRef;
+
   const { isOpen } = state;
 
   const { hoverProps, isHovered } = useHover({
@@ -51,11 +56,17 @@ export function useTooltipContent<T extends ElementType = typeof DEFAULT_TOOLTIP
     onHoverEnd: () => state.close()
   });
 
+  const middleware = useMemo(
+    () => [offsetMiddleware(offsetValue), flip(), shift()],
+    [offsetValue]
+  );
+
   const { refs, floatingStyles, placement: finalPlacement } = usePopper({
     open: isOpen,
     placement,
     whileElementsMounted: autoUpdate,
-    middleware: [offsetMiddleware(offsetValue), flip(), shift()],
+    middleware,
+    reference: triggerRef?.current,
   });
 
   const dismiss = useDismiss({
@@ -75,8 +86,8 @@ export function useTooltipContent<T extends ElementType = typeof DEFAULT_TOOLTIP
   const { isMounted, styles: transitionStyles } = useTransitionStyles({
     open: isOpen,
     duration: transitionDuration,
-    initial: { opacity: 0, transform: 'scale(0.95)' },
-    openStyles: { opacity: 1, transform: 'scale(1)' }
+    initial: { opacity: 0 },
+    openStyles: { opacity: 1 }
   });
 
   const sprocketState: string[] = [];
@@ -87,8 +98,8 @@ export function useTooltipContent<T extends ElementType = typeof DEFAULT_TOOLTIP
     hoverProps,
     {
       role: 'tooltip',
-      'data-hover': isHovered ? 'true' : undefined,
       'data-open': isOpen ? 'true' : undefined,
+      'data-hover': isHovered ? 'true' : undefined,
       'data-sprocket-state': sprocketState.length > 0 ? sprocketState.join(' ') : undefined
     }
   );

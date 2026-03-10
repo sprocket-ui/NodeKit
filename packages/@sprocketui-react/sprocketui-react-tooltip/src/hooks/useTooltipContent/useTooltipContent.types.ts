@@ -6,7 +6,7 @@
  *
  */
 
-import type { CSSProperties, ElementType } from 'react';
+import type { CSSProperties, ElementType, RefObject } from 'react';
 
 export interface UseTooltipContentOptions<T extends ElementType = 'div'> {
   // The element type to render as. @default 'div'
@@ -23,6 +23,9 @@ export interface UseTooltipContentOptions<T extends ElementType = 'div'> {
 
   // Duration of the enter/exit transition in ms. @default 150
   transitionDuration?: number;
+
+  // Ref to the trigger/reference element for popper positioning.
+  triggerRef?: RefObject<Element | null>;
 }
 
 export type UseTooltipContentReturn<T extends ElementType = 'div'> = Readonly<{
@@ -45,7 +48,7 @@ export type UseTooltipContentReturn<T extends ElementType = 'div'> = Readonly<{
   finalPlacement: string;
 
   // Returns props to spread on the floating element.
-  getFloatingProps: () => Record<string, any>;
+  getFloatingProps: (userProps?: Record<string, any>) => Record<string, any>;
 
   // Whether the tooltip is mounted (for transition).
   isMounted: boolean;

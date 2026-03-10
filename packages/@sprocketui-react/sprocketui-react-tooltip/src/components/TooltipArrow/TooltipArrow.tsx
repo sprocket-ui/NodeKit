@@ -9,7 +9,7 @@
 'use client';
 
 import { useContext } from 'react';
-import { Arrow } from '@necto-react/popper';
+import { PopperArrow } from '@necto-react/popper';
 
 import { TOOLTIP_ARROW_NAME } from '../../constants';
 import { TooltipArrowContext } from '../../contexts';
@@ -27,7 +27,7 @@ function TooltipArrowFn(props: TooltipArrowProps): ReactElement {
   const { placement } = useContext(TooltipArrowContext);
 
   return (
-    <Arrow
+    <PopperArrow
       placement={placement}
       {...props}
     />
