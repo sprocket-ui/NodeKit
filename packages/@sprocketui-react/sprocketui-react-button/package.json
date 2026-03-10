@@ -21,7 +21,7 @@
     "dev": "tsup --watch"
   },
   "dependencies": {
-    "@necto-react/components": "1.4.0",
+    "@necto-react/components": "1.4.2",
     "@necto-react/helpers": "2.6.1",
     "@necto-react/hooks": "2.14.2",
     "@necto-react/types": "2.4.0",
