@@ -22,13 +22,13 @@
     "url": "https://github.com/sprocket-ui/NodeKit.git"
   },
   "dependencies": {
-    "@necto-react/components": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-components",
-    "@necto-react/hooks": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-hooks",
-    "@necto-react/popper": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-popper",
-    "@necto-react/types": "link:../../../../../nectoutil/NodeKit/packages/@necto-react/necto-react-types",
-    "@necto/mergers": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-mergers",
-    "@necto/popper": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-popper",
-    "@necto/strings": "link:../../../../../nectoutil/NodeKit/packages/@necto/necto-strings",
+    "@necto-react/components": "1.4.0",
+    "@necto-react/hooks": "2.14.2",
+    "@necto-react/popper": "0.3.0",
+    "@necto-react/types": "2.4.0",
+    "@necto/mergers": "1.5.0",
+    "@necto/popper": "0.3.0",
+    "@necto/strings": "1.6.0",
     "@sprocketui-types/tooltip": "workspace:*",
     "defu": "^6.1.4"
   },

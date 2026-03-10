@@ -1,9 +1,11 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 import tailwindcss from '@tailwindcss/vite';
+import fs from 'node:fs';
 import path from 'node:path';
 
 const packagesRoot = path.resolve(import.meta.dirname, '../../..');
 const nectoutilRoot = path.resolve(packagesRoot, '../../../nectoutil/NodeKit/packages');
+const hasNectoutil = fs.existsSync(nectoutilRoot);
 
 // Map workspace package names to their source entry points so Vite
 // doesn't resolve to CJS dist/ bundles.
@@ -28,22 +30,25 @@ const workspaceAliases: Record<string, string> = {
   '@sprocketui-types/tabs': path.join(packagesRoot, '@sprocketui-types/sprocketui-types-tabs/src/index.ts'),
   '@sprocketui-types/tooltip': path.join(packagesRoot, '@sprocketui-types/sprocketui-types-tooltip/src/index.ts'),
 
-  // @necto-react packages
-  '@necto-react/hooks': path.join(nectoutilRoot, '@necto-react/necto-react-hooks/src/index.ts'),
-  '@necto-react/helpers': path.join(nectoutilRoot, '@necto-react/necto-react-helpers/src/index.ts'),
-  '@necto-react/components': path.join(nectoutilRoot, '@necto-react/necto-react-components/src/index.ts'),
-  '@necto-react/types': path.join(nectoutilRoot, '@necto-react/necto-react-types/src/index.ts'),
-  '@necto-react/popper': path.join(nectoutilRoot, '@necto-react/necto-react-popper/src/index.ts'),
-
-  // @necto packages
-  '@necto/mergers': path.join(nectoutilRoot, '@necto/necto-mergers/src/index.ts'),
-  '@necto/strings': path.join(nectoutilRoot, '@necto/necto-strings/src/index.ts'),
-  '@necto/dom': path.join(nectoutilRoot, '@necto/necto-dom/src/index.ts'),
-  '@necto/popper': path.join(nectoutilRoot, '@necto/necto-popper/src/index.ts'),
-
   // shared
   'shared': path.join(packagesRoot, 'shared/src/index.ts'),
 };
+
+// Only alias nectoutil source when developing locally (repo exists on disk).
+// In CI, these resolve from node_modules (published npm packages).
+if (hasNectoutil) {
+  Object.assign(workspaceAliases, {
+    '@necto-react/hooks': path.join(nectoutilRoot, '@necto-react/necto-react-hooks/src/index.ts'),
+    '@necto-react/helpers': path.join(nectoutilRoot, '@necto-react/necto-react-helpers/src/index.ts'),
+    '@necto-react/components': path.join(nectoutilRoot, '@necto-react/necto-react-components/src/index.ts'),
+    '@necto-react/types': path.join(nectoutilRoot, '@necto-react/necto-react-types/src/index.ts'),
+    '@necto-react/popper': path.join(nectoutilRoot, '@necto-react/necto-react-popper/src/index.ts'),
+    '@necto/mergers': path.join(nectoutilRoot, '@necto/necto-mergers/src/index.ts'),
+    '@necto/strings': path.join(nectoutilRoot, '@necto/necto-strings/src/index.ts'),
+    '@necto/dom': path.join(nectoutilRoot, '@necto/necto-dom/src/index.ts'),
+    '@necto/popper': path.join(nectoutilRoot, '@necto/necto-popper/src/index.ts'),
+  });
+}
 
 const config: StorybookConfig = {
   stories: [
@@ -70,7 +75,7 @@ const config: StorybookConfig = {
     config.server.fs.allow = [
       ...(config.server.fs.allow ?? []),
       repoRoot,
-      nectoutilRoot,
+      ...(hasNectoutil ? [nectoutilRoot] : []),
     ];
 
     // Add Tailwind CSS
