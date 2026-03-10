@@ -79,19 +79,45 @@ const config: StorybookConfig = {
     ];
 
     // In CI (no nectoutil source), necto packages resolve from npm dist files.
-    // Their dist files have cross-package imports that can cause circular chunk
-    // initialization issues. Dedupe ensures consistent resolution and prevents
-    // Rollup from creating problematic circular chunks.
+    // Their dist files have cross-package imports that cause circular chunk
+    // initialization issues (DOM.HTML_TAGS.reduce undefined). Group all necto
+    // modules into one chunk to fix initialization order.
     if (!hasNectoutil) {
-      config.resolve.dedupe = [
-        ...(config.resolve.dedupe ?? []),
-        '@necto/constants',
-        '@necto/dom',
-        '@necto/platform',
-        '@necto-react/components',
-        '@necto-react/hooks',
-        '@necto-react/helpers',
-      ];
+      config.build = config.build ?? {};
+      config.build.rollupOptions = config.build.rollupOptions ?? {};
+
+      const output = config.build.rollupOptions.output;
+      const wrapManualChunks = (existing: any) => {
+        return (id: string, meta: any) => {
+          // Group all necto node_modules into a single vendor chunk
+          if (id.includes('node_modules') && (id.includes('@necto/') || id.includes('@necto-react/'))) {
+            return 'necto-vendor';
+          }
+          // Preserve existing manualChunks behavior
+          if (typeof existing === 'function') {
+            return existing(id, meta);
+          }
+          if (existing && typeof existing === 'object') {
+            for (const [chunkName, modules] of Object.entries(existing)) {
+              if ((modules as string[]).some((m) => id.includes(m))) {
+                return chunkName;
+              }
+            }
+          }
+        };
+      };
+
+      if (Array.isArray(output)) {
+        config.build.rollupOptions.output = output.map((o) => ({
+          ...o,
+          manualChunks: wrapManualChunks(o.manualChunks),
+        }));
+      } else {
+        config.build.rollupOptions.output = {
+          ...(output ?? {}),
+          manualChunks: wrapManualChunks(output?.manualChunks),
+        };
+      }
     }
 
     // Add Tailwind CSS
