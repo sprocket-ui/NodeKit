@@ -1,5 +1,59 @@
 # @sprocketui-react/button
 
+## 1.2.11
+
+### Patch Changes
+
+- Update necto hooks to version that no longer bundles react-dom CJS into ESM output
+
+## 1.2.10
+
+### Patch Changes
+
+- Update necto dependencies to versions with @necto/types ESM fix
+
+## 1.2.9
+
+### Patch Changes
+
+- Update necto dependencies to latest versions with ESM module fixes
+
+## 1.2.8
+
+### Patch Changes
+
+- Update necto deps with ESM resolution fix
+
+## 1.2.7
+
+### Patch Changes
+
+- Update necto deps with ARIA lazy-init fix
+
+## 1.2.6
+
+### Patch Changes
+
+- Rebuild with latest necto lazy-init fixes
+
+## 1.2.4
+
+### Patch Changes
+
+- Update necto deps to fix circular chunk initialization error
+
+## 1.2.3
+
+### Patch Changes
+
+- Add exports field to package.json
+
+## 1.2.1
+
+### Patch Changes
+
+- Update necto dependency versions
+
 ## 1.2.0
 
 ### Minor Changes

@@ -18,6 +18,7 @@ export default defineConfig({
     /^@sprocketui-types/,
     /^@react-aria/,
     /^react-aria/,
+    'defu',
   ],
   esbuildOptions(options) {
     options.legalComments = 'none';
