@@ -1,6 +1,6 @@
 {
   "name": "@sprocketui-react/button",
-  "version": "1.2.11",
+  "version": "1.2.19",
   "description": "Sprocket's standalone React button component.",
   "type": "module",
   "license": "MIT",
@@ -28,11 +28,11 @@
     "dev": "tsup --watch"
   },
   "dependencies": {
-    "@necto-react/components": "1.4.8",
-    "@necto-react/helpers": "2.6.6",
-    "@necto-react/hooks": "2.14.8",
+    "@necto-react/components": "1.4.16",
+    "@necto-react/helpers": "2.6.10",
+    "@necto-react/hooks": "2.14.13",
     "@necto-react/types": "2.4.1",
-    "@necto/dom": "1.6.6",
+    "@necto/dom": "1.6.10",
     "@necto/mergers": "1.5.1",
     "@necto/strings": "1.6.1",
     "@sprocketui-types/buttons": "workspace:*",

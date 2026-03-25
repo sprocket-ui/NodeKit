@@ -1,5 +1,53 @@
 # @sprocketui-react/button
 
+## 1.2.19
+
+### Patch Changes
+
+- Update necto hooks to fix SSR hydration mismatch
+
+## 1.2.18
+
+### Patch Changes
+
+- Update necto dependencies to latest versions
+
+## 1.2.17
+
+### Patch Changes
+
+- Update necto deps with SSR-safe document guards
+
+## 1.2.16
+
+### Patch Changes
+
+- Update necto dependencies to versions with workspace:\* fix
+
+## 1.2.15
+
+### Patch Changes
+
+- Update @necto-react/components to 1.4.12 with proper dependency resolution
+
+## 1.2.14
+
+### Patch Changes
+
+- Update necto dependencies to latest versions
+
+## 1.2.13
+
+### Patch Changes
+
+- Update @necto-react/components to 1.4.10 with workspace:\* fix
+
+## 1.2.12
+
+### Patch Changes
+
+- Update @necto-react/components to 1.4.9 with SSR-safe style injection fix
+
 ## 1.2.11
 
 ### Patch Changes
