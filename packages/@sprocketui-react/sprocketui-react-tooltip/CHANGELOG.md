@@ -1,5 +1,11 @@
 # @sprocketui-react/tooltip
 
+## 1.2.0
+
+### Minor Changes
+
+- 727504e: Added new Tooltips Package
+
 ## 1.1.0
 
 ### Minor Changes
