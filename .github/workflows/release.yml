@@ -6,7 +6,6 @@ on:
       - main
 
 env:
-  CI: true
   LEFTHOOK: 0
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
