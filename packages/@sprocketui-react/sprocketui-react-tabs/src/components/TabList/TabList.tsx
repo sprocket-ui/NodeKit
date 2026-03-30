@@ -19,13 +19,14 @@ import { useTabList } from '../../hooks/useTabList';
 import { TabListStateContext, TabListContext, TabListRefContext, TabsContext } from '../../contexts';
 
 import type {
-  ElementType,
   RefObject,
+  ElementType,
   ForwardedRef,
   ReactElement,
   RefAttributes,
   ForwardRefExoticComponent
 } from 'react';
+import type { TabsState } from '../../types';
 import type { TabListProps } from './TabList.types';
 import type { UseTabsOptions } from '../../hooks/useTabs';
 import type { UseRendererReturn } from '@necto-react/hooks';
@@ -44,17 +45,17 @@ function TabListFn(
     context: TabListContext as any
   });
 
+  const parentState: TabsState | null = useContext(TabListStateContext);
   const tabsContext: Partial<UseTabsOptions<"div">> | null = useContext(TabsContext);
-  const parentState = useContext(TabListStateContext);
   const internalRef: RefObject<HTMLElement | null> = useRef<HTMLElement>(null);
 
-  const mergedProps = tabsContext ? { ...tabsContext, ...props } : props;
+  const mergedProps: TabListProps<'div'> = tabsContext ? { ...tabsContext, ...props } : props;
   const { tabListProps, elementType, state: localState } = useTabList(
     mergedProps,
     internalRef
   );
-  const state = parentState ?? localState;
 
+  const state: TabsState = parentState ?? localState;
   const renderProps: UseRendererReturn = useRenderer({
     ...props,
     values: {
@@ -72,11 +73,11 @@ function TabListFn(
     <TabListStateContext.Provider value={state}>
       <TabListRefContext.Provider value={internalRef}>
         <Primitive
-          ref={mergeRefs(forwardedRef, internalRef)}
           as={elementType}
+          slot={props.slot || undefined}
+          ref={mergeRefs(forwardedRef, internalRef)}
           {...renderProps}
           {...mergeProps(tabListProps)}
-          slot={props.slot || undefined}
         >
           {renderProps.children}
         </Primitive>

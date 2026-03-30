@@ -11,4 +11,4 @@ import { createContext } from 'react';
 import type { Context } from 'react';
 import type { UseTabsOptions } from '../hooks/useTabs';
 
-export const TabsContext: Context<Partial<UseTabsOptions<"div">> | null> = createContext<Partial<UseTabsOptions> | null>(null);
+export const TabsContext: Context<Partial<UseTabsOptions<'div'>> | null> = createContext<Partial<UseTabsOptions> | null>(null);

@@ -17,10 +17,10 @@ import { tabsIds } from '../../utils';
 import { DEFAULT_TAB_TAG } from '../../constants';
 
 import type { TabsState } from '../../types';
-import type { AriaAttributes, Key, RefObject, ElementType } from 'react';
-import type { UseTabListOptions, UseTabListReturn } from './useTabList.types';
 import type { SelectionManager } from '@necto-react/types';
 import type { KeyboardDelegate } from '@necto-react/hooks';
+import type { AriaAttributes, Key, RefObject, ElementType } from 'react';
+import type { UseTabListOptions, UseTabListReturn } from './useTabList.types';
 
 export function useTabList<T extends ElementType = typeof DEFAULT_TAB_TAG>(
   options: UseTabListOptions<T>,

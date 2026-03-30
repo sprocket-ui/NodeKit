@@ -6,11 +6,11 @@
  *
  */
 
-export { TabsContext } from './TabsContext';
-export { TabListStateContext } from './TabListStateContext';
-export { TabListContext } from './TabListContext';
 export { TabContext } from './TabContext';
+export { TabsContext } from './TabsContext';
+export { TabListContext } from './TabListContext';
 export { TabPanelContext } from './TabPanelContext';
 export { TabPanelsContext } from './TabPanelsContext';
-export { SelectionIndicatorContext } from './SelectionIndicatorContext';
 export { TabListRefContext } from './TabListRefContext';
+export { TabListStateContext } from './TabListStateContext';
+export { SelectionIndicatorContext } from './SelectionIndicatorContext';

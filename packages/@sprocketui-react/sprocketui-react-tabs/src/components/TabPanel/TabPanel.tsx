@@ -8,10 +8,10 @@
 
 'use client';
 
-import invariant from 'tiny-invariant';
+import { assert } from '@necto/assert';
 import { mergeProps } from '@necto/mergers';
-import { buildInternalIdentifier } from 'shared';
 import { useContext, forwardRef } from 'react';
+import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { useContextProps, useRenderer } from '@necto-react/hooks';
 
@@ -26,9 +26,9 @@ import type {
   RefAttributes,
   ForwardRefExoticComponent
 } from 'react';
+import type { TabsState } from '../../types';
 import type { TabPanelProps } from './TabPanel.types';
 import type { UseRendererReturn } from '@necto-react/hooks';
-import type { TabsState } from '../../types';
 
 /**
  * @internal
@@ -45,14 +45,12 @@ function TabPanelFn(
   });
 
   const state: TabsState | null = useContext(TabListStateContext);
-
-  invariant(state, 'TabPanel must be used within a Tabs component');
+  assert(state, 'TabPanel must be used within a Tabs component');
 
   const { forceMount = false } = props;
-  const { tabPanelProps, elementType, isSelected } = useTabPanel(props, state);
-
   // Exclude value from props spread since useRenderer expects string id, but TabPanel uses Key value
   const { value: _value, ...renderableProps } = props;
+  const { tabPanelProps, elementType, isSelected } = useTabPanel(props, state);
 
   const renderProps: UseRendererReturn = useRenderer({
     ...renderableProps,
@@ -75,9 +73,9 @@ function TabPanelFn(
     <Primitive
       ref={ref}
       as={elementType}
+      slot={props.slot || undefined}
       {...renderProps}
       {...mergeProps(tabPanelProps)}
-      slot={props.slot || undefined}
     >
       {renderProps.children}
     </Primitive>

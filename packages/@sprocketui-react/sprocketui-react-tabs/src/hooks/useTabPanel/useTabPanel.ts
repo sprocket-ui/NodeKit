@@ -21,9 +21,9 @@ export function useTabPanel<T extends ElementType = typeof DEFAULT_TAB_TAG>(
 ): UseTabPanelReturn<T> {
   const { value, elementType = options.as ?? DEFAULT_TAB_TAG } = options;
 
-  const isSelected = state.selectedValue === value;
-  const tabPanelId = generateId(state, value, 'tabpanel');
-  const tabId = generateId(state, value, 'tab');
+  const isSelected: boolean = state.selectedValue === value;
+  const tabId: string = generateId(state, value, 'tab');
+  const tabPanelId: string = generateId(state, value, 'tabpanel');
 
   const tabPanelProps: Record<string, any> = {
     id: tabPanelId,
@@ -36,8 +36,8 @@ export function useTabPanel<T extends ElementType = typeof DEFAULT_TAB_TAG>(
   };
 
   return {
+    isSelected,
     tabPanelProps,
-    elementType: elementType as T,
-    isSelected
+    elementType: elementType as T
   };
 }

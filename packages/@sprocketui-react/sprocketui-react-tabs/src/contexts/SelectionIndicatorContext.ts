@@ -8,6 +8,7 @@
 
 import { createContext } from 'react';
 
+import type { Context } from 'react';
 import type { SelectionIndicatorProps } from '../components/SelectionIndicator';
 
-export const SelectionIndicatorContext = createContext<Partial<SelectionIndicatorProps> | null>(null);
+export const SelectionIndicatorContext: Context<Partial<SelectionIndicatorProps<'div'>> | null> = createContext<Partial<SelectionIndicatorProps> | null>(null);

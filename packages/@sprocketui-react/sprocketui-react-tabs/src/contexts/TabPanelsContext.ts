@@ -8,6 +8,7 @@
 
 import { createContext } from 'react';
 
+import type { Context } from 'react';
 import type { TabPanelsProps } from '../components/TabPanels';
 
-export const TabPanelsContext = createContext<Partial<TabPanelsProps> | null>(null);
+export const TabPanelsContext: Context<Partial<TabPanelsProps<'div'>> | null> = createContext<Partial<TabPanelsProps> | null>(null);

@@ -22,18 +22,18 @@ export function useSelectionIndicator(
 ): UseSelectionIndicatorReturn {
   const { state, tabListRef } = options;
 
-  const isSelected = state.selectedValue != null;
+  const isSelected: boolean = state.selectedValue != null;
   const [metrics, setMetrics] = useState<SelectionIndicatorMetrics | null>(null);
 
-  const measure = useCallback(() => {
-    const container = tabListRef.current;
+  const measure: () => void = useCallback((): void => {
+    const container: HTMLElement | null = tabListRef.current;
 
     if (!container || state.selectedValue == null) {
       setMetrics(null);
       return;
     }
 
-    const tabElement = container.querySelector(
+    const tabElement: Element | null = container.querySelector(
       `[data-value="${CSS.escape(String(state.selectedValue))}"]`
     );
 
@@ -42,8 +42,8 @@ export function useSelectionIndicator(
       return;
     }
 
-    const containerRect = container.getBoundingClientRect();
-    const tabRect = tabElement.getBoundingClientRect();
+    const containerRect: DOMRect = container.getBoundingClientRect();
+    const tabRect: DOMRect = tabElement.getBoundingClientRect();
 
     setMetrics({
       x: tabRect.left - containerRect.left,
@@ -53,21 +53,24 @@ export function useSelectionIndicator(
     });
   }, [tabListRef, state.selectedValue]);
 
-  useLayoutEffect(() => {
+  useLayoutEffect((): void => {
     measure();
   }, [measure]);
 
   useEffect(() => {
-    const container = tabListRef.current;
-    if (!container || typeof ResizeObserver === 'undefined') return;
+    const container: HTMLElement | null = tabListRef.current;
 
-    const observer = new ResizeObserver(() => {
+    if (!container || typeof ResizeObserver === 'undefined') {
+      return;
+    };
+
+    const observer = new ResizeObserver((): void => {
       measure();
     });
 
     observer.observe(container);
 
-    return () => {
+    return (): void => {
       observer.disconnect();
     };
   }, [tabListRef, measure]);

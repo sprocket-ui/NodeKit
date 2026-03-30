@@ -8,13 +8,14 @@
 
 'use client';
 
-import { forwardRef } from 'react';
+import { assert } from '@necto/assert';
+import { useContext, forwardRef } from 'react';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { useContextProps, useRenderer } from '@necto-react/hooks';
 
-import { TabPanelsContext } from '../../contexts';
 import { TAB_PANELS_NAME, DEFAULT_TAB_TAG } from '../../constants';
+import { TabListStateContext, TabPanelsContext } from '../../contexts';
 
 import type {
   ElementType,
@@ -23,6 +24,7 @@ import type {
   RefAttributes,
   ForwardRefExoticComponent
 } from 'react';
+import type { TabsState } from '../../types';
 import type { TabPanelsProps } from './TabPanels.types';
 import type { UseRendererReturn } from '@necto-react/hooks';
 
@@ -41,6 +43,9 @@ function TabPanelsFn(
   });
 
   const { elementType = props.as ?? DEFAULT_TAB_TAG, slot } = props;
+
+  const state: TabsState | null = useContext(TabListStateContext);
+  assert(state, 'TabPanels must be used within a Tabs component');
 
   const renderProps: UseRendererReturn = useRenderer({
     ...props,

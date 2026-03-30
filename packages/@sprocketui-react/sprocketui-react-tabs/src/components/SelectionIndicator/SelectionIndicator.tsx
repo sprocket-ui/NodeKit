@@ -8,23 +8,25 @@
 
 'use client';
 
-import invariant from 'tiny-invariant';
+import { assert } from '@necto/assert';
+import { useContext, forwardRef } from 'react';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
-import { useContext, forwardRef } from 'react';
 import { useContextProps, useRenderer } from '@necto-react/hooks';
 
+import { useSelectionIndicator } from '../../hooks/useSelectionIndicator';
 import { SELECTION_INDICATOR_NAME, DEFAULT_TAB_TAG } from '../../constants';
 import { SelectionIndicatorContext, TabListStateContext, TabListRefContext } from '../../contexts';
-import { useSelectionIndicator } from '../../hooks/useSelectionIndicator';
 
 import type {
+  RefObject,
   ElementType,
   ForwardedRef,
   ReactElement,
   RefAttributes,
   ForwardRefExoticComponent
 } from 'react';
+import type { TabsState } from '../../types';
 import type { UseRendererReturn } from '@necto-react/hooks';
 import type { SelectionIndicatorProps } from './SelectionIndicator.types';
 
@@ -42,11 +44,11 @@ function SelectionIndicatorFn(
     context: SelectionIndicatorContext as any
   });
 
-  const state = useContext(TabListStateContext);
-  invariant(state, 'SelectionIndicator must be used within a TabList');
+  const state: TabsState | null = useContext(TabListStateContext);
+  assert(state, 'SelectionIndicator must be used within a TabList');
 
-  const tabListRef = useContext(TabListRefContext);
-  invariant(tabListRef, 'SelectionIndicator must be used within a TabList');
+  const tabListRef: RefObject<HTMLElement | null> | null = useContext(TabListRefContext);
+  assert(tabListRef, 'SelectionIndicator must be used within a TabList');
 
   const { elementType = props.as ?? DEFAULT_TAB_TAG, slot } = props;
 

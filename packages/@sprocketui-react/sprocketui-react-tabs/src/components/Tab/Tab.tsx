@@ -8,7 +8,7 @@
 
 'use client';
 
-import invariant from 'tiny-invariant';
+import { assert } from '@necto/assert';
 import { mergeProps } from '@necto/mergers';
 import { useContext, forwardRef } from 'react';
 import { buildInternalIdentifier } from 'shared';
@@ -41,8 +41,7 @@ function TabFn(
   [props, ref] = useContextProps({ props, ref, context: TabContext as any });
 
   const state: TabsState | null = useContext(TabListStateContext);
-
-  invariant(state, 'Tab must be used within a TabList');
+  assert(state, 'Tab must be used within a TabList');
 
   const {
     tabProps,

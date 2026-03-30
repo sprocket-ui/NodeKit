@@ -8,7 +8,7 @@
 
 import { createContext } from 'react';
 
-import { Context } from 'react';
+import type { Context } from 'react';
 import type { TabProps } from '../components/Tab';
 
 export const TabContext: Context<Partial<TabProps<'div'>> | null> = createContext<Partial<TabProps> | null>(null);

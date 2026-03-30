@@ -109,8 +109,8 @@ export const Tabs: ForwardRefExoticComponent<
       (props: Omit<TabsProps<ElementType>, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
         TabsFn(props as TabsProps, ref)
     ),
-    List: TabList,
     Tab: Tab,
+    List: TabList,
     Panel: TabPanel,
     Panels: TabPanels,
     Indicator: SelectionIndicator
