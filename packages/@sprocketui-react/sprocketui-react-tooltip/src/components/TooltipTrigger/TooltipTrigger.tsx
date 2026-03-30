@@ -8,11 +8,11 @@
 
 'use client';
 
-import { useContext, cloneElement } from 'react';
 import { mergeProps } from '@necto/mergers';
+import { useContext, cloneElement } from 'react';
 
-import { TOOLTIP_TRIGGER_NAME } from '../../constants';
 import { TooltipContext } from '../../contexts';
+import { TOOLTIP_TRIGGER_NAME } from '../../constants';
 
 import type { ReactElement } from 'react';
 import type { TooltipContextValue } from '../../contexts';

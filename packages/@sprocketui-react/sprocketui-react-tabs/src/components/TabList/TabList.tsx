@@ -8,10 +8,10 @@
 
 'use client';
 
-import { mergeProps, mergeRefs } from '@necto/mergers';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { useContext, forwardRef, useRef } from 'react';
+import { mergeProps, mergeRefs } from '@necto/mergers';
 import { useContextProps, useRenderer } from '@necto-react/hooks';
 
 import { TAB_LIST_NAME } from '../../constants';
@@ -27,8 +27,8 @@ import type {
   ForwardRefExoticComponent
 } from 'react';
 import type { TabListProps } from './TabList.types';
-import type { UseRendererReturn } from '@necto-react/hooks';
 import type { UseTabsOptions } from '../../hooks/useTabs';
+import type { UseRendererReturn } from '@necto-react/hooks';
 
 /**
  * @internal
@@ -45,14 +45,15 @@ function TabListFn(
   });
 
   const tabsContext: Partial<UseTabsOptions<"div">> | null = useContext(TabsContext);
+  const parentState = useContext(TabListStateContext);
   const internalRef: RefObject<HTMLElement | null> = useRef<HTMLElement>(null);
 
   const mergedProps = tabsContext ? { ...tabsContext, ...props } : props;
-
-  const { tabListProps, elementType, state } = useTabList(
+  const { tabListProps, elementType, state: localState } = useTabList(
     mergedProps,
     internalRef
   );
+  const state = parentState ?? localState;
 
   const renderProps: UseRendererReturn = useRenderer({
     ...props,

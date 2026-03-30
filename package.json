@@ -18,7 +18,8 @@
   "pnpm": {
     "overrides": {
       "@types/react": "19.1.2",
-      "@types/react-dom": "19.1.2"
+      "@types/react-dom": "19.1.2",
+      "@necto/constants": "1.4.4"
     }
   },
   "devDependencies": {
@@ -28,8 +29,12 @@
     "@commitlint/config-conventional": "^19.8.0",
     "@commitlint/types": "^19.8.1",
     "@corinvo/biome": "^1.0.0",
-    "@corinvo/commitlint": "^1.2.0",
+    "@types/tmp": "^0.2.6",
+    "conventional-changelog-conventionalcommits": "^9.3.1",
+    "google-closure-compiler": "^20260324.0.0",
     "lefthook": "^1.12.1",
+    "terser": "^5.46.1",
+    "tmp": "^0.2.5",
     "turbo": "^2.5.0",
     "vitest": "^3.1.1"
   }

@@ -9,15 +9,15 @@
 'use client';
 
 import { mergeProps } from '@necto/mergers';
-import { useContext, useMemo, forwardRef } from 'react';
-import { useRenderer } from '@necto-react/hooks';
 import { buildInternalIdentifier } from 'shared';
+import { useRenderer } from '@necto-react/hooks';
 import { PopperPortal } from '@necto-react/popper';
 import { Primitive } from '@necto-react/components';
+import { useContext, useMemo, forwardRef } from 'react';
 
 import { TOOLTIP_CONTENT_NAME } from '../../constants';
-import { TooltipContext, TooltipArrowContext } from '../../contexts';
 import { useTooltipContent } from '../../hooks/useTooltipContent';
+import { TooltipContext, TooltipArrowContext } from '../../contexts';
 
 import type {
   ElementType,

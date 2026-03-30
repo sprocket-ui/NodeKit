@@ -1,6 +1,6 @@
 {
   "name": "@sprocketui-react/tooltip",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Sprocket's standalone React tooltip component.",
   "type": "module",
   "license": "MIT",
@@ -29,12 +29,12 @@
     "url": "https://github.com/sprocket-ui/NodeKit.git"
   },
   "dependencies": {
-    "@necto-react/components": "1.4.2",
-    "@necto-react/hooks": "2.14.2",
-    "@necto-react/popper": "0.3.0",
+    "@necto-react/components": "1.4.17",
+    "@necto-react/hooks": "2.14.14",
+    "@necto-react/popper": "0.3.12",
     "@necto-react/types": "2.4.0",
     "@necto/mergers": "1.5.0",
-    "@necto/popper": "0.3.0",
+    "@necto/popper": "0.3.10",
     "@necto/strings": "1.6.0",
     "@sprocketui-types/tooltip": "workspace:*",
     "defu": "^6.1.4"

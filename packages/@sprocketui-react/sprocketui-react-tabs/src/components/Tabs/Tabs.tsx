@@ -8,7 +8,7 @@
 
 'use client';
 
-import { forwardRef } from 'react';
+import { forwardRef, useRef } from 'react';
 import { mergeProps } from '@necto/mergers';
 import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
@@ -19,11 +19,13 @@ import { TabList } from '../TabList';
 import { TabPanel } from '../TabPanel';
 import { TabPanels } from '../TabPanels';
 import { TABS_NAME } from '../../constants';
-import { TabsContext } from '../../contexts';
 import { useTabs } from '../../hooks/useTabs';
+import { useTabList } from '../../hooks/useTabList';
 import { SelectionIndicator } from '../SelectionIndicator';
+import { TabsContext, TabListStateContext } from '../../contexts';
 
 import type {
+  RefObject,
   ElementType,
   ForwardedRef,
   ReactElement,
@@ -49,6 +51,9 @@ function TabsFn(
 
   const { slot, ...hookProps } = props;
   const { tabsProps, contextValue, elementType } = useTabs(hookProps);
+  const tabListRef: RefObject<HTMLElement | null> = useRef<HTMLElement>(null);
+  const { state: tabListState } = useTabList(contextValue, tabListRef);
+
   const renderProps: UseRendererReturn = useRenderer({
     ...props,
     values: {
@@ -64,15 +69,17 @@ function TabsFn(
 
   return (
     <TabsContext.Provider value={contextValue}>
-      <Primitive
-        ref={ref}
-        as={elementType}
-        {...renderProps}
-        {...mergeProps(tabsProps)}
-        slot={slot || undefined}
-      >
-        {renderProps.children}
-      </Primitive>
+      <TabListStateContext.Provider value={tabListState}>
+        <Primitive
+          ref={ref}
+          as={elementType}
+          {...renderProps}
+          {...mergeProps(tabsProps)}
+          slot={slot || undefined}
+        >
+          {renderProps.children}
+        </Primitive>
+      </TabListStateContext.Provider>
     </TabsContext.Provider>
   );
 }

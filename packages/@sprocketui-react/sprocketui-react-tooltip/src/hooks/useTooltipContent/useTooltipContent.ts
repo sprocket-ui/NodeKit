@@ -8,8 +8,8 @@
 
 'use client';
 
-import { useMemo } from 'react';
 import { defu } from 'defu';
+import { useMemo } from 'react';
 import {
   flip,
   shift,
