@@ -10,7 +10,8 @@
 
 import { defu } from 'defu';
 import { mergeProps } from '@necto/mergers';
-import { useState, useCallback, useEffect, useMemo, useRef } from 'react';
+import { useLocalState } from '@necto-react/state';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { useId, useAriaProps, useCollectionNavigation } from '@necto-react/hooks';
 
 import { tabsIds } from '../../utils';
@@ -44,7 +45,9 @@ export function useTabList<T extends ElementType = typeof DEFAULT_TAB_TAG>(
   });
 
   const tabsId: string = useId({});
-  const [internalValue, setInternalValue] = useState<Key | null>(defaultSelectedValue ?? null);
+
+  const [internalValue, setInternalValue] = useLocalState<Key | null>(defaultSelectedValue ?? null);
+  const [focusedKey, setFocusedKeyState] = useLocalState<Key | null>(null);
 
   const selectedValue: Key | null = controlledValue ?? internalValue;
   const disabledSet: Set<Key> = useMemo((): Set<Key> => new Set(disabledValues), [disabledValues]);
@@ -61,7 +64,6 @@ export function useTabList<T extends ElementType = typeof DEFAULT_TAB_TAG>(
 
   const focusedKeyRef = useRef<Key | null>(null);
   const isFocusedRef = useRef(false);
-  const [focusedKey, setFocusedKeyState] = useState<Key | null>(null);
 
   const setFocusedKey = useCallback((key: Key | null): void => {
     focusedKeyRef.current = key;
@@ -129,7 +131,7 @@ export function useTabList<T extends ElementType = typeof DEFAULT_TAB_TAG>(
     if (el && document.activeElement !== el) el.focus();
   }, [focusedKey, ref]);
 
-  const state: TabsState = useMemo((): TabsState => {
+  const tabsState: TabsState = useMemo((): TabsState => {
     const obj: TabsState = {
       id: tabsId,
       selectedValue,
@@ -153,7 +155,7 @@ export function useTabList<T extends ElementType = typeof DEFAULT_TAB_TAG>(
   });
 
   return {
-    state,
+    state: tabsState,
     elementType: elementType as T,
     tabListProps: mergeProps(
       { role: 'tablist', 'aria-orientation': orientation },

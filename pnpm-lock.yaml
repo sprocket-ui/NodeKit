@@ -403,6 +403,9 @@ importers:
       '@necto-react/hooks':
         specifier: 2.14.16
         version: 2.14.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@necto-react/state':
+        specifier: ^0.0.2
+        version: 0.0.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/types':
         specifier: 2.4.0
         version: 2.4.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1290,6 +1293,12 @@ packages:
     peerDependencies:
       react: ^19.1.0
 
+  '@necto-react/state@0.0.2':
+    resolution: {integrity: sha512-iorU13hfR+anFuo1vyO5bNdTz9ejuZzGB5woyp2MF/7AVYslze8Z/XLSiKR4x3iMGa73uwDYZMoIyuvKXlBzVg==}
+    peerDependencies:
+      react: ^19.1.0
+      react-dom: ^19.1.0
+
   '@necto-react/types@2.4.0':
     resolution: {integrity: sha512-W6FbS8aQjwnuIdfsvsWjQNuk+wHdF5w1Y6tlSBMK6uEpX7Z5k9lvDh8tLJBkgmG1XGL4P8iDoqXDpXK7vwNOQA==}
     peerDependencies:
@@ -1353,6 +1362,9 @@ packages:
 
   '@necto/popper@0.3.10':
     resolution: {integrity: sha512-9Qc/EY41ircWRIQoxysjDhMqp0Re/JAyw8YBbzqGECKAf2WoF26wUajlUYIfu2erJRwBV41XJlITprLK3nwsHQ==}
+
+  '@necto/state@0.0.1':
+    resolution: {integrity: sha512-QA7PzveTQwu8jFEi8wzF87YciqF2nQjS6mEHdGBJHqr8/pRynFto2qQxY02UrNg2NjvgR6yZwhB1nyfyNmsZSw==}
 
   '@necto/strings@1.6.0':
     resolution: {integrity: sha512-JAPWyLl8fB2e9mO/eWLGdinAhvC98d7GGdbSvYuk5ZQXSLLZmuKO9gkxw/VY6I0ejGgFQpCQINDrQtLy+dgneA==}
@@ -4656,6 +4668,12 @@ snapshots:
     transitivePeerDependencies:
       - react-dom
 
+  '@necto-react/state@0.0.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+    dependencies:
+      '@necto/state': 0.0.1
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
+
   '@necto-react/types@2.4.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
       react: 19.2.4
@@ -4740,6 +4758,8 @@ snapshots:
       '@necto/constants': 1.4.4
       '@necto/dom': 1.6.11
       '@necto/types': 1.3.1
+
+  '@necto/state@0.0.1': {}
 
   '@necto/strings@1.6.0': {}
 
