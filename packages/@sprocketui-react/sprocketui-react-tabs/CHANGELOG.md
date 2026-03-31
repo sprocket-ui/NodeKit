@@ -1,5 +1,11 @@
 # @sprocketui-react/tabs
 
+## 1.1.10
+
+### Patch Changes
+
+- 0ff3364: Replaced React useState with useLocalState from @necto-react/state in useTabList hook
+
 ## 1.1.0
 
 ### Minor Changes
