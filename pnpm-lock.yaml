@@ -404,8 +404,8 @@ importers:
         specifier: 2.14.16
         version: 2.14.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/state':
-        specifier: ^0.0.2
-        version: 0.0.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: ^0.0.4
+        version: 0.0.4(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/types':
         specifier: 2.4.0
         version: 2.4.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1293,8 +1293,8 @@ packages:
     peerDependencies:
       react: ^19.1.0
 
-  '@necto-react/state@0.0.2':
-    resolution: {integrity: sha512-iorU13hfR+anFuo1vyO5bNdTz9ejuZzGB5woyp2MF/7AVYslze8Z/XLSiKR4x3iMGa73uwDYZMoIyuvKXlBzVg==}
+  '@necto-react/state@0.0.4':
+    resolution: {integrity: sha512-tqwlS6BaOHp4Vrj2uR8+c0fJ1FaoFVwuybzWEbjcKqPvUes7G+NoG3wstpc3HuWWT6HHNZiZHac3bqyoaBuZtw==}
     peerDependencies:
       react: ^19.1.0
       react-dom: ^19.1.0
@@ -4668,7 +4668,7 @@ snapshots:
     transitivePeerDependencies:
       - react-dom
 
-  '@necto-react/state@0.0.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@necto-react/state@0.0.4(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
       '@necto/state': 0.0.1
       react: 19.2.4

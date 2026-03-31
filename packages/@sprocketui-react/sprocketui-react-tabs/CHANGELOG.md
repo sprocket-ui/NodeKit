@@ -1,5 +1,11 @@
 # @sprocketui-react/tabs
 
+## 1.1.11
+
+### Patch Changes
+
+- Updated useLocalState to object API and bumped @necto-react/state to 0.0.4
+
 ## 1.1.10
 
 ### Patch Changes

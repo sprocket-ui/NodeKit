@@ -8,7 +8,8 @@
 
 'use client';
 
-import { useState, useCallback, useLayoutEffect, useEffect } from 'react';
+import { useLocalState } from '@necto-react/state';
+import { useCallback, useLayoutEffect, useEffect } from 'react';
 
 import type {
   SelectionIndicatorMetrics,
@@ -23,13 +24,13 @@ export function useSelectionIndicator(
   const { state, tabListRef } = options;
 
   const isSelected: boolean = state.selectedValue != null;
-  const [metrics, setMetrics] = useState<SelectionIndicatorMetrics | null>(null);
+  const metricsState = useLocalState<SelectionIndicatorMetrics | null>(null);
 
   const measure: () => void = useCallback((): void => {
     const container: HTMLElement | null = tabListRef.current;
 
     if (!container || state.selectedValue == null) {
-      setMetrics(null);
+      metricsState.set(null);
       return;
     }
 
@@ -38,14 +39,14 @@ export function useSelectionIndicator(
     );
 
     if (!tabElement) {
-      setMetrics(null);
+      metricsState.set(null);
       return;
     }
 
     const containerRect: DOMRect = container.getBoundingClientRect();
     const tabRect: DOMRect = tabElement.getBoundingClientRect();
 
-    setMetrics({
+    metricsState.set({
       x: tabRect.left - containerRect.left,
       y: tabRect.top - containerRect.top,
       width: tabRect.width,
@@ -75,12 +76,12 @@ export function useSelectionIndicator(
     };
   }, [tabListRef, measure]);
 
-  const indicatorStyle: CSSProperties = metrics
+  const indicatorStyle: CSSProperties = metricsState.value
     ? {
-        '--sprocketui-selection-indicator-x': `${metrics.x}px`,
-        '--sprocketui-selection-indicator-y': `${metrics.y}px`,
-        '--sprocketui-selection-indicator-width': `${metrics.width}px`,
-        '--sprocketui-selection-indicator-height': `${metrics.height}px`
+        '--sprocketui-selection-indicator-x': `${metricsState.value.x}px`,
+        '--sprocketui-selection-indicator-y': `${metricsState.value.y}px`,
+        '--sprocketui-selection-indicator-width': `${metricsState.value.width}px`,
+        '--sprocketui-selection-indicator-height': `${metricsState.value.height}px`
       } as CSSProperties
     : {};
 
@@ -91,7 +92,7 @@ export function useSelectionIndicator(
 
   return {
     isSelected,
-    metrics,
+    metrics: metricsState.value,
     indicatorStyle,
     selectionIndicatorProps
   };

@@ -46,14 +46,14 @@ export function useTabList<T extends ElementType = typeof DEFAULT_TAB_TAG>(
 
   const tabsId: string = useId({});
 
-  const [internalValue, setInternalValue] = useLocalState<Key | null>(defaultSelectedValue ?? null);
-  const [focusedKey, setFocusedKeyState] = useLocalState<Key | null>(null);
+  const internalSelection = useLocalState<Key | null>(defaultSelectedValue ?? null);
+  const focusedKeyState = useLocalState<Key | null>(null);
 
-  const selectedValue: Key | null = controlledValue ?? internalValue;
+  const selectedValue: Key | null = controlledValue ?? internalSelection.value;
   const disabledSet: Set<Key> = useMemo((): Set<Key> => new Set(disabledValues), [disabledValues]);
 
   const setSelectedValue = useCallback((value: Key): void => {
-    if (controlledValue === undefined) setInternalValue(value);
+    if (controlledValue === undefined) internalSelection.set(value);
     onSelectionChange?.(value);
   }, [controlledValue, onSelectionChange]);
 
@@ -67,7 +67,7 @@ export function useTabList<T extends ElementType = typeof DEFAULT_TAB_TAG>(
 
   const setFocusedKey = useCallback((key: Key | null): void => {
     focusedKeyRef.current = key;
-    setFocusedKeyState(key);
+    focusedKeyState.set(key);
   }, []);
 
   const selectionManager: SelectionManager = useMemo((): SelectionManager => ({
@@ -126,17 +126,17 @@ export function useTabList<T extends ElementType = typeof DEFAULT_TAB_TAG>(
   });
 
   useEffect((): void => {
-    if (focusedKey == null || !ref.current) return;
-    const el = ref.current.querySelector<HTMLElement>(`[data-key="${CSS.escape(String(focusedKey))}"]`);
+    if (focusedKeyState.value == null || !ref.current) return;
+    const el = ref.current.querySelector<HTMLElement>(`[data-key="${CSS.escape(String(focusedKeyState.value))}"]`);
     if (el && document.activeElement !== el) el.focus();
-  }, [focusedKey, ref]);
+  }, [focusedKeyState.value, ref]);
 
   const tabsState: TabsState = useMemo((): TabsState => {
     const obj: TabsState = {
       id: tabsId,
       selectedValue,
       setSelectedValue,
-      focusedKey,
+      focusedKey: focusedKeyState.value,
       setFocusedKey,
       orientation,
       activationMode,
@@ -146,7 +146,7 @@ export function useTabList<T extends ElementType = typeof DEFAULT_TAB_TAG>(
 
     tabsIds.set(obj, tabsId);
     return obj;
-  }, [tabsId, selectedValue, setSelectedValue, focusedKey, setFocusedKey, orientation, activationMode, isDisabled, isValueDisabled]);
+  }, [tabsId, selectedValue, setSelectedValue, focusedKeyState.value, setFocusedKey, orientation, activationMode, isDisabled, isValueDisabled]);
 
   const ariaProps: AriaAttributes = useAriaProps({
     label: options['aria-label'],
