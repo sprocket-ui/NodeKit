@@ -1,5 +1,11 @@
 # @sprocketui-react/button
 
+## 1.2.20
+
+### Patch Changes
+
+- Replaced React useState with useLocalState from @necto-react/state
+
 ## 1.2.19
 
 ### Patch Changes

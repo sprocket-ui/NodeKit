@@ -9,7 +9,8 @@
 import { defu } from 'defu';
 import { HTMLElements } from '@necto/dom';
 import { mergeProps } from '@necto/mergers';
-import { useState, useEffect } from 'react';
+import { useLocalState } from '@necto-react/state';
+import { useEffect } from 'react';
 import { clamp, percentage } from '@necto/math';
 import { useLabel } from '@sprocketui-react/label';
 import { filterDOMProps } from '@necto-react/helpers';
@@ -48,14 +49,14 @@ export function useProgressBar(
   const clampedValue: number = clamp(value, minValue, maxValue);
   const percent: Percentage = percentage((value - minValue) / (maxValue - minValue));
 
-  const [isHung, setIsHung] = useState(false);
+  const hungState = useLocalState(false);
 
   useEffect(() => {
-    setIsHung(false);
+    hungState.set(false);
 
     if (percent >= 1 || isIndeterminate) return;
 
-    const timer = setTimeout(() => setIsHung(true), hungTimeout);
+    const timer = setTimeout(() => hungState.set(true), hungTimeout);
     return () => clearTimeout(timer);
   }, [percent, isIndeterminate, hungTimeout]);
 
@@ -71,7 +72,7 @@ export function useProgressBar(
 
   const sprocketState: string[] = [];
   if (isIndeterminate) sprocketState.push('indeterminate');
-  if (isHung) sprocketState.push('hung');
+  if (hungState.value) sprocketState.push('hung');
 
   let additionalProps: Record<string, unknown> = {
     role: 'progressbar',
@@ -80,7 +81,7 @@ export function useProgressBar(
     'aria-valuenow': isIndeterminate ? undefined : clampedValue,
     'aria-valuetext': isIndeterminate ? undefined : label as string,
     'data-indeterminate': isIndeterminate ? 'true' : undefined,
-    'data-hung': isHung ? 'true' : undefined,
+    'data-hung': hungState.value ? 'true' : undefined,
     'data-sprocket-state': sprocketState.length > 0 ? sprocketState.join(' ') : undefined
   }
 
@@ -99,6 +100,6 @@ export function useProgressBar(
     progressBarProps: mergeProps(progressBarProps, additionalProps),
     percentage: percent,
     isIndeterminate: isIndeterminate ?? false,
-    isHung
+    isHung: hungState.value
   } satisfies UseProgressBarReturn;
 }

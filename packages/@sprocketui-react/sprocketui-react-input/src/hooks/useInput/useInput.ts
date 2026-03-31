@@ -19,7 +19,7 @@ import {
   useEffectEvent
 } from '@necto-react/hooks';
 import { defu } from 'defu';
-import { useState } from 'react';
+import { useLocalState } from '@necto-react/state';
 import { HTMLElements } from '@necto/dom';
 import { mergeProps } from '@necto/mergers';
 import { filterDOMProps } from '@necto-react/helpers';
@@ -67,16 +67,16 @@ export function useInput<T extends ElementType = typeof DEFAULT_INPUT_TAG>(
     elementType: props.elementType || props.as || DEFAULT_INPUT_TAG
   });
 
-  const [internalValue, setInternalValue] = useState(defaultValue ?? '');
+  const internalValue = useLocalState(defaultValue ?? '');
   const isControlled = controlledValue !== undefined;
-  const value = isControlled ? controlledValue : internalValue;
+  const value = isControlled ? controlledValue : internalValue.value;
 
   const isInvalid: boolean = !!props['aria-invalid'] && props['aria-invalid'] !== 'false';
 
   const handleChange = useEffectEvent((e: any): void => {
     const newValue = e.target.value;
     if (!isControlled) {
-      setInternalValue(newValue);
+      internalValue.set(newValue);
     }
     onChange?.(e);
     onValueChange?.(newValue);
@@ -85,7 +85,7 @@ export function useInput<T extends ElementType = typeof DEFAULT_INPUT_TAG>(
   const handleClear = useEffectEvent((): void => {
     if (!ref.current) return;
     if (!isControlled) {
-      setInternalValue('');
+      internalValue.set('');
     }
     ref.current.value = '';
     const event = new Event('input', { bubbles: true });

@@ -1,5 +1,11 @@
 # @sprocketui-react/popover
 
+## 1.1.1
+
+### Patch Changes
+
+- Replaced React useState with useLocalState from @necto-react/state
+
 ## 1.1.0
 
 ### Minor Changes

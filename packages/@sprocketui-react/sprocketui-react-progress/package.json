@@ -1,6 +1,6 @@
 {
   "name": "@sprocketui-react/progress",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Sprocket's standalone React progress bar component.",
   "type": "module",
   "license": "MIT",
@@ -32,13 +32,14 @@
     "@necto-react/components": "1.4.2",
     "@necto-react/helpers": "2.6.1",
     "@necto-react/hooks": "2.14.2",
+    "@necto-react/state": "0.0.4",
     "@necto-react/types": "2.4.0",
     "@necto/dom": "1.6.1",
     "@necto/math": "1.0.0",
     "@necto/mergers": "1.5.0",
     "@necto/strings": "1.6.0",
-    "@sprocketui-types/progress": "workspace:*",
     "@sprocketui-react/label": "workspace:*",
+    "@sprocketui-types/progress": "workspace:*",
     "defu": "^6.1.4"
   },
   "peerDependencies": {

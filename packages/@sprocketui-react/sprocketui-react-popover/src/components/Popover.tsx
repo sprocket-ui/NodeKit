@@ -10,7 +10,8 @@
 
 'use client';
 
-import { useRef, useState, useCallback } from 'react';
+import { useLocalState } from '@necto-react/state';
+import { useRef, useCallback } from 'react';
 import { PopoverContext } from '../contexts/PopoverContext';
 import { PopoverTrigger } from './PopoverTrigger';
 import { PopoverContent } from './PopoverContent';
@@ -33,9 +34,9 @@ function PopoverRoot(props: PopoverProps): ReactElement {
     children
   } = props;
 
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
+  const openState = useLocalState(defaultOpen);
   const isControlled = controlledOpen !== undefined;
-  const isOpen = isControlled ? controlledOpen : uncontrolledOpen;
+  const isOpen = isControlled ? controlledOpen : openState.value;
 
   const triggerRef = useRef<HTMLElement>(null);
   const popoverRef = useRef<HTMLElement>(null);
@@ -43,7 +44,7 @@ function PopoverRoot(props: PopoverProps): ReactElement {
 
   const setOpen = useCallback(
     (value: boolean) => {
-      if (!isControlled) setUncontrolledOpen(value);
+      if (!isControlled) openState.set(value);
       onOpenChange?.(value);
     },
     [isControlled, onOpenChange]

@@ -1,5 +1,11 @@
 # @sprocketui-react/tooltip
 
+## 1.2.2
+
+### Patch Changes
+
+- Replaced React useState with useLocalState from @necto-react/state
+
 ## 1.2.0
 
 ### Minor Changes

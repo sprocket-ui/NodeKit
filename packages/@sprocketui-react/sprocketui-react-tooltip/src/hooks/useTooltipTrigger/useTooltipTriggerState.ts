@@ -8,7 +8,8 @@
 
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useLocalState } from '@necto-react/state';
+import { useCallback } from 'react';
 
 import type { UseTooltipTriggerOptions, UseTooltipTriggerStateReturn } from './useTooltipTrigger.types';
 
@@ -21,13 +22,13 @@ export function useTooltipTriggerState(
     onOpenChange
   } = options;
 
-  const [isOpenUncontrolled, setIsOpenUncontrolled] = useState(defaultOpen);
+  const openState = useLocalState(defaultOpen);
   const isControlled = isOpenControlled !== undefined;
-  const isOpen = isControlled ? isOpenControlled : isOpenUncontrolled;
+  const isOpen = isControlled ? isOpenControlled : openState.value;
 
   const setOpen = useCallback((value: boolean): void => {
     if (!isControlled) {
-      setIsOpenUncontrolled(value);
+      openState.set(value);
     }
     onOpenChange?.(value);
   }, [isControlled, onOpenChange]);

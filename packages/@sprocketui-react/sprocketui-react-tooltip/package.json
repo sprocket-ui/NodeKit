@@ -1,6 +1,6 @@
 {
   "name": "@sprocketui-react/tooltip",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Sprocket's standalone React tooltip component.",
   "type": "module",
   "license": "MIT",
@@ -32,6 +32,7 @@
     "@necto-react/components": "1.4.17",
     "@necto-react/hooks": "2.14.14",
     "@necto-react/popper": "0.3.12",
+    "@necto-react/state": "0.0.4",
     "@necto-react/types": "2.4.0",
     "@necto/mergers": "1.5.0",
     "@necto/popper": "0.3.10",

@@ -13,7 +13,8 @@
 
 import { defu } from 'defu';
 import { mergeProps } from '@necto/mergers';
-import { useState, useCallback } from 'react';
+import { useLocalState } from '@necto-react/state';
+import { useCallback } from 'react';
 
 import { useButton } from '../useButton/useButton';
 import { DEFAULT_BUTTON_TAG } from '../../constants';
@@ -45,15 +46,15 @@ export function useToggleButton<T extends ElementType = typeof DEFAULT_BUTTON_TA
   });
 
   const isControlled: boolean = controlledSelected !== undefined;
-  const [uncontrolledSelected, setUncontrolledSelected] = useState(defaultSelected);
-  const isSelected: boolean = (isControlled ? controlledSelected : uncontrolledSelected) as boolean;
+  const selectedState = useLocalState(defaultSelected);
+  const isSelected: boolean = (isControlled ? controlledSelected : selectedState.value) as boolean;
 
   const onPress = useCallback(
     (e: any) => {
       const newValue: boolean = !isSelected;
 
       if (!isControlled) {
-        setUncontrolledSelected(newValue);
+        selectedState.set(newValue);
       }
 
       onChange?.(newValue);
