@@ -9,9 +9,5 @@ delete_branch_on_merge = true
 
 authorized_users = ["sprocket-github-bot"]
 
-[merge.message]
-title = "pull_request_title"
-body = "pull_request_body"
-
 [update]
 always = true
