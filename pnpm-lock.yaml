@@ -600,6 +600,12 @@ importers:
       '@sprocketui-react/label':
         specifier: workspace:*
         version: link:../../@sprocketui-react/sprocketui-react-label
+      '@sprocketui-react/tabs':
+        specifier: workspace:*
+        version: link:../../@sprocketui-react/sprocketui-react-tabs
+      '@sprocketui-react/tooltip':
+        specifier: workspace:*
+        version: link:../../@sprocketui-react/sprocketui-react-tooltip
     devDependencies:
       '@tailwindcss/vite':
         specifier: ^4.2.1

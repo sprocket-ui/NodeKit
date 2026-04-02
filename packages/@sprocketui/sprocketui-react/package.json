@@ -33,6 +33,8 @@
   "dependencies": {
     "@sprocketui-react/button": "workspace:*",
     "@sprocketui-react/input": "workspace:*",
+    "@sprocketui-react/tabs": "workspace:*",
+    "@sprocketui-react/tooltip": "workspace:*",
     "@sprocketui-react/label": "workspace:*"
   },
   "peerDependencies": {
