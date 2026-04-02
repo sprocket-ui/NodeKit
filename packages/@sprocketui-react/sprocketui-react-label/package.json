@@ -39,7 +39,7 @@
     "@necto-react/types": "2.4.1",
     "@necto-react/hooks": "2.14.17",
     "@necto-react/helpers": "2.6.12",
-    "@necto-react/components": "1.4.21"
+    "@necto-react/components": "1.4.23"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1",

@@ -59,8 +59,8 @@ importers:
   packages/@sprocketui-react/sprocketui-react-button:
     dependencies:
       '@necto-react/components':
-        specifier: 1.4.21
-        version: 1.4.21(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 1.4.23
+        version: 1.4.23(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/helpers':
         specifier: 2.6.12
         version: 2.6.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -123,8 +123,8 @@ importers:
   packages/@sprocketui-react/sprocketui-react-checkbox:
     dependencies:
       '@necto-react/components':
-        specifier: 1.4.21
-        version: 1.4.21(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 1.4.23
+        version: 1.4.23(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/helpers':
         specifier: 2.6.12
         version: 2.6.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -178,8 +178,8 @@ importers:
   packages/@sprocketui-react/sprocketui-react-input:
     dependencies:
       '@necto-react/components':
-        specifier: 1.4.21
-        version: 1.4.21(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 1.4.23
+        version: 1.4.23(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/helpers':
         specifier: 2.6.12
         version: 2.6.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -239,8 +239,8 @@ importers:
   packages/@sprocketui-react/sprocketui-react-label:
     dependencies:
       '@necto-react/components':
-        specifier: 1.4.21
-        version: 1.4.21(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 1.4.23
+        version: 1.4.23(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/helpers':
         specifier: 2.6.12
         version: 2.6.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -297,8 +297,8 @@ importers:
         specifier: ^0.26.28
         version: 0.26.28(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/components':
-        specifier: 1.4.21
-        version: 1.4.21(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 1.4.23
+        version: 1.4.23(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/helpers':
         specifier: 2.6.12
         version: 2.6.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -352,8 +352,8 @@ importers:
   packages/@sprocketui-react/sprocketui-react-progress:
     dependencies:
       '@necto-react/components':
-        specifier: 1.4.21
-        version: 1.4.21(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 1.4.23
+        version: 1.4.23(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/helpers':
         specifier: 2.6.12
         version: 2.6.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -416,8 +416,8 @@ importers:
   packages/@sprocketui-react/sprocketui-react-tabs:
     dependencies:
       '@necto-react/components':
-        specifier: 1.4.21
-        version: 1.4.21(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 1.4.23
+        version: 1.4.23(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
         specifier: 2.14.17
         version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -471,8 +471,8 @@ importers:
   packages/@sprocketui-react/sprocketui-react-tooltip:
     dependencies:
       '@necto-react/components':
-        specifier: 1.4.21
-        version: 1.4.21(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 1.4.23
+        version: 1.4.23(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
         specifier: 2.14.17
         version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1182,8 +1182,8 @@ packages:
   '@manypkg/get-packages@1.1.3':
     resolution: {integrity: sha512-fo+QhuU3qE/2TQMQmbVMqaQ6EWbMhi4ABWP+O4AM1NqPBuy0OrApV5LO6BrrgnhtAHS2NH6RrVk9OL181tTi8A==}
 
-  '@necto-react/components@1.4.21':
-    resolution: {integrity: sha512-REkoKNSBt/6GRLkaWDf97uPGDVaSYPqTGKQ5KzmNxUmTtw8VdDHsBv0HYUW1a0icMLnO3pk4+pe2xXJfmvyNAg==}
+  '@necto-react/components@1.4.23':
+    resolution: {integrity: sha512-hKMQnpSncW7bMKMJpYpjVHQO5LbwGSLlMau6LdUQ/AIrlg8rW4lDxTlG2LvJPb7zv+6aIZZiCWZ0zF3MUoEWSg==}
     peerDependencies:
       '@types/react': 19.1.2
       '@types/react-dom': '*'
@@ -1201,8 +1201,20 @@ packages:
       react: ^19.1.0
       react-dom: ^19.1.0
 
+  '@necto-react/helpers@2.6.14':
+    resolution: {integrity: sha512-u3wirHpgetaVeLVHNySnqLumNv1UhafmMw9PBzXzuqA5PgjpN4J/NRkNWrR6plZ0Lsqzrb7+8hQAD6jwOAf9xQ==}
+    peerDependencies:
+      react: ^19.1.0
+      react-dom: ^19.1.0
+
   '@necto-react/hooks@2.14.17':
     resolution: {integrity: sha512-t2hHKY/7+3LFmpfIwsjKCdZIlzrGbHxMd64XrrXJ2X/2bG6nGoLVFVrXyjD24qR92JKG2pGjIS3bSSjXN/06Vw==}
+    peerDependencies:
+      react: ^19.1.0
+      react-dom: ^19.1.0
+
+  '@necto-react/hooks@2.16.0':
+    resolution: {integrity: sha512-jWYATnmFa2dsKlTUyuPhmEz05s5PO52zQEsnTB1XC2tbCKS4vVDv7lQp4nPQg+LJqdTocn4CXcg1mo97LhT8LA==}
     peerDependencies:
       react: ^19.1.0
       react-dom: ^19.1.0
@@ -1235,6 +1247,9 @@ packages:
 
   '@necto/dom@1.7.3':
     resolution: {integrity: sha512-uZqeH9ydTwQ904A4ydOji3G3uigvaQ3w/wbr0el3nEF5WJ8lqClAwQJUNMlPOFGcpv+BppGICVfot+L8Hm4JpA==}
+
+  '@necto/dom@1.9.0':
+    resolution: {integrity: sha512-QImV3sQlV2lmilG0ST1Fic/vON5n9Nc3MacitDzmTJfxE8Ri5hVjLnk59B6aq1pFucluZ4M8GG1COiEA0PBqdg==}
 
   '@necto/id@1.6.6':
     resolution: {integrity: sha512-c/aiROPN4eNG1pPkYpA8PygPPQMIEFZKIsRblVPuUHDi9h1p3hG19WWjwapwX/pUydOxKb8ae3zYA71d4xANlA==}
@@ -4407,11 +4422,11 @@ snapshots:
       globby: 11.1.0
       read-yaml-file: 1.1.0
 
-  '@necto-react/components@1.4.21(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@necto-react/components@1.4.23(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
-      '@necto-react/hooks': 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@necto-react/hooks': 2.16.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto/constants': 1.4.5
-      '@necto/dom': 1.7.3
+      '@necto/dom': 1.9.0
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
     optionalDependencies:
@@ -4427,11 +4442,36 @@ snapshots:
       react-dom: 19.2.4(react@19.2.4)
       std-env: 3.10.0
 
+  '@necto-react/helpers@2.6.14(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+    dependencies:
+      '@necto-react/types': 2.4.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@necto/dom': 1.9.0
+      '@necto/platform': 1.5.1
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
+      std-env: 3.10.0
+
   '@necto-react/hooks@2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
       '@necto-react/helpers': 2.6.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/types': 2.4.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto/dom': 1.7.3
+      '@necto/id': 1.6.6
+      '@necto/mergers': 1.5.1(react@19.2.4)
+      '@necto/platform': 1.5.1
+      '@necto/strings': 1.7.0
+      '@necto/types': 1.3.1
+      defu: 6.1.6
+      react: 19.2.4
+      react-aria: 3.47.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      react-dom: 19.2.4(react@19.2.4)
+      std-env: 3.10.0
+
+  '@necto-react/hooks@2.16.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+    dependencies:
+      '@necto-react/helpers': 2.6.14(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@necto-react/types': 2.4.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@necto/dom': 1.9.0
       '@necto/id': 1.6.6
       '@necto/mergers': 1.5.1(react@19.2.4)
       '@necto/platform': 1.5.1
@@ -4474,6 +4514,13 @@ snapshots:
   '@necto/crypto@1.0.0': {}
 
   '@necto/dom@1.7.3':
+    dependencies:
+      '@necto/constants': 1.4.5
+      '@necto/platform': 1.5.1
+      '@necto/types': 1.3.1
+      html-tags: 4.0.0
+
+  '@necto/dom@1.9.0':
     dependencies:
       '@necto/constants': 1.4.5
       '@necto/platform': 1.5.1
