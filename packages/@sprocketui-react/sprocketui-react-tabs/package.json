@@ -31,11 +31,11 @@
   "dependencies": {
     "@necto-react/components": "1.4.20",
     "@necto-react/hooks": "2.14.16",
-    "@necto-react/state": "^0.0.4",
-    "@necto-react/types": "2.4.0",
-    "@necto/assert": "^1.0.0",
-    "@necto/mergers": "1.5.0",
-    "@necto/strings": "1.6.0",
+    "@necto-react/state": "0.2.1",
+    "@necto-react/types": "2.4.1",
+    "@necto/assert": "1.0.0",
+    "@necto/mergers": "1.5.1",
+    "@necto/strings": "1.7.0",
     "@sprocketui-types/tabs": "workspace:*",
     "defu": "^6.1.4"
   },
