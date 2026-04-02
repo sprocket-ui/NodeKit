@@ -11,6 +11,6 @@
     "url": "https://github.com/sprocket-ui/NodeKit.git"
   },
   "dependencies": {
-    "@necto/popper": "0.5.1"
+    "@necto/popper": "0.5.3"
   }
 }

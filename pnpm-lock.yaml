@@ -489,8 +489,8 @@ importers:
         specifier: 1.5.1
         version: 1.5.1(react@19.2.4)
       '@necto/popper':
-        specifier: 0.5.1
-        version: 0.5.1
+        specifier: 0.5.3
+        version: 0.5.3
       '@necto/strings':
         specifier: 1.7.0
         version: 1.7.0
@@ -586,8 +586,8 @@ importers:
   packages/@sprocketui-types/sprocketui-types-tooltip:
     dependencies:
       '@necto/popper':
-        specifier: 0.5.1
-        version: 0.5.1
+        specifier: 0.5.3
+        version: 0.5.3
 
   packages/@sprocketui/sprocketui-react:
     dependencies:
@@ -1236,6 +1236,9 @@ packages:
   '@necto/dom@1.7.3':
     resolution: {integrity: sha512-uZqeH9ydTwQ904A4ydOji3G3uigvaQ3w/wbr0el3nEF5WJ8lqClAwQJUNMlPOFGcpv+BppGICVfot+L8Hm4JpA==}
 
+  '@necto/dom@1.9.0':
+    resolution: {integrity: sha512-QImV3sQlV2lmilG0ST1Fic/vON5n9Nc3MacitDzmTJfxE8Ri5hVjLnk59B6aq1pFucluZ4M8GG1COiEA0PBqdg==}
+
   '@necto/id@1.6.6':
     resolution: {integrity: sha512-c/aiROPN4eNG1pPkYpA8PygPPQMIEFZKIsRblVPuUHDi9h1p3hG19WWjwapwX/pUydOxKb8ae3zYA71d4xANlA==}
 
@@ -1252,6 +1255,9 @@ packages:
 
   '@necto/popper@0.5.1':
     resolution: {integrity: sha512-WEuVKp8V2Um/odcY9N3ZZQ3aiY0ZgZs79Um8CdOozMXd8K6KSD4zqLDtlMB0ddvgFYzh0rrpfxa8ys/LfgmTAA==}
+
+  '@necto/popper@0.5.3':
+    resolution: {integrity: sha512-zXoDE/ZYs0ZdE9VV3+IFwJSGHZe8B+lA3eVjyFWF9HIYnLBlgL1qZPtZ+qedI4UKlNdh4YXf/ron0wtc8d+pzg==}
 
   '@necto/state@0.0.2':
     resolution: {integrity: sha512-1CMCeFk+FqObtC5OS4tpSGlNZjjSxPtJ5qH9fH5bSMctVsiWA+FYyaZg7r5t6sibNoQl37Gd+ffm1f3cU3yZJQ==}
@@ -4480,6 +4486,13 @@ snapshots:
       '@necto/types': 1.3.1
       html-tags: 4.0.0
 
+  '@necto/dom@1.9.0':
+    dependencies:
+      '@necto/constants': 1.4.5
+      '@necto/platform': 1.5.1
+      '@necto/types': 1.3.1
+      html-tags: 4.0.0
+
   '@necto/id@1.6.6':
     dependencies:
       '@necto/assert': 1.0.0
@@ -4498,6 +4511,12 @@ snapshots:
     dependencies:
       '@necto/constants': 1.4.5
       '@necto/dom': 1.7.3
+      '@necto/types': 1.3.1
+
+  '@necto/popper@0.5.3':
+    dependencies:
+      '@necto/constants': 1.4.5
+      '@necto/dom': 1.9.0
       '@necto/types': 1.3.1
 
   '@necto/state@0.0.2': {}
