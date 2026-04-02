@@ -87,7 +87,7 @@ importers:
         version: link:../../@sprocketui-types/sprocketui-types-buttons
       defu:
         specifier: ^6.1.4
-        version: 6.1.4
+        version: 6.1.6
     devDependencies:
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -145,7 +145,7 @@ importers:
         version: link:../../@sprocketui-types/sprocketui-types-checkbox
       defu:
         specifier: ^6.1.4
-        version: 6.1.4
+        version: 6.1.6
       tiny-invariant:
         specifier: ^1.3.3
         version: 1.3.3
@@ -386,7 +386,7 @@ importers:
         version: link:../../@sprocketui-types/sprocketui-types-progress
       defu:
         specifier: ^6.1.4
-        version: 6.1.4
+        version: 6.1.6
     devDependencies:
       '@types/react':
         specifier: 19.1.2
@@ -441,7 +441,7 @@ importers:
         version: link:../../@sprocketui-types/sprocketui-types-tabs
       defu:
         specifier: ^6.1.4
-        version: 6.1.4
+        version: 6.1.6
     devDependencies:
       '@types/react':
         specifier: 19.1.2
@@ -499,7 +499,7 @@ importers:
         version: link:../../@sprocketui-types/sprocketui-types-tooltip
       defu:
         specifier: ^6.1.4
-        version: 6.1.4
+        version: 6.1.6
     devDependencies:
       '@types/react':
         specifier: 19.1.2
@@ -2492,8 +2492,8 @@ packages:
     resolution: {integrity: sha512-h5k/5U50IJJFpzfL6nO9jaaumfjO/f2NjK/oYB2Djzm4p9L+3T9qWpZqZ2hAbLPuuYq9wrU08WQyBTL5GbPk5Q==}
     engines: {node: '>=6'}
 
-  defu@6.1.4:
-    resolution: {integrity: sha512-mEQCMmwJu317oSz8CwdIOdwf3xMif1ttiM8LTufzc3g6kR+9Pe236twL8j3IYT1F7GfRgGcW6MWxzZjLIkuHIg==}
+  defu@6.1.6:
+    resolution: {integrity: sha512-f8mefEW4WIVg4LckePx3mALjQSPQgFlg9U8yaPdlsbdYcHQyj9n2zL2LJEA52smeYxOvmd/nB7TpMtHGMTHcug==}
 
   dequal@2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
@@ -4477,7 +4477,7 @@ snapshots:
       '@necto/platform': 1.5.1
       '@necto/strings': 1.7.0
       '@necto/types': 1.3.1
-      defu: 6.1.4
+      defu: 6.1.6
       react: 19.2.4
       react-aria: 3.47.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       react-dom: 19.2.4(react@19.2.4)
@@ -4491,7 +4491,7 @@ snapshots:
       '@necto/dom': 1.7.3
       '@necto/popper': 0.5.1
       '@necto/types': 1.3.1
-      defu: 6.1.4
+      defu: 6.1.6
       react: 19.2.4
     transitivePeerDependencies:
       - react-dom
@@ -6100,7 +6100,7 @@ snapshots:
 
   deep-eql@5.0.2: {}
 
-  defu@6.1.4: {}
+  defu@6.1.6: {}
 
   dequal@2.0.3: {}
 
