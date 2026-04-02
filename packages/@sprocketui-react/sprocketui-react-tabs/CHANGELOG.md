@@ -1,5 +1,11 @@
 # @sprocketui-react/tabs
 
+## 1.1.12
+
+### Patch Changes
+
+- c46d352: Update necto dependencies to latest versions
+
 ## 1.1.11
 
 ### Patch Changes

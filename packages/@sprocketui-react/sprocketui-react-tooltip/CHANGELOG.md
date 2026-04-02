@@ -1,5 +1,13 @@
 # @sprocketui-react/tooltip
 
+## 1.2.3
+
+### Patch Changes
+
+- c46d352: Update necto dependencies to latest versions
+- Updated dependencies [c46d352]
+  - @sprocketui-types/tooltip@1.2.1
+
 ## 1.2.2
 
 ### Patch Changes
