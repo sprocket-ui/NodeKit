@@ -6,8 +6,8 @@
     "changeset": "changeset",
     "test": "vitest",
     "dev": "turbo run dev",
-    "lint": "set DEBUG=biome* && biome lint --write",
-    "format": "set DEBUG=biome* && biome format --write",
+    "lint": "biome lint --write",
+    "format": "biome format --write",
     "dev:react": "turbo watch dev --filter=@sprocketui-react/*",
     "build": "turbo run build",
     "build:types": "turbo run build --filter=\"@sprocketui/types\"",
@@ -31,9 +31,11 @@
     "@types/tmp": "^0.2.6",
     "conventional-changelog-conventionalcommits": "^9.3.1",
     "lefthook": "^1.12.1",
+    "markdownlint-cli2": "^0.22.0",
     "terser": "^5.46.1",
     "tmp": "^0.2.5",
     "turbo": "^2.5.0",
-    "vitest": "^3.1.1"
+    "vitest": "^3.1.1",
+    "yaml-lint": "^1.7.0"
   }
 }

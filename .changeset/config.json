@@ -11,10 +11,5 @@
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
     "onlyUpdatePeerDependentsWhenOutOfRange": true
   },
-  "bumpVersionsWithWorkspaceProtocolOnly": true,
-  "packageDir": [
-    "packages/*",
-    "packages/@sprocketui-react/*",
-    "packages/@sprocketui-react/packages/*"
-  ]
+  "bumpVersionsWithWorkspaceProtocolOnly": true
 }
