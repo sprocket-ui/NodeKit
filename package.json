@@ -19,7 +19,7 @@
     "overrides": {
       "@types/react": "19.1.2",
       "@types/react-dom": "19.1.2",
-      "@necto/constants": "1.4.4"
+      "@necto/constants": "1.4.5"
     }
   },
   "devDependencies": {
