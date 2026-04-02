@@ -477,8 +477,8 @@ importers:
         specifier: 2.14.17
         version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/popper':
-        specifier: 0.5.2
-        version: 0.5.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 0.6.0
+        version: 0.6.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/state':
         specifier: 0.2.1
         version: 0.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1195,8 +1195,8 @@ packages:
       react: ^19.1.0
       react-dom: ^19.1.0
 
-  '@necto-react/popper@0.5.2':
-    resolution: {integrity: sha512-xOFiBL9e4giVF7odBsa1zva1Zg6oqa5Vyxd6zjZ4rkju4/rYpveRMM1D1q3SEyiP4UMbR2gKSszydZ+Z4xkd3g==}
+  '@necto-react/popper@0.6.0':
+    resolution: {integrity: sha512-Gr2udbq45TmsZtR9Zlkh6BjAVSd4g6NINbTjMJ6GIK48tq14ot5nUkvMRmCzVobmbjpIRsW1bIM8inLW7CP1nA==}
     peerDependencies:
       react: ^19.1.0
 
@@ -4483,7 +4483,7 @@ snapshots:
       react-dom: 19.2.4(react@19.2.4)
       std-env: 3.10.0
 
-  '@necto-react/popper@0.5.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@necto-react/popper@0.6.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
       '@necto-react/hooks': 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/state': 0.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
