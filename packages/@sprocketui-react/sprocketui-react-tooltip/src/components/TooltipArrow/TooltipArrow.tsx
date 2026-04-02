@@ -11,33 +11,36 @@
 import { useContext } from 'react';
 import { PopperArrow } from '@necto-react/popper';
 
-import { TOOLTIP_ARROW_NAME } from '../../constants';
 import { TooltipArrowContext } from '../../contexts';
 
 import type { ReactElement } from 'react';
 import type { TooltipArrowProps } from './TooltipArrow.types';
 
 /**
- * A TooltipArrow component for Sprocket UI.
- * Renders a div-based arrow element that automatically positions itself
- * based on the parent Tooltip's resolved placement. Must be rendered
- * inside a Tooltip.Content component.
+ * @internal
+ * Internal render function for the TooltipArrow component. Renders a div-based arrow
+ * element that automatically positions itself based on the parent Tooltip's resolved placement.
+ * Must be rendered inside a Tooltip.Content component.
+ * Not intended for public use; use the exported TooltipArrow component instead.
+ *
+ * @param {TooltipArrowProps} props - The props for the TooltipArrow component.
+ * @returns {ReactElement} The rendered arrow element.
  */
 function TooltipArrowFn(props: TooltipArrowProps): ReactElement {
-  const { placement } = useContext(TooltipArrowContext);
+	const { placement } = useContext(TooltipArrowContext);
 
-  return (
-    <PopperArrow
-      placement={placement}
-      {...props}
-    />
-  );
+	return <PopperArrow placement={placement} {...props} />;
 }
 
-TooltipArrowFn.displayName = TOOLTIP_ARROW_NAME;
-
+/**
+ * The public TooltipArrow component for Sprocket UI.
+ * Renders a positioned arrow element inside a Tooltip.Content component.
+ *
+ * @param {TooltipArrowProps} props - The props for the TooltipArrow component.
+ * @returns {ReactElement} The rendered arrow element.
+ */
 export const TooltipArrow: typeof TooltipArrowFn & {
-  Root: typeof TooltipArrowFn;
+	Root: typeof TooltipArrowFn;
 } = Object.assign(TooltipArrowFn, {
-  Root: TooltipArrowFn
+	Root: TooltipArrowFn
 });
