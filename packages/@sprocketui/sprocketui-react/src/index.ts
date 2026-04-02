@@ -6,6 +6,8 @@
  *
  */
 
+export * from '@sprocketui-react/tabs';
 export * from '@sprocketui-react/input';
 export * from '@sprocketui-react/label';
 export * from '@sprocketui-react/button';
+export * from '@sprocketui-react/tooltip';

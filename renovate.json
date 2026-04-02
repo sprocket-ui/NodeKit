@@ -1,1 +1,23 @@
-{}
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "schedule": ["before 6am every weekday"],
+  "timezone": "America/New_York",
+  "separateMajorMinor": true,
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchPackageNames": ["@necto/**", "@necto-react/**"],
+      "groupName": null,
+      "labels": ["dependencies", "automerge", "necto"],
+      "schedule": ["at any time"]
+    },
+    {
+      "matchPackageNames": ["@necto/**", "@necto-react/**"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    }
+  ],
+  "prConcurrentLimit": 10,
+  "prHourlyLimit": 5
+}

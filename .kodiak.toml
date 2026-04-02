@@ -1,4 +1,12 @@
 version = 1
 
 [merge]
+method = "squash"
 delete_branch_on_merge = true
+automerge_label = "automerge"
+
+[merge.message]
+title = "pull_request_title"
+body = "pull_request_body"
+include_pr_number = true
+strip_html_comments = true
