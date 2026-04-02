@@ -1,5 +1,13 @@
 # @sprocketui-react/progress
 
+## 1.1.2
+
+### Patch Changes
+
+- 0f09991: Update all `@necto/*` and `@necto-react/*` dependencies to latest versions. Includes SSR compatibility fix from `@necto/dom@1.7.3` which guards all `document` and `window` references for server-side rendering environments.
+- Updated dependencies [0f09991]
+  - @sprocketui-react/label@1.1.1
+
 ## 1.1.1
 
 ### Patch Changes

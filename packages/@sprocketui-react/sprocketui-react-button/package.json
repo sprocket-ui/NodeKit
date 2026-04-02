@@ -1,6 +1,6 @@
 {
   "name": "@sprocketui-react/button",
-  "version": "1.2.20",
+  "version": "1.2.21",
   "description": "Sprocket's standalone React button component.",
   "type": "module",
   "license": "MIT",
