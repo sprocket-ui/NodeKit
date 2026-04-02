@@ -1,5 +1,13 @@
 # @sprocketui-react/tooltip
 
+## 1.2.5
+
+### Patch Changes
+
+- 0f09991: Update all `@necto/*` and `@necto-react/*` dependencies to latest versions. Includes SSR compatibility fix from `@necto/dom@1.7.3` which guards all `document` and `window` references for server-side rendering environments.
+- Updated dependencies [0f09991]
+  - @sprocketui-types/tooltip@1.2.3
+
 ## 1.2.4
 
 ### Patch Changes
