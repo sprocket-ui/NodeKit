@@ -26,6 +26,10 @@
     "test": "vitest",
     "dev": "tsup --watch"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sprocket-ui/NodeKit.git"
+  },
   "dependencies": {
     "@sprocketui-react/button": "workspace:*",
     "@sprocketui-react/input": "workspace:*",

@@ -5,6 +5,10 @@
   "scripts": {
     "build": "tsup"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sprocket-ui/NodeKit.git"
+  },
   "files": [
     "dist",
     "README.md"

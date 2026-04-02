@@ -1,13 +1,4 @@
 version = 1
 
 [merge]
-# method = "squash"
-# notify_on_conflict = "author"
-# automerge_label = "automerge"
-# require_automerge_label = true
 delete_branch_on_merge = true
-
-# authorized_users = ["sprocket-github-bot"]
-
-# [update]
-# always = true

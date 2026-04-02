@@ -16,7 +16,7 @@ pre-commit:
       run: pnpm exec markdownlint-cli2 {staged_files}
     yaml-lint:
       glob: "*.{yaml,yml}"
-      run: pnpm exec yaml-lint {staged_files}
+      run: pnpm exec yamllint {staged_files}
     build:
       glob: "packages/**/*.{js,ts,jsx,tsx}"
       run: pnpm turbo run build --filter='...[HEAD]'
