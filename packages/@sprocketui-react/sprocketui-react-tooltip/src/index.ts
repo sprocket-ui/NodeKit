@@ -9,9 +9,9 @@
  */
 
 export * from './contexts';
+export * from './components/Tooltip';
 export * from './hooks/useTooltipContent';
 export * from './hooks/useTooltipTrigger';
-export * from './components/Tooltip';
 export * from './components/TooltipTrigger';
 export * from './components/TooltipContent';
 export * from './components/TooltipArrow';
