@@ -29,13 +29,13 @@
     "url": "https://github.com/sprocket-ui/NodeKit.git"
   },
   "dependencies": {
-    "@necto-react/components": "1.4.20",
-    "@necto-react/hooks": "2.14.16",
+    "@necto-react/components": "1.4.21",
+    "@necto-react/hooks": "2.14.17",
     "@necto-react/popper": "0.5.1",
     "@necto-react/state": "0.2.1",
     "@necto-react/types": "2.4.1",
     "@necto/mergers": "1.5.1",
-    "@necto/popper": "0.5.0",
+    "@necto/popper": "0.5.1",
     "@necto/strings": "1.7.0",
     "@sprocketui-types/tooltip": "workspace:*",
     "defu": "^6.1.4"
