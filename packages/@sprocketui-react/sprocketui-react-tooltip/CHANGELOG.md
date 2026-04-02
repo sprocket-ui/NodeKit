@@ -1,5 +1,11 @@
 # @sprocketui-react/tooltip
 
+## 1.3.0
+
+### Minor Changes
+
+- b20fcf4: Fix tooltip positioning for components that do not forward refs. TooltipTrigger now detects whether the child accepts refs and falls back to a wrapper `<span style="display:contents">` when it does not, ensuring the tooltip can always measure the trigger position. Also updated all tooltip component JSDoc annotations to match the codebase code design conventions.
+
 ## 1.2.5
 
 ### Patch Changes
