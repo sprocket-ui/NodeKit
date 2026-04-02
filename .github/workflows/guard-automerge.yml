@@ -1,0 +1,21 @@
+name: Guard Automerge Label
+
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+  guard:
+    if: github.event.label.name == 'automerge'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Remove label if not added by bot
+        if: github.event.sender.login != 'sprocket-github-bot[bot]'
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          labels: automerge
+          number: ${{ github.event.pull_request.number }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}

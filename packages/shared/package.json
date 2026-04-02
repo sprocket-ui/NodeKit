@@ -17,6 +17,10 @@
   "scripts": {
     "build": "tsup"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sprocket-ui/NodeKit.git"
+  },
   "devDependencies": {
     "@necto/strings": "1.6.0",
     "@types/node": "^24.0.13",

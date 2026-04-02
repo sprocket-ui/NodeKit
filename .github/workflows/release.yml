@@ -58,23 +58,6 @@ jobs:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           NPM_CONFIG_PROVENANCE: true
 
-      - name: Update Release PR body
-        if: steps.create_release_pr.outputs.pullRequestNumber
-        run: |
-          gh pr edit ${{ steps.create_release_pr.outputs.pullRequestNumber }} --body "$(cat <<'EOF'
-          ## Release
-
-          This PR bumps package versions based on merged changesets and will publish them to npm when merged.
-
-          > [!IMPORTANT]
-          > Review the version bumps and changelogs below before merging.
-          > Merging will trigger publishing to npm with provenance via trusted publishers.
-          EOF
-          )"
-        shell: bash
-        env:
-          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
-
       - name: Add automerge label to release PR
         if: steps.create_release_pr.outputs.pullRequestNumber
         uses: actions-ecosystem/action-add-labels@v1
