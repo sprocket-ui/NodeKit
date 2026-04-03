@@ -8,6 +8,7 @@
 
 'use client';
 
+import { assert } from '@necto/assert';
 import { mergeProps } from '@necto/mergers';
 import { useContext, cloneElement, useCallback, isValidElement } from 'react';
 
@@ -50,15 +51,12 @@ function TooltipTriggerFn(props: TooltipTriggerProps): ReactElement {
 		(typeof children.type === 'string' ||
 			(typeof children.type === 'object' && children.type !== null && '$$typeof' in children.type));
 
-	if (acceptsRef) {
-		return cloneElement(children, mergeProps(mergedProps, { ref: setRef }));
-	}
-
-	return (
-		<span ref={setRef} {...triggerProps} style={{ display: 'inline' }}>
-			{children}
-		</span>
+	assert(
+		acceptsRef,
+		'Tooltip.Trigger requires its child to forward refs. Wrap your component in React.forwardRef() or use a native HTML element.'
 	);
+
+	return cloneElement(children, mergeProps(mergedProps, { ref: setRef }));
 }
 
 /**
