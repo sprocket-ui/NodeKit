@@ -62,8 +62,8 @@ importers:
         specifier: 1.4.25
         version: 1.4.25(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/helpers':
-        specifier: 2.6.12
-        version: 2.6.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.6.16
+        version: 2.6.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
         specifier: 2.14.17
         version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -126,8 +126,8 @@ importers:
         specifier: 1.4.25
         version: 1.4.25(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/helpers':
-        specifier: 2.6.12
-        version: 2.6.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.6.16
+        version: 2.6.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
         specifier: 2.14.17
         version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -181,8 +181,8 @@ importers:
         specifier: 1.4.25
         version: 1.4.25(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/helpers':
-        specifier: 2.6.12
-        version: 2.6.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.6.16
+        version: 2.6.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
         specifier: 2.14.17
         version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -242,8 +242,8 @@ importers:
         specifier: 1.4.25
         version: 1.4.25(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/helpers':
-        specifier: 2.6.12
-        version: 2.6.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.6.16
+        version: 2.6.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
         specifier: 2.14.17
         version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -300,8 +300,8 @@ importers:
         specifier: 1.4.25
         version: 1.4.25(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/helpers':
-        specifier: 2.6.12
-        version: 2.6.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.6.16
+        version: 2.6.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
         specifier: 2.14.17
         version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -355,8 +355,8 @@ importers:
         specifier: 1.4.25
         version: 1.4.25(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/helpers':
-        specifier: 2.6.12
-        version: 2.6.12(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.6.16
+        version: 2.6.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
         specifier: 2.14.17
         version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1247,9 +1247,6 @@ packages:
 
   '@necto/dom@1.7.3':
     resolution: {integrity: sha512-uZqeH9ydTwQ904A4ydOji3G3uigvaQ3w/wbr0el3nEF5WJ8lqClAwQJUNMlPOFGcpv+BppGICVfot+L8Hm4JpA==}
-
-  '@necto/dom@1.9.0':
-    resolution: {integrity: sha512-QImV3sQlV2lmilG0ST1Fic/vON5n9Nc3MacitDzmTJfxE8Ri5hVjLnk59B6aq1pFucluZ4M8GG1COiEA0PBqdg==}
 
   '@necto/dom@1.9.2':
     resolution: {integrity: sha512-Q+Dj08nsuC9ZS4MYyuzzVv+BspR3tcR1Dp4H0CmdnmuzDXGC1MN5x6lw6iXeOe1Sq3peTPywNT9Z1EkRrD3sIg==}
@@ -4520,13 +4517,6 @@ snapshots:
   '@necto/crypto@1.0.0': {}
 
   '@necto/dom@1.7.3':
-    dependencies:
-      '@necto/constants': 1.4.5
-      '@necto/platform': 1.5.1
-      '@necto/types': 1.3.1
-      html-tags: 4.0.0
-
-  '@necto/dom@1.9.0':
     dependencies:
       '@necto/constants': 1.4.5
       '@necto/platform': 1.5.1
