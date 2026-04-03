@@ -14,16 +14,9 @@ import type { Context, RefObject } from 'react';
 import type { TooltipState } from '../types';
 
 export interface TooltipContextValue extends TooltipState {
-	// Ref to the trigger element for positioning.
 	triggerRef: RefObject<Element | null>;
-
-	// Props to spread on the trigger element (from useTooltipTrigger).
 	triggerProps: Record<string, any>;
-
-	// The tooltip id (set by useTooltipTrigger, used for aria-describedby).
 	tooltipId?: string;
-
-	// Ref to track if the tooltip content is hovered (shared with trigger for close coordination).
 	isContentHoveredRef?: RefObject<boolean>;
 }
 

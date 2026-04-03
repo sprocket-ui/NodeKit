@@ -25,6 +25,14 @@ let globalWarmedUp = false;
 let globalWarmUpTimeout: ReturnType<typeof setTimeout> | null = null;
 let globalCooldownTimeout: ReturnType<typeof setTimeout> | null = null;
 
+/**
+ * Hook for managing tooltip open/close state.
+ * Handles warmup delays, cooldowns, and global tooltip coordination
+ * to ensure only one tooltip is visible at a time.
+ *
+ * @param options - Configuration options for the trigger state.
+ * @returns The tooltip state with open and close methods.
+ */
 export function useTooltipTriggerState(
 	options: UseTooltipTriggerOptions
 ): UseTooltipTriggerStateReturn {

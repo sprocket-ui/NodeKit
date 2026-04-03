@@ -12,11 +12,11 @@ import { assert } from '@necto/assert';
 import { mergeProps } from '@necto/mergers';
 import { useContext, cloneElement, useCallback, isValidElement } from 'react';
 
-import { TOOLTIP_TRIGGER_NAME } from '../../constants';
 import { TooltipContext } from '../../contexts';
+import { TOOLTIP_TRIGGER_NAME } from '../../constants';
 
 import type { RefObject, ReactElement } from 'react';
-import type { TooltipContextValue } from '../../contexts';
+import type { TooltipContextValue } from '../../contexts/TooltipContext';
 import type { TooltipTriggerProps } from './TooltipTrigger.types';
 
 /**
@@ -26,13 +26,21 @@ import type { TooltipTriggerProps } from './TooltipTrigger.types';
 function TooltipTriggerFn(props: TooltipTriggerProps): ReactElement {
 	const { children } = props;
 	const context: TooltipContextValue | null = useContext(TooltipContext);
-
 	const triggerRef = context?.triggerRef as RefObject<Element | null> | undefined;
 
 	const setRef = useCallback(
 		(node: Element | null) => {
 			if (triggerRef && typeof triggerRef === 'object') {
 				(triggerRef as { current: Element | null }).current = node;
+			}
+
+			if (node) {
+				const rect: DOMRect = node.getBoundingClientRect();
+
+				assert(
+					rect.width > 0 || rect.height > 0,
+					'[Sprocket UI] Tooltip.Trigger: The trigger element has no dimensions. This usually happens with "display:contents" or elements that don\'t render a box. The tooltip cannot be positioned correctly.'
+				);
 			}
 		},
 		[triggerRef]
@@ -53,14 +61,14 @@ function TooltipTriggerFn(props: TooltipTriggerProps): ReactElement {
 
 	assert(
 		acceptsRef,
-		'Tooltip.Trigger requires its child to forward refs. Wrap your component in React.forwardRef() or use a native HTML element.'
+		'[Sprocket UI] Tooltip.Trigger requires its child to forward refs. Wrap your component in React.forwardRef() or use a native HTML element.'
 	);
 
 	return cloneElement(children, mergeProps(mergedProps, { ref: setRef }));
 }
 
 /**
- * The public TooltipTrigger component for Sprocket UI.
+ * A TooltipTrigger component for Sprocket UI.
  */
 export const TooltipTrigger: typeof TooltipTriggerFn & {
 	displayName?: string;

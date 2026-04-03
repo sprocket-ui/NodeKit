@@ -7,7 +7,4 @@
  */
 
 export { TooltipContext } from './TooltipContext';
-export type { TooltipContextValue } from './TooltipContext';
-
 export { TooltipArrowContext } from './TooltipArrowContext';
-export type { TooltipArrowContextValue } from './TooltipArrowContext';

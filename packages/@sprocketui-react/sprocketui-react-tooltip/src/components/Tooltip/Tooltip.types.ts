@@ -9,6 +9,8 @@
 import type { ReactNode } from 'react';
 import type { UseTooltipTriggerOptions } from '../../hooks/useTooltipTrigger';
 
+/** Props for the Tooltip component. */
 export interface TooltipProps extends UseTooltipTriggerOptions {
-  children: ReactNode;
+	/** The tooltip trigger and content elements. */
+	children: ReactNode;
 }

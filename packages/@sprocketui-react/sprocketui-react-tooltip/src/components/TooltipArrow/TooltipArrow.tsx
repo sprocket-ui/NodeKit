@@ -8,8 +8,8 @@
 
 'use client';
 
-import { useContext } from 'react';
 import { PopperArrow } from '@necto-react/popper';
+import { useContext } from 'react';
 
 import { TOOLTIP_ARROW_NAME } from '../../constants';
 import { TooltipArrowContext } from '../../contexts';
@@ -30,7 +30,7 @@ function TooltipArrowFn(props: TooltipArrowProps): ReactElement {
 }
 
 /**
- * The public TooltipArrow component for Sprocket UI.
+ * A TooltipArrow component for Sprocket UI.
  */
 export const TooltipArrow: typeof TooltipArrowFn & {
 	displayName?: string;

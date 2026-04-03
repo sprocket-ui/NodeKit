@@ -11,8 +11,9 @@
 'use client';
 
 import { defu } from 'defu';
-import { useMemo, useRef, useCallback, useState } from 'react';
+import { mergeProps } from '@necto/mergers';
 import { flip, shift, arrow, autoUpdate, offset as offsetMiddleware } from '@necto/popper';
+import { useHover } from '@necto-react/hooks';
 import {
 	useRole,
 	usePopper,
@@ -20,8 +21,7 @@ import {
 	useInteractions,
 	useTransitionStyles
 } from '@necto-react/popper';
-import { mergeProps } from '@necto/mergers';
-import { useHover } from '@necto-react/hooks';
+import { useMemo, useRef, useCallback, useState } from 'react';
 
 import { DEFAULT_TOOLTIP_TAG } from '../../constants';
 
@@ -29,6 +29,16 @@ import type { ElementType } from 'react';
 import type { TooltipState } from '../../types';
 import type { UseTooltipContentOptions, UseTooltipContentReturn } from './useTooltipContent.types';
 
+/**
+ * Hook for the TooltipContent component.
+ * Handles popper positioning, transitions, arrow middleware,
+ * and hover interactions for the tooltip content.
+ *
+ * @template T The element type to render as.
+ * @param options - Configuration options for the tooltip content.
+ * @param state - The tooltip open/close state.
+ * @returns Props, styles, and refs for the tooltip content element.
+ */
 export function useTooltipContent<T extends ElementType = typeof DEFAULT_TOOLTIP_TAG>(
 	options: UseTooltipContentOptions<T>,
 	state: TooltipState
@@ -57,20 +67,28 @@ export function useTooltipContent<T extends ElementType = typeof DEFAULT_TOOLTIP
 
 	const { hoverProps, isHovered } = useHover({
 		onHoverStart: () => {
-			if (!isContentHoveredRef) return;
+			if (!isContentHoveredRef) {
+				return;
+			}
+
 			(isContentHoveredRef as { current: boolean }).current = true;
 			if (contentCloseTimeoutRef.current) {
 				clearTimeout(contentCloseTimeoutRef.current);
 				contentCloseTimeoutRef.current = null;
 			}
+
 			state.open(true);
 		},
 		onHoverEnd: () => {
-			if (!isContentHoveredRef) return;
+			if (!isContentHoveredRef) {
+				return;
+			}
+
 			(isContentHoveredRef as { current: boolean }).current = false;
 			if (contentCloseTimeoutRef.current) {
 				clearTimeout(contentCloseTimeoutRef.current);
 			}
+
 			contentCloseTimeoutRef.current = setTimeout(() => {
 				contentCloseTimeoutRef.current = null;
 				if (!isContentHoveredRef?.current) {
@@ -92,12 +110,12 @@ export function useTooltipContent<T extends ElementType = typeof DEFAULT_TOOLTIP
 		isPositioned,
 		middlewareData
 	} = usePopper({
-		open: isOpen,
 		placement,
-		transform: false,
-		whileElementsMounted: autoUpdate,
 		middleware,
-		reference: triggerRef?.current
+		open: isOpen,
+		transform: false,
+		reference: triggerRef?.current,
+		whileElementsMounted: autoUpdate
 	});
 
 	const dismiss = useDismiss({
@@ -117,13 +135,22 @@ export function useTooltipContent<T extends ElementType = typeof DEFAULT_TOOLTIP
 	const { isMounted, styles: transitionStyles } = useTransitionStyles({
 		open: isOpen && isPositioned,
 		duration: transitionDuration,
-		initial: { opacity: 0 },
-		openStyles: { opacity: 1 }
+		initial: {
+			opacity: 0
+		},
+		openStyles: {
+			opacity: 1
+		}
 	});
 
 	const sprocketState: string[] = [];
-	if (isHovered) sprocketState.push('hover');
-	if (isOpen) sprocketState.push('open');
+	if (isHovered) {
+		sprocketState.push('hover');
+	}
+
+	if (isOpen) {
+		sprocketState.push('open');
+	}
 
 	const contentProps: Record<string, any> = mergeProps(hoverProps, {
 		role: 'tooltip',
@@ -137,8 +164,6 @@ export function useTooltipContent<T extends ElementType = typeof DEFAULT_TOOLTIP
 	return {
 		refs,
 		arrowRef,
-		arrowX: arrowData?.x,
-		arrowY: arrowData?.y,
 		isHovered,
 		isMounted,
 		isPositioned,
@@ -147,6 +172,8 @@ export function useTooltipContent<T extends ElementType = typeof DEFAULT_TOOLTIP
 		finalPlacement,
 		transitionStyles,
 		getFloatingProps,
+		arrowX: arrowData?.x,
+		arrowY: arrowData?.y,
 		elementType: elementType as T
 	};
 }

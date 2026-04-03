@@ -9,34 +9,36 @@
 import type { ElementType } from 'react';
 import type { RenderProps } from '@necto-react/types';
 
+/** Render props for the TooltipContent component. */
 export interface TooltipContentRenderProps {
-  // The resolved placement of the tooltip.
-  placement: string | null;
+	/** The resolved placement of the tooltip. */
+	placement: string | null;
 
-  // Whether the tooltip is currently open.
-  isOpen: boolean;
+	/** Whether the tooltip is currently open. */
+	isOpen: boolean;
 
-  // Whether the tooltip content is hovered.
-  isHovered: boolean;
+	/** Whether the tooltip content is hovered. */
+	isHovered: boolean;
 }
 
+/** Props for the TooltipContent component. */
 export interface TooltipContentProps<T extends ElementType = 'div'>
-  extends RenderProps<TooltipContentRenderProps> {
-  // The element type to render as. @default 'div'
-  elementType?: T;
+	extends RenderProps<TooltipContentRenderProps> {
+	/** The element type to render as. @default 'div' */
+	elementType?: T;
 
-  // Shorthand for elementType.
-  as?: T;
+	/** Shorthand for elementType. */
+	as?: T;
 
-  // Slot name for context props.
-  slot?: string | null;
+	/** Slot name for context props. */
+	slot?: string | null;
 
-  // Placement of the tooltip relative to the trigger. @default 'top'
-  placement?: 'top' | 'bottom' | 'left' | 'right';
+	/** Placement of the tooltip relative to the trigger. @default 'top' */
+	placement?: 'top' | 'bottom' | 'left' | 'right';
 
-  // Offset distance from the trigger in pixels. @default 6
-  offset?: number;
+	/** Offset distance from the trigger in pixels. @default 6 */
+	offset?: number;
 
-  // Duration of the enter/exit transition in ms. @default 150
-  transitionDuration?: number;
+	/** Duration of the enter/exit transition in ms. @default 150 */
+	transitionDuration?: number;
 }

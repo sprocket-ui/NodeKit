@@ -13,11 +13,11 @@
 
 import { assert } from '@necto/assert';
 import { mergeProps } from '@necto/mergers';
-import { buildInternalIdentifier } from 'shared';
+import { Primitive } from '@necto-react/components';
 import { useRenderer } from '@necto-react/hooks';
 import { PopperPortal } from '@necto-react/popper';
-import { Primitive } from '@necto-react/components';
 import { useContext, useMemo, forwardRef } from 'react';
+import { buildInternalIdentifier } from 'shared';
 
 import { TOOLTIP_CONTENT_NAME } from '../../constants';
 import { useTooltipContent } from '../../hooks/useTooltipContent';
@@ -137,7 +137,7 @@ function TooltipContentFn(
 }
 
 /**
- * The public TooltipContent component for Sprocket UI.
+ * A TooltipContent component for Sprocket UI.
  */
 export const TooltipContent: ForwardRefExoticComponent<
 	Omit<TooltipContentProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>
