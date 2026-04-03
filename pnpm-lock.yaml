@@ -74,8 +74,8 @@ importers:
         specifier: 2.4.1
         version: 2.4.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto/dom':
-        specifier: 1.7.3
-        version: 1.7.3
+        specifier: 1.9.2
+        version: 1.9.2
       '@necto/mergers':
         specifier: 1.5.1
         version: 1.5.1(react@19.2.4)
@@ -193,8 +193,8 @@ importers:
         specifier: 2.4.1
         version: 2.4.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto/dom':
-        specifier: 1.7.3
-        version: 1.7.3
+        specifier: 1.9.2
+        version: 1.9.2
       '@necto/mergers':
         specifier: 1.5.1
         version: 1.5.1(react@19.2.4)
@@ -251,8 +251,8 @@ importers:
         specifier: 2.4.1
         version: 2.4.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto/dom':
-        specifier: 1.7.3
-        version: 1.7.3
+        specifier: 1.9.2
+        version: 1.9.2
       '@necto/mergers':
         specifier: 1.5.1
         version: 1.5.1(react@19.2.4)
@@ -367,8 +367,8 @@ importers:
         specifier: 2.4.1
         version: 2.4.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto/dom':
-        specifier: 1.7.3
-        version: 1.7.3
+        specifier: 1.9.2
+        version: 1.9.2
       '@necto/math':
         specifier: 1.0.0
         version: 1.0.0
