@@ -19,6 +19,6 @@
     "url": "https://github.com/sprocket-ui/NodeKit.git"
   },
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^6.0.0"
   }
 }
