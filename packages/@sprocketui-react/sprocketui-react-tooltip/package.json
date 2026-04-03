@@ -1,6 +1,6 @@
 {
   "name": "@sprocketui-react/tooltip",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Sprocket's standalone React tooltip component.",
   "type": "module",
   "license": "MIT",

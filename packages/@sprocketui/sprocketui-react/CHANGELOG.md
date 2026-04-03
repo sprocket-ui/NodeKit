@@ -1,5 +1,12 @@
 # @sprocketui/react
 
+## 0.2.23
+
+### Patch Changes
+
+- Updated dependencies [4c47991]
+  - @sprocketui-react/tooltip@1.5.1
+
 ## 0.2.22
 
 ### Patch Changes
