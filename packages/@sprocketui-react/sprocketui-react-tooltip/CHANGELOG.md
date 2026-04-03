@@ -1,5 +1,23 @@
 # @sprocketui-react/tooltip
 
+## 1.4.0
+
+### Minor Changes
+
+- 8993760: feat: overhaul tooltip component
+
+  - Arrow positioning via necto-popper arrow middleware for pixel-perfect placement on all sides
+  - Fixed hover race condition when switching between tooltips quickly using global tooltip registry
+  - Added `closeOnContentHover` prop to control whether tooltip stays open when hovering its content (defaults to false)
+  - Code style aligned with tabs package pattern (displayName, assert, minimal JSDoc)
+  - Fixed transition animation from top-left corner on first hover
+
+### Patch Changes
+
+- 8993760: Update necto dependencies to latest versions
+- Updated dependencies [8993760]
+  - @sprocketui-types/tooltip@1.2.4
+
 ## 1.3.0
 
 ### Minor Changes

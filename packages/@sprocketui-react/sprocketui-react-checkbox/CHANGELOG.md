@@ -1,5 +1,11 @@
 # @sprocketui-react/checkbox
 
+## 1.1.2
+
+### Patch Changes
+
+- 8993760: Update necto dependencies to latest versions
+
 ## 1.1.1
 
 ### Patch Changes

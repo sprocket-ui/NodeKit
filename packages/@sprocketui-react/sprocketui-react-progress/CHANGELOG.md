@@ -1,5 +1,13 @@
 # @sprocketui-react/progress
 
+## 1.1.3
+
+### Patch Changes
+
+- 8993760: Update necto dependencies to latest versions
+- Updated dependencies [8993760]
+  - @sprocketui-react/label@1.1.2
+
 ## 1.1.2
 
 ### Patch Changes
