@@ -1,3 +1,5 @@
+// biome-ignore-all lint/suspicious/noExplicitAny: Props records require any.
+
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
@@ -9,50 +11,65 @@
 import type { CSSProperties, ElementType, RefObject } from 'react';
 
 export interface UseTooltipContentOptions<T extends ElementType = 'div'> {
-  // The element type to render as. @default 'div'
-  elementType?: T;
+	// The element type to render as. @default 'div'
+	elementType?: T;
 
-  // Shorthand for elementType.
-  as?: T;
+	// Shorthand for elementType.
+	as?: T;
 
-  // Placement of the tooltip relative to the trigger. @default 'top'
-  placement?: 'top' | 'bottom' | 'left' | 'right';
+	// Placement of the tooltip relative to the trigger. @default 'top'
+	placement?: 'top' | 'bottom' | 'left' | 'right';
 
-  // Offset distance from the trigger in pixels. @default 6
-  offset?: number;
+	// Offset distance from the trigger in pixels. @default 6
+	offset?: number;
 
-  // Duration of the enter/exit transition in ms. @default 150
-  transitionDuration?: number;
+	// Duration of the enter/exit transition in ms. @default 150
+	transitionDuration?: number;
 
-  // Ref to the trigger/reference element for popper positioning.
-  triggerRef?: RefObject<Element | null>;
+	// Ref to the trigger/reference element for popper positioning.
+	triggerRef?: RefObject<Element | null>;
+
+	// Ref to track if tooltip content is hovered (shared with trigger for close coordination).
+	isContentHoveredRef?: RefObject<boolean>;
 }
 
 export type UseTooltipContentReturn<T extends ElementType = 'div'> = Readonly<{
-  // Props to spread on the tooltip content element.
-  contentProps: Record<string, any>;
+	// Props to spread on the tooltip content element.
+	contentProps: Record<string, any>;
 
-  // The resolved element type.
-  elementType: T;
+	// The resolved element type.
+	elementType: T;
 
-  // Whether the tooltip content is hovered.
-  isHovered: boolean;
+	// Whether the tooltip content is hovered.
+	isHovered: boolean;
 
-  // Popper refs (setFloating).
-  refs: { setFloating: (node: HTMLElement | null) => void };
+	// Popper refs (setFloating).
+	refs: { setFloating: (node: HTMLElement | null) => void };
 
-  // Computed floating styles from popper.
-  floatingStyles: CSSProperties;
+	// Computed floating styles from popper.
+	floatingStyles: CSSProperties;
 
-  // The resolved placement after flip/shift.
-  finalPlacement: string;
+	// The resolved placement after flip/shift.
+	finalPlacement: string;
 
-  // Returns props to spread on the floating element.
-  getFloatingProps: (userProps?: Record<string, any>) => Record<string, any>;
+	// Returns props to spread on the floating element.
+	getFloatingProps: (userProps?: Record<string, any>) => Record<string, any>;
 
-  // Whether the tooltip is mounted (for transition).
-  isMounted: boolean;
+	// Whether the tooltip is mounted (for transition).
+	isMounted: boolean;
 
-  // Transition styles for enter/exit animation.
-  transitionStyles: CSSProperties;
+	// Whether popper has calculated the position.
+	isPositioned: boolean;
+
+	// Transition styles for enter/exit animation.
+	transitionStyles: CSSProperties;
+
+	// Callback ref for the arrow element (used by arrow middleware).
+	arrowRef: (node: HTMLDivElement | null) => void;
+
+	// Arrow x coordinate from arrow middleware.
+	arrowX?: number;
+
+	// Arrow y coordinate from arrow middleware.
+	arrowY?: number;
 }>;

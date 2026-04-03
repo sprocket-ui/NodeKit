@@ -2,27 +2,34 @@ colors: true
 skip_lfs: true
 
 pre-commit:
+  piped: true
   commands:
     lint:
       glob: "*.{js,ts,jsx,tsx,json,toml}"
       run: pnpm lint {staged_files}
       stage_fixed: true
+      priority: 1
     format:
       glob: "*.{js,ts,jsx,tsx,json,css,html,toml}"
       run: pnpm format {staged_files}
       stage_fixed: true
+      priority: 1
     markdown-lint:
       glob: "*.md"
       run: pnpm exec markdownlint-cli2 {staged_files}
+      priority: 1
     yaml-lint:
       glob: "*.{yaml,yml}"
       run: pnpm exec yamllint {staged_files}
-    build:
-      glob: "packages/**/*.{js,ts,jsx,tsx}"
-      run: pnpm turbo run build --filter='...[HEAD]'
+      priority: 1
     lockfile-check:
       glob: "**/package.json"
       run: pnpm install --frozen-lockfile --ignore-scripts
+      priority: 2
+    build:
+      glob: "packages/**/*.{js,ts,jsx,tsx}"
+      run: pnpm turbo run build --filter='...[HEAD]'
+      priority: 3
 
 commit-msg:
   commands:

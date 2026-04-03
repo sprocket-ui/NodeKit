@@ -11,7 +11,7 @@ export const TOOLTIP_NAME = 'Tooltip' as const;
 
 // -- TooltipTrigger Component --
 export const TOOLTIP_TRIGGER_DELAY: number = 1500 as const;
-export const TOOLTIP_TRIGGER_COOLDOWN: number = 500 as const;
+export const TOOLTIP_TRIGGER_COOLDOWN: number = 150 as const;
 export const TOOLTIP_TRIGGER_NAME = 'TooltipTrigger' as const;
 
 // -- TooltipContent Component --

@@ -1,3 +1,5 @@
+// biome-ignore-all lint/suspicious/noExplicitAny: Props records require any.
+
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
@@ -9,37 +11,40 @@
 import type { TooltipState } from '../../types';
 
 export interface UseTooltipTriggerOptions {
-  // Whether the tooltip trigger is disabled.
-  isDisabled?: boolean;
+	// Whether the tooltip trigger is disabled.
+	isDisabled?: boolean;
 
-  // What triggers the tooltip. @default 'hover'
-  trigger?: 'hover' | 'focus';
+	// What triggers the tooltip. @default 'hover'
+	trigger?: 'hover' | 'focus';
 
-  // Delay in ms before the tooltip opens. @default 1500
-  delay?: number;
+	// Delay in ms before the tooltip opens. @default 1500
+	delay?: number;
 
-  // Delay in ms before the tooltip closes. @default 500
-  closeDelay?: number;
+	// Delay in ms before the tooltip closes. @default 500
+	closeDelay?: number;
 
-  // Whether pressing the trigger should close the tooltip. @default true
-  shouldCloseOnPress?: boolean;
+	// Whether pressing the trigger should close the tooltip. @default true
+	shouldCloseOnPress?: boolean;
 
-  // Controlled open state.
-  isOpen?: boolean;
+	// Whether the tooltip stays open when hovering its content. @default false
+	closeOnContentHover?: boolean;
 
-  // Default open state (uncontrolled). @default false
-  defaultOpen?: boolean;
+	// Controlled open state.
+	isOpen?: boolean;
 
-  // Callback when open state changes.
-  onOpenChange?: (isOpen: boolean) => void;
+	// Default open state (uncontrolled). @default false
+	defaultOpen?: boolean;
+
+	// Callback when open state changes.
+	onOpenChange?: (isOpen: boolean) => void;
 }
 
 export type UseTooltipTriggerStateReturn = TooltipState;
 
 export type UseTooltipTriggerReturn = Readonly<{
-  // Props to spread on the trigger element.
-  triggerProps: Record<string, any>;
+	// Props to spread on the trigger element.
+	triggerProps: Record<string, any>;
 
-  // Props to spread on the tooltip element (contains the id).
-  tooltipProps: Record<string, any>;
+	// Props to spread on the tooltip element (contains the id).
+	tooltipProps: Record<string, any>;
 }>;

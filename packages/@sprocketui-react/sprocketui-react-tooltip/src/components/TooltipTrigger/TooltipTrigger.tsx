@@ -11,6 +11,7 @@
 import { mergeProps } from '@necto/mergers';
 import { useContext, cloneElement, useCallback, isValidElement } from 'react';
 
+import { TOOLTIP_TRIGGER_NAME } from '../../constants';
 import { TooltipContext } from '../../contexts';
 
 import type { RefObject, ReactElement } from 'react';
@@ -19,12 +20,7 @@ import type { TooltipTriggerProps } from './TooltipTrigger.types';
 
 /**
  * @internal
- * Internal render function for the TooltipTrigger component. Handles context consumption,
- * ref forwarding detection, and prop merging for the trigger element.
- * Not intended for public use; use the exported TooltipTrigger component instead.
- *
- * @param {TooltipTriggerProps} props - The props for the TooltipTrigger component.
- * @returns {ReactElement} The rendered trigger element.
+ * Internal render function for the TooltipTrigger component.
  */
 function TooltipTriggerFn(props: TooltipTriggerProps): ReactElement {
 	const { children } = props;
@@ -59,7 +55,7 @@ function TooltipTriggerFn(props: TooltipTriggerProps): ReactElement {
 	}
 
 	return (
-		<span ref={setRef} {...triggerProps} style={{ display: 'contents' }}>
+		<span ref={setRef} {...triggerProps} style={{ display: 'inline' }}>
 			{children}
 		</span>
 	);
@@ -67,15 +63,12 @@ function TooltipTriggerFn(props: TooltipTriggerProps): ReactElement {
 
 /**
  * The public TooltipTrigger component for Sprocket UI.
- * Wraps a single child element and merges hover, focus, and accessibility
- * props from the parent Tooltip context. If the child does not forward refs,
- * a wrapper span with display:contents is used for tooltip positioning.
- *
- * @param {TooltipTriggerProps} props - The props for the TooltipTrigger component.
- * @returns {ReactElement} The rendered trigger element.
  */
 export const TooltipTrigger: typeof TooltipTriggerFn & {
+	displayName?: string;
 	Root: typeof TooltipTriggerFn;
 } = Object.assign(TooltipTriggerFn, {
 	Root: TooltipTriggerFn
 });
+
+TooltipTrigger.displayName = TOOLTIP_TRIGGER_NAME;

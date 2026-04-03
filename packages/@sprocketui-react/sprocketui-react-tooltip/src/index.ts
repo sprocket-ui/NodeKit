@@ -1,5 +1,3 @@
-// biome-ignore-all assist/source/organizeImports: No need to sort exports and imports.
-
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
@@ -8,10 +6,15 @@
  *
  */
 
-export * from './contexts';
+// Components
 export * from './components/Tooltip';
-export * from './hooks/useTooltipContent';
-export * from './hooks/useTooltipTrigger';
 export * from './components/TooltipTrigger';
 export * from './components/TooltipContent';
 export * from './components/TooltipArrow';
+
+// Hooks
+export * from './hooks/useTooltipTrigger';
+export * from './hooks/useTooltipContent';
+
+// Contexts
+export { TooltipContext, TooltipArrowContext } from './contexts';

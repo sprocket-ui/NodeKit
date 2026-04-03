@@ -11,6 +11,7 @@
 import { useRef } from 'react';
 
 import { TooltipArrow } from '../TooltipArrow';
+import { TOOLTIP_NAME } from '../../constants';
 import { TooltipContext } from '../../contexts';
 import { TooltipContent } from '../TooltipContent';
 import { TooltipTrigger } from '../TooltipTrigger';
@@ -21,21 +22,21 @@ import type { TooltipProps } from './Tooltip.types';
 
 /**
  * @internal
- * Internal render function for the Tooltip root component. Manages open/close state
- * and provides context for Tooltip.Trigger, Tooltip.Content, and Tooltip.Arrow.
- * Renders no DOM element of its own.
- * Not intended for public use; use the exported Tooltip component instead.
- *
- * @param {TooltipProps} props - The props for the Tooltip component.
- * @returns {ReactElement} The rendered Tooltip context provider.
+ * Internal render function for the Tooltip component.
  */
-function TooltipRoot(props: TooltipProps): ReactElement {
-	const { children, ...options } = props;
+function TooltipFn(props: TooltipProps): ReactElement {
+	const { children, closeOnContentHover = false, ...options } = props;
 
 	const state = useTooltipTriggerState(options);
 	const triggerRef = useRef<Element | null>(null);
+	const isContentHoveredRef = useRef(false);
 
-	const { triggerProps, tooltipProps } = useTooltipTrigger(options, state, triggerRef);
+	const { triggerProps, tooltipProps } = useTooltipTrigger(
+		options,
+		state,
+		triggerRef,
+		closeOnContentHover ? isContentHoveredRef : undefined
+	);
 
 	const contextValue = {
 		isOpen: state.isOpen,
@@ -43,7 +44,8 @@ function TooltipRoot(props: TooltipProps): ReactElement {
 		close: state.close,
 		triggerRef,
 		triggerProps,
-		tooltipId: tooltipProps.id
+		tooltipId: tooltipProps.id,
+		isContentHoveredRef: closeOnContentHover ? isContentHoveredRef : undefined
 	};
 
 	return <TooltipContext.Provider value={contextValue}>{children}</TooltipContext.Provider>;
@@ -51,19 +53,18 @@ function TooltipRoot(props: TooltipProps): ReactElement {
 
 /**
  * The public Tooltip component for Sprocket UI.
- * Provides state management and context for tooltip trigger, content, and arrow sub-components.
- *
- * @param {TooltipProps} props - The props for the Tooltip component.
- * @returns {ReactElement} The rendered Tooltip context provider.
  */
-export const Tooltip: typeof TooltipRoot & {
-	Root: typeof TooltipRoot;
+export const Tooltip: typeof TooltipFn & {
+	displayName?: string;
+	Root: typeof TooltipFn;
 	Trigger: typeof TooltipTrigger;
 	Content: typeof TooltipContent;
 	Arrow: typeof TooltipArrow;
-} = Object.assign(TooltipRoot, {
-	Root: TooltipRoot,
+} = Object.assign(TooltipFn, {
+	Root: TooltipFn,
 	Trigger: TooltipTrigger,
 	Content: TooltipContent,
 	Arrow: TooltipArrow
 });
+
+Tooltip.displayName = TOOLTIP_NAME;

@@ -1,3 +1,5 @@
+// biome-ignore-all lint/suspicious/noExplicitAny: Props records require any.
+
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
@@ -9,19 +11,14 @@
 'use client';
 
 import { defu } from 'defu';
-import { useMemo } from 'react';
+import { useMemo, useRef, useCallback, useState } from 'react';
+import { flip, shift, arrow, autoUpdate, offset as offsetMiddleware } from '@necto/popper';
 import {
-  flip,
-  shift,
-  autoUpdate,
-  offset as offsetMiddleware,
-} from '@necto/popper';
-import {
-  useRole,
-  usePopper,
-  useDismiss,
-  useInteractions,
-  useTransitionStyles
+	useRole,
+	usePopper,
+	useDismiss,
+	useInteractions,
+	useTransitionStyles
 } from '@necto-react/popper';
 import { mergeProps } from '@necto/mergers';
 import { useHover } from '@necto-react/hooks';
@@ -33,86 +30,123 @@ import type { TooltipState } from '../../types';
 import type { UseTooltipContentOptions, UseTooltipContentReturn } from './useTooltipContent.types';
 
 export function useTooltipContent<T extends ElementType = typeof DEFAULT_TOOLTIP_TAG>(
-  options: UseTooltipContentOptions<T>,
-  state: TooltipState
+	options: UseTooltipContentOptions<T>,
+	state: TooltipState
 ): UseTooltipContentReturn<T> {
-  const {
-    elementType,
-    placement = 'top',
-    offset: offsetValue = 6,
-    transitionDuration = 150,
-  } = defu(options, {
-    elementType: options.elementType || options.as || DEFAULT_TOOLTIP_TAG
-  });
+	const {
+		elementType,
+		placement = 'top',
+		offset: offsetValue = 6,
+		transitionDuration = 150
+	} = defu(options, {
+		elementType: options.elementType || options.as || DEFAULT_TOOLTIP_TAG
+	});
 
-  // Extract triggerRef directly from options to avoid defu potentially
-  // deep-merging the RefObject.
-  const triggerRef = options.triggerRef;
+	// Extract refs directly from options to avoid defu potentially
+	// deep-merging RefObjects.
+	const triggerRef = options.triggerRef;
+	const isContentHoveredRef = options.isContentHoveredRef;
 
-  const { isOpen } = state;
+	const { isOpen } = state;
 
-  const { hoverProps, isHovered } = useHover({
-    onHoverStart: () => state.open(true),
-    onHoverEnd: () => state.close()
-  });
+	const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>(null);
+	const arrowRef = useCallback((node: HTMLDivElement | null) => {
+		setArrowElement(node);
+	}, []);
+	const contentCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const middleware = useMemo(
-    () => [offsetMiddleware(offsetValue), flip(), shift()],
-    [offsetValue]
-  );
+	const { hoverProps, isHovered } = useHover({
+		onHoverStart: () => {
+			if (!isContentHoveredRef) return;
+			(isContentHoveredRef as { current: boolean }).current = true;
+			if (contentCloseTimeoutRef.current) {
+				clearTimeout(contentCloseTimeoutRef.current);
+				contentCloseTimeoutRef.current = null;
+			}
+			state.open(true);
+		},
+		onHoverEnd: () => {
+			if (!isContentHoveredRef) return;
+			(isContentHoveredRef as { current: boolean }).current = false;
+			if (contentCloseTimeoutRef.current) {
+				clearTimeout(contentCloseTimeoutRef.current);
+			}
+			contentCloseTimeoutRef.current = setTimeout(() => {
+				contentCloseTimeoutRef.current = null;
+				if (!isContentHoveredRef?.current) {
+					state.close();
+				}
+			}, 150);
+		}
+	});
 
-  const { refs, floatingStyles, placement: finalPlacement } = usePopper({
-    open: isOpen,
-    placement,
-    whileElementsMounted: autoUpdate,
-    middleware,
-    reference: triggerRef?.current,
-  });
+	const middleware = useMemo(
+		() => [offsetMiddleware(offsetValue), flip(), shift(), arrow({ element: arrowElement })],
+		[offsetValue, arrowElement]
+	);
 
-  const dismiss = useDismiss({
-    open: isOpen,
-    onOpenChange: (open) => {
-      if (!open) state.close();
-    }
-  });
+	const {
+		refs,
+		floatingStyles,
+		placement: finalPlacement,
+		isPositioned,
+		middlewareData
+	} = usePopper({
+		open: isOpen,
+		placement,
+		transform: false,
+		whileElementsMounted: autoUpdate,
+		middleware,
+		reference: triggerRef?.current
+	});
 
-  const role = useRole({
-    open: isOpen,
-    role: 'tooltip'
-  });
+	const dismiss = useDismiss({
+		open: isOpen,
+		onOpenChange: (open) => {
+			if (!open) state.close();
+		}
+	});
 
-  const { getFloatingProps } = useInteractions([dismiss, role]);
+	const role = useRole({
+		open: isOpen,
+		role: 'tooltip'
+	});
 
-  const { isMounted, styles: transitionStyles } = useTransitionStyles({
-    open: isOpen,
-    duration: transitionDuration,
-    initial: { opacity: 0 },
-    openStyles: { opacity: 1 }
-  });
+	const { getFloatingProps } = useInteractions([dismiss, role]);
 
-  const sprocketState: string[] = [];
-  if (isHovered) sprocketState.push('hover');
-  if (isOpen) sprocketState.push('open');
+	const { isMounted, styles: transitionStyles } = useTransitionStyles({
+		open: isOpen && isPositioned,
+		duration: transitionDuration,
+		initial: { opacity: 0 },
+		openStyles: { opacity: 1 }
+	});
 
-  const contentProps: Record<string, any> = mergeProps(
-    hoverProps,
-    {
-      role: 'tooltip',
-      'data-open': isOpen ? 'true' : undefined,
-      'data-hover': isHovered ? 'true' : undefined,
-      'data-sprocket-state': sprocketState.length > 0 ? sprocketState.join(' ') : undefined
-    }
-  );
+	const sprocketState: string[] = [];
+	if (isHovered) sprocketState.push('hover');
+	if (isOpen) sprocketState.push('open');
 
-  return {
-    refs,
-    isHovered,
-    isMounted,
-    contentProps,
-    floatingStyles,
-    finalPlacement,
-    transitionStyles,
-    getFloatingProps,
-    elementType: elementType as T,
-  };
+	const contentProps: Record<string, any> = mergeProps(hoverProps, {
+		role: 'tooltip',
+		'data-open': isOpen ? 'true' : undefined,
+		'data-hover': isHovered ? 'true' : undefined,
+		'data-sprocket-state': sprocketState.length > 0 ? sprocketState.join(' ') : undefined
+	});
+
+	const arrowData = middlewareData?.arrow as { x?: number; y?: number } | undefined;
+
+	return {
+		refs,
+		arrowRef,
+		arrowX: arrowData?.x,
+		arrowY: arrowData?.y,
+		isHovered,
+		isMounted,
+		isPositioned,
+		contentProps,
+		floatingStyles,
+		finalPlacement,
+		transitionStyles,
+		getFloatingProps,
+		elementType: elementType as T
+	};
 }
