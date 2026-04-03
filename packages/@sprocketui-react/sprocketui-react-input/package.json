@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@necto-react/components": "1.4.25",
-    "@necto-react/helpers": "2.6.12",
+    "@necto-react/helpers": "2.6.16",
     "@necto-react/hooks": "2.14.17",
     "@necto-react/state": "0.2.1",
     "@necto-react/types": "2.4.1",
