@@ -31,7 +31,7 @@
   "dependencies": {
     "@necto-react/components": "1.4.25",
     "@necto-react/hooks": "2.14.17",
-    "@necto-react/popper": "0.6.0",
+    "@necto-react/popper": "0.10.0",
     "@necto-react/state": "0.2.1",
     "@necto-react/types": "2.4.1",
     "@necto/mergers": "1.5.1",

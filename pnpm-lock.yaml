@@ -477,8 +477,8 @@ importers:
         specifier: 2.14.17
         version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/popper':
-        specifier: 0.6.0
-        version: 0.6.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 0.10.0
+        version: 0.10.0(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/state':
         specifier: 0.2.1
         version: 0.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1219,8 +1219,8 @@ packages:
       react: ^19.1.0
       react-dom: ^19.1.0
 
-  '@necto-react/popper@0.6.0':
-    resolution: {integrity: sha512-Gr2udbq45TmsZtR9Zlkh6BjAVSd4g6NINbTjMJ6GIK48tq14ot5nUkvMRmCzVobmbjpIRsW1bIM8inLW7CP1nA==}
+  '@necto-react/popper@0.10.0':
+    resolution: {integrity: sha512-BdC/DnjLZycqnnhjYVh+hgFQzMYQw/TeCunqZmHC/1BBO2PRTNtNyddYocScgfjspCDl/2QqqTZtB3yB8x7PlA==}
     peerDependencies:
       react: ^19.1.0
 
@@ -1248,9 +1248,6 @@ packages:
   '@necto/dom@1.7.3':
     resolution: {integrity: sha512-uZqeH9ydTwQ904A4ydOji3G3uigvaQ3w/wbr0el3nEF5WJ8lqClAwQJUNMlPOFGcpv+BppGICVfot+L8Hm4JpA==}
 
-  '@necto/dom@1.9.0':
-    resolution: {integrity: sha512-QImV3sQlV2lmilG0ST1Fic/vON5n9Nc3MacitDzmTJfxE8Ri5hVjLnk59B6aq1pFucluZ4M8GG1COiEA0PBqdg==}
-
   '@necto/dom@1.9.2':
     resolution: {integrity: sha512-Q+Dj08nsuC9ZS4MYyuzzVv+BspR3tcR1Dp4H0CmdnmuzDXGC1MN5x6lw6iXeOe1Sq3peTPywNT9Z1EkRrD3sIg==}
 
@@ -1267,9 +1264,6 @@ packages:
 
   '@necto/platform@1.5.1':
     resolution: {integrity: sha512-W6zSOYIwn4HgSx9yDd4y8V1v+HZjOM8TtIqIxN1xa46I95w6BsqJegLwg71eIfgs2H+6mejKyHadcg7PT9l5FQ==}
-
-  '@necto/popper@0.5.1':
-    resolution: {integrity: sha512-WEuVKp8V2Um/odcY9N3ZZQ3aiY0ZgZs79Um8CdOozMXd8K6KSD4zqLDtlMB0ddvgFYzh0rrpfxa8ys/LfgmTAA==}
 
   '@necto/popper@0.5.6':
     resolution: {integrity: sha512-klTP5pAKBVBFitIa+f7m5CBA4EHh8DyZ19NlKbupATsYrgTrISnWn5D6tte/NVIivQF0WNHEEL5jABASeR8PIg==}
@@ -4489,17 +4483,21 @@ snapshots:
       react-dom: 19.2.4(react@19.2.4)
       std-env: 3.10.0
 
-  '@necto-react/popper@0.6.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+  '@necto-react/popper@0.10.0(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
-      '@necto-react/hooks': 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@necto-react/components': 1.4.25(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@necto-react/hooks': 2.16.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/state': 0.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/types': 2.4.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      '@necto/dom': 1.7.3
-      '@necto/popper': 0.5.1
+      '@necto/dom': 1.9.2
+      '@necto/mergers': 1.5.1(react@19.2.4)
+      '@necto/popper': 0.5.6
       '@necto/types': 1.3.1
       defu: 6.1.6
       react: 19.2.4
     transitivePeerDependencies:
+      - '@types/react'
+      - '@types/react-dom'
       - react-dom
 
   '@necto-react/state@0.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
@@ -4526,13 +4524,6 @@ snapshots:
       '@necto/types': 1.3.1
       html-tags: 4.0.0
 
-  '@necto/dom@1.9.0':
-    dependencies:
-      '@necto/constants': 1.4.5
-      '@necto/platform': 1.5.1
-      '@necto/types': 1.3.1
-      html-tags: 4.0.0
-
   '@necto/dom@1.9.2':
     dependencies:
       '@necto/constants': 1.4.5
@@ -4553,12 +4544,6 @@ snapshots:
       react: 19.2.4
 
   '@necto/platform@1.5.1': {}
-
-  '@necto/popper@0.5.1':
-    dependencies:
-      '@necto/constants': 1.4.5
-      '@necto/dom': 1.7.3
-      '@necto/types': 1.3.1
 
   '@necto/popper@0.5.6':
     dependencies:
