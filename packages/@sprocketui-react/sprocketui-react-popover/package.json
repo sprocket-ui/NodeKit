@@ -32,7 +32,7 @@
     "url": "https://github.com/sprocket-ui/NodeKit.git"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.28",
+    "@floating-ui/react": "^0.27.0",
     "@necto-react/components": "1.4.25",
     "@necto-react/helpers": "2.6.16",
     "@necto-react/hooks": "2.16.2",
