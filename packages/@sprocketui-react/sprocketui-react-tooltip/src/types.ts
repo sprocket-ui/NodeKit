@@ -6,13 +6,14 @@
  *
  */
 
+/** State for tooltip, shared via context. */
 export interface TooltipState {
-  // Whether the tooltip is currently open.
-  isOpen: boolean;
+	/** Whether the tooltip is currently open. */
+	readonly isOpen: boolean;
 
-  // Function to open the tooltip. Pass immediate to skip warmup delay.
-  open(immediate?: boolean): void;
+	/** Open the tooltip. Pass immediate to skip warmup delay. */
+	open(immediate?: boolean): void;
 
-  // Function to close the tooltip. Pass immediate to skip close delay.
-  close(immediate?: boolean): void;
+	/** Close the tooltip. Pass immediate to skip close delay. */
+	close(immediate?: boolean): void;
 }

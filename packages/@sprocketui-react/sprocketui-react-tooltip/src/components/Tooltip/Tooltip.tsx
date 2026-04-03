@@ -19,6 +19,7 @@ import { useTooltipTrigger, useTooltipTriggerState } from '../../hooks/useToolti
 
 import type { ReactElement } from 'react';
 import type { TooltipProps } from './Tooltip.types';
+import type { TooltipState } from '../../types';
 
 /**
  * @internal
@@ -27,7 +28,7 @@ import type { TooltipProps } from './Tooltip.types';
 function TooltipFn(props: TooltipProps): ReactElement {
 	const { children, closeOnContentHover = false, ...options } = props;
 
-	const state = useTooltipTriggerState(options);
+	const state: TooltipState = useTooltipTriggerState(options);
 	const triggerRef = useRef<Element | null>(null);
 	const isContentHoveredRef = useRef(false);
 
@@ -52,7 +53,7 @@ function TooltipFn(props: TooltipProps): ReactElement {
 }
 
 /**
- * The public Tooltip component for Sprocket UI.
+ * A Tooltip component for Sprocket UI.
  */
 export const Tooltip: typeof TooltipFn & {
 	displayName?: string;

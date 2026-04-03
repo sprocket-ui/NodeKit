@@ -8,4 +8,9 @@
 
 export { TooltipContent, TooltipContent as SprocketTooltipContent } from './TooltipContent';
 
-export type { TooltipContentProps, TooltipContentProps as SprocketTooltipContentProps, TooltipContentRenderProps, TooltipContentRenderProps as SprocketTooltipContentRenderProps } from './TooltipContent.types';
+export type {
+	TooltipContentProps,
+	TooltipContentProps as SprocketTooltipContentProps,
+	TooltipContentRenderProps,
+	TooltipContentRenderProps as SprocketTooltipContentRenderProps
+} from './TooltipContent.types';

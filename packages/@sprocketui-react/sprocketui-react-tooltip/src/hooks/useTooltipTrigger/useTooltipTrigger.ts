@@ -11,13 +11,23 @@
 'use client';
 
 import { mergeProps } from '@necto/mergers';
-import { useEffect } from 'react';
 import { useHover, useFocusable, useId, getInteractionModality } from '@necto-react/hooks';
+import { useEffect } from 'react';
 
 import type { RefObject } from 'react';
 import type { TooltipState } from '../../types';
 import type { UseTooltipTriggerOptions, UseTooltipTriggerReturn } from './useTooltipTrigger.types';
 
+/**
+ * Hook for the TooltipTrigger component.
+ * Handles hover, focus, and keyboard interactions for showing/hiding the tooltip.
+ *
+ * @param options - Configuration options for the trigger.
+ * @param state - The tooltip open/close state.
+ * @param ref - Ref to the trigger element.
+ * @param isContentHoveredRef - Optional ref tracking content hover state.
+ * @returns Props for the trigger element and tooltip element.
+ */
 export function useTooltipTrigger(
 	options: UseTooltipTriggerOptions,
 	state: TooltipState,
@@ -31,12 +41,20 @@ export function useTooltipTrigger(
 	const { hoverProps } = useHover({
 		isDisabled,
 		onHoverStart() {
-			if (trigger === 'focus') return;
+			if (trigger === 'focus') {
+				return;
+			}
+
 			state.open();
 		},
 		onHoverEnd() {
-			if (trigger === 'focus') return;
-			if (isContentHoveredRef?.current) return;
+			if (trigger === 'focus') {
+				return;
+			}
+
+			if (isContentHoveredRef?.current) {
+				return;
+			}
 			state.close();
 		}
 	});

@@ -8,10 +8,11 @@
 
 import type { ReactElement } from 'react';
 
+/** Props for the TooltipTrigger component. */
 export interface TooltipTriggerProps {
-  // The trigger element. Must be a single React element.
-  children: ReactElement;
+	/** The trigger element. Must be a single React element. */
+	children: ReactElement;
 
-  // When true, merges props onto the child element instead of wrapping it. @default true
-  asChild?: boolean;
+	/** When true, merges props onto the child element instead of wrapping it. @default true */
+	asChild?: boolean;
 }
