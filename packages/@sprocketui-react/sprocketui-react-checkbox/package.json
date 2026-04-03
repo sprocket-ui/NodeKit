@@ -1,6 +1,6 @@
 {
   "name": "@sprocketui-react/checkbox",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Sprocket's standalone React checkbox component.",
   "type": "module",
   "license": "MIT",

@@ -1,5 +1,11 @@
 # @sprocketui-react/button
 
+## 1.2.22
+
+### Patch Changes
+
+- 8993760: Update necto dependencies to latest versions
+
 ## 1.2.21
 
 ### Patch Changes

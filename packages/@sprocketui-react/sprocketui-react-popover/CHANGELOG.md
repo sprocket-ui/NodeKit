@@ -1,5 +1,11 @@
 # @sprocketui-react/popover
 
+## 1.1.3
+
+### Patch Changes
+
+- 8993760: Update necto dependencies to latest versions
+
 ## 1.1.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @sprocketui-types/tooltip
 
+## 1.2.4
+
+### Patch Changes
+
+- 8993760: Update necto dependencies to latest versions
+
 ## 1.2.3
 
 ### Patch Changes
