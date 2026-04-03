@@ -1,3 +1,6 @@
+// biome-ignore-all lint/correctness/useHookAtTopLevel: Internal Fn pattern, called via forwardRef.
+// biome-ignore-all lint/suspicious/noExplicitAny: Polymorphic component requires any.
+
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
@@ -8,6 +11,7 @@
 
 'use client';
 
+import { assert } from '@necto/assert';
 import { mergeProps } from '@necto/mergers';
 import { buildInternalIdentifier } from 'shared';
 import { useRenderer } from '@necto-react/hooks';
@@ -31,24 +35,15 @@ import type { UseRendererReturn } from '@necto-react/hooks';
 
 /**
  * @internal
- * Internal render function for the TooltipContent component. Handles context consumption,
- * floating positioning, transitions, and accessibility props for the tooltip overlay.
- * Not intended for public use; use the exported TooltipContent component instead.
- *
- * @param {TooltipContentProps} props - The props for the TooltipContent component.
- * @param {ForwardedRef<HTMLElement>} ref - The forwarded ref for the content element.
- * @returns {ReactElement | null} The rendered tooltip content or null.
+ * Internal render function for the TooltipContent component.
  */
 function TooltipContentFn(
 	props: TooltipContentProps,
 	ref: ForwardedRef<HTMLElement>
 ): ReactElement | null {
-	// biome-ignore lint/correctness/useHookAtTopLevel: Internal Fn pattern, called via forwardRef.
 	const context = useContext(TooltipContext);
 
-	if (!context) {
-		throw new Error('TooltipContent must be used within a <Tooltip> component.');
-	}
+	assert(context, 'TooltipContent must be used within a <Tooltip> component.');
 
 	const { slot, ...restProps } = props;
 
@@ -57,20 +52,37 @@ function TooltipContentFn(
 		elementType,
 		isHovered,
 		isMounted,
+		isPositioned,
 		refs,
+		arrowRef,
+		arrowX,
+		arrowY,
 		floatingStyles,
 		finalPlacement,
 		getFloatingProps,
 		transitionStyles
-		// biome-ignore lint/correctness/useHookAtTopLevel: Internal Fn pattern, called via forwardRef.
-	} = useTooltipContent({ ...restProps, triggerRef: context.triggerRef }, context);
+	} = useTooltipContent(
+		{
+			...restProps,
+			triggerRef: context.triggerRef,
+			isContentHoveredRef: context.isContentHoveredRef
+		},
+		context
+	);
 
 	const placementSide =
 		(finalPlacement?.split('-')[0] as 'top' | 'bottom' | 'left' | 'right') ?? null;
-	// biome-ignore lint/correctness/useHookAtTopLevel: Internal Fn pattern, called via forwardRef.
-	const arrowContextValue = useMemo(() => ({ placement: placementSide }), [placementSide]);
 
-	// biome-ignore lint/correctness/useHookAtTopLevel: Internal Fn pattern, called via forwardRef.
+	const arrowContextValue = useMemo(
+		() => ({
+			placement: placementSide,
+			arrowX,
+			arrowY,
+			arrowRef
+		}),
+		[placementSide, arrowX, arrowY, arrowRef]
+	);
+
 	const renderProps: UseRendererReturn = useRenderer({
 		...restProps,
 		values: {
@@ -110,7 +122,8 @@ function TooltipContentFn(
 				style={{
 					...floatingStyles,
 					...transitionStyles,
-					...(renderProps.style as Record<string, unknown>)
+					...(renderProps.style as Record<string, unknown>),
+					...(!isPositioned && { visibility: 'hidden' })
 				}}
 				data-placement={finalPlacement ?? undefined}
 				slot={slot || undefined}
@@ -125,12 +138,6 @@ function TooltipContentFn(
 
 /**
  * The public TooltipContent component for Sprocket UI.
- * Renders the tooltip overlay with positioning, transitions, and accessibility.
- * Must be used inside a Tooltip (root) component.
- *
- * @param {TooltipContentProps} props - The props for the TooltipContent component.
- * @param {ForwardedRef<HTMLElement>} ref - The forwarded ref for the content element.
- * @returns {ReactElement | null} The rendered tooltip content or null.
  */
 export const TooltipContent: ForwardRefExoticComponent<
 	Omit<TooltipContentProps<ElementType>, 'ref'> & RefAttributes<HTMLElement>

@@ -33,9 +33,9 @@
     "@necto/strings": "1.7.0",
     "@necto/mergers": "1.5.1",
     "@necto-react/types": "2.4.1",
-    "@necto-react/hooks": "2.14.17",
+    "@necto-react/hooks": "2.16.2",
     "@necto-react/helpers": "2.6.12",
-    "@necto-react/components": "1.4.21",
+    "@necto-react/components": "1.4.25",
     "tiny-invariant": "^1.3.3",
     "defu": "^6.1.4"
   },
