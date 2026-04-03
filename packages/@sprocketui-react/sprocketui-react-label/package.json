@@ -37,7 +37,7 @@
     "@necto/dom": "1.9.2",
     "@necto/mergers": "1.5.1",
     "@necto-react/types": "2.4.1",
-    "@necto-react/hooks": "2.14.17",
+    "@necto-react/hooks": "2.16.2",
     "@necto-react/helpers": "2.6.16",
     "@necto-react/components": "1.4.25"
   },

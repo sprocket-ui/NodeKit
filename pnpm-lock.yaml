@@ -65,8 +65,8 @@ importers:
         specifier: 2.6.16
         version: 2.6.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
-        specifier: 2.14.17
-        version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.16.2
+        version: 2.16.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/state':
         specifier: 0.2.1
         version: 0.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -129,8 +129,8 @@ importers:
         specifier: 2.6.16
         version: 2.6.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
-        specifier: 2.14.17
-        version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.16.2
+        version: 2.16.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/types':
         specifier: 2.4.1
         version: 2.4.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -184,8 +184,8 @@ importers:
         specifier: 2.6.16
         version: 2.6.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
-        specifier: 2.14.17
-        version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.16.2
+        version: 2.16.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/state':
         specifier: 0.2.1
         version: 0.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -245,8 +245,8 @@ importers:
         specifier: 2.6.16
         version: 2.6.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
-        specifier: 2.14.17
-        version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.16.2
+        version: 2.16.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/types':
         specifier: 2.4.1
         version: 2.4.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -303,8 +303,8 @@ importers:
         specifier: 2.6.16
         version: 2.6.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
-        specifier: 2.14.17
-        version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.16.2
+        version: 2.16.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/state':
         specifier: 0.2.1
         version: 0.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -358,8 +358,8 @@ importers:
         specifier: 2.6.16
         version: 2.6.16(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
-        specifier: 2.14.17
-        version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.16.2
+        version: 2.16.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/state':
         specifier: 0.2.1
         version: 0.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -419,8 +419,8 @@ importers:
         specifier: 1.4.25
         version: 1.4.25(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
-        specifier: 2.14.17
-        version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.16.2
+        version: 2.16.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/state':
         specifier: 0.2.1
         version: 0.2.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -474,8 +474,8 @@ importers:
         specifier: 1.4.25
         version: 1.4.25(@types/react-dom@19.1.2(@types/react@19.1.2))(@types/react@19.1.2)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/hooks':
-        specifier: 2.14.17
-        version: 2.14.17(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+        specifier: 2.16.2
+        version: 2.16.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@necto-react/popper':
         specifier: 0.6.0
         version: 0.6.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
