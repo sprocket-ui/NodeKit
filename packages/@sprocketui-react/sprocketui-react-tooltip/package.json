@@ -35,7 +35,7 @@
     "@necto-react/state": "0.2.1",
     "@necto-react/types": "2.4.1",
     "@necto/mergers": "1.5.1",
-    "@necto/popper": "0.5.2",
+    "@necto/popper": "0.5.6",
     "@necto/strings": "1.7.0",
     "@sprocketui-types/tooltip": "workspace:*",
     "defu": "^6.1.4"
