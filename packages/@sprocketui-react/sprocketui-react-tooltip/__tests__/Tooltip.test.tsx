@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { forwardRef } from 'react';
 import { describe, expect, test, vi } from 'vitest';
-import { render, screen, act } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
 
 import { Tooltip } from '@sprocketui-react/tooltip';
 
@@ -51,7 +51,14 @@ describe('Sprocket UI - Tooltip', () => {
 			trigger.blur();
 		});
 
-		expect(screen.queryByText('Tip Content')).not.toBeInTheDocument();
+		// Tooltip uses an exit transition: the element stays mounted briefly
+		// with opacity 0 until the transition completes. Assert hidden state
+		// rather than immediate removal.
+		await waitFor(() => {
+			const content = screen.queryByText('Tip Content');
+			if (!content) return; // unmounted — good
+			expect(content.style.opacity === '0' || content.style.visibility === 'hidden').toBe(true);
+		});
 	});
 
 	test('Tooltip.Content is not rendered when no Tooltip parent is missing children', () => {
