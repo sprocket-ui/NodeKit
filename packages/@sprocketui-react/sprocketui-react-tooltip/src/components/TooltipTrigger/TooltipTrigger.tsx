@@ -57,6 +57,7 @@ function TooltipTriggerFn(props: TooltipTriggerProps): ReactElement {
 	const acceptsRef: boolean =
 		isValidElement(children) &&
 		(typeof children.type === 'string' ||
+			typeof children.type === 'function' ||
 			(typeof children.type === 'object' && children.type !== null && '$$typeof' in children.type));
 
 	assert(
