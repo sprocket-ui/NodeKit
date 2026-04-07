@@ -15,7 +15,7 @@
     "build:react": "turbo run build --filter=\"@sprocketui-react/*\" --no-cache --parallel",
     "clean": "find packages -type d \\( -name 'node_modules' -o -name '.turbo' -o -name 'dist' -o -name '.dist' \\) -prune -exec rm -rf '{}' + && rm -rf node_modules .turbo dist .dist"
   },
-  "packageManager": "pnpm@9.15.9",
+  "packageManager": "pnpm@10.33.0",
   "pnpm": {
     "overrides": {
       "@types/react": "19.1.2",
