@@ -12,9 +12,12 @@ coverage:
         informational: false
 
 comment:
-  layout: "reach, diff, flags, files"
+  layout: "diff, flags, files"
   behavior: default
   require_changes: true
+  require_base: false
+  require_head: true
+  hide_project_coverage: false
 
 ignore:
   - "**/*.test.ts"
