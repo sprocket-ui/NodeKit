@@ -24,6 +24,10 @@
     "dev:*": {
       "cache": false,
       "persistent": true
+    },
+    "test:coverage": {
+      "cache": false,
+      "outputs": ["coverage/**"]
     }
   }
 }
