@@ -54,7 +54,7 @@
     "react-dom": "^19.1.0",
     "shared": "workspace:*",
     "tsup": "^8.4.0",
-    "typescript": "^5.8.3",
+    "typescript": "^6.0.0",
     "vitest": "^3.2.4"
   }
 }
