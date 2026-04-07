@@ -7,66 +7,77 @@
  */
 
 import type { ButtonOptions } from '@sprocketui-types/buttons';
-import type { ElementType, HTMLAttributes, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
+import type {
+	ElementType,
+	HTMLAttributes,
+	ButtonHTMLAttributes,
+	AnchorHTMLAttributes
+} from 'react';
 
 interface UseButtonCallbackProps {
-  // User press callback handler.
-  onPress?: (e: any) => void;
+	// User press callback handler.
+	onPress?: (e: any) => void;
 
-  // User press start callback handler.
-  onPressStart?: (e: any) => void;
+	// User press start callback handler.
+	onPressStart?: (e: any) => void;
 
-  // User press end callback handler.
-  onPressEnd?: (e: any) => void;
+	// User press end callback handler.
+	onPressEnd?: (e: any) => void;
 
-  // User press up callback handler.
-  onPressUp?: (e: any) => void;
+	// User press up callback handler.
+	onPressUp?: (e: any) => void;
 
-  // User press change callback handler.
-  onPressChange?: (isPressed: boolean) => void;
+	// User press change callback handler.
+	onPressChange?: (isPressed: boolean) => void;
 }
 
 export interface UseButtonOptions<T extends ElementType>
-  extends Omit<HTMLAttributes<HTMLElement>, keyof ButtonOptions<any> | 'children' | 'className' | 'style' | 'slot'>,
-    Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'target' | 'rel'>,
-    Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof HTMLAttributes<any> | keyof ButtonOptions<any>>,
-    ButtonOptions<T>,
-    UseButtonCallbackProps {
-  // Element to render the button as.
-  elementType?: T;
+	extends Omit<
+			HTMLAttributes<HTMLElement>,
+			keyof ButtonOptions<any> | 'children' | 'className' | 'style' | 'slot'
+		>,
+		Pick<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'target' | 'rel'>,
+		Omit<
+			ButtonHTMLAttributes<HTMLButtonElement>,
+			keyof HTMLAttributes<any> | keyof ButtonOptions<any>
+		>,
+		ButtonOptions<T>,
+		UseButtonCallbackProps {
+	// Element to render the button as.
+	elementType?: T;
 
-  // Prevents focus of element on press events.
-  preventFocusOnPress?: boolean;
+	// Prevents focus of element on press events.
+	preventFocusOnPress?: boolean;
 
-  // Wether the button is disabled or not
-  isDisabled?: boolean;
+	// Weather the button is disabled or not
+	isDisabled?: boolean;
 
-  // Wether the button is in a pending state (e.g. async action in progress).
-  isPending?: boolean;
+	// Weather the button is in a pending state (e.g. async action in progress).
+	isPending?: boolean;
 }
 
 export type UseButtonReturn<T extends ElementType> = Readonly<{
-  // The HTML render tag of the button (defaults to button).
-  elementType: T;
+	// The HTML render tag of the button (defaults to button).
+	elementType: T;
 
-  // Returns other button related props.
-  buttonProps: HTMLAttributes<any>;
+	// Returns other button related props.
+	buttonProps: HTMLAttributes<any>;
 
-  // Wether the button is pressed.
-  isPressed: boolean;
+	// Weather the button is pressed.
+	isPressed: boolean;
 
-  // Wether the button is hovered.
-  isHovered: boolean;
+	// Weather the button is hovered.
+	isHovered: boolean;
 
-  // Wether the button is focused.
-  isFocused: boolean;
+	// Weather the button is focused.
+	isFocused: boolean;
 
-  // Wether the button is disabled.
-  isDisabled: boolean;
+	// Weather the button is disabled.
+	isDisabled: boolean;
 
-  // Wether the focus on the button is visible (isFocused will also be true if this is true).
-  isFocusVisible: boolean;
+	// Weather the focus on the button is visible (isFocused will also be true if this is true).
+	isFocusVisible: boolean;
 
-  // Wether the button is in a pending state.
-  isPending: boolean;
+	// Weather the button is in a pending state.
+	isPending: boolean;
 }>;

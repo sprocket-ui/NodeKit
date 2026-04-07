@@ -1,4 +1,6 @@
 // biome-ignore-all assist/source/organizeImports: No need to sort imports.
+// biome-ignore-all lint/correctness/useHookAtTopLevel: Internal Fn pattern, called via forwardRef.
+// biome-ignore-all lint/suspicious/noExplicitAny: Polymorphic component requires any.
 
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
@@ -20,12 +22,7 @@ import { BUTTON_NAME } from '../../constants';
 import { ButtonContext } from '../../contexts';
 import { useButton } from '../../hooks/useButton';
 
-import type {
-  ForwardedRef,
-  ReactElement,
-  RefAttributes,
-  ForwardRefExoticComponent
-} from 'react';
+import type { ForwardedRef, ReactElement, RefAttributes, ForwardRefExoticComponent } from 'react';
 import type { ButtonProps } from './Button.types';
 import type { UseRendererReturn } from '@necto-react/hooks';
 
@@ -38,54 +35,50 @@ import type { UseRendererReturn } from '@necto-react/hooks';
  * @param {ForwardedRef<HTMLButtonElement>} ref - The forwarded ref for the button element.
  * @returns {ReactElement | null} The rendered button element or null.
  */
-function ButtonFn(
-  props: ButtonProps,
-  ref: ForwardedRef<HTMLButtonElement>
-): ReactElement | null {
-  [props, ref] = useContextProps({ props, ref, context: ButtonContext as any });
+function ButtonFn(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>): ReactElement | null {
+	[props, ref] = useContextProps({ props, ref, context: ButtonContext as any });
 
-  const {
-    buttonProps,
-    isHovered,
-    isPressed,
-    isFocused,
-    isDisabled,
-    isPending,
-    elementType,
-    isFocusVisible
-  } = useButton(props, ref as any);
+	const {
+		buttonProps,
+		isHovered,
+		isPressed,
+		isFocused,
+		isDisabled,
+		isPending,
+		elementType,
+		isFocusVisible
+	} = useButton(props, ref as any);
 
-  const sprocketButtonID: string = useId({ defaultId: buttonProps.id });
-  const renderProps: UseRendererReturn = useRenderer({
-    ...props,
-    values: {
-      isHovered,
-      isPressed,
-      isFocused,
-      isFocusVisible,
-      isDisabled,
-      isPending
-    },
-    defaultClassName: buildInternalIdentifier({
-      component: BUTTON_NAME
-    }),
-    style: (values) => ({
-      ...(props.style instanceof Function ? props.style(values) : props.style)
-    })
-  });
+	const renderProps: UseRendererReturn = useRenderer({
+		...props,
+		values: {
+			isHovered,
+			isPressed,
+			isFocused,
+			isFocusVisible,
+			isDisabled,
+			isPending
+		},
+		defaultClassName: buildInternalIdentifier({
+			component: BUTTON_NAME
+		}),
+		style: (values) => ({
+			...(props.style instanceof Function ? props.style(values) : props.style)
+		})
+	});
 
-  return (
-    <Primitive
-      ref={ref}
-      as={elementType}
-      {...renderProps}
-      {...mergeProps(buttonProps)}
-      id={sprocketButtonID}
-      slot={props.slot || undefined}
-    >
-      {renderProps.children}
-    </Primitive>
-  );
+	return (
+		<Primitive
+			ref={ref}
+			as={elementType}
+			slot={props.slot || undefined}
+			id={useId({ defaultId: buttonProps.id })}
+			{...renderProps}
+			{...mergeProps(buttonProps)}
+		>
+			{renderProps.children}
+		</Primitive>
+	);
 }
 
 /**
@@ -96,20 +89,20 @@ function ButtonFn(
  * @returns {ReactElement | null} The rendered button element or null.
  */
 export const Button: ForwardRefExoticComponent<
-  Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>
+	Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>
 > & {
-  Root: ForwardRefExoticComponent<
-    Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>
-  >;
+	Root: ForwardRefExoticComponent<Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>>;
 } = Object.assign(
-  forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>((props: Omit<ButtonProps, 'ref'>, ref: ForwardedRef<HTMLButtonElement>) =>
-    ButtonFn(props as ButtonProps, ref)
-  ),
-  {
-    Root: forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>(
-      (props: Omit<ButtonProps, 'ref'>, ref: ForwardedRef<HTMLButtonElement>) => ButtonFn(props as ButtonProps, ref)
-    )
-  }
+	forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>(
+		(props: Omit<ButtonProps, 'ref'>, ref: ForwardedRef<HTMLButtonElement>) =>
+			ButtonFn(props as ButtonProps, ref)
+	),
+	{
+		Root: forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>(
+			(props: Omit<ButtonProps, 'ref'>, ref: ForwardedRef<HTMLButtonElement>) =>
+				ButtonFn(props as ButtonProps, ref)
+		)
+	}
 );
 
 Button.displayName = BUTTON_NAME;

@@ -1,0 +1,28 @@
+name: Spellcheck
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  vale:
+    name: Vale prose linter
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'renovate[bot]' && github.actor != 'sprocket-github-bot[bot]' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Vale
+        uses: errata-ai/vale-action@reviewdog
+        with:
+          version: 3.9.1
+          files: '["*.md", "packages/**/*.md", "docs/**/*.md", "docs/**/*.mdx"]'
+          fail_on_error: false
+          reporter: github-pr-review
+          filter_mode: added
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

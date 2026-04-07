@@ -1,3 +1,6 @@
+// biome-ignore-all lint/correctness/useHookAtTopLevel: Internal Fn pattern, called via forwardRef.
+// biome-ignore-all lint/correctness/noUnusedFunctionParameters: ref is part of the public signature for API consistency.
+
 /**
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
@@ -8,7 +11,7 @@
 
 'use client';
 
-import { useRef } from 'react';
+import { forwardRef, useRef } from 'react';
 
 import { TooltipArrow } from '../TooltipArrow';
 import { TOOLTIP_NAME } from '../../constants';
@@ -17,20 +20,31 @@ import { TooltipContent } from '../TooltipContent';
 import { TooltipTrigger } from '../TooltipTrigger';
 import { useTooltipTrigger, useTooltipTriggerState } from '../../hooks/useTooltipTrigger';
 
-import type { ReactElement } from 'react';
-import type { TooltipProps } from './Tooltip.types';
 import type { TooltipState } from '../../types';
+import type { TooltipProps } from './Tooltip.types';
+import type {
+	RefObject,
+	ForwardedRef,
+	ReactElement,
+	RefAttributes,
+	ForwardRefExoticComponent
+} from 'react';
 
 /**
  * @internal
  * Internal render function for the Tooltip component.
+ *
+ * Tooltip is a logical context provider and renders no DOM element of its own,
+ * matching the behavior of Radix UI and React Aria Components. The `ref` parameter
+ * is accepted for API consistency with the rest of the Sprocket component family
+ * but is intentionally unused.
  */
-function TooltipFn(props: TooltipProps): ReactElement {
+function TooltipFn(props: TooltipProps, ref: ForwardedRef<HTMLElement>): ReactElement {
 	const { children, closeOnContentHover = false, ...options } = props;
 
 	const state: TooltipState = useTooltipTriggerState(options);
-	const triggerRef = useRef<Element | null>(null);
-	const isContentHoveredRef = useRef(false);
+	const isContentHoveredRef: RefObject<boolean> = useRef(false);
+	const triggerRef: RefObject<Element | null> = useRef<Element | null>(null);
 
 	const { triggerProps, tooltipProps } = useTooltipTrigger(
 		options,
@@ -40,11 +54,11 @@ function TooltipFn(props: TooltipProps): ReactElement {
 	);
 
 	const contextValue = {
-		isOpen: state.isOpen,
-		open: state.open,
-		close: state.close,
 		triggerRef,
 		triggerProps,
+		open: state.open,
+		close: state.close,
+		isOpen: state.isOpen,
 		tooltipId: tooltipProps.id,
 		isContentHoveredRef: closeOnContentHover ? isContentHoveredRef : undefined
 	};
@@ -54,18 +68,29 @@ function TooltipFn(props: TooltipProps): ReactElement {
 
 /**
  * A Tooltip component for Sprocket UI.
+ * Provides context for Tooltip.Trigger and Tooltip.Content. Renders no DOM element.
  */
-export const Tooltip: typeof TooltipFn & {
-	displayName?: string;
-	Root: typeof TooltipFn;
+export const Tooltip: ForwardRefExoticComponent<
+	Omit<TooltipProps, 'ref'> & RefAttributes<HTMLElement>
+> & {
+	Root: ForwardRefExoticComponent<Omit<TooltipProps, 'ref'> & RefAttributes<HTMLElement>>;
 	Trigger: typeof TooltipTrigger;
 	Content: typeof TooltipContent;
 	Arrow: typeof TooltipArrow;
-} = Object.assign(TooltipFn, {
-	Root: TooltipFn,
-	Trigger: TooltipTrigger,
-	Content: TooltipContent,
-	Arrow: TooltipArrow
-});
+} = Object.assign(
+	forwardRef<HTMLElement, Omit<TooltipProps, 'ref'>>(
+		(props: Omit<TooltipProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+			TooltipFn(props as TooltipProps, ref)
+	),
+	{
+		Root: forwardRef<HTMLElement, Omit<TooltipProps, 'ref'>>(
+			(props: Omit<TooltipProps, 'ref'>, ref: ForwardedRef<HTMLElement>) =>
+				TooltipFn(props as TooltipProps, ref)
+		),
+		Trigger: TooltipTrigger,
+		Content: TooltipContent,
+		Arrow: TooltipArrow
+	}
+);
 
 Tooltip.displayName = TOOLTIP_NAME;

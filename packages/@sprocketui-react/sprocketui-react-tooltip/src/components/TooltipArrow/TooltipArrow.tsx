@@ -25,7 +25,7 @@ function TooltipArrowFn(props: TooltipArrowProps): ReactElement {
 	const { placement, arrowX, arrowY, arrowRef } = useContext(TooltipArrowContext);
 
 	return (
-		<PopperArrow ref={arrowRef} placement={placement} arrowX={arrowX} arrowY={arrowY} {...props} />
+		<PopperArrow ref={arrowRef} arrowX={arrowX} arrowY={arrowY} placement={placement} {...props} />
 	);
 }
 

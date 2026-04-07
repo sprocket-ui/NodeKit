@@ -3,7 +3,6 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
-    "baseUrl": "./",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",
     "jsxImportSource": "react",
@@ -16,5 +15,13 @@
     "types": ["react", "react-dom"]
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", ".turbo", "**/*.spec.ts", "**/*.test.ts", "**/*.spec.tsx", "**/*.test.tsx"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    ".turbo",
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.spec.tsx",
+    "**/*.test.tsx"
+  ]
 }
