@@ -10,7 +10,7 @@ jobs:
   test:
     name: Run tests, coverage, and upload to Codecov
     runs-on: ubuntu-latest
-    if: ${{ github.actor != 'renovate[bot]' && github.actor != 'sprocket-github-bot[bot]' }}
+    if: ${{ github.actor != 'renovate[bot]' && github.actor != 'sprocket-github-bot[bot]' && github.actor != 'kodiakhq[bot]' && !startsWith(github.head_ref, 'kodiak/') && !startsWith(github.ref_name, 'kodiak/') }}
 
     steps:
       - name: Checkout
