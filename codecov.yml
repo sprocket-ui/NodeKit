@@ -18,6 +18,7 @@ comment:
   require_base: false
   require_head: true
   hide_project_coverage: false
+  show_feedback: false
 
 ignore:
   - "**/*.test.ts"

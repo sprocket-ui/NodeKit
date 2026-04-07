@@ -14,7 +14,7 @@ import { TextEncoder as NodeTextEncoder, TextDecoder as NodeTextDecoder } from '
 (globalThis as any).TextDecoder = NodeTextDecoder;
 
 class RealmTextEncoder {
-	private node = new NodeTextEncoder();
+	private node: TextEncoder = new NodeTextEncoder();
 
 	encode(input = ''): Uint8Array {
 		const nodeBuf: Uint8Array<ArrayBufferLike> = this.node.encode(input);
@@ -33,3 +33,21 @@ class RealmTextEncoder {
 }
 
 (globalThis as any).TextEncoder = RealmTextEncoder;
+
+if (typeof Element !== 'undefined') {
+	Element.prototype.getBoundingClientRect = function getBoundingClientRect(): DOMRect {
+		return {
+			x: 0,
+			y: 0,
+			top: 0,
+			left: 0,
+			right: 100,
+			bottom: 30,
+			width: 100,
+			height: 30,
+			toJSON(): DOMRect {
+				return this;
+			}
+		} as DOMRect;
+	};
+}

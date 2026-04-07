@@ -18,7 +18,7 @@ jobs:
         uses: errata-ai/vale-action@reviewdog
         with:
           version: 3.9.1
-          files: '["*.md", "packages/**/*.md", "docs/**/*.md", "docs/**/*.mdx"]'
+          files: '["README.md", "packages", "docs", ".changeset"]'
           fail_on_error: false
           reporter: github-pr-review
           filter_mode: added
