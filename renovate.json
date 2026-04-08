@@ -17,6 +17,10 @@
       "matchPackageNames": ["@necto/**", "@necto-react/**"],
       "matchUpdateTypes": ["patch"],
       "automerge": true
+    },
+    {
+      "matchPackageNames": ["node"],
+      "allowedVersions": "^20.0.0"
     }
   ],
   "prConcurrentLimit": 10,
