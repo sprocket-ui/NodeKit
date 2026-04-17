@@ -21,9 +21,13 @@
   ],
   "scripts": {
     "build": "tsup",
+    "prepack": "clean-publish --without-publish --temp-dir .clean",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "dev": "tsup --watch"
+  },
+  "publishConfig": {
+    "directory": ".clean"
   },
   "repository": {
     "type": "git",

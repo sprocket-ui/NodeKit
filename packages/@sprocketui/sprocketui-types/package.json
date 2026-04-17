@@ -3,7 +3,11 @@
   "version": "1.1.0",
   "description": "Universal type definitions for Sprocket components",
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "prepack": "clean-publish --without-publish --temp-dir .clean"
+  },
+  "publishConfig": {
+    "directory": ".clean"
   },
   "repository": {
     "type": "git",

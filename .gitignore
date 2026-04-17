@@ -146,3 +146,6 @@ dist
 
 # MacOS
 .DS_Store
+
+# clean-publish temp directory
+.clean

@@ -34,6 +34,9 @@ importers:
       '@vitest/coverage-v8':
         specifier: ^3.2.4
         version: 3.2.4(vitest@3.2.4(@types/debug@4.1.13)(@types/node@24.12.0)(jiti@2.6.1)(jsdom@29.0.2)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.1))
+      clean-publish:
+        specifier: ^6.0.5
+        version: 6.0.5
       conventional-changelog-conventionalcommits:
         specifier: ^9.3.1
         version: 9.3.1
@@ -43,6 +46,9 @@ importers:
       markdownlint-cli2:
         specifier: ^0.22.0
         version: 0.22.0
+      rimraf:
+        specifier: ^6.1.3
+        version: 6.1.3
       terser:
         specifier: ^5.46.1
         version: 5.46.1
@@ -87,7 +93,7 @@ importers:
         version: 1.7.0
       '@sprocketui-types/buttons':
         specifier: workspace:*
-        version: link:../../@sprocketui-types/sprocketui-types-buttons
+        version: link:../../@sprocketui-types/sprocketui-types-buttons/.clean
       defu:
         specifier: ^6.1.4
         version: 6.1.7
@@ -125,6 +131,7 @@ importers:
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.13)(@types/node@24.12.0)(jiti@2.6.1)(jsdom@29.0.2)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.1)
+    publishDirectory: .clean
 
   packages/@sprocketui-react/sprocketui-react-checkbox:
     dependencies:
@@ -148,7 +155,7 @@ importers:
         version: 1.7.0
       '@sprocketui-types/checkbox':
         specifier: workspace:*
-        version: link:../../@sprocketui-types/sprocketui-types-checkbox
+        version: link:../../@sprocketui-types/sprocketui-types-checkbox/.clean
       defu:
         specifier: ^6.1.4
         version: 6.1.7
@@ -180,6 +187,7 @@ importers:
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.13)(@types/node@24.12.0)(jiti@2.6.1)(jsdom@29.0.2)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.1)
+    publishDirectory: .clean
 
   packages/@sprocketui-react/sprocketui-react-input:
     dependencies:
@@ -209,7 +217,7 @@ importers:
         version: 1.7.0
       '@sprocketui-types/input':
         specifier: workspace:*
-        version: link:../../@sprocketui-types/sprocketui-types-input
+        version: link:../../@sprocketui-types/sprocketui-types-input/.clean
     devDependencies:
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -247,6 +255,7 @@ importers:
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.13)(@types/node@24.12.0)(jiti@2.6.1)(jsdom@29.0.2)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.1)
+    publishDirectory: .clean
 
   packages/@sprocketui-react/sprocketui-react-label:
     dependencies:
@@ -268,12 +277,12 @@ importers:
       '@necto/mergers':
         specifier: 1.5.1
         version: 1.5.1(react@19.2.4)
+      '@necto/strings':
+        specifier: 1.7.0
+        version: 1.7.0
       '@sprocketui-types/label':
         specifier: workspace:*
-        version: link:../../@sprocketui-types/sprocketui-types-label
-      shared:
-        specifier: workspace:*
-        version: link:../../shared
+        version: link:../../@sprocketui-types/sprocketui-types-label/.clean
     devDependencies:
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -296,12 +305,16 @@ importers:
       react-dom:
         specifier: ^19.1.0
         version: 19.2.4(react@19.2.4)
+      shared:
+        specifier: workspace:*
+        version: link:../../shared
       tsup:
         specifier: ^8.4.0
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.8)(typescript@6.0.2)
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.13)(@types/node@24.12.0)(jiti@2.6.1)(jsdom@29.0.2)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.1)
+    publishDirectory: .clean
 
   packages/@sprocketui-react/sprocketui-react-popover:
     dependencies:
@@ -328,7 +341,7 @@ importers:
         version: 1.7.0
       '@sprocketui-types/popover':
         specifier: workspace:*
-        version: link:../../@sprocketui-types/sprocketui-types-popover
+        version: link:../../@sprocketui-types/sprocketui-types-popover/.clean
     devDependencies:
       '@testing-library/jest-dom':
         specifier: ^6.6.3
@@ -360,6 +373,7 @@ importers:
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.13)(@types/node@24.12.0)(jiti@2.6.1)(jsdom@29.0.2)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.1)
+    publishDirectory: .clean
 
   packages/@sprocketui-react/sprocketui-react-progress:
     dependencies:
@@ -392,10 +406,10 @@ importers:
         version: 1.7.0
       '@sprocketui-react/label':
         specifier: workspace:*
-        version: link:../sprocketui-react-label
+        version: link:../sprocketui-react-label/.clean
       '@sprocketui-types/progress':
         specifier: workspace:*
-        version: link:../../@sprocketui-types/sprocketui-types-progress
+        version: link:../../@sprocketui-types/sprocketui-types-progress/.clean
       defu:
         specifier: ^6.1.4
         version: 6.1.7
@@ -424,6 +438,7 @@ importers:
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.13)(@types/node@24.12.0)(jiti@2.6.1)(jsdom@29.0.2)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.1)
+    publishDirectory: .clean
 
   packages/@sprocketui-react/sprocketui-react-tabs:
     dependencies:
@@ -450,7 +465,7 @@ importers:
         version: 1.7.0
       '@sprocketui-types/tabs':
         specifier: workspace:*
-        version: link:../../@sprocketui-types/sprocketui-types-tabs
+        version: link:../../@sprocketui-types/sprocketui-types-tabs/.clean
       defu:
         specifier: ^6.1.4
         version: 6.1.7
@@ -488,6 +503,7 @@ importers:
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.13)(@types/node@24.12.0)(jiti@2.6.1)(jsdom@29.0.2)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.1)
+    publishDirectory: .clean
 
   packages/@sprocketui-react/sprocketui-react-tooltip:
     dependencies:
@@ -517,7 +533,7 @@ importers:
         version: 1.7.0
       '@sprocketui-types/tooltip':
         specifier: workspace:*
-        version: link:../../@sprocketui-types/sprocketui-types-tooltip
+        version: link:../../@sprocketui-types/sprocketui-types-tooltip/.clean
       defu:
         specifier: ^6.1.4
         version: 6.1.7
@@ -561,24 +577,28 @@ importers:
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.13)(@types/node@24.12.0)(jiti@2.6.1)(jsdom@29.0.2)(lightningcss@1.32.0)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.1)
+    publishDirectory: .clean
 
   packages/@sprocketui-types/sprocketui-types-buttons:
     devDependencies:
       typescript:
         specifier: ^6.0.0
         version: 6.0.2
+    publishDirectory: .clean
 
   packages/@sprocketui-types/sprocketui-types-checkbox:
     devDependencies:
       typescript:
         specifier: ^6.0.0
         version: 6.0.2
+    publishDirectory: .clean
 
   packages/@sprocketui-types/sprocketui-types-input:
     devDependencies:
       typescript:
         specifier: ^6.0.0
         version: 6.0.2
+    publishDirectory: .clean
 
   packages/@sprocketui-types/sprocketui-types-label:
     dependencies:
@@ -589,6 +609,7 @@ importers:
       typescript:
         specifier: ^6.0.0
         version: 6.0.2
+    publishDirectory: .clean
 
   packages/@sprocketui-types/sprocketui-types-popover:
     dependencies:
@@ -602,6 +623,7 @@ importers:
       typescript:
         specifier: ^6.0.0
         version: 6.0.2
+    publishDirectory: .clean
 
   packages/@sprocketui-types/sprocketui-types-progress:
     dependencies:
@@ -612,36 +634,39 @@ importers:
       typescript:
         specifier: ^6.0.0
         version: 6.0.2
+    publishDirectory: .clean
 
   packages/@sprocketui-types/sprocketui-types-tabs:
     devDependencies:
       typescript:
         specifier: ^6.0.0
         version: 6.0.2
+    publishDirectory: .clean
 
   packages/@sprocketui-types/sprocketui-types-tooltip:
     dependencies:
       '@necto/popper':
         specifier: 0.5.6
         version: 0.5.6
+    publishDirectory: .clean
 
   packages/@sprocketui/sprocketui-react:
     dependencies:
       '@sprocketui-react/button':
         specifier: workspace:*
-        version: link:../../@sprocketui-react/sprocketui-react-button
+        version: link:../../@sprocketui-react/sprocketui-react-button/.clean
       '@sprocketui-react/input':
         specifier: workspace:*
-        version: link:../../@sprocketui-react/sprocketui-react-input
+        version: link:../../@sprocketui-react/sprocketui-react-input/.clean
       '@sprocketui-react/label':
         specifier: workspace:*
-        version: link:../../@sprocketui-react/sprocketui-react-label
+        version: link:../../@sprocketui-react/sprocketui-react-label/.clean
       '@sprocketui-react/tabs':
         specifier: workspace:*
-        version: link:../../@sprocketui-react/sprocketui-react-tabs
+        version: link:../../@sprocketui-react/sprocketui-react-tabs/.clean
       '@sprocketui-react/tooltip':
         specifier: workspace:*
-        version: link:../../@sprocketui-react/sprocketui-react-tooltip
+        version: link:../../@sprocketui-react/sprocketui-react-tooltip/.clean
     devDependencies:
       '@tailwindcss/vite':
         specifier: ^4.2.1
@@ -670,16 +695,18 @@ importers:
       tsup:
         specifier: ^8.4.0
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.8)(typescript@6.0.2)
+    publishDirectory: .clean
 
   packages/@sprocketui/sprocketui-types:
     dependencies:
       '@sprocketui-types/buttons':
         specifier: workspace:*
-        version: link:../../@sprocketui-types/sprocketui-types-buttons
+        version: link:../../@sprocketui-types/sprocketui-types-buttons/.clean
     devDependencies:
       tsup:
         specifier: ^8.4.0
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.8)(typescript@6.0.2)
+    publishDirectory: .clean
 
   packages/shared:
     devDependencies:
@@ -2834,6 +2861,11 @@ packages:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
     engines: {node: '>= 14.16.0'}
 
+  clean-publish@6.0.5:
+    resolution: {integrity: sha512-Iqm/EDPQFLY0I8kktg61Nt8V/5fiXYNkNR5UsHcLKmj4vp7a0a7EGZmNEbN2Hg77frQlHNljT/MruK5Wr/Rtog==}
+    engines: {node: '>= 20.0.0'}
+    hasBin: true
+
   cliui@7.0.4:
     resolution: {integrity: sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==}
 
@@ -3123,6 +3155,10 @@ packages:
     resolution: {integrity: sha512-DfXN8DfhJ7NH3Oe7cFmu3NCu1wKbkReJ8TorzSAFbSKrlNaQSKfIzqYqVY8zlbs2NLBbWpRiU52GX2PbaBVNkg==}
     deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
+
+  glob@13.0.6:
+    resolution: {integrity: sha512-Wjlyrolmm8uDpm/ogGyXZXb1Z+Ca2B8NbJwqBVg0axK9GbBeoS7yGV6vjXnYdGm6X53iehEuxxbyiKp8QmN4Vw==}
+    engines: {node: 18 || 20 || >=22}
 
   global-directory@4.0.1:
     resolution: {integrity: sha512-wHTUcDUoZ1H5/0iVqEudYW4/kAlN5cZ3j/bXn0Dpbizl9iaUVeWSHqiOjsgk6OW2bkLclbBjzewBz6weQ1zA2Q==}
@@ -3743,6 +3779,10 @@ packages:
     resolution: {integrity: sha512-Xa4Nw17FS9ApQFJ9umLiJS4orGjm7ZzwUrwamcGQuHSzDyth9boKDaycYdDcZDuqYATXw4HFXgaqWTctW/v1HA==}
     engines: {node: '>=16 || 14 >=14.18'}
 
+  path-scurry@2.0.2:
+    resolution: {integrity: sha512-3O/iVVsJAPsOnpwWIeD+d6z/7PmqApyQePUtCndjatj/9I5LylHvt5qluFaBT3I5h3r1ejfR056c+FCv+NnNXg==}
+    engines: {node: 18 || 20 || >=22}
+
   path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
@@ -3874,6 +3914,11 @@ packages:
   reusify@1.1.0:
     resolution: {integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
+
+  rimraf@6.1.3:
+    resolution: {integrity: sha512-LKg+Cr2ZF61fkcaK1UdkH2yEBBKnYjTyWzTJT6KNPcSPaiT7HSdhtMXQuN5wkTX0Xu72KQ1l8S42rlmexS2hSA==}
+    engines: {node: 20 || >=22}
+    hasBin: true
 
   rolldown@1.0.0-rc.12:
     resolution: {integrity: sha512-yP4USLIMYrwpPHEFB5JGH1uxhcslv6/hL0OyvTuY+3qlOSJvZ7ntYnoWpehBxufkgN0cvXxppuTu5hHa/zPh+A==}
@@ -6918,6 +6963,13 @@ snapshots:
     dependencies:
       readdirp: 4.1.2
 
+  clean-publish@6.0.5:
+    dependencies:
+      lilconfig: 3.1.3
+      picomatch: 4.0.4
+      tinyexec: 1.0.4
+      tinyglobby: 0.2.15
+
   cliui@7.0.4:
     dependencies:
       string-width: 4.2.3
@@ -7227,6 +7279,12 @@ snapshots:
       minipass: 7.1.3
       package-json-from-dist: 1.0.1
       path-scurry: 1.11.1
+
+  glob@13.0.6:
+    dependencies:
+      minimatch: 10.2.5
+      minipass: 7.1.3
+      path-scurry: 2.0.2
 
   global-directory@4.0.1:
     dependencies:
@@ -7902,6 +7960,11 @@ snapshots:
       lru-cache: 10.4.3
       minipass: 7.1.3
 
+  path-scurry@2.0.2:
+    dependencies:
+      lru-cache: 11.3.2
+      minipass: 7.1.3
+
   path-type@4.0.0: {}
 
   pathe@2.0.3: {}
@@ -8034,6 +8097,11 @@ snapshots:
   resolve-from@5.0.0: {}
 
   reusify@1.1.0: {}
+
+  rimraf@6.1.3:
+    dependencies:
+      glob: 13.0.6
+      package-json-from-dist: 1.0.1
 
   rolldown@1.0.0-rc.12(@emnapi/core@1.9.1)(@emnapi/runtime@1.9.1):
     dependencies:
