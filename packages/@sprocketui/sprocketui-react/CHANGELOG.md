@@ -1,5 +1,11 @@
 # @sprocketui/react
 
+## 0.2.25
+
+### Patch Changes
+
+- 994a55f: Remove unused `shared` workspace dependency from `devDependencies`. `@sprocketui/react` does not import from `shared`, so the entry was dead weight.
+
 ## 0.2.24
 
 ### Patch Changes
