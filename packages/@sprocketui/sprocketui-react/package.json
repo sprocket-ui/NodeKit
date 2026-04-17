@@ -49,7 +49,6 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "sass-embedded": "^1.97.3",
-    "shared": "workspace:*",
     "tailwindcss": "^4.2.1",
     "tsup": "^8.4.0"
   }
