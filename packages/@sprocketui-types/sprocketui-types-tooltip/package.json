@@ -4,11 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prepack": "clean-publish --without-publish --temp-dir .clean",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "publishConfig": {
-    "directory": ".clean"
   },
   "repository": {
     "type": "git",

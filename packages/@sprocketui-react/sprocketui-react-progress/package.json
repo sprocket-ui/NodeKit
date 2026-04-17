@@ -21,12 +21,8 @@
   ],
   "scripts": {
     "build": "tsup",
-    "prepack": "clean-publish --without-publish --temp-dir .clean",
     "test": "vitest",
     "dev": "tsup --watch"
-  },
-  "publishConfig": {
-    "directory": ".clean"
   },
   "repository": {
     "type": "git",
