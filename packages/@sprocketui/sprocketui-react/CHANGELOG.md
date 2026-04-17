@@ -1,5 +1,11 @@
 # @sprocketui/react
 
+## 0.2.27
+
+### Patch Changes
+
+- 1ecd3d7: Strip devDependencies from published package by running clean-publish in CI before changeset publish.
+
 ## 0.2.26
 
 ### Patch Changes
