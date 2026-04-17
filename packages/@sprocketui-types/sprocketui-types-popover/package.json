@@ -12,7 +12,11 @@
   "main": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
+    "prepack": "clean-publish --without-publish --temp-dir .clean",
     "dev": "tsc --watch"
+  },
+  "publishConfig": {
+    "directory": ".clean"
   },
   "repository": {
     "type": "git",

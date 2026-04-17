@@ -16,6 +16,7 @@ pre-commit:
       priority: 1
     markdown-lint:
       glob: "*.md"
+      exclude: "^.changeset/"
       run: pnpm exec markdownlint-cli2 {staged_files}
       priority: 1
     vale:
