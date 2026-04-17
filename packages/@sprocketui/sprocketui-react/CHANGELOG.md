@@ -1,5 +1,12 @@
 # @sprocketui/react
 
+## 0.2.26
+
+### Patch Changes
+
+- Updated dependencies [616417e]
+  - @sprocketui-react/label@1.1.3
+
 ## 0.2.25
 
 ### Patch Changes
