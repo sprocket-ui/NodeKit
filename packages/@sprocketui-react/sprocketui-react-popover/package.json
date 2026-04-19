@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.28",
-    "@necto-react/components": "1.4.25",
+    "@necto-react/components": "3.0.0",
     "@necto-react/helpers": "2.6.16",
     "@necto-react/hooks": "2.16.4",
     "@necto-react/state": "0.2.1",
