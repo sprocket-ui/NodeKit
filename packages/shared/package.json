@@ -22,7 +22,7 @@
     "url": "https://github.com/sprocket-ui/NodeKit.git"
   },
   "devDependencies": {
-    "@necto/strings": "1.7.0",
+    "@necto/strings": "1.9.0",
     "@types/node": "^24.0.13",
     "tsup": "^8.4.0"
   }

@@ -37,7 +37,7 @@
     "@necto/dom": "1.9.2",
     "@necto/math": "1.0.0",
     "@necto/mergers": "1.5.1",
-    "@necto/strings": "1.7.0",
+    "@necto/strings": "1.9.0",
     "@sprocketui-react/label": "workspace:*",
     "@sprocketui-types/progress": "workspace:*",
     "defu": "^6.1.4"
