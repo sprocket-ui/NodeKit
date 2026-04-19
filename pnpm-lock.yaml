@@ -92,8 +92,8 @@ importers:
         specifier: 1.5.1
         version: 1.5.1(react@19.2.4)
       '@necto/strings':
-        specifier: 1.7.0
-        version: 1.7.0
+        specifier: 1.9.0
+        version: 1.9.0
       '@sprocketui-types/buttons':
         specifier: workspace:*
         version: link:../../@sprocketui-types/sprocketui-types-buttons
@@ -153,8 +153,8 @@ importers:
         specifier: 1.5.1
         version: 1.5.1(react@19.2.4)
       '@necto/strings':
-        specifier: 1.7.0
-        version: 1.7.0
+        specifier: 1.9.0
+        version: 1.9.0
       '@sprocketui-types/checkbox':
         specifier: workspace:*
         version: link:../../@sprocketui-types/sprocketui-types-checkbox
@@ -214,8 +214,8 @@ importers:
         specifier: 1.5.1
         version: 1.5.1(react@19.2.4)
       '@necto/strings':
-        specifier: 1.7.0
-        version: 1.7.0
+        specifier: 1.9.0
+        version: 1.9.0
       '@sprocketui-types/input':
         specifier: workspace:*
         version: link:../../@sprocketui-types/sprocketui-types-input
@@ -278,8 +278,8 @@ importers:
         specifier: 1.5.1
         version: 1.5.1(react@19.2.4)
       '@necto/strings':
-        specifier: 1.7.0
-        version: 1.7.0
+        specifier: 1.9.0
+        version: 1.9.0
       '@sprocketui-types/label':
         specifier: workspace:*
         version: link:../../@sprocketui-types/sprocketui-types-label
@@ -336,8 +336,8 @@ importers:
         specifier: 1.5.1
         version: 1.5.1(react@19.2.4)
       '@necto/strings':
-        specifier: 1.7.0
-        version: 1.7.0
+        specifier: 1.9.0
+        version: 1.9.0
       '@sprocketui-types/popover':
         specifier: workspace:*
         version: link:../../@sprocketui-types/sprocketui-types-popover
@@ -400,8 +400,8 @@ importers:
         specifier: 1.5.1
         version: 1.5.1(react@19.2.4)
       '@necto/strings':
-        specifier: 1.7.0
-        version: 1.7.0
+        specifier: 1.9.0
+        version: 1.9.0
       '@sprocketui-react/label':
         specifier: workspace:*
         version: link:../sprocketui-react-label
@@ -458,8 +458,8 @@ importers:
         specifier: 1.5.1
         version: 1.5.1(react@19.2.4)
       '@necto/strings':
-        specifier: 1.7.0
-        version: 1.7.0
+        specifier: 1.9.0
+        version: 1.9.0
       '@sprocketui-types/tabs':
         specifier: workspace:*
         version: link:../../@sprocketui-types/sprocketui-types-tabs
@@ -525,8 +525,8 @@ importers:
         specifier: 0.5.6
         version: 0.5.6
       '@necto/strings':
-        specifier: 1.7.0
-        version: 1.7.0
+        specifier: 1.9.0
+        version: 1.9.0
       '@sprocketui-types/tooltip':
         specifier: workspace:*
         version: link:../../@sprocketui-types/sprocketui-types-tooltip
@@ -696,8 +696,8 @@ importers:
   packages/shared:
     devDependencies:
       '@necto/strings':
-        specifier: 1.7.0
-        version: 1.7.0
+        specifier: 1.9.0
+        version: 1.9.0
       '@types/node':
         specifier: ^24.0.13
         version: 24.12.0

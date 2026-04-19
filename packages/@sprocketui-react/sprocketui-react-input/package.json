@@ -40,7 +40,7 @@
     "@necto-react/types": "2.4.1",
     "@necto/dom": "1.9.2",
     "@necto/mergers": "1.5.1",
-    "@necto/strings": "1.7.0",
+    "@necto/strings": "1.9.0",
     "@sprocketui-types/input": "workspace:*"
   },
   "peerDependencies": {
