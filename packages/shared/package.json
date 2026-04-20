@@ -15,7 +15,7 @@
   },
   "description": "Shared internal functions used by only Sprocket UI",
   "scripts": {
-    "build": "tsup"
+    "build": "tsdown"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,6 @@
   "devDependencies": {
     "@necto/strings": "1.7.0",
     "@types/node": "^24.0.13",
-    "tsup": "^8.4.0"
+    "tsdown": "^0.12.7"
   }
 }

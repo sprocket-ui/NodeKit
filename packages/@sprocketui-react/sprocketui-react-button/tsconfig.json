@@ -1,16 +1,8 @@
 {
-  "extends": "../../../tsconfig.json",
+  "extends": "../../@sprocketui/sprocketui-react/tsconfig.react.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
-    "resolveJsonModule": true,
-    "noFallthroughCasesInSwitch": true,
-    "allowSyntheticDefaultImports": true,
-    "declarationMap": true,
-    "sourceMap": true
+    "rootDir": "./src"
   },
-  "include": ["src/**/*", "__tests__/**/*"],
-  "exclude": ["node_modules", "dist", ".turbo"]
+  "include": ["src/**/*", "__tests__/**/*"]
 }

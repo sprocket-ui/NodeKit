@@ -23,10 +23,10 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
-    "dev": "tsup --watch"
+    "dev": "tsdown --watch"
   },
   "repository": {
     "type": "git",
@@ -58,7 +58,8 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "shared": "workspace:*",
-    "tsup": "^8.4.0",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "tsdown": "^0.12.7",
+    "@vitest/coverage-istanbul": "^3.2.4"
   }
 }
