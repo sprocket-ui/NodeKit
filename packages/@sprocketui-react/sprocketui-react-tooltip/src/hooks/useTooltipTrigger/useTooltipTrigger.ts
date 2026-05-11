@@ -12,7 +12,7 @@
 
 import { mergeProps } from '@necto/mergers';
 import { useHover, useFocusable, useId, getInteractionModality } from '@necto-react/hooks';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 
 import type { RefObject } from 'react';
 import type { TooltipState } from '../../types';
@@ -74,10 +74,10 @@ export function useTooltipTrigger(
 		ref
 	);
 
-	const onPressStart = (): void => {
+	const onPressStart = useCallback((): void => {
 		if (!shouldCloseOnPress) return;
 		state.close(true);
-	};
+	}, [shouldCloseOnPress, state]);
 
 	useEffect(() => {
 		const onKeyDown = (e: KeyboardEvent): void => {
@@ -93,14 +93,23 @@ export function useTooltipTrigger(
 		}
 	}, [state]);
 
-	return {
-		triggerProps: mergeProps(focusableProps, hoverProps, {
-			'aria-describedby': state.isOpen ? tooltipId : undefined,
-			onPointerDown: onPressStart,
-			onKeyDown: onPressStart
+	const triggerProps = useMemo(
+		() =>
+			mergeProps(focusableProps, hoverProps, {
+				'aria-describedby': state.isOpen ? tooltipId : undefined,
+				onPointerDown: onPressStart,
+				onKeyDown: onPressStart
+			}),
+		[focusableProps, hoverProps, state.isOpen, tooltipId, onPressStart]
+	);
+
+	const tooltipProps = useMemo(() => ({ id: tooltipId }), [tooltipId]);
+
+	return useMemo(
+		() => ({
+			triggerProps,
+			tooltipProps
 		}),
-		tooltipProps: {
-			id: tooltipId
-		}
-	};
+		[triggerProps, tooltipProps]
+	);
 }

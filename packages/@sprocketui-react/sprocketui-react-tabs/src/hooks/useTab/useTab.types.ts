@@ -27,7 +27,7 @@ interface UseTabCallbackOptions {
 
 export interface UseTabOptions<T extends ElementType = 'div'> extends UseTabCallbackOptions {
   /** Unique value for this tab. Links tab to its panel. */
-  value: Key;
+  value?: Key;
 
   /** Whether this tab is disabled. */
   isDisabled?: boolean;
@@ -51,6 +51,9 @@ export interface UseTabOptions<T extends ElementType = 'div'> extends UseTabCall
 export type UseTabReturn<T extends ElementType = 'div'> = Readonly<{
   /** Props to spread on the tab element. */
   tabProps: Record<string, any>;
+
+  /** The resolved value used internally. */
+  resolvedValue: Key;
 
   /** The unique ID for this tab element. */
   tabId: string;

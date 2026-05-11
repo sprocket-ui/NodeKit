@@ -16,6 +16,7 @@ export * from './components/SelectionIndicator';
 
 // Hooks
 export * from './hooks/useTab';
+export * from './hooks/useTabs';
 export * from './hooks/useTabList';
 export * from './hooks/useTabPanel';
 export * from './hooks/useSelectionIndicator';

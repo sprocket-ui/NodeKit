@@ -1,0 +1,58 @@
+name: Build
+
+on:
+  workflow_call:
+    secrets:
+      CODECOV_TOKEN:
+        required: false
+        description: 'Codecov token (enables bundle analysis). Optional.'
+    outputs:
+      artifact-name:
+        description: 'Name of the uploaded dist artifact (unique per commit SHA).'
+        value: ${{ jobs.build.outputs.artifact-name }}
+
+env:
+  CI: true
+  LEFTHOOK: 0
+
+jobs:
+  build:
+    name: Build packages
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-name: ${{ steps.artifact-meta.outputs.name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm + install deps
+        uses: pnpm/action-setup@v5
+        with:
+          run_install: |
+            - args: [--frozen-lockfile, --ignore-scripts]
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Build packages
+        run: pnpm build
+        env:
+          CODECOV_TOKEN: ${{ github.event_name != 'merge_group' && secrets.CODECOV_TOKEN || '' }}
+
+      - name: Compute artifact name
+        id: artifact-meta
+        run: echo "name=dist-${{ github.sha }}" >> "$GITHUB_OUTPUT"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.artifact-meta.outputs.name }}
+          path: packages/**/dist
+          retention-days: 1
+          compression-level: 6
+          overwrite: true
+          if-no-files-found: error

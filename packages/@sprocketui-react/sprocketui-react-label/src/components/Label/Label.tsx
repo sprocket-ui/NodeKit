@@ -10,13 +10,13 @@
 
 'use client';
 
-import { LABEL_NAME } from '../constants';
 import { forwardRef } from 'react';
-import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
-import { LabelContext } from '../contexts/LabelContext';
-import { useLabel } from '../hooks/useLabel';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
+
+import { LABEL_NAME } from '../../constants';
+import { useLabel } from '../../hooks/useLabel/useLabel';
+import { LabelContext } from '../../contexts/LabelContext';
 
 import type {
   ForwardedRef,
@@ -47,14 +47,11 @@ function LabelFn(
     elementType
   } = useLabel(props, ref as any);
 
-  const sprocketLabelID: string = useId({ defaultId: labelProps.id });
   const renderProps: UseRendererReturn = useRenderer({
     ...props,
     values: {},
-    defaultClassName: buildInternalIdentifier({
-      component: LABEL_NAME
-    }),
-    style: (values) => ({
+    defaultClassName: `__sprocket:=[${LABEL_NAME.toLowerCase()}]`,
+    style: (values: any) => ({
       ...(props.style instanceof Function ? props.style(values) : props.style)
     })
   });
@@ -65,7 +62,7 @@ function LabelFn(
       as={elementType}
       {...renderProps}
       {...labelProps}
-      id={sprocketLabelID}
+      id={useId({ defaultId: labelProps.id })}
       slot={props.slot || undefined}
     >
       {renderProps.children}

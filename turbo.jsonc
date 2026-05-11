@@ -1,21 +1,24 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "daemon": false,
   "tasks": {
-    "build": {
-      "cache": false,
-      "dependsOn": ["^build"]
+    "//#build:tsdown": {
+      "inputs": [
+        "packages/**/src/**",
+        "packages/**/tsdown.config.ts",
+        "tsdown.config.ts"
+      ],
+      "outputs": ["packages/**/dist/**"]
     },
-    "build:*": {
-      "cache": false,
-      "dependsOn": ["^build:*", "shared#build"],
-      "outputs": ["dist/**"]
-    },
-    "@sprocketui/react#build": {
-      "dependsOn": [
-        "@sprocketui-react/input#build",
-        "@sprocketui-react/button#build"
-      ]
+    "//#test:vitest": {
+      "dependsOn": ["//#build:tsdown"],
+      "inputs": [
+        "packages/**/src/**",
+        "packages/**/__tests__/**",
+        "packages/**/vitest.config.ts",
+        "packages/**/vitest.setup.ts",
+        "vitest.config.ts"
+      ],
+      "outputs": []
     },
     "dev": {
       "cache": false,
@@ -24,11 +27,6 @@
     "dev:*": {
       "cache": false,
       "persistent": true
-    },
-    "test:coverage": {
-      "cache": false,
-      "dependsOn": ["^build"],
-      "outputs": ["coverage/**"]
     }
   }
 }

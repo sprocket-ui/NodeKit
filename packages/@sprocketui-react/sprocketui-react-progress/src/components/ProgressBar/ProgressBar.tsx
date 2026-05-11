@@ -8,9 +8,8 @@
 
 'use client';
 
-import { buildInternalIdentifier } from 'shared';
-import { Primitive } from '@necto-react/components';
 import { useRef, forwardRef } from 'react';
+import { Primitive } from '@necto-react/components';
 import { mergeProps, mergeRefs } from '@necto/mergers';
 import { useContextProps, useRenderer } from '@necto-react/hooks';
 
@@ -19,8 +18,8 @@ import { useProgressBar } from '../../hooks/useProgressBar';
 import { PROGRESS_BAR_NAME, DEFAULT_PROGRESS_BAR_TAG } from '../../constants';
 
 import type {
-  ElementType,
   RefObject,
+  ElementType,
   ForwardedRef,
   ReactElement,
   RefAttributes,
@@ -43,10 +42,10 @@ function ProgressBarFn(
     context: ProgressBarContext as any
   });
 
-  const internalRef: RefObject<HTMLElement | null> = useRef<HTMLElement>(null);
   const { elementType = props.as ?? DEFAULT_PROGRESS_BAR_TAG, slot } = props;
+  const internalRef: RefObject<HTMLElement | null> = useRef<HTMLElement>(null);
 
-  const { labelProps, progressBarProps, percentage, isIndeterminate, isHung } = useProgressBar(
+  const { progressBarProps, percentage, isIndeterminate, isHung } = useProgressBar(
     props,
     internalRef
   );
@@ -58,21 +57,19 @@ function ProgressBarFn(
       isIndeterminate,
       isHung
     },
-    defaultClassName: buildInternalIdentifier({
-      component: PROGRESS_BAR_NAME
-    }),
-    style: (values) => ({
+    defaultClassName: `__sprocket:=[${PROGRESS_BAR_NAME.toLowerCase()}]`,
+    style: (values: any) => ({
       ...(props.style instanceof Function ? props.style(values) : props.style)
     })
   });
 
   return (
     <Primitive
-      ref={mergeRefs(forwardedRef, internalRef)}
       as={elementType}
+      slot={slot || undefined}
+      ref={mergeRefs(forwardedRef, internalRef)}
       {...renderProps}
       {...mergeProps(progressBarProps)}
-      slot={slot || undefined}
     >
       {renderProps.children}
     </Primitive>

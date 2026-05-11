@@ -158,7 +158,10 @@ export function useTabList<T extends ElementType = typeof DEFAULT_TAB_TAG>(
     state: tabsState,
     elementType: elementType as T,
     tabListProps: mergeProps(
-      { role: 'tablist', 'aria-orientation': orientation },
+      {
+        role: 'tablist',
+        'aria-orientation': orientation
+      },
       collectionProps,
       ariaProps
     )

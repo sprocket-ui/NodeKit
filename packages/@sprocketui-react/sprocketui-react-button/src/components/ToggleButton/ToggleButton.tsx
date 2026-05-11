@@ -1,8 +1,4 @@
-// biome-ignore-all assist/source/organizeImports: No need to sort imports.
-// biome-ignore-all lint/correctness/useHookAtTopLevel: Internal Fn pattern, called via forwardRef.
-// biome-ignore-all lint/suspicious/noExplicitAny: Polymorphic component requires any.
-
-/**
+/*
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
@@ -10,11 +6,14 @@
  *
  */
 
+// biome-ignore-all assist/source/organizeImports: No need to sort imports.
+// biome-ignore-all lint/suspicious/noExplicitAny: Polymorphic component requires any.
+// biome-ignore-all lint/correctness/useHookAtTopLevel: Internal Fn pattern, called via forwardRef.
+
 'use client';
 
 import { forwardRef } from 'react';
 import { mergeProps } from '@necto/mergers';
-import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
@@ -22,9 +21,9 @@ import { TOGGLE_BUTTON_NAME } from '../../constants';
 import { ToggleButtonContext } from '../../contexts';
 import { useToggleButton } from '../../hooks/useToggleButton';
 
-import type { ForwardedRef, ReactElement, RefAttributes, ForwardRefExoticComponent } from 'react';
-import type { ToggleButtonProps } from './ToggleButton.types';
 import type { UseRendererReturn } from '@necto-react/hooks';
+import type { ToggleButtonProps } from './ToggleButton.types';
+import type { ForwardedRef, ReactElement, RefAttributes, ForwardRefExoticComponent } from 'react';
 
 /**
  * @internal
@@ -48,7 +47,6 @@ function ToggleButtonFn(
 		isFocusVisible
 	} = useToggleButton(props, ref as any);
 
-	const sprocketToggleButtonID: string = useId({ defaultId: buttonProps.id });
 	const renderProps: UseRendererReturn = useRenderer({
 		...props,
 		values: {
@@ -60,10 +58,8 @@ function ToggleButtonFn(
 			isPending,
 			isSelected
 		},
-		defaultClassName: buildInternalIdentifier({
-			component: TOGGLE_BUTTON_NAME
-		}),
-		style: (values) => ({
+		defaultClassName: `__sprocket:=[${TOGGLE_BUTTON_NAME.toLowerCase()}]`,
+		style: (values: any) => ({
 			...(props.style instanceof Function ? props.style(values) : props.style)
 		})
 	});
@@ -72,10 +68,10 @@ function ToggleButtonFn(
 		<Primitive
 			ref={ref}
 			as={elementType}
-			id={sprocketToggleButtonID}
-			slot={props.slot || undefined}
 			{...renderProps}
 			{...mergeProps(buttonProps)}
+      id={useId({ defaultId: buttonProps.id })}
+      slot={props.slot || undefined}
 		>
 			{renderProps.children}
 		</Primitive>

@@ -12,10 +12,10 @@
 'use client';
 
 import { useId } from '@necto-react/hooks';
-import { filterDOMProps } from '@necto-react/helpers';
 import { mergeProps } from '@necto/mergers';
-import { ALLOWED_EXTERNAL_PROPS } from 'shared';
-import { DEFAULT_LABEL_TAG } from '../constants';
+import { filterDOMProps } from '@necto/dom';
+
+import { DEFAULT_LABEL_TAG, ALLOWED_EXTERNAL_PROPS } from '../../constants';
 
 import type { ElementType, RefObject, MouseEvent } from 'react';
 import type { UseLabelProps, UseLabelReturn } from './useLabel.types';
@@ -36,15 +36,19 @@ export function useLabel<T extends ElementType = typeof DEFAULT_LABEL_TAG>(
     id,
     htmlFor,
     elementType = props.as || DEFAULT_LABEL_TAG,
+
+    // Callbacks
     onMouseDown
   } = props;
 
-  const labelId = useId({ defaultId: id });
+  const labelId: string = useId({ defaultId: id });
 
   const handleMouseDown = (event: MouseEvent<HTMLLabelElement>): void => {
-    // Only prevent text selection if clicking inside the label itself
     const target = event.target as HTMLElement;
-    if (target.closest('button, input, select, textarea')) return;
+
+    if (target.closest('button, input, select, textarea')) {
+      return;
+    }
 
     onMouseDown?.(event as any);
 
@@ -54,18 +58,18 @@ export function useLabel<T extends ElementType = typeof DEFAULT_LABEL_TAG>(
     }
   };
 
-  const labelProps = mergeProps(
+  const labelProps: Record<string, any> = mergeProps(
     {
       id: labelId,
       htmlFor: elementType === 'label' ? htmlFor : undefined,
       onMouseDown: handleMouseDown
     },
     filterDOMProps(props, {
-      extraAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
+      additionalAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
     })
   );
 
-  const fieldProps = htmlFor ? { 'aria-labelledby': labelId } : {};
+  const fieldProps = htmlFor && { 'aria-labelledby': labelId } || {};
 
   return {
     labelProps,

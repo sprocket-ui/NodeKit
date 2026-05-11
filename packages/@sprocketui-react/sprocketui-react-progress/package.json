@@ -1,6 +1,6 @@
 {
   "name": "@sprocketui-react/progress",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Sprocket's standalone React progress bar component.",
   "type": "module",
   "license": "MIT",
@@ -29,15 +29,15 @@
     "url": "https://github.com/sprocket-ui/NodeKit.git"
   },
   "dependencies": {
-    "@necto-react/components": "1.4.25",
-    "@necto-react/helpers": "2.6.16",
-    "@necto-react/hooks": "2.16.4",
-    "@necto-react/state": "0.2.1",
-    "@necto-react/types": "2.4.1",
-    "@necto/dom": "1.9.2",
+    "@necto-react/components": "catalog:",
+    "@necto-react/hooks": "catalog:",
+    "@necto-react/state": "catalog:",
+    "@necto-react/types": "catalog:",
+    "@necto/constants": "catalog:",
+    "@necto/dom": "catalog:",
     "@necto/math": "1.0.0",
-    "@necto/mergers": "1.5.1",
-    "@necto/strings": "1.7.0",
+    "@necto/mergers": "catalog:",
+    "@necto/strings": "catalog:",
     "@sprocketui-react/label": "workspace:*",
     "@sprocketui-types/progress": "workspace:*",
     "defu": "^6.1.4"
@@ -47,13 +47,12 @@
     "react-dom": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1"
   },
   "devDependencies": {
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "shared": "workspace:*",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "tsdown": "^0.12.9",
     "typescript": "^6.0.0",
-    "vitest": "^3.2.4",
-    "tsdown": "^0.12.7"
+    "vitest": "catalog:"
   }
 }

@@ -4,15 +4,21 @@
   "license": "MIT",
   "scripts": {
     "changeset": "changeset",
-    "test": "vitest",
-    "test:coverage": "turbo run test:coverage",
-    "dev": "turbo run dev",
     "lint": "biome lint --write",
     "format": "biome format --write",
+    "dev": "turbo run dev",
     "dev:react": "turbo watch dev --filter=@sprocketui-react/*",
-    "build": "turbo run build",
-    "build:types": "turbo run build --filter=\"@sprocketui/types\"",
-    "build:react": "turbo run build --filter=\"@sprocketui-react/*\" --no-cache --parallel",
+    "build": "turbo run //#build:tsdown",
+    "build:tsdown": "tsdown",
+    "test": "turbo run //#test:vitest",
+    "test:vitest": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "turbo run //#test:vitest -- --coverage",
+    "test:chromium": "turbo run //#test:vitest -- --browser=chromium",
+    "test:firefox": "turbo run //#test:vitest -- --browser=firefox",
+    "test:webkit": "turbo run //#test:vitest -- --browser=webkit",
+    "test:update": "turbo run //#test:vitest -- --update-snapshots",
+    "postinstall": "lefthook install && playwright install",
     "clean": "rimraf --glob packages/**/node_modules packages/**/.turbo packages/**/dist packages/**/.dist node_modules .turbo dist .dist"
   },
   "packageManager": "pnpm@10.33.0",
@@ -20,7 +26,8 @@
     "overrides": {
       "@types/react": "19.2.14",
       "@types/react-dom": "19.2.3",
-      "@necto/constants": "1.4.5"
+      "@necto/constants": "^2.0.0",
+      "vite": "npm:vite@beta"
     }
   },
   "devDependencies": {
@@ -29,18 +36,23 @@
     "@commitlint/cli": "^20.0.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@commitlint/types": "^20.0.0",
+    "@playwright/test": "^1.59.1",
+    "@types/ramda": "^0.31.1",
     "@types/tmp": "^0.2.6",
+    "@vitest/browser": "catalog:",
+    "@vitest/coverage-istanbul": "catalog:",
     "clean-publish": "^6.0.5",
     "conventional-changelog-conventionalcommits": "^9.3.1",
-    "fast-glob": "^3.3.3",
     "lefthook": "^2.0.0",
     "markdownlint-cli2": "^0.22.0",
+    "playwright": "^1.59.1",
+    "ramda": "^0.32.0",
     "rimraf": "^6.1.3",
     "terser": "^5.46.1",
     "tmp": "^0.2.5",
+    "tsdown": "^0.12.9",
     "turbo": "^2.5.0",
-    "vitest": "^3.1.1",
-    "yaml-lint": "^1.7.0",
-    "@vitest/coverage-istanbul": "^3.2.4"
+    "vitest": "catalog:",
+    "yaml-lint": "^1.7.0"
   }
 }

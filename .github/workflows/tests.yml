@@ -1,42 +1,78 @@
-name: Run tests and upload coverage
+name: Test
 
 on:
   pull_request:
     branches: [main]
   push:
     branches: [main]
+  merge_group:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CI: true
+  LEFTHOOK: 0
 
 jobs:
-  test:
-    name: Run tests, coverage, and upload to Codecov
-    runs-on: ubuntu-latest
-    if: ${{ github.actor != 'renovate[bot]' && github.actor != 'sprocket-github-bot[bot]' && github.actor != 'kodiakhq[bot]' && !startsWith(github.head_ref, 'kodiak/') && !startsWith(github.ref_name, 'kodiak/') }}
+  build:
+    name: Build
+    uses: ./.github/workflows/build.yml
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
+  test:
+    name: Test (${{ matrix.browser }})
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
     steps:
       - name: Checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 2
 
-      - name: Setup pnpm
+      - name: Setup pnpm + install deps
         uses: pnpm/action-setup@v5
+        with:
+          run_install: |
+            - args: [--frozen-lockfile, --ignore-scripts]
 
-      - name: Set up Node
+      - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: 20
-          cache: pnpm
+          node-version-file: '.nvmrc'
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build.outputs.artifact-name }}
+          path: packages
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}-${{ matrix.browser }}
+
+      - name: Install Playwright browser (${{ matrix.browser }})
+        run: pnpm exec playwright install --with-deps ${{ matrix.browser }}
 
       - name: Run tests with coverage
-        run: pnpm run test:coverage
+        run: pnpm test:${{ matrix.browser }} --coverage
 
       - name: Upload coverage reports to Codecov
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && github.event_name != 'merge_group' }}
         uses: codecov/codecov-action@v6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: "**/coverage/lcov.info"
+          flags: browser-${{ matrix.browser }}
           fail_ci_if_error: true

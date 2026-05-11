@@ -1,7 +1,4 @@
-// biome-ignore-all assist/source/organizeImports: No need to sort imports.
-// biome-ignore-all lint/suspicious/noExplicitAny: Explicit any is okay here.
-
-/**
+/*
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
@@ -9,16 +6,18 @@
  *
  */
 
+// biome-ignore-all assist/source/organizeImports: No need to sort imports.
+// biome-ignore-all lint/suspicious/noExplicitAny: Explicit any is okay here.
+
 'use client';
 
-import { useHover, usePress, useFocusRing, useFocusable, useAriaProps } from '@necto-react/hooks';
 import { defu } from 'defu';
-import { HTMLElements } from '@necto/dom';
+import { ANCHOR } from '@necto/constants';
 import { mergeProps } from '@necto/mergers';
-import { filterDOMProps } from '@necto-react/helpers';
-import { ANCHOR_ELEMENT_PROPS, ALLOWED_EXTERNAL_PROPS } from 'shared';
+import { HTMLElements, filterDOMProps } from '@necto/dom';
+import { useHover, usePress, useFocusRing, useFocusable, useAriaProps } from '@necto-react/hooks';
 
-import { DEFAULT_BUTTON_TAG } from '../../constants';
+import { DEFAULT_BUTTON_TAG, ALLOWED_EXTERNAL_PROPS } from '../../constants';
 
 import type { ElementType, RefObject, AriaAttributes } from 'react';
 import type { UseButtonOptions, UseButtonReturn } from './useButton.types';
@@ -84,6 +83,7 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
 		...(props as any),
 		isDisabled: isDisabled
 	});
+
 	const { focusableProps } = useFocusable(props as any, ref);
 	const { focusProps, isFocused, isFocusVisible } = useFocusRing({ autoFocus });
 
@@ -115,8 +115,8 @@ export function useButton<T extends ElementType = typeof DEFAULT_BUTTON_TAG>(
 		filterDOMProps(props, {
 			allowLabelableProps: true,
 			allowedLabelableProps: new Set([]),
-			allowedLinkProps: new Set(ANCHOR_ELEMENT_PROPS),
-			extraAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
+			allowedLinkProps: new Set(ANCHOR.PROPS),
+			additionalAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
 		})
 	);
 

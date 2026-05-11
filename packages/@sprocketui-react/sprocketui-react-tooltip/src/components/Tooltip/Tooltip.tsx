@@ -1,7 +1,4 @@
-// biome-ignore-all lint/correctness/useHookAtTopLevel: Internal Fn pattern, called via forwardRef.
-// biome-ignore-all lint/correctness/noUnusedFunctionParameters: ref is part of the public signature for API consistency.
-
-/**
+/*
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
@@ -9,9 +6,12 @@
  *
  */
 
+// biome-ignore-all lint/correctness/useHookAtTopLevel: Internal Fn pattern, called via forwardRef.
+// biome-ignore-all lint/correctness/noUnusedFunctionParameters: ref is part of the public signature for API consistency.
+
 'use client';
 
-import { forwardRef, useRef } from 'react';
+import { forwardRef, useMemo, useRef } from 'react';
 
 import { TooltipArrow } from '../TooltipArrow';
 import { TOOLTIP_NAME } from '../../constants';
@@ -20,8 +20,6 @@ import { TooltipContent } from '../TooltipContent';
 import { TooltipTrigger } from '../TooltipTrigger';
 import { useTooltipTrigger, useTooltipTriggerState } from '../../hooks/useTooltipTrigger';
 
-import type { TooltipState } from '../../types';
-import type { TooltipProps } from './Tooltip.types';
 import type {
 	RefObject,
 	ForwardedRef,
@@ -29,6 +27,8 @@ import type {
 	RefAttributes,
 	ForwardRefExoticComponent
 } from 'react';
+import type { TooltipState } from '../../types';
+import type { TooltipProps } from './Tooltip.types';
 
 /**
  * @internal
@@ -53,15 +53,27 @@ function TooltipFn(props: TooltipProps, ref: ForwardedRef<HTMLElement>): ReactEl
 		closeOnContentHover ? isContentHoveredRef : undefined
 	);
 
-	const contextValue = {
-		triggerRef,
-		triggerProps,
-		open: state.open,
-		close: state.close,
-		isOpen: state.isOpen,
-		tooltipId: tooltipProps.id,
-		isContentHoveredRef: closeOnContentHover ? isContentHoveredRef : undefined
-	};
+	const contextValue = useMemo(
+		() => ({
+			triggerRef,
+			triggerProps,
+			open: state.open,
+			close: state.close,
+			isOpen: state.isOpen,
+			tooltipId: tooltipProps.id,
+			isContentHoveredRef: closeOnContentHover ? isContentHoveredRef : undefined
+		}),
+		[
+			triggerRef,
+			triggerProps,
+			state.open,
+			state.close,
+			state.isOpen,
+			tooltipProps.id,
+			closeOnContentHover,
+			isContentHoveredRef
+		]
+	);
 
 	return <TooltipContext.Provider value={contextValue}>{children}</TooltipContext.Provider>;
 }

@@ -1,3 +1,32 @@
 packages:
   - 'packages/*'
   - 'packages/**/*'
+
+catalog:
+  react: ^19.1.0
+  react-dom: ^19.1.0
+  '@types/react': ^19.1.2
+  '@types/react-dom': ^19.1.2
+  vitest: ^3.2.4
+  '@vitest/browser': ^3.2.4
+  '@vitest/coverage-istanbul': ^3.2.4
+  '@necto-react/components': 1.4.25
+  '@necto-react/hooks': 2.17.1
+  '@necto-react/state': 0.2.1
+  '@necto-react/types': 2.4.1
+  '@necto/constants': ^2.0.0
+  '@necto/dom': 1.10.1
+  '@necto/mergers': 1.5.1
+  '@necto/strings': 1.7.0
+
+shellEmulator: true
+autoInstallPeers: true
+verifyDepsBeforeRun: install
+preferWorkspacePackages: true
+
+onlyBuiltDependencies:
+  - esbuild
+  - lefthook
+  - playwright
+  - unrs-resolver
+  - '@biomejs/biome'

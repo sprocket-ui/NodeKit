@@ -1,8 +1,4 @@
-// biome-ignore-all assist/source/organizeImports: No need to sort imports.
-// biome-ignore-all lint/suspicious/noExplicitAny: Polymorphic component requires any.
-// biome-ignore-all lint/correctness/useHookAtTopLevel: Internal Fn pattern, called via forwardRef.
-
-/**
+/*
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
@@ -10,11 +6,14 @@
  *
  */
 
+// biome-ignore-all assist/source/organizeImports: No need to sort imports.
+// biome-ignore-all lint/suspicious/noExplicitAny: Polymorphic component requires any.
+// biome-ignore-all lint/correctness/useHookAtTopLevel: Internal Fn pattern, called via forwardRef.
+
 'use client';
 
 import { forwardRef } from 'react';
 import { mergeProps } from '@necto/mergers';
-import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
@@ -22,9 +21,9 @@ import { BUTTON_NAME } from '../../constants';
 import { ButtonContext } from '../../contexts';
 import { useButton } from '../../hooks/useButton';
 
-import type { ForwardedRef, ReactElement, RefAttributes, ForwardRefExoticComponent } from 'react';
 import type { ButtonProps } from './Button.types';
 import type { UseRendererReturn } from '@necto-react/hooks';
+import type { ForwardedRef, ReactElement, RefAttributes, ForwardRefExoticComponent } from 'react';
 
 /**
  * @internal
@@ -59,9 +58,7 @@ function ButtonFn(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>): Rea
 			isDisabled,
 			isPending
 		},
-		defaultClassName: buildInternalIdentifier({
-			component: BUTTON_NAME
-		}),
+		defaultClassName: `__sprocket:=[${BUTTON_NAME.toLowerCase()}]`,
 		style: (values) => ({
 			...(props.style instanceof Function ? props.style(values) : props.style)
 		})
@@ -71,10 +68,10 @@ function ButtonFn(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>): Rea
 		<Primitive
 			ref={ref}
 			as={elementType}
-			slot={props.slot || undefined}
-			id={useId({ defaultId: buttonProps.id })}
 			{...renderProps}
 			{...mergeProps(buttonProps)}
+      slot={props.slot || undefined}
+      id={useId({ defaultId: buttonProps.id })}
 		>
 			{renderProps.children}
 		</Primitive>

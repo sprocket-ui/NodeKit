@@ -13,7 +13,6 @@
 import { kebabCase } from '@necto/strings';
 import { mergeProps } from '@necto/mergers';
 import { forwardRef, useMemo } from 'react';
-import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
@@ -69,10 +68,8 @@ function InputFn(
       isRequired,
       isInvalid
     },
-    defaultClassName: buildInternalIdentifier({
-      component: INPUT_NAME
-    }),
-    style: (values) => ({
+    defaultClassName: `__sprocket:=[${INPUT_NAME.toLowerCase()}]`,
+    style: (values: any) => ({
       ...(props.style instanceof Function ? props.style(values) : props.style)
     })
   });

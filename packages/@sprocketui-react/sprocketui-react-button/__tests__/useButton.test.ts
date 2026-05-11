@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { describe, expect, test } from 'vitest';
 import { renderHook } from '@testing-library/react';
 import { useButton } from '@sprocketui-react/button';

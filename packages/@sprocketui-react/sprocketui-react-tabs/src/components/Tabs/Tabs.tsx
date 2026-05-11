@@ -10,7 +10,6 @@
 
 import { forwardRef, useRef } from 'react';
 import { mergeProps } from '@necto/mergers';
-import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { useContextProps, useRenderer } from '@necto-react/hooks';
 
@@ -59,10 +58,8 @@ function TabsFn(
     values: {
       orientation: contextValue.orientation ?? 'horizontal'
     },
-    defaultClassName: buildInternalIdentifier({
-      component: TABS_NAME
-    }),
-    style: (values) => ({
+    defaultClassName: `__sprocket:=[${TABS_NAME.toLowerCase()}]`,
+    style: (values: any) => ({
       ...(props.style instanceof Function ? props.style(values) : props.style)
     })
   });

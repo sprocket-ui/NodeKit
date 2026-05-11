@@ -10,7 +10,6 @@
 
 import { assert } from '@necto/assert';
 import { useContext, forwardRef } from 'react';
-import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { useContextProps, useRenderer } from '@necto-react/hooks';
 
@@ -45,12 +44,22 @@ function SelectionIndicatorFn(
   });
 
   const state: TabsState | null = useContext(TabListStateContext);
+
   assert(state, 'SelectionIndicator must be used within a TabList');
 
   const tabListRef: RefObject<HTMLElement | null> | null = useContext(TabListRefContext);
+
   assert(tabListRef, 'SelectionIndicator must be used within a TabList');
 
-  const { elementType = props.as ?? DEFAULT_TAB_TAG, slot } = props;
+  const {
+    elementType = props.as ?? DEFAULT_TAB_TAG,
+    slot,
+    as: _as,
+    className: _className,
+    style: _style,
+    children: _children,
+    ...domProps
+  } = props;
 
   const { isSelected, metrics, indicatorStyle, selectionIndicatorProps } = useSelectionIndicator({
     state,
@@ -63,10 +72,8 @@ function SelectionIndicatorFn(
       isSelected,
       selectedRect: metrics
     },
-    defaultClassName: buildInternalIdentifier({
-      component: SELECTION_INDICATOR_NAME
-    }),
-    style: (values) => ({
+    defaultClassName: `__sprocket:=[${SELECTION_INDICATOR_NAME.toLowerCase()}]`,
+    style: (values: any) => ({
       ...(props.style instanceof Function ? props.style(values) : props.style),
       ...indicatorStyle
     })
@@ -76,9 +83,10 @@ function SelectionIndicatorFn(
     <Primitive
       ref={ref}
       as={elementType}
+      aria-hidden="true"
+      {...domProps}
       {...renderProps}
       {...selectionIndicatorProps}
-      aria-hidden="true"
       slot={slot || undefined}
     >
       {renderProps.children}

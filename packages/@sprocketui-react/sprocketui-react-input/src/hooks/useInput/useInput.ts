@@ -19,13 +19,15 @@ import {
   useEffectEvent
 } from '@necto-react/hooks';
 import { defu } from 'defu';
-import { useLocalState } from '@necto-react/state';
-import { HTMLElements } from '@necto/dom';
 import { mergeProps } from '@necto/mergers';
-import { filterDOMProps } from '@necto-react/helpers';
-import { ALLOWED_EXTERNAL_PROPS, ALLOWED_INPUT_LABELABLE_PROPS } from 'shared';
+import { useLocalState } from '@necto-react/state';
+import { HTMLElements, filterDOMProps } from '@necto/dom';
 
-import { DEFAULT_INPUT_TAG } from '../../constants';
+import {
+  DEFAULT_INPUT_TAG,
+  ALLOWED_EXTERNAL_PROPS,
+  ALLOWED_INPUT_LABELABLE_PROPS
+} from '../../constants';
 
 import type { ElementType, RefObject } from 'react';
 import type { UseInputProps, UseInputReturn } from './useInput.types';
@@ -44,20 +46,20 @@ export function useInput<T extends ElementType = typeof DEFAULT_INPUT_TAG>(
 ): UseInputReturn<T> {
   const {
     autoFocus,
+    clearable,
     isDisabled,
     isReadOnly,
     isRequired,
-    clearable,
     elementType,
-    value: controlledValue,
     defaultValue,
+    value: controlledValue,
 
     // Callbacks
-    onValueChange,
+    onBlur,
     onClear,
-    onChange,
     onFocus,
-    onBlur
+    onChange,
+    onValueChange
   } = defu(props, {
     isDisabled: false,
     isReadOnly: false,
@@ -128,7 +130,7 @@ export function useInput<T extends ElementType = typeof DEFAULT_INPUT_TAG>(
     filterDOMProps(props, {
       allowLabelableProps: true,
       allowedLabelableProps: new Set(ALLOWED_INPUT_LABELABLE_PROPS),
-      extraAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
+      additionalAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
     }),
     {
       onChange: handleChange as any,

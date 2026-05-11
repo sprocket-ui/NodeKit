@@ -1,5 +1,17 @@
 # @sprocketui/react
 
+## 0.2.28
+
+### Patch Changes
+
+- Updated dependencies
+- Updated dependencies
+  - @sprocketui-react/button@1.2.23
+  - @sprocketui-react/input@1.1.4
+  - @sprocketui-react/label@1.1.4
+  - @sprocketui-react/tabs@1.1.16
+  - @sprocketui-react/tooltip@1.5.3
+
 ## 0.2.27
 
 ### Patch Changes

@@ -2,27 +2,60 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
   "dependencyDashboard": false,
-  "schedule": ["before 6am every weekday"],
-  "timezone": "America/New_York",
   "separateMajorMinor": true,
+  "rangeStrategy": "bump",
+  "platformAutomerge": true,
+  "rebaseWhen": "conflicted",
   "labels": ["dependencies"],
+  "prConcurrentLimit": 10,
+  "prHourlyLimit": 5,
   "packageRules": [
     {
+      "description": "Group React and React types together so they always stay in sync",
+      "groupName": "react",
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "@types/react",
+        "@types/react-dom"
+      ],
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "enabled": true
+    },
+    {
+      "description": "Pin React major version — only allow minor and patch updates to avoid breaking libraries",
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "@types/react",
+        "@types/react-dom"
+      ],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "description": "Necto workspace packages — ungrouped, always-on schedule, auto-labeled",
       "matchPackageNames": ["@necto/**", "@necto-react/**"],
       "groupName": null,
       "labels": ["dependencies", "automerge", "necto"],
       "schedule": ["at any time"]
     },
     {
+      "description": "Auto-merge patch updates to necto packages",
       "matchPackageNames": ["@necto/**", "@necto-react/**"],
       "matchUpdateTypes": ["patch"],
       "automerge": true
     },
     {
+      "description": "Auto-merge patch updates for dev dependencies",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "description": "Pin node.js major version to 20.x",
       "matchPackageNames": ["node"],
       "allowedVersions": "^20.0.0"
     }
-  ],
-  "prConcurrentLimit": 10,
-  "prHourlyLimit": 5
+  ]
 }

@@ -52,6 +52,13 @@ export function useTooltipTriggerState(
 	const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const closeCallback = useRef<() => void>(() => {});
 
+	// Mirror of `isOpen` so callbacks can read the latest value without
+	// re-creating themselves on every toggle.
+	const isOpenRef = useRef(isOpen);
+	useEffect(() => {
+		isOpenRef.current = isOpen;
+	}, [isOpen]);
+
 	const setOpen = useCallback(
 		(value: boolean): void => {
 			if (!isControlled) {
@@ -70,40 +77,17 @@ export function useTooltipTriggerState(
 		closeCallback.current = close;
 	}, [close]);
 
-	const ensureTooltipEntry = () => {
-		tooltips[id] = hideTooltip;
-	};
-
 	// Close all other open tooltips — ensures only one is visible
-	const closeOpenTooltips = () => {
+	const closeOpenTooltips = useCallback(() => {
 		for (const tooltipEntryId in tooltips) {
 			if (tooltipEntryId !== id) {
 				tooltips[tooltipEntryId](true);
 				delete tooltips[tooltipEntryId];
 			}
 		}
-	};
+	}, [id]);
 
-	const showTooltip = () => {
-		if (closeTimeout.current) {
-			clearTimeout(closeTimeout.current);
-		}
-		closeTimeout.current = null;
-		closeOpenTooltips();
-		ensureTooltipEntry();
-		globalWarmedUp = true;
-		open();
-		if (globalWarmUpTimeout) {
-			clearTimeout(globalWarmUpTimeout);
-			globalWarmUpTimeout = null;
-		}
-		if (globalCooldownTimeout) {
-			clearTimeout(globalCooldownTimeout);
-			globalCooldownTimeout = null;
-		}
-	};
-
-	const hideTooltip = (immediate?: boolean) => {
+	const hideTooltip = useCallback((immediate?: boolean) => {
 		if (immediate || closeDelay <= 0) {
 			if (closeTimeout.current) {
 				clearTimeout(closeTimeout.current);
@@ -134,12 +118,35 @@ export function useTooltipTriggerState(
 				Math.max(TOOLTIP_TRIGGER_COOLDOWN, closeDelay)
 			);
 		}
-	};
+	}, [id, closeDelay]);
 
-	const warmupTooltip = () => {
+	const ensureTooltipEntry = useCallback(() => {
+		tooltips[id] = hideTooltip;
+	}, [id, hideTooltip]);
+
+	const showTooltip = useCallback(() => {
+		if (closeTimeout.current) {
+			clearTimeout(closeTimeout.current);
+		}
+		closeTimeout.current = null;
 		closeOpenTooltips();
 		ensureTooltipEntry();
-		if (!isOpen && !globalWarmedUp) {
+		globalWarmedUp = true;
+		open();
+		if (globalWarmUpTimeout) {
+			clearTimeout(globalWarmUpTimeout);
+			globalWarmUpTimeout = null;
+		}
+		if (globalCooldownTimeout) {
+			clearTimeout(globalCooldownTimeout);
+			globalCooldownTimeout = null;
+		}
+	}, [open, closeOpenTooltips, ensureTooltipEntry]);
+
+	const warmupTooltip = useCallback(() => {
+		closeOpenTooltips();
+		ensureTooltipEntry();
+		if (!isOpenRef.current && !globalWarmedUp) {
 			if (globalWarmUpTimeout) {
 				clearTimeout(globalWarmUpTimeout);
 			}
@@ -148,10 +155,10 @@ export function useTooltipTriggerState(
 				globalWarmedUp = true;
 				showTooltip();
 			}, delay);
-		} else if (!isOpen) {
+		} else if (!isOpenRef.current) {
 			showTooltip();
 		}
-	};
+	}, [delay, closeOpenTooltips, ensureTooltipEntry, showTooltip]);
 
 	// Cleanup on unmount
 	useEffect(() => {
@@ -165,15 +172,23 @@ export function useTooltipTriggerState(
 		};
 	}, [id]);
 
-	return {
-		isOpen,
-		open(immediate?: boolean) {
+	const stateOpen = useCallback(
+		(immediate?: boolean) => {
 			if (!immediate && delay > 0 && !closeTimeout.current) {
 				warmupTooltip();
 			} else {
 				showTooltip();
 			}
 		},
-		close: hideTooltip
-	};
+		[delay, warmupTooltip, showTooltip]
+	);
+
+	return useMemo(
+		() => ({
+			isOpen,
+			open: stateOpen,
+			close: hideTooltip
+		}),
+		[isOpen, stateOpen, hideTooltip]
+	);
 }
