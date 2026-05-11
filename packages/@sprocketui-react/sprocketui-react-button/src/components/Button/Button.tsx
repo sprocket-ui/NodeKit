@@ -59,7 +59,7 @@ function ButtonFn(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>): Rea
 			isPending
 		},
 		defaultClassName: `__sprocket:=[${BUTTON_NAME.toLowerCase()}]`,
-		style: (values) => ({
+		style: (values: any) => ({
 			...(props.style instanceof Function ? props.style(values) : props.style)
 		})
 	});
