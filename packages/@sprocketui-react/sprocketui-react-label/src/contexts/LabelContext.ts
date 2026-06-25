@@ -8,6 +8,7 @@
 
 import { createContext } from 'react';
 
-import type { UseLabelProps } from '../hooks/useLabel.types';
+import type { Context } from 'react';
+import type { UseLabelProps } from '../hooks/useLabel/useLabel.types';
 
-export const LabelContext = createContext<Partial<UseLabelProps> | null>(null);
+export const LabelContext: Context<Partial<UseLabelProps<"label">> | null> = createContext<Partial<UseLabelProps> | null>(null);

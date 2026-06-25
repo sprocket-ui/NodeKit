@@ -1,38 +1,65 @@
 coverage:
+  precision: 2
+  round: down
+  range: "70...100"
   status:
     project:
       default:
         target: auto
-        threshold: 1%
-        informational: false
+        threshold: 5%
+        if_not_found: success
+        carryforward: true
     patch:
       default:
-        target: 80%
-        threshold: 1%
-        informational: false
+        target: auto
+        threshold: 5%
+        if_not_found: success
+        carryforward: true
 
 comment:
-  layout: "diff, flags, files"
+  layout: "reach,diff,flags,files"
   behavior: default
-  require_changes: true
-  require_base: false
-  require_head: true
-  hide_project_coverage: false
+  require_changes: false
+  show_carryforward_flags: true
 
-ignore:
-  - "**/*.test.ts"
-  - "**/*.test.tsx"
-  - "**/*.spec.ts"
-  - "**/*.spec.tsx"
-  - "**/dist/**"
-  - "**/build/**"
-  - "**/node_modules/**"
-  - "**/*.config.ts"
-  - "**/*.config.js"
-  - "**/vitest.config.ts"
-  - "**/tsup.config.ts"
-  - "**/.storybook/**"
-  - "**/*.stories.tsx"
-
-github_checks:
-  annotations: true
+flags:
+  sprocketui-react-button:
+    paths:
+      - packages/@sprocketui-react/sprocketui-react-button/
+    carryforward: true
+  sprocketui-react-checkbox:
+    paths:
+      - packages/@sprocketui-react/sprocketui-react-checkbox/
+    carryforward: true
+  sprocketui-react-input:
+    paths:
+      - packages/@sprocketui-react/sprocketui-react-input/
+    carryforward: true
+  sprocketui-react-label:
+    paths:
+      - packages/@sprocketui-react/sprocketui-react-label/
+    carryforward: true
+  sprocketui-react-popover:
+    paths:
+      - packages/@sprocketui-react/sprocketui-react-popover/
+    carryforward: true
+  sprocketui-react-progress:
+    paths:
+      - packages/@sprocketui-react/sprocketui-react-progress/
+    carryforward: true
+  sprocketui-react-tabs:
+    paths:
+      - packages/@sprocketui-react/sprocketui-react-tabs/
+    carryforward: true
+  sprocketui-react-tooltip:
+    paths:
+      - packages/@sprocketui-react/sprocketui-react-tooltip/
+    carryforward: true
+  sprocketui-react:
+    paths:
+      - packages/@sprocketui/sprocketui-react/
+    carryforward: true
+  sprocketui-types:
+    paths:
+      - packages/@sprocketui/sprocketui-types/
+    carryforward: true

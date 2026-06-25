@@ -54,9 +54,7 @@ export function useSelectionIndicator(
     });
   }, [tabListRef, state.selectedValue]);
 
-  useLayoutEffect((): void => {
-    measure();
-  }, [measure]);
+  useLayoutEffect((): void => measure(), [measure]);
 
   useEffect(() => {
     const container: HTMLElement | null = tabListRef.current;

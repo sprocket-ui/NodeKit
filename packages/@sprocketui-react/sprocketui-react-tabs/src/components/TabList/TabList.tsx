@@ -8,7 +8,6 @@
 
 'use client';
 
-import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { useContext, forwardRef, useRef } from 'react';
 import { mergeProps, mergeRefs } from '@necto/mergers';
@@ -61,10 +60,8 @@ function TabListFn(
     values: {
       orientation: state.orientation
     },
-    defaultClassName: buildInternalIdentifier({
-      component: TAB_LIST_NAME
-    }),
-    style: (values) => ({
+    defaultClassName: `__sprocket:=[${TAB_LIST_NAME.toLowerCase()}]`,
+    style: (values: any) => ({
       ...(props.style instanceof Function ? props.style(values) : props.style)
     })
   });
@@ -74,10 +71,10 @@ function TabListFn(
       <TabListRefContext.Provider value={internalRef}>
         <Primitive
           as={elementType}
-          slot={props.slot || undefined}
           ref={mergeRefs(forwardedRef, internalRef)}
           {...renderProps}
           {...mergeProps(tabListProps)}
+          slot={props.slot || undefined}
         >
           {renderProps.children}
         </Primitive>

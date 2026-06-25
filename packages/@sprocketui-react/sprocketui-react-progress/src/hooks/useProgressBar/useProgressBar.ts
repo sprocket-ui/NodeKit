@@ -7,17 +7,19 @@
  */
 
 import { defu } from 'defu';
-import { HTMLElements } from '@necto/dom';
-import { mergeProps } from '@necto/mergers';
-import { useLocalState } from '@necto-react/state';
 import { useEffect } from 'react';
+import { ANCHOR } from '@necto/constants';
+import { mergeProps } from '@necto/mergers';
 import { clamp, percentage } from '@necto/math';
+import { useLocalState} from '@necto-react/state';
 import { useLabel } from '@sprocketui-react/label';
-import { filterDOMProps } from '@necto-react/helpers';
-import { ANCHOR_ELEMENT_PROPS, ALLOWED_EXTERNAL_PROPS } from 'shared';
+import { HTMLElements, filterDOMProps } from '@necto/dom';
+
+import { ALLOWED_EXTERNAL_PROPS, DEFAULT_HUNG_TIMEOUT } from '../../constants';
 
 import type { RefObject } from 'react';
 import type { Percentage } from '@necto/math';
+import type { LocalStateResult } from '@necto-react/state';
 import type { UseProgressBarOptions, UseProgressBarReturn } from './useProgressBar.types';
 
 export function useProgressBar(
@@ -44,20 +46,19 @@ export function useProgressBar(
     elementType: HTMLElements.Span
   }, ref);
 
-  const hungTimeout = props.hungTimeout ?? 5000;
-
   const clampedValue: number = clamp(value, minValue, maxValue);
+  const hungTimeout: number = props.hungTimeout ?? DEFAULT_HUNG_TIMEOUT;
+  const hungState: LocalStateResult<boolean> = useLocalState(false);
   const percent: Percentage = percentage((value - minValue) / (maxValue - minValue));
-
-  const hungState = useLocalState(false);
 
   useEffect(() => {
     hungState.set(false);
 
-    if (percent >= 1 || isIndeterminate) return;
+    if (percent >= 1 || isIndeterminate) {
+      return;
+    }
 
-    const timer = setTimeout(() => hungState.set(true), hungTimeout);
-    return () => clearTimeout(timer);
+    return (): void => clearTimeout(setTimeout((): void => hungState.set(true), hungTimeout));
   }, [percent, isIndeterminate, hungTimeout]);
 
   let label: any = providedLabel;
@@ -71,17 +72,22 @@ export function useProgressBar(
   }
 
   const sprocketState: string[] = [];
-  if (isIndeterminate) sprocketState.push('indeterminate');
-  if (hungState.value) sprocketState.push('hung');
+  if (isIndeterminate) {
+    sprocketState.push('indeterminate');
+  }
+
+  if (hungState.value) {
+    sprocketState.push('hung');
+  }
 
   let additionalProps: Record<string, unknown> = {
     role: 'progressbar',
     'aria-valuemin': minValue,
     'aria-valuemax': maxValue,
+    'data-hung': hungState.value ? 'true' : undefined,
+    'data-indeterminate': isIndeterminate ? 'true' : undefined,
     'aria-valuenow': isIndeterminate ? undefined : clampedValue,
     'aria-valuetext': isIndeterminate ? undefined : label as string,
-    'data-indeterminate': isIndeterminate ? 'true' : undefined,
-    'data-hung': hungState.value ? 'true' : undefined,
     'data-sprocket-state': sprocketState.length > 0 ? sprocketState.join(' ') : undefined
   }
 
@@ -90,16 +96,16 @@ export function useProgressBar(
     filterDOMProps(props, {
       allowLabelableProps: true,
       allowedLabelableProps: new Set([]),
-      allowedLinkProps: new Set(ANCHOR_ELEMENT_PROPS),
-      extraAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
+      allowedLinkProps: new Set(ANCHOR.PROPS),
+      additionalAllowedProps: new Set(ALLOWED_EXTERNAL_PROPS)
     })
   );
 
   return {
     labelProps,
-    progressBarProps: mergeProps(progressBarProps, additionalProps),
     percentage: percent,
+    isHung: hungState.value,
     isIndeterminate: isIndeterminate ?? false,
-    isHung: hungState.value
+    progressBarProps: mergeProps(progressBarProps, additionalProps),
   } satisfies UseProgressBarReturn;
 }

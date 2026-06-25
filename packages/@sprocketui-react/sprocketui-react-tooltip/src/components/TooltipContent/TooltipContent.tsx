@@ -17,7 +17,6 @@ import { Primitive } from '@necto-react/components';
 import { useRenderer } from '@necto-react/hooks';
 import { PopperPortal } from '@necto-react/popper';
 import { useContext, useMemo, forwardRef } from 'react';
-import { buildInternalIdentifier } from 'shared';
 
 import { TOOLTIP_CONTENT_NAME } from '../../constants';
 import { useTooltipContent } from '../../hooks/useTooltipContent';
@@ -90,9 +89,7 @@ function TooltipContentFn(
 			isOpen: context.isOpen,
 			isHovered
 		},
-		defaultClassName: buildInternalIdentifier({
-			component: TOOLTIP_CONTENT_NAME
-		}),
+		defaultClassName: `__sprocket:=[${TOOLTIP_CONTENT_NAME.toLowerCase()}]`,
 		style: (values) => ({
 			...(props.style instanceof Function ? props.style(values) : props.style)
 		})

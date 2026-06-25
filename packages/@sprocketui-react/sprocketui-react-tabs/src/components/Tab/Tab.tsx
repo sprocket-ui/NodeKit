@@ -11,7 +11,6 @@
 import { assert } from '@necto/assert';
 import { mergeProps } from '@necto/mergers';
 import { useContext, forwardRef } from 'react';
-import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { useContextProps, useRenderer, useId } from '@necto-react/hooks';
 
@@ -54,8 +53,6 @@ function TabFn(
     isFocusVisible
   } = useTab(props, state, ref as any);
 
-  const sprocketTabID: string = useId({ defaultId: tabProps.id });
-
   const renderProps: UseRendererReturn = useRenderer({
     ...(props as any),
     values: {
@@ -66,10 +63,8 @@ function TabFn(
       isDisabled,
       isSelected
     },
-    defaultClassName: buildInternalIdentifier({
-      component: TAB_NAME
-    }),
-    style: (values) => ({
+    defaultClassName: `__sprocket:=[${TAB_NAME.toLowerCase()}]`,
+    style: (values: any) => ({
       ...(props.style instanceof Function ? props.style(values) : props.style)
     })
   });
@@ -80,8 +75,8 @@ function TabFn(
       as={elementType}
       {...renderProps}
       {...mergeProps(tabProps)}
-      id={sprocketTabID}
       slot={props.slot || undefined}
+      id={useId({ defaultId: tabProps.id })}
     >
       {renderProps.children}
     </Primitive>

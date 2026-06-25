@@ -21,6 +21,6 @@
     "@sprocketui-types/buttons": "workspace:*"
   },
   "devDependencies": {
-    "tsdown": "^0.12.7"
+    "tsdown": "^0.12.9"
   }
 }

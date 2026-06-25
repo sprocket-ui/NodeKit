@@ -9,7 +9,7 @@
 import { defu } from 'defu';
 import { mergeProps } from '@necto/mergers';
 import { useFocusWithin } from "@necto-react/hooks";
-import { filterDOMProps } from '@necto-react/helpers';
+import { filterDOMProps } from '@necto/dom';
 
 import type { RefObject} from 'react';
 

@@ -11,7 +11,7 @@ import type { Key, ElementType } from 'react';
 /** Options for useTabPanel hook. */
 export interface UseTabPanelOptions<T extends ElementType = 'div'> {
   /** The value that associates this panel with a tab. */
-  value: Key;
+  value?: Key;
 
   /** The element type to render as. @default 'div' */
   elementType?: T;

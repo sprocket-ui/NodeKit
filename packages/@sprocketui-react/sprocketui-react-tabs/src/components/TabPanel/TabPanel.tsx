@@ -11,7 +11,6 @@
 import { assert } from '@necto/assert';
 import { mergeProps } from '@necto/mergers';
 import { useContext, forwardRef } from 'react';
-import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { useContextProps, useRenderer } from '@necto-react/hooks';
 
@@ -57,10 +56,8 @@ function TabPanelFn(
     values: {
       isSelected
     },
-    defaultClassName: buildInternalIdentifier({
-      component: TAB_PANEL_NAME
-    }),
-    style: (values) => ({
+    defaultClassName: `__sprocket:=[${TAB_PANEL_NAME.toLowerCase()}]`,
+    style: (values: any) => ({
       ...(props.style instanceof Function ? props.style(values) : props.style)
     })
   });
@@ -73,9 +70,9 @@ function TabPanelFn(
     <Primitive
       ref={ref}
       as={elementType}
-      slot={props.slot || undefined}
       {...renderProps}
       {...mergeProps(tabPanelProps)}
+      slot={props.slot || undefined}
     >
       {renderProps.children}
     </Primitive>

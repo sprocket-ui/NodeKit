@@ -1,6 +1,6 @@
 {
   "name": "@sprocketui/react",
-  "version": "0.2.27",
+  "version": "0.2.28",
   "type": "module",
   "license": "MIT",
   "author": "Corinvo OSS Team",
@@ -33,9 +33,9 @@
   "dependencies": {
     "@sprocketui-react/button": "workspace:*",
     "@sprocketui-react/input": "workspace:*",
+    "@sprocketui-react/label": "workspace:*",
     "@sprocketui-react/tabs": "workspace:*",
-    "@sprocketui-react/tooltip": "workspace:*",
-    "@sprocketui-react/label": "workspace:*"
+    "@sprocketui-react/tooltip": "workspace:*"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1",
@@ -44,12 +44,12 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.1",
     "@types/node": "^24.3.0",
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
     "sass-embedded": "^1.97.3",
     "tailwindcss": "^4.2.1",
-    "tsdown": "^0.12.7"
+    "tsdown": "^0.12.9"
   }
 }

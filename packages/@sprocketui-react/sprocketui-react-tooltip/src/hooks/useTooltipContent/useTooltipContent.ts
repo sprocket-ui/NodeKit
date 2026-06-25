@@ -1,6 +1,4 @@
-// biome-ignore-all lint/suspicious/noExplicitAny: Props records require any.
-
-/**
+/*
  * Copyright (c) Corinvo, LLC. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
@@ -8,12 +6,10 @@
  *
  */
 
+// biome-ignore-all lint/suspicious/noExplicitAny: Props records require any.
+
 'use client';
 
-import { defu } from 'defu';
-import { mergeProps } from '@necto/mergers';
-import { flip, shift, arrow, autoUpdate, offset as offsetMiddleware } from '@necto/popper';
-import { useHover } from '@necto-react/hooks';
 import {
 	useRole,
 	usePopper,
@@ -21,7 +17,11 @@ import {
 	useInteractions,
 	useTransitionStyles
 } from '@necto-react/popper';
+import { defu } from 'defu';
+import { mergeProps } from '@necto/mergers';
+import { useHover } from '@necto-react/hooks';
 import { useMemo, useRef, useCallback, useState } from 'react';
+import { flip, shift, arrow, autoUpdate, offset } from '@necto/popper';
 
 import { DEFAULT_TOOLTIP_TAG } from '../../constants';
 
@@ -99,7 +99,7 @@ export function useTooltipContent<T extends ElementType = typeof DEFAULT_TOOLTIP
 	});
 
 	const middleware = useMemo(
-		() => [offsetMiddleware(offsetValue), flip(), shift(), arrow({ element: arrowElement })],
+		() => [offset(offsetValue), flip(), shift(), arrow({ element: arrowElement })],
 		[offsetValue, arrowElement]
 	);
 

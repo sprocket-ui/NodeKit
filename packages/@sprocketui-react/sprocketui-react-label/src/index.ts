@@ -8,6 +8,6 @@
  *
  */
 
-export * from './hooks';
+export * from './hooks/useLabel';
 export * from './contexts';
-export * from './components';
+export * from './components/Label';

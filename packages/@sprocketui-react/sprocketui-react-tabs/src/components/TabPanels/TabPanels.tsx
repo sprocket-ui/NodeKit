@@ -10,7 +10,6 @@
 
 import { assert } from '@necto/assert';
 import { useContext, forwardRef } from 'react';
-import { buildInternalIdentifier } from 'shared';
 import { Primitive } from '@necto-react/components';
 import { useContextProps, useRenderer } from '@necto-react/hooks';
 
@@ -42,7 +41,15 @@ function TabPanelsFn(
     context: TabPanelsContext as any
   });
 
-  const { elementType = props.as ?? DEFAULT_TAB_TAG, slot } = props;
+  const {
+    elementType = props.as ?? DEFAULT_TAB_TAG,
+    slot,
+    as: _as,
+    className: _className,
+    style: _style,
+    children: _children,
+    ...domProps
+  } = props;
 
   const state: TabsState | null = useContext(TabListStateContext);
   assert(state, 'TabPanels must be used within a Tabs component');
@@ -50,10 +57,8 @@ function TabPanelsFn(
   const renderProps: UseRendererReturn = useRenderer({
     ...props,
     values: {},
-    defaultClassName: buildInternalIdentifier({
-      component: TAB_PANELS_NAME
-    }),
-    style: (values) => ({
+    defaultClassName: `__sprocket:=[${TAB_PANELS_NAME.toLowerCase()}]`,
+    style: (values: any) => ({
       ...(props.style instanceof Function ? props.style(values) : props.style)
     })
   });
@@ -62,6 +67,7 @@ function TabPanelsFn(
     <Primitive
       ref={ref}
       as={elementType}
+      {...domProps}
       {...renderProps}
       slot={slot || undefined}
     >

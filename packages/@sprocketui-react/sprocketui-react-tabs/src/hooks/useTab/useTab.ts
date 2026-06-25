@@ -9,6 +9,7 @@
 'use client';
 
 import {
+  useId,
   useHover,
   usePress,
   useFocusRing,
@@ -24,7 +25,7 @@ import { DEFAULT_TAB_TAG } from '../../constants';
 
 import type { TabsState } from '../../types';
 import type { UseTabOptions, UseTabReturn } from './useTab.types';
-import type { ElementType, RefObject, AriaAttributes } from 'react';
+import type { Key, ElementType, RefObject, AriaAttributes } from 'react';
 
 export function useTab<T extends ElementType = typeof DEFAULT_TAB_TAG>(
   options: UseTabOptions<T>,
@@ -35,23 +36,30 @@ export function useTab<T extends ElementType = typeof DEFAULT_TAB_TAG>(
     value,
     autoFocus,
     elementType,
+    preventFocusOnPress,
+    isDisabled: isDisabledProp,
+
+    // Callbacks
     onPress,
     onPressStart,
     onPressEnd,
     onPressUp,
     onPressChange,
-    preventFocusOnPress,
-    isDisabled: isDisabledProp,
   } = defu(options, {
     isDisabled: false,
     elementType: options.elementType || options.as || DEFAULT_TAB_TAG
   });
 
-  const isSelected: boolean = value === state.selectedValue;
-  const isDisabled: boolean = isDisabledProp || state.isValueDisabled(value);
+  // Keep useId unconditional so React's hook order stays stable on renders.
+  // Don't inline it into `value ?? useId({})`, that would call hook conditionally.
+  const autoId: string = useId({});
+  const resolvedValue: Key = value ?? autoId;
 
-  const tabId: string = generateId(state, value, 'tab');
-  const tabPanelId: string = generateId(state, value, 'tabpanel');
+  const isSelected: boolean = resolvedValue === state.selectedValue;
+  const isDisabled: boolean = isDisabledProp || state.isValueDisabled(resolvedValue);
+
+  const tabId: string = generateId(state, resolvedValue, 'tab');
+  const tabPanelId: string = generateId(state, resolvedValue, 'tabpanel');
 
   const { hoverProps, isHovered } = useHover({ isDisabled });
   const { focusableProps } = useFocusable({ isDisabled } as any, ref);
@@ -59,8 +67,10 @@ export function useTab<T extends ElementType = typeof DEFAULT_TAB_TAG>(
   const ariaProps: AriaAttributes = useAriaProps({ isSelected, isDisabled });
 
   const onTabFocus = useCallback((): void => {
-    if (!isDisabled) state.setFocusedKey(value);
-  }, [state, value, isDisabled]);
+    if (!isDisabled) {
+      state.setFocusedKey(resolvedValue);
+    }
+  }, [state, resolvedValue, isDisabled]);
 
   const { pressProps, isPressed } = usePress({
     ref,
@@ -72,20 +82,21 @@ export function useTab<T extends ElementType = typeof DEFAULT_TAB_TAG>(
     onPressUp,
     onPress(e: any): void {
       if (!isDisabled) {
-        state.setSelectedValue(value);
+        state.setSelectedValue(resolvedValue);
       }
 
       onPress?.(e);
     }
   });
 
-  const sprocketState: string[] = [];
-  if (isHovered) sprocketState.push('hover');
-  if (isFocused) sprocketState.push('focus');
-  if (isFocusVisible) sprocketState.push('focus-visible');
-  if (isDisabled) sprocketState.push('disabled');
-  if (isPressed) sprocketState.push('pressed');
-  if (isSelected) sprocketState.push('selected');
+  const sprocketState: string[] = [
+    isHovered && 'hover',
+    isFocused && 'focus',
+    isFocusVisible && 'focus-visible',
+    isDisabled && 'disabled',
+    isPressed && 'pressed',
+    isSelected && 'selected'
+  ].filter(Boolean) as string[];
 
   const tabProps: Record<string, any> = mergeProps(
     focusableProps,
@@ -96,8 +107,8 @@ export function useTab<T extends ElementType = typeof DEFAULT_TAB_TAG>(
     {
       id: tabId,
       role: 'tab',
-      'data-value': String(value),
-      'data-key': String(value),
+      'data-value': String(resolvedValue),
+      'data-key': String(resolvedValue),
       'aria-controls': isSelected ? tabPanelId : undefined,
       tabIndex: isDisabled
         ? undefined
@@ -124,6 +135,7 @@ export function useTab<T extends ElementType = typeof DEFAULT_TAB_TAG>(
     isPressed,
     isHovered,
     isFocused,
+    resolvedValue,
     isFocusVisible,
     elementType: elementType as T,
   };

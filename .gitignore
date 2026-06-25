@@ -144,6 +144,14 @@ dist
 # turbo
 .turbo
 
+# Playwright output (reports + traces + screenshots)
+playwright-report/
+test-results/
+packages/**/playwright-report/
+packages/**/test-results/
+blob-report/
+.playwright/
+
 # MacOS
 .DS_Store
 
