@@ -10,7 +10,7 @@ import path from 'node:path';
 import react from '@vitejs/plugin-react';
 import { mergeConfig, defineConfig } from 'vitest/config';
 
-import { rootConfig } from '../../../vitest.config';
+import { rootConfig } from '@/vitest.config';
 
 export default mergeConfig(
   rootConfig,

@@ -12,4 +12,4 @@ import type { Context } from 'react';
 import type { UseToggleButtonOptions } from '../hooks/useToggleButton/useToggleButton.types';
 
 export const ToggleButtonContext: Context<Partial<UseToggleButtonOptions<'button'>> | null> =
-	createContext<Partial<UseToggleButtonOptions<'button'>> | null>(null);
+  createContext<Partial<UseToggleButtonOptions<'button'>> | null>(null);

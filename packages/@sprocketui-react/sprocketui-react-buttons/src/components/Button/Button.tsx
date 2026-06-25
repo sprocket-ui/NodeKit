@@ -35,47 +35,47 @@ import type { ForwardedRef, ReactElement, RefAttributes, ForwardRefExoticCompone
  * @returns {ReactElement | null} The rendered button element or null.
  */
 function ButtonFn(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>): ReactElement | null {
-	[props, ref] = useContextProps({ props, ref, context: ButtonContext as any });
+  [props, ref] = useContextProps({ props, ref, context: ButtonContext as any });
 
-	const {
-		buttonProps,
-		isHovered,
-		isPressed,
-		isFocused,
-		isDisabled,
-		isPending,
-		elementType,
-		isFocusVisible
-	} = useButton(props, ref as any);
+  const {
+    buttonProps,
+    isHovered,
+    isPressed,
+    isFocused,
+    isDisabled,
+    isPending,
+    elementType,
+    isFocusVisible
+  } = useButton(props, ref as any);
 
-	const renderProps: UseRendererReturn = useRenderer({
-		...props,
-		values: {
-			isHovered,
-			isPressed,
-			isFocused,
-			isFocusVisible,
-			isDisabled,
-			isPending
-		},
-		defaultClassName: `__sprocket:=[${BUTTON_NAME.toLowerCase()}]`,
-		style: (values: any) => ({
-			...(props.style instanceof Function ? props.style(values) : props.style)
-		})
-	});
+  const renderProps: UseRendererReturn = useRenderer({
+    ...props,
+    values: {
+      isHovered,
+      isPressed,
+      isFocused,
+      isFocusVisible,
+      isDisabled,
+      isPending
+    },
+    defaultClassName: `__sprocket:=[${BUTTON_NAME.toLowerCase()}]`,
+    style: (values: any) => ({
+      ...(props.style instanceof Function ? props.style(values) : props.style)
+    })
+  });
 
-	return (
-		<Primitive
-			ref={ref}
-			as={elementType}
-			{...renderProps}
-			{...mergeProps(buttonProps)}
+  return (
+    <Primitive
+      ref={ref}
+      as={elementType}
+      {...renderProps}
+      {...mergeProps(buttonProps)}
       slot={props.slot || undefined}
       id={useId({ defaultId: buttonProps.id })}
-		>
-			{renderProps.children}
-		</Primitive>
-	);
+    >
+      {renderProps.children}
+    </Primitive>
+  );
 }
 
 /**
@@ -86,20 +86,20 @@ function ButtonFn(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>): Rea
  * @returns {ReactElement | null} The rendered button element or null.
  */
 export const Button: ForwardRefExoticComponent<
-	Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>
+  Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>
 > & {
-	Root: ForwardRefExoticComponent<Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>>;
+  Root: ForwardRefExoticComponent<Omit<ButtonProps, 'ref'> & RefAttributes<HTMLButtonElement>>;
 } = Object.assign(
-	forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>(
-		(props: Omit<ButtonProps, 'ref'>, ref: ForwardedRef<HTMLButtonElement>) =>
-			ButtonFn(props as ButtonProps, ref)
-	),
-	{
-		Root: forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>(
-			(props: Omit<ButtonProps, 'ref'>, ref: ForwardedRef<HTMLButtonElement>) =>
-				ButtonFn(props as ButtonProps, ref)
-		)
-	}
+  forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>(
+    (props: Omit<ButtonProps, 'ref'>, ref: ForwardedRef<HTMLButtonElement>) =>
+      ButtonFn(props as ButtonProps, ref)
+  ),
+  {
+    Root: forwardRef<HTMLButtonElement, Omit<ButtonProps, 'ref'>>(
+      (props: Omit<ButtonProps, 'ref'>, ref: ForwardedRef<HTMLButtonElement>) =>
+        ButtonFn(props as ButtonProps, ref)
+    )
+  }
 );
 
 Button.displayName = BUTTON_NAME;

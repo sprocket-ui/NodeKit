@@ -12,4 +12,4 @@ import type { Context } from 'react';
 import type { UseButtonOptions } from '../hooks/useButton/useButton.types';
 
 export const ButtonContext: Context<Partial<UseButtonOptions<'button'>> | null> =
-	createContext<Partial<UseButtonOptions<'button'>> | null>(null);
+  createContext<Partial<UseButtonOptions<'button'>> | null>(null);

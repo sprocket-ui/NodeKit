@@ -13,9 +13,7 @@ import type { UseToggleButtonOptions } from '../../hooks/useToggleButton/useTogg
 /**
  * Props for the ToggleButton component.
  */
-export interface ToggleButtonProps
-  extends RenderProps<any>,
-    UseToggleButtonOptions<ElementType> {
+export interface ToggleButtonProps extends RenderProps<any>, UseToggleButtonOptions<ElementType> {
   // Slot values for React rendering.
   slot?: string | null;
 }
